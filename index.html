@@ -1,0 +1,1862 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>La méthode Djen — Découvre ton archétype féminin</title>
+  <meta name="description" content="La première méthode de transformation féminine qui travaille le physique et le mental ensemble — à partir de qui tu es vraiment." />
+  <style>
+    :root {
+      --rose: #D4537E;
+      --rose-light: #f0a0bb;
+      --rose-dark: #a83660;
+      --rose-bg: #fdf0f4;
+      --dark: #0e0b0d;
+      --dark2: #1a1419;
+      --dark3: #231e22;
+      --text: #1a1a1a;
+      --text-light: #666;
+      --white: #ffffff;
+      --border: #e8e0e4;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: var(--text);
+      background: #fff;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: Georgia, 'Times New Roman', serif;
+      line-height: 1.25;
+    }
+
+    /* ── NAVIGATION ─────────────────────────────────────────── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.97);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      backdrop-filter: blur(8px);
+    }
+
+    .nav-logo {
+      font-family: Georgia, serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .nav-logo span { color: var(--rose); }
+
+    .nav-cta {
+      background: var(--rose);
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .nav-cta:hover { background: var(--rose-dark); }
+
+    /* ── HERO ───────────────────────────────────────────────── */
+    .hero {
+      padding: 100px 24px 80px;
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      margin-bottom: 24px;
+      color: var(--text);
+    }
+
+    .hero h1 .accent { color: var(--rose); }
+
+    .hero-sub {
+      font-size: 1.15rem;
+      color: var(--text-light);
+      max-width: 560px;
+      margin: 0 auto 40px;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--rose);
+      color: #fff;
+      padding: 16px 36px;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 700;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-primary:hover { background: var(--rose-dark); transform: translateY(-1px); }
+
+    .hero-note {
+      margin-top: 14px;
+      font-size: 0.82rem;
+      color: #aaa;
+    }
+
+    /* ── STATS ──────────────────────────────────────────────── */
+    .stats {
+      background: var(--rose-bg);
+      padding: 48px 24px;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 720px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .stat-number {
+      font-family: Georgia, serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--rose);
+    }
+
+    .stat-label {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      margin-top: 4px;
+    }
+
+    /* ── SECTION GÉNÉRIQUE ──────────────────────────────────── */
+    .section {
+      padding: 80px 24px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .section-center { text-align: center; }
+
+    .section h2 {
+      font-size: clamp(1.7rem, 3.5vw, 2.4rem);
+      margin-bottom: 20px;
+    }
+
+    .section p {
+      color: var(--text-light);
+      font-size: 1.05rem;
+      max-width: 640px;
+    }
+
+    .section-center p { margin: 0 auto; }
+
+    /* ── ARCHÉTYPES GRILLE ──────────────────────────────────── */
+    .archetypes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 48px;
+    }
+
+    .archetype-card {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px 24px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .archetype-card:hover {
+      border-color: var(--rose);
+      box-shadow: 0 4px 20px rgba(212,83,126,0.1);
+    }
+
+    .archetype-number {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--rose);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .archetype-name {
+      font-family: Georgia, serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .archetype-desc {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      line-height: 1.5;
+    }
+
+    /* ── MÉTHODE PILIERS ────────────────────────────────────── */
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      margin-top: 48px;
+    }
+
+    .pillar {
+      padding: 28px;
+      border-radius: 12px;
+      background: var(--rose-bg);
+    }
+
+    .pillar-icon { font-size: 1.8rem; margin-bottom: 12px; }
+
+    .pillar-title {
+      font-family: Georgia, serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .pillar-desc { font-size: 0.9rem; color: var(--text-light); }
+
+    /* ── QUIZ ───────────────────────────────────────────────── */
+    .quiz-section {
+      background: var(--dark);
+      padding: 80px 24px;
+    }
+
+    .quiz-inner {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .quiz-eyebrow {
+      color: var(--rose);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-align: center;
+      margin-bottom: 12px;
+    }
+
+    .quiz-title {
+      font-family: Georgia, serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      color: #fff;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .quiz-subtitle {
+      color: #888;
+      text-align: center;
+      font-size: 1rem;
+      margin-bottom: 40px;
+    }
+
+    .progress-bar-wrap {
+      background: rgba(255,255,255,0.1);
+      border-radius: 4px;
+      height: 4px;
+      margin-bottom: 36px;
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      background: var(--rose);
+      height: 100%;
+      border-radius: 4px;
+      transition: width 0.4s ease;
+    }
+
+    .quiz-card {
+      background: var(--dark2);
+      border: 1px solid rgba(212,83,126,0.2);
+      border-radius: 16px;
+      padding: 36px 32px;
+    }
+
+    .quiz-tag {
+      display: inline-block;
+      background: rgba(212,83,126,0.15);
+      color: var(--rose);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+    }
+
+    .quiz-question-title {
+      font-family: Georgia, serif;
+      font-size: 1.4rem;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    .quiz-question-sub {
+      font-size: 0.9rem;
+      color: #888;
+      margin-bottom: 28px;
+    }
+
+    .quiz-options {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .quiz-option {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 16px 18px;
+      border: 1.5px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.2s;
+      background: rgba(255,255,255,0.02);
+    }
+
+    .quiz-option:hover {
+      border-color: rgba(212,83,126,0.5);
+      background: rgba(212,83,126,0.05);
+    }
+
+    .quiz-option.selected {
+      border-color: var(--rose);
+      background: rgba(212,83,126,0.12);
+    }
+
+    .option-emoji { font-size: 1.4rem; flex-shrink: 0; margin-top: 2px; }
+
+    .option-content { flex: 1; }
+
+    .option-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #e8dce4;
+      margin-bottom: 2px;
+    }
+
+    .option-desc {
+      font-size: 0.82rem;
+      color: #777;
+    }
+
+    /* Champs texte quiz */
+    .quiz-input {
+      width: 100%;
+      background: rgba(255,255,255,0.05);
+      border: 1.5px solid rgba(255,255,255,0.12);
+      border-radius: 10px;
+      color: #e8dce4;
+      font-size: 0.95rem;
+      padding: 14px 16px;
+      resize: vertical;
+      font-family: inherit;
+      transition: border-color 0.2s;
+      margin-bottom: 16px;
+    }
+
+    .quiz-input:focus {
+      outline: none;
+      border-color: var(--rose);
+    }
+
+    .quiz-input::placeholder { color: #555; }
+
+    .quiz-label {
+      color: #e8dce4;
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .quiz-sublabel {
+      color: #666;
+      font-size: 0.82rem;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .quiz-btn-row {
+      display: flex;
+      justify-content: flex-end;
+      gap: 12px;
+    }
+
+    .btn-quiz-next {
+      background: var(--rose);
+      color: #fff;
+      border: none;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s, opacity 0.2s;
+    }
+
+    .btn-quiz-next:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+    }
+
+    .btn-quiz-next:not(:disabled):hover { background: var(--rose-dark); }
+
+    .btn-quiz-back {
+      background: transparent;
+      color: #666;
+      border: 1.5px solid rgba(255,255,255,0.12);
+      padding: 14px 22px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .btn-quiz-back:hover { border-color: #555; color: #aaa; }
+
+    /* Step intro */
+    .intro-input-wrap { margin-bottom: 28px; }
+
+    .intro-input {
+      width: 100%;
+      background: rgba(255,255,255,0.05);
+      border: 1.5px solid rgba(255,255,255,0.12);
+      border-radius: 10px;
+      color: #e8dce4;
+      font-size: 1.1rem;
+      padding: 16px 18px;
+      font-family: inherit;
+      transition: border-color 0.2s;
+    }
+
+    .intro-input:focus { outline: none; border-color: var(--rose); }
+    .intro-input::placeholder { color: #555; }
+
+    .intro-text {
+      color: #888;
+      font-size: 0.95rem;
+      line-height: 1.65;
+      margin-bottom: 28px;
+    }
+
+    /* Loading */
+    .quiz-loading {
+      text-align: center;
+      padding: 40px 0;
+    }
+
+    .spinner {
+      width: 48px;
+      height: 48px;
+      border: 3px solid rgba(212,83,126,0.2);
+      border-top-color: var(--rose);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin: 0 auto 20px;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .loading-text {
+      color: #888;
+      font-size: 1rem;
+    }
+
+    /* Portrait result */
+    .portrait-result {
+      display: none;
+    }
+
+    .portrait-result.visible {
+      display: block;
+    }
+
+    .portrait-header {
+      background: linear-gradient(135deg, #1a0e14 0%, #2d1520 100%);
+      border: 1px solid var(--rose);
+      border-radius: 16px 16px 0 0;
+      padding: 36px 32px;
+    }
+
+    .portrait-header-eyebrow {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--rose-light);
+      margin-bottom: 8px;
+    }
+
+    .portrait-header-title {
+      font-family: Georgia, serif;
+      font-size: 1.6rem;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    .portrait-header-archetype {
+      color: var(--rose);
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    .portrait-body {
+      background: var(--dark3);
+      border: 1px solid rgba(212,83,126,0.2);
+      border-top: none;
+      border-radius: 0 0 16px 16px;
+      padding: 36px 32px;
+      color: #c8b8c4;
+      font-size: 1rem;
+      line-height: 1.8;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .portrait-cta {
+      background: rgba(212,83,126,0.12);
+      border: 1px solid rgba(212,83,126,0.3);
+      border-radius: 14px;
+      padding: 32px;
+      margin-top: 28px;
+      text-align: center;
+    }
+
+    .portrait-cta h3 {
+      font-family: Georgia, serif;
+      color: #fff;
+      font-size: 1.3rem;
+      margin-bottom: 12px;
+    }
+
+    .portrait-cta p {
+      color: #999;
+      font-size: 0.95rem;
+      margin-bottom: 24px;
+      max-width: 460px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .portrait-cta-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .btn-cta-main {
+      background: #fff;
+      color: var(--rose-dark);
+      border: none;
+      padding: 16px 32px;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    .btn-cta-main:hover { opacity: 0.9; }
+
+    .btn-cta-secondary {
+      background: transparent;
+      color: var(--rose-light);
+      border: 1.5px solid rgba(212,83,126,0.4);
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: border-color 0.2s;
+    }
+
+    .btn-cta-secondary:hover { border-color: var(--rose); }
+
+    /* ── OFFRES ─────────────────────────────────────────────── */
+    .offres-section {
+      padding: 80px 24px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .offres-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      margin-top: 48px;
+    }
+
+    .offre-card {
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 36px 32px;
+    }
+
+    .offre-card.featured {
+      border: 2px solid var(--rose);
+      position: relative;
+    }
+
+    .offre-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+    }
+
+    .offre-tag.disponible {
+      background: rgba(212,83,126,0.1);
+      color: var(--rose);
+    }
+
+    .offre-tag.liste {
+      background: #fdf5e0;
+      color: #a07810;
+    }
+
+    .offre-name {
+      font-family: Georgia, serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .offre-tagline {
+      font-size: 0.95rem;
+      color: var(--text-light);
+      margin-bottom: 24px;
+      line-height: 1.5;
+    }
+
+    .offre-price {
+      font-family: Georgia, serif;
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--rose);
+      margin-bottom: 4px;
+    }
+
+    .offre-price-note {
+      font-size: 0.82rem;
+      color: #aaa;
+      margin-bottom: 24px;
+    }
+
+    .offre-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(212,83,126,0.08);
+      border: 1px solid rgba(212,83,126,0.2);
+      color: var(--rose);
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 20px;
+      margin-bottom: 24px;
+    }
+
+    .offre-features {
+      list-style: none;
+      margin-bottom: 28px;
+    }
+
+    .offre-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.92rem;
+      color: var(--text-light);
+      margin-bottom: 10px;
+      line-height: 1.4;
+    }
+
+    .offre-features li::before {
+      content: '✓';
+      color: var(--rose);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .btn-offre {
+      display: block;
+      width: 100%;
+      background: var(--rose);
+      color: #fff;
+      border: none;
+      padding: 16px;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-align: center;
+      transition: background 0.2s;
+    }
+
+    .btn-offre:hover { background: var(--rose-dark); }
+
+    /* Waitlist form */
+    .waitlist-label {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      margin-bottom: 10px;
+      margin-top: 20px;
+      display: block;
+    }
+
+    .waitlist-form {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .waitlist-input {
+      flex: 1;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 14px;
+      font-size: 0.92rem;
+      font-family: inherit;
+      transition: border-color 0.2s;
+    }
+
+    .waitlist-input:focus { outline: none; border-color: var(--rose); }
+
+    .btn-waitlist {
+      background: var(--text);
+      color: #fff;
+      border: none;
+      padding: 12px 18px;
+      border-radius: 8px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.2s;
+    }
+
+    .btn-waitlist:hover { background: #333; }
+
+    .waitlist-note {
+      font-size: 0.78rem;
+      color: #aaa;
+    }
+
+    .waitlist-confirm {
+      color: var(--rose);
+      font-size: 0.9rem;
+      font-weight: 600;
+      display: none;
+      margin-top: 10px;
+    }
+
+    /* ── TÉMOIGNAGES ────────────────────────────────────────── */
+    .temoignages-section {
+      background: var(--rose-bg);
+      padding: 80px 24px;
+    }
+
+    .temoignages-inner {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .temoignages-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    .temoignage {
+      background: #fff;
+      border-left: 3px solid var(--rose);
+      border-radius: 0 12px 12px 0;
+      padding: 28px 24px;
+    }
+
+    .temoignage-text {
+      font-size: 0.97rem;
+      color: var(--text);
+      line-height: 1.7;
+      font-style: italic;
+      margin-bottom: 16px;
+    }
+
+    .temoignage-author {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      font-weight: 600;
+    }
+
+    /* ── CLOSING ────────────────────────────────────────────── */
+    .closing {
+      background: var(--rose-bg);
+      padding: 100px 24px;
+      text-align: center;
+    }
+
+    .closing h2 {
+      font-family: Georgia, serif;
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      max-width: 640px;
+      margin: 0 auto 16px;
+    }
+
+    .closing p {
+      color: var(--text-light);
+      font-size: 1rem;
+      max-width: 480px;
+      margin: 0 auto 36px;
+    }
+
+    /* ── FOOTER ─────────────────────────────────────────────── */
+    footer {
+      background: var(--dark);
+      color: #555;
+      text-align: center;
+      padding: 28px 24px;
+      font-size: 0.85rem;
+    }
+
+    footer span { color: var(--rose); }
+
+    /* ── MODAL PAIEMENT ─────────────────────────────────────── */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.65);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .modal-overlay.open { display: flex; }
+
+    .modal-box {
+      background: #fff;
+      border-radius: 16px;
+      padding: 40px 36px;
+      max-width: 480px;
+      width: 100%;
+      position: relative;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 16px;
+      right: 20px;
+      background: none;
+      border: none;
+      font-size: 1.4rem;
+      cursor: pointer;
+      color: #aaa;
+      line-height: 1;
+    }
+
+    .modal-close:hover { color: #333; }
+
+    .modal-title {
+      font-family: Georgia, serif;
+      font-size: 1.35rem;
+      margin-bottom: 8px;
+    }
+
+    .modal-archetype {
+      display: inline-block;
+      background: var(--rose-bg);
+      color: var(--rose);
+      font-size: 0.82rem;
+      font-weight: 700;
+      padding: 5px 12px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+    }
+
+    .modal-label {
+      display: block;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .modal-input {
+      width: 100%;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 16px;
+      font-size: 1rem;
+      font-family: inherit;
+      margin-bottom: 20px;
+      transition: border-color 0.2s;
+    }
+
+    .modal-input:focus { outline: none; border-color: var(--rose); }
+
+    .modal-error {
+      color: #d93025;
+      font-size: 0.85rem;
+      margin-bottom: 12px;
+      display: none;
+    }
+
+    .modal-btn {
+      display: block;
+      width: 100%;
+      background: var(--rose);
+      color: #fff;
+      border: none;
+      padding: 16px;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .modal-btn:hover { background: var(--rose-dark); }
+    .modal-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    /* ── PAGE MERCI ─────────────────────────────────────────── */
+    #merci-page {
+      display: none;
+      min-height: 100vh;
+      background: var(--dark);
+      align-items: center;
+      justify-content: center;
+      padding: 40px 24px;
+      text-align: center;
+    }
+
+    #merci-page.visible { display: flex; }
+
+    .merci-box {
+      max-width: 540px;
+    }
+
+    .merci-star {
+      font-size: 3rem;
+      color: var(--rose);
+      margin-bottom: 24px;
+    }
+
+    .merci-title {
+      font-family: Georgia, serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      color: #fff;
+      margin-bottom: 20px;
+    }
+
+    .merci-text {
+      color: #aaa;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      margin-bottom: 36px;
+    }
+
+    .merci-btn {
+      display: inline-block;
+      border: 1.5px solid rgba(212,83,126,0.5);
+      color: var(--rose-light);
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+      background: transparent;
+    }
+
+    .merci-btn:hover { border-color: var(--rose); color: var(--rose); }
+
+    /* ── RESPONSIVE ─────────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .archetypes-grid,
+      .pillars,
+      .portraits-tabs {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .offres-grid,
+      .temoignages-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+      }
+
+      .quiz-card { padding: 28px 20px; }
+      .portrait-header { padding: 28px 24px; }
+      .portrait-body { padding: 28px 24px; }
+      .modal-box { padding: 32px 24px; }
+    }
+
+    @media (max-width: 480px) {
+      .archetypes-grid,
+      .pillars,
+      .portraits-tabs {
+        grid-template-columns: 1fr;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .waitlist-form {
+        flex-direction: column;
+      }
+
+      nav { padding: 0 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ PAGE MERCI (affichée si URL = /merci) ══════════════════ -->
+<div id="merci-page">
+  <div class="merci-box">
+    <div class="merci-star">✦</div>
+    <h1 class="merci-title" id="merci-title">Ta commande est confirmée.</h1>
+    <p class="merci-text">
+      Ton programme personnalisé est en cours de création.<br>
+      Tu le recevras dans ta boîte mail dans les 48h.<br>
+      Vérifie bien tes spams si tu ne le vois pas.
+    </p>
+    <a href="/" class="merci-btn">← Retour au site</a>
+  </div>
+</div>
+
+<!-- ══ SITE PRINCIPAL ═════════════════════════════════════════ -->
+<div id="main-site">
+
+  <!-- NAVIGATION -->
+  <nav>
+    <a href="#" class="nav-logo">Djen<span>✦</span></a>
+    <button class="nav-cta" onclick="scrollToQuiz()">Découvrir mon archétype</button>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <p class="eyebrow">La méthode Djen</p>
+    <h1>Ton corps ne résiste pas.<br>Il attend que tu le <span class="accent">comprennes.</span></h1>
+    <p class="hero-sub">La première méthode de transformation féminine qui travaille le physique et le mental ensemble — à partir de qui tu es vraiment.</p>
+    <button class="btn-primary" onclick="scrollToQuiz()">Découvrir mon archétype — c'est gratuit</button>
+    <p class="hero-note">10 questions · Ton portrait Djen généré instantanément</p>
+  </section>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="stats-grid">
+      <div>
+        <div class="stat-number">6</div>
+        <div class="stat-label">archétypes féminins</div>
+      </div>
+      <div>
+        <div class="stat-number">48h</div>
+        <div class="stat-label">pour recevoir ton programme</div>
+      </div>
+      <div>
+        <div class="stat-number">2</div>
+        <div class="stat-label">formations restantes en 2026</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- POURQUOI ÇA N'A PAS MARCHÉ -->
+  <section class="section">
+    <p class="eyebrow">Pourquoi ça n'a pas marché</p>
+    <h2>Ce n'est pas un problème de volonté.</h2>
+    <p>Tu as essayé des programmes. Tu as recommencé. Tu t'es arrêtée. Pas parce que tu manques de discipline — mais parce que personne n'a jamais regardé ce qui se passe vraiment en toi avant de te donner un plan. La méthode Djen commence là où les autres s'arrêtent : l'identification de ton archétype. C'est lui qui explique tout — pourquoi ton corps résiste, d'où vient le blocage, et ce dont tu as besoin pour avancer.</p>
+  </section>
+
+  <!-- LES 6 ARCHÉTYPES -->
+  <section class="section section-center" id="archetypes">
+    <p class="eyebrow">Les 6 archétypes</p>
+    <h2>Lequel es-tu ?</h2>
+    <p>Chaque femme correspond à un profil dominant. Le reconnaître, c'est déjà commencer à changer.</p>
+    <div class="archetypes-grid">
+      <div class="archetype-card">
+        <div class="archetype-number">Archétype 1</div>
+        <div class="archetype-name">La Bâtisseuse Ancrée</div>
+        <div class="archetype-desc">Elle sait ce qu'il faut faire mais n'agit pas encore vraiment.</div>
+      </div>
+      <div class="archetype-card">
+        <div class="archetype-number">Archétype 2</div>
+        <div class="archetype-name">La Guerrière Épuisée</div>
+        <div class="archetype-desc">Elle s'entraîne dur, mange peu, n'avance plus.</div>
+      </div>
+      <div class="archetype-card">
+        <div class="archetype-number">Archétype 3</div>
+        <div class="archetype-name">La Déesse Invisible</div>
+        <div class="archetype-desc">Elle rétrécit pour ne pas déranger.</div>
+      </div>
+      <div class="archetype-card">
+        <div class="archetype-number">Archétype 4</div>
+        <div class="archetype-name">La Stratège Impatiente</div>
+        <div class="archetype-desc">Elle comprend tout mais abandonne avant les résultats.</div>
+      </div>
+      <div class="archetype-card">
+        <div class="archetype-number">Archétype 5</div>
+        <div class="archetype-name">La Nourricière Oubliée</div>
+        <div class="archetype-desc">Elle donne tout aux autres, rien à son corps.</div>
+      </div>
+      <div class="archetype-card">
+        <div class="archetype-number">Archétype 6</div>
+        <div class="archetype-name">La Phœnix en Reconstruction</div>
+        <div class="archetype-desc">Elle revient après une rupture, une maladie, une perte.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LA MÉTHODE -->
+  <section class="section section-center" style="background:#faf7f9;max-width:100%;padding:80px 24px;">
+    <div style="max-width:900px;margin:0 auto;">
+      <p class="eyebrow">La méthode</p>
+      <h2>Physique + mental. Ensemble.</h2>
+      <p>Le corps suit toujours le mental — pas l'inverse. C'est pourquoi la méthode Djen travaille les deux en simultané, à partir de ton archétype exact.</p>
+      <div class="pillars">
+        <div class="pillar">
+          <div class="pillar-icon">🧠</div>
+          <div class="pillar-title">Mindset de masse</div>
+          <div class="pillar-desc">Identifier et démonter les croyances qui freinent ta transformation</div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">💪</div>
+          <div class="pillar-title">Physique ciblé</div>
+          <div class="pillar-desc">Un protocole adapté à ton archétype, pas un programme générique</div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">👑</div>
+          <div class="pillar-title">Identité incarnée</div>
+          <div class="pillar-desc">Devenir la femme que tu décrivais dans "la femme cachée en toi"</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section class="quiz-section" id="quiz">
+    <div class="quiz-inner">
+      <p class="quiz-eyebrow">Découvre ton archétype — par Djen</p>
+      <h2 class="quiz-title">Ton portrait Djen t'attend.</h2>
+      <p class="quiz-subtitle">10 questions. Pas de bonnes ou mauvaises réponses. Juste toi, enfin vue.</p>
+
+      <div class="progress-bar-wrap">
+        <div class="progress-bar" id="progress-bar" style="width:0%"></div>
+      </div>
+
+      <div id="quiz-container">
+        <!-- Steps injectés par JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- OFFRES -->
+  <section id="offres" style="padding:80px 24px;">
+    <div style="max-width:900px;margin:0 auto;">
+      <p class="eyebrow" style="text-align:center;">Prochaine étape</p>
+      <h2 style="text-align:center;font-family:Georgia,serif;font-size:clamp(1.7rem,3.5vw,2.4rem);margin-bottom:10px;">Comment on travaille ensemble</h2>
+      <p style="text-align:center;color:var(--text-light);max-width:540px;margin:0 auto 0;">Tu connais ton archétype. La prochaine étape, c'est de transformer ce que tu as découvert.</p>
+
+      <div class="offres-grid">
+        <!-- OFFRE 1 -->
+        <div class="offre-card featured">
+          <span class="offre-tag disponible">Disponible maintenant</span>
+          <div class="offre-name">Le Programme Personnalisé</div>
+          <div class="offre-tagline">Un programme complet, inédit, construit sur ton archétype exact — livré directement dans ta boîte mail en 48h.</div>
+          <div class="offre-price">97€</div>
+          <div class="offre-price-note">Paiement unique · Livraison en 48h par mail</div>
+          <div class="offre-badge">⚡ Reçu en 48h</div>
+          <ul class="offre-features">
+            <li>Analyse de ton archétype et transformation de tes blocages en forces</li>
+            <li>Programme nutrition sur 4 semaines — adapté à ton profil exact</li>
+            <li>Programme entraînement sur 4 semaines — séances, charges, progressions</li>
+            <li>Guide mindset semaine par semaine — pour prendre du poids sans stress ni culpabilité</li>
+            <li>100% personnalisé et inédit — aucun programme ne ressemble à un autre</li>
+          </ul>
+          <button class="btn-offre" onclick="openCheckoutModal()">Je veux mon programme →</button>
+        </div>
+
+        <!-- OFFRE 2 -->
+        <div class="offre-card">
+          <span class="offre-tag liste">✦ Il reste 2 formations en 2026</span>
+          <div class="offre-name">La Formation Djen</div>
+          <div class="offre-tagline" style="color:var(--text-light);font-size:0.88rem;margin-bottom:12px;">4 semaines · En ligne · Places limitées</div>
+          <p style="font-size:0.93rem;color:var(--text-light);margin-bottom:20px;line-height:1.5;">Une formation collective intensive pour transformer ton corps et ton identité en 4 semaines — avec Djen en direct. Il reste deux sessions disponibles en 2026.</p>
+          <div class="offre-price">47€</div>
+          <div class="offre-price-note">par formation · Places limitées</div>
+          <ul class="offre-features">
+            <li>4 semaines de formation intensive avec Djen</li>
+            <li>Sessions live hebdomadaires en groupe</li>
+            <li>Programme physique + mindset collectif</li>
+            <li>Communauté de femmes engagées</li>
+            <li>Accès aux replays et aux ressources</li>
+          </ul>
+          <label class="waitlist-label">Être prévenue en priorité à l'ouverture des inscriptions</label>
+          <form class="waitlist-form" onsubmit="submitWaitlist(event)">
+            <input class="waitlist-input" type="email" placeholder="ton@email.com" id="waitlist-email" required />
+            <button class="btn-waitlist" type="submit">Me prévenir</button>
+          </form>
+          <p class="waitlist-note">Pas de spam. Un seul mail quand les inscriptions ouvrent.</p>
+          <p class="waitlist-confirm" id="waitlist-confirm">✦ C'est noté — tu seras la première informée.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TÉMOIGNAGES -->
+  <section class="temoignages-section">
+    <div class="temoignages-inner">
+      <h2 style="font-family:Georgia,serif;font-size:clamp(1.7rem,3.5vw,2.2rem);text-align:center;margin-bottom:0;">Ce qu'elles disent</h2>
+      <div class="temoignages-grid">
+        <div class="temoignage">
+          <p class="temoignage-text">"Je pensais que mon problème c'était la discipline. En fait c'était que je n'avais jamais compris pourquoi mon corps résistait. Djen a mis des mots dessus en 10 minutes."</p>
+          <span class="temoignage-author">— Yasmine, 28 ans</span>
+        </div>
+        <div class="temoignage">
+          <p class="temoignage-text">"Mon programme était tellement précis que j'avais l'impression que Djen me connaissait depuis des années. Rien de générique, tout pour moi."</p>
+          <span class="temoignage-author">— Inès, 34 ans</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLOSING -->
+  <section class="closing">
+    <h2>"La femme qui remplit le stade ne demande pas la permission."</h2>
+    <p>Tu connais ton archétype. Tu connais ton blocage. Il ne manque plus qu'une chose — commencer.</p>
+    <button class="btn-primary" onclick="scrollToQuiz()">Découvrir mon portrait Djen</button>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span>La méthode Djen</span> — par Djen · Tous droits réservés
+  </footer>
+
+</div><!-- /main-site -->
+
+<!-- ══ MODAL PAIEMENT ═══════════════════════════════════════ -->
+<div class="modal-overlay" id="checkout-modal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeCheckoutModal()">×</button>
+    <h2 class="modal-title">Avant de payer — vérifie ton email</h2>
+    <div id="modal-archetype-tag" class="modal-archetype" style="display:none;"></div>
+    <p style="font-size:0.9rem;color:var(--text-light);margin-bottom:20px;">Tu recevras ton programme personnalisé dans les 48h.</p>
+    <label class="modal-label" for="modal-email">Ton adresse email</label>
+    <input class="modal-input" type="email" id="modal-email" placeholder="ton@email.com" />
+    <p class="modal-error" id="modal-error">Merci de saisir un email valide.</p>
+    <button class="modal-btn" id="modal-pay-btn" onclick="procederPaiement()">Procéder au paiement →</button>
+  </div>
+</div>
+
+<script>
+// ══════════════════════════════════════════════════════════════
+//  ROUTING — affiche /merci si l'URL le demande
+// ══════════════════════════════════════════════════════════════
+(function () {
+  const path = window.location.pathname;
+  if (path === '/merci' || path === '/merci/') {
+    document.getElementById('merci-page').classList.add('visible');
+    document.getElementById('main-site').style.display = 'none';
+  }
+})();
+
+function escapeHtml(str) {
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+// ══════════════════════════════════════════════════════════════
+//  QUIZ
+// ══════════════════════════════════════════════════════════════
+const QUESTIONS = [
+  // Q1
+  {
+    id: 'q1',
+    type: 'choice',
+    question: "Quand tu penses à ton corps en ce moment, la première chose qui te vient c'est…",
+    options: [
+      { emoji: '😤', title: 'Frustration', desc: 'Je sais ce qu\'il faut faire mais je ne le fais pas vraiment', value: 'frustration — je sais ce qu\'il faut faire mais je ne le fais pas vraiment' },
+      { emoji: '🪫', title: 'Épuisement', desc: 'Je fais déjà beaucoup mais mon corps n\'avance plus', value: 'épuisement — je fais déjà beaucoup mais mon corps n\'avance plus' },
+      { emoji: '🫥', title: 'Inconfort', desc: 'J\'aimerais me sentir plus présente, plus puissante', value: 'inconfort — j\'aimerais me sentir plus présente, plus puissante' },
+      { emoji: '⚡', title: 'Impatience', desc: 'Je veux des résultats et je veux les voir vite', value: 'impatience — je veux des résultats et je veux les voir vite' },
+      { emoji: '💔', title: 'Culpabilité', desc: 'Je prends soin de tout le monde sauf de moi', value: 'culpabilité — je prends soin de tout le monde sauf de moi' },
+      { emoji: '🔥', title: 'Reconstruction', desc: 'Je reviens de loin et je dois réapprendre', value: 'reconstruction — je reviens de loin et je dois réapprendre' },
+    ]
+  },
+  // Q2
+  {
+    id: 'q2',
+    type: 'choice',
+    question: "Ton rapport à l'entraînement ressemble plutôt à…",
+    options: [
+      { emoji: '🔄', title: 'Je commence, j\'arrête', desc: 'Je lance des routines mais j\'arrive rarement au bout', value: 'je commence souvent, je m\'arrête avant d\'arriver' },
+      { emoji: '⚡', title: 'Beaucoup mais épuisée', desc: 'Mon effort me vide plus qu\'il ne me nourrit', value: 'j\'en fais beaucoup mais je me sens épuisée plus que forte' },
+      { emoji: '👁', title: 'J\'hésite à cause de mon image', desc: 'Peur que le muscle change quelque chose que je ne veux pas', value: 'j\'hésite à m\'entraîner vraiment par peur de l\'effet sur mon image' },
+      { emoji: '🔍', title: 'Je cherche le programme parfait', desc: 'J\'analyse, je compare, je recommence', value: 'je change souvent de programme à la recherche du meilleur' },
+      { emoji: '👥', title: 'Après les autres', desc: 'Mon temps de sport est toujours le dernier sur la liste', value: 'je m\'entraîne quand j\'ai fini de m\'occuper des autres' },
+      { emoji: '🤝', title: 'Je renoue avec mon corps', desc: 'Je réapprends à lui faire confiance', value: 'j\'essaie de renouer avec mon corps après l\'avoir perdu' },
+    ]
+  },
+  // Q3
+  {
+    id: 'q3',
+    type: 'choice',
+    question: "Qu'est-ce qui t'arrête le plus souvent ?",
+    options: [
+      { emoji: '⏳', title: 'J\'attends le bon moment', desc: 'Il me manque toujours quelque chose avant de commencer', value: 'j\'attends le bon moment, les bonnes conditions' },
+      { emoji: '😔', title: 'La culpabilité du repos', desc: 'S\'arrêter me semble une faute, pas une stratégie', value: 'la culpabilité quand je me repose ou que je mange plus' },
+      { emoji: '👁', title: 'La peur du regard des autres', desc: 'Être visible, prendre de la place — ça me freine', value: 'la peur de ce que les autres penseraient si je changeais vraiment' },
+      { emoji: '📉', title: 'L\'absence de résultats rapides', desc: 'Sans preuve visible vite, je lâche', value: 'l\'absence de résultats rapides qui me fait tout abandonner' },
+      { emoji: '❤️', title: 'La culpabilité de me prioriser', desc: 'M\'occuper de moi me semble voler du temps aux autres', value: 'le sentiment que prendre du temps pour moi c\'est égoïste' },
+      { emoji: '🛡', title: 'La honte ou la peur de rechuter', desc: 'Mon passé avec mon corps me pèse encore', value: 'la honte de mon avant ou la peur de rechuter' },
+    ]
+  },
+  // Q4
+  {
+    id: 'q4',
+    type: 'choice',
+    question: "Ce que tu veux vraiment, au fond, c'est…",
+    options: [
+      { emoji: '🚀', title: 'Passer à l\'action', desc: 'Arrêter de savoir et commencer à faire vraiment', value: 'enfin passer à l\'action et voir les résultats arriver' },
+      { emoji: '🧠', title: 'Travailler smart', desc: 'Sortir du cycle effort = douleur = mérite', value: 'travailler smart, pas plus dur' },
+      { emoji: '👑', title: 'Assumer ma puissance', desc: 'Arrêter de me faire petite pour ne pas déranger', value: 'assumer ma puissance sans m\'excuser d\'exister' },
+      { emoji: '📈', title: 'Trouver le bon protocole', desc: 'Et m\'y tenir assez longtemps pour voir les résultats', value: 'trouver le protocole qui marche et lui faire confiance' },
+      { emoji: '🎁', title: 'Me donner à moi aussi', desc: 'Exister dans ma propre liste de priorités', value: 'me donner enfin la même énergie que je donne aux autres' },
+      { emoji: '🌱', title: 'Reconstruire la confiance', desc: 'Faire de mon corps un allié, plus un étranger', value: 'reconstruire une relation de confiance avec mon corps' },
+    ]
+  },
+  // Q5
+  {
+    id: 'q5',
+    type: 'choice',
+    question: "Ton alimentation, elle ressemble à…",
+    options: [
+      { emoji: '📅', title: 'Bonne intention, mauvaise régularité', desc: 'Je sais quoi faire mais pas systématiquement', value: 'je mange bien en théorie mais sans vraie régularité' },
+      { emoji: '⚖️', title: 'Peu, et culpabilité quand plus', desc: 'La restriction est ma zone de confort', value: 'je mange peu et je me sens coupable quand je mange plus' },
+      { emoji: '❓', title: 'Bien mais avec peur d\'en faire plus', desc: 'Manger pour la masse me semble risqué', value: 'je mange bien mais j\'ai peur que manger plus me grossisse' },
+      { emoji: '🔀', title: 'Je change selon le protocole', desc: 'Chaque nouvelle méthode = nouvelle alimentation', value: 'je change d\'approche souvent selon le protocole du moment' },
+      { emoji: '🏃', title: 'Sur le pouce, en dernier', desc: 'Je mange quand il reste du temps', value: 'je saute des repas, je mange sur le pouce' },
+      { emoji: '🌿', title: 'Je réapprends à manger', desc: 'Mon rapport à la nourriture a été abîmé', value: 'j\'essaie de réapprendre à manger sans culpabilité' },
+    ]
+  },
+  // Q6
+  {
+    id: 'q6',
+    type: 'choice',
+    question: "La phrase que tu te dis quand tu rates ou que tu lâches…",
+    options: [
+      { emoji: '⏸', title: '"Pas encore prête"', desc: 'Je retarde plutôt que j\'avance', value: 'pas encore prête, j\'aurais dû mieux me préparer' },
+      { emoji: '😤', title: '"Je manque de discipline"', desc: 'Je me juge sévèrement sur l\'effort', value: 'j\'aurais dû me pousser plus, je manque de discipline' },
+      { emoji: '🫥', title: '"Je prends trop de place"', desc: 'Mon ambition me semble déplacée', value: 'je prends trop de place, c\'est trop visible' },
+      { emoji: '📉', title: '"Ça ne marche pas"', desc: 'Je veux la preuve avant de croire', value: 'ça ne marche pas assez vite, ça ne vaut pas le coup' },
+      { emoji: '👥', title: '"J\'aurais dû m\'occuper des autres"', desc: 'Ma culpabilité parle plus fort', value: 'j\'aurais dû m\'occuper des autres d\'abord' },
+      { emoji: '💔', title: '"Mon corps me trahit"', desc: 'La méfiance envers moi-même revient vite', value: 'mon corps me trahit encore, je savais que ça ne durerait pas' },
+    ]
+  },
+  // Q7
+  {
+    id: 'q7',
+    type: 'text-multi',
+    question: "Complète ces phrases — quelques mots suffisent",
+    fields: [
+      { key: 'q7a', label: '"Une femme trop musclée c\'est…"', placeholder: 'ex. trop, forte, belle, libre…' },
+      { key: 'q7b', label: '"Si je prenais vraiment de la masse, les gens penseraient que…"', placeholder: 'ex. je suis bizarre, j\'ai changé…' },
+      { key: 'q7c', label: '"Je mérite d\'avoir le corps que je veux parce que…"', placeholder: 'Complète honnêtement — même si ça coince' },
+    ]
+  },
+  // Q8
+  {
+    id: 'q8',
+    type: 'text',
+    question: "Un regard ou des mots qui ont tout changé",
+    label: "Y a-t-il un moment, une personne, une phrase qui a installé quelque chose de douloureux dans ta relation à ton corps ?",
+    sublabel: "Quelques mots suffisent. Tu n'es pas obligée d'expliquer.",
+    placeholder: "ex. ma mère disait que… un ex m'a dit… à l'école…",
+    minHeight: '100px'
+  },
+  // Q9
+  {
+    id: 'q9',
+    type: 'text',
+    question: "La femme cachée en toi",
+    label: "Décris la femme que tu serais si tu n'avais plus peur, si ton corps était exactement ce qu'il devrait être.",
+    sublabel: "C'est la boussole de tout ton portrait Djen.",
+    placeholder: "ex. présente, puissante, qui prend de la place sans s'excuser…",
+    minHeight: '100px'
+  },
+  // Q10
+  {
+    id: 'q10',
+    type: 'text',
+    question: "Pourquoi maintenant ?",
+    label: "Qu'est-ce qui t'a amenée ici aujourd'hui — pas il y a 6 mois, pas dans 6 mois ?",
+    sublabel: "Le vrai déclencheur.",
+    placeholder: "ex. j'en ai assez de recommencer… quelque chose a changé en moi…",
+    minHeight: '100px'
+  }
+];
+
+// État du quiz
+let currentStep = -1; // -1 = intro
+let answers = {};
+let portraitText = '';
+let detectedArchetype = '';
+let currentOptions = []; // stocke les options de la question en cours (évite les apostrophes dans les onclick)
+
+function scrollToQuiz() {
+  document.getElementById('quiz').scrollIntoView({ behavior: 'smooth' });
+}
+
+function updateProgress() {
+  const total = QUESTIONS.length + 1; // +1 pour l'intro
+  const step = currentStep === -1 ? 0 : currentStep + 1;
+  const pct = Math.min(100, Math.round((step / total) * 100));
+  document.getElementById('progress-bar').style.width = pct + '%';
+}
+
+function renderStep() {
+  updateProgress();
+  const container = document.getElementById('quiz-container');
+
+  if (currentStep === -1) {
+    renderIntro(container);
+    return;
+  }
+
+  if (currentStep >= QUESTIONS.length) {
+    renderLoading(container);
+    generatePortrait();
+    return;
+  }
+
+  const q = QUESTIONS[currentStep];
+  if (q.type === 'choice') renderChoice(container, q);
+  else if (q.type === 'text') renderText(container, q);
+  else if (q.type === 'text-multi') renderTextMulti(container, q);
+}
+
+function renderIntro(container) {
+  container.innerHTML = `
+    <div class="quiz-card">
+      <div class="quiz-tag">La méthode Djen</div>
+      <h3 class="quiz-question-title">Quel type de femme es-tu vraiment ?</h3>
+      <p class="intro-text">Réponds honnêtement — pas ce que tu penses devoir dire, mais ce qui est vrai. Ton portrait sera d'autant plus précis.</p>
+      <div class="intro-input-wrap">
+        <input class="intro-input" type="text" id="prenom-input" placeholder="Ton prénom" autocomplete="given-name" value="${answers.prenom || ''}" oninput="answers.prenom = this.value; updateNextBtn()" />
+      </div>
+      <div class="quiz-btn-row">
+        <button class="btn-quiz-next" id="next-btn" onclick="nextStep()" ${answers.prenom ? '' : 'disabled'}>Commencer →</button>
+      </div>
+    </div>
+  `;
+}
+
+function renderChoice(container, q) {
+  currentOptions = q.options;
+  const selected = answers[q.id];
+  container.innerHTML = `
+    <div class="quiz-card">
+      <div class="quiz-tag">Question ${currentStep + 1} / ${QUESTIONS.length}</div>
+      <h3 class="quiz-question-title">${escapeHtml(q.question)}</h3>
+      <div class="quiz-options">
+        ${q.options.map((opt, i) => `
+          <div class="quiz-option${selected === opt.value ? ' selected' : ''}" data-index="${i}" onclick="selectOption(this)">
+            <span class="option-emoji">${opt.emoji}</span>
+            <div class="option-content">
+              <div class="option-title">${escapeHtml(opt.title)}</div>
+              <div class="option-desc">${escapeHtml(opt.desc)}</div>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+      <div class="quiz-btn-row">
+        <button class="btn-quiz-back" onclick="prevStep()">← Retour</button>
+        <button class="btn-quiz-next" id="next-btn" onclick="nextStep()" ${selected ? '' : 'disabled'}>Suivant →</button>
+      </div>
+    </div>
+  `;
+}
+
+function renderText(container, q) {
+  const val = answers[q.id] || '';
+  container.innerHTML = `
+    <div class="quiz-card">
+      <div class="quiz-tag">Question ${currentStep + 1} / ${QUESTIONS.length}</div>
+      <h3 class="quiz-question-title">${q.question}</h3>
+      <label class="quiz-label">${q.label}</label>
+      <span class="quiz-sublabel">${q.sublabel}</span>
+      <textarea
+        class="quiz-input"
+        id="text-input-${q.id}"
+        style="min-height:${q.minHeight}"
+        placeholder="${q.placeholder}"
+        oninput="answers['${q.id}'] = this.value; updateNextBtn()"
+      >${val}</textarea>
+      <div class="quiz-btn-row">
+        <button class="btn-quiz-back" onclick="prevStep()">← Retour</button>
+        <button class="btn-quiz-next" id="next-btn" onclick="nextStep()" ${val.trim() ? '' : 'disabled'}>
+          ${currentStep === QUESTIONS.length - 1 ? 'Révéler mon portrait Djen ✦' : 'Suivant →'}
+        </button>
+      </div>
+    </div>
+  `;
+}
+
+function renderTextMulti(container, q) {
+  container.innerHTML = `
+    <div class="quiz-card">
+      <div class="quiz-tag">Question ${currentStep + 1} / ${QUESTIONS.length}</div>
+      <h3 class="quiz-question-title">${q.question}</h3>
+      ${q.fields.map(f => `
+        <label class="quiz-label" style="margin-top:16px;">${f.label}</label>
+        <textarea
+          class="quiz-input"
+          id="field-${f.key}"
+          style="min-height:70px;"
+          placeholder="${f.placeholder}"
+          oninput="answers['${f.key}'] = this.value; checkMultiFields()"
+        >${answers[f.key] || ''}</textarea>
+      `).join('')}
+      <div class="quiz-btn-row" style="margin-top:8px;">
+        <button class="btn-quiz-back" onclick="prevStep()">← Retour</button>
+        <button class="btn-quiz-next" id="next-btn" onclick="nextStep()" disabled>Suivant →</button>
+      </div>
+    </div>
+  `;
+  checkMultiFields();
+}
+
+function checkMultiFields() {
+  const q = QUESTIONS[currentStep];
+  if (!q || q.type !== 'text-multi') return;
+  const allFilled = q.fields.every(f => (answers[f.key] || '').trim().length > 0);
+  const btn = document.getElementById('next-btn');
+  if (btn) btn.disabled = !allFilled;
+}
+
+function updateNextBtn() {
+  const btn = document.getElementById('next-btn');
+  if (!btn) return;
+  if (currentStep === -1) {
+    btn.disabled = !(answers.prenom || '').trim();
+    return;
+  }
+  const q = QUESTIONS[currentStep];
+  if (!q) return;
+  if (q.type === 'choice') btn.disabled = !answers[q.id];
+  else if (q.type === 'text') btn.disabled = !(answers[q.id] || '').trim();
+}
+
+function selectOption(el) {
+  const q = QUESTIONS[currentStep];
+  const index = parseInt(el.dataset.index);
+  answers[q.id] = currentOptions[index].value;
+  document.querySelectorAll('.quiz-option').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  const btn = document.getElementById('next-btn');
+  if (btn) btn.disabled = false;
+}
+
+function nextStep() {
+  currentStep++;
+  renderStep();
+  document.getElementById('quiz').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function prevStep() {
+  if (currentStep > -1) {
+    currentStep--;
+    renderStep();
+    document.getElementById('quiz').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+
+function renderLoading(container) {
+  container.innerHTML = `
+    <div class="quiz-card">
+      <div class="quiz-loading">
+        <div class="spinner"></div>
+        <p class="loading-text">Ton portrait est en cours de création…</p>
+      </div>
+    </div>
+    <div class="portrait-result" id="portrait-result"></div>
+  `;
+}
+
+async function generatePortrait() {
+  // Construire le squelette portrait avec spinner pendant le streaming
+  const container = document.getElementById('quiz-container');
+  const prenom = answers.prenom || '';
+  container.innerHTML = `
+    <div class="portrait-header">
+      <div class="portrait-header-eyebrow">✦ Ton portrait Djen</div>
+      <div class="portrait-header-title">Ton portrait Djen — ${escapeHtml(prenom)}</div>
+      <div class="portrait-header-archetype" id="archetype-line" style="display:none"></div>
+    </div>
+    <div class="portrait-body" id="portrait-body-text"><span style="opacity:.4">Ton portrait arrive…</span></div>
+    <div class="portrait-cta" id="portrait-cta" style="display:none">
+      <h3>Tu viens d'être vue. Pour la première fois vraiment.</h3>
+      <p>Ton portrait t'a révélé qui tu es. Ce qu'il ne t'a pas dit — intentionnellement — c'est ce qui t'empêche d'avancer. Et la feuille de route exacte pour le transformer.</p>
+      <p style="margin-top:10px;">C'est ce que tu trouves dans ton <strong style="color:#e8dce4;">programme personnalisé</strong>.</p>
+      <div style="margin:24px 0;display:flex;flex-direction:column;gap:10px;text-align:left;">
+        <div style="display:flex;gap:10px;align-items:flex-start;font-size:.92rem;color:#c8b8c4;">
+          <span style="color:var(--rose);font-weight:700;flex-shrink:0;">✓</span>
+          <span>Analyse complète de tes blocages — nommés, décryptés, transformés en leviers</span>
+        </div>
+        <div style="display:flex;gap:10px;align-items:flex-start;font-size:.92rem;color:#c8b8c4;">
+          <span style="color:var(--rose);font-weight:700;flex-shrink:0;">✓</span>
+          <span>Programme nutrition 4 semaines — calibré sur ton archétype et ton profil exact</span>
+        </div>
+        <div style="display:flex;gap:10px;align-items:flex-start;font-size:.92rem;color:#c8b8c4;">
+          <span style="color:var(--rose);font-weight:700;flex-shrink:0;">✓</span>
+          <span>Programme entraînement 4 semaines — séances, charges, progressions détaillées</span>
+        </div>
+        <div style="display:flex;gap:10px;align-items:flex-start;font-size:.92rem;color:#c8b8c4;">
+          <span style="color:var(--rose);font-weight:700;flex-shrink:0;">✓</span>
+          <span>Guide mindset semaine par semaine — pour prendre du poids sans stress ni culpabilité</span>
+        </div>
+        <div style="display:flex;gap:10px;align-items:flex-start;font-size:.92rem;color:#c8b8c4;">
+          <span style="color:var(--rose);font-weight:700;flex-shrink:0;">✓</span>
+          <span>100% personnalisé et inédit — aucun programme ne ressemble à un autre</span>
+        </div>
+      </div>
+      <div style="margin-bottom:20px;padding:14px 18px;background:rgba(255,255,255,0.05);border-radius:8px;text-align:center;">
+        <span style="font-size:1.5rem;font-weight:700;color:#fff;font-family:Georgia,serif;">97€</span>
+        <span style="font-size:.82rem;color:#888;margin-left:10px;">Paiement unique · Livraison en 48h par mail</span>
+      </div>
+      <div class="portrait-cta-buttons">
+        <button class="btn-cta-main" onclick="openCheckoutModal()">Je veux mon programme complet — 97€ →</button>
+        <button class="btn-cta-secondary" onclick="document.getElementById('offres').scrollIntoView({behavior:'smooth'})">En savoir plus sur les offres</button>
+      </div>
+    </div>
+  `;
+
+  try {
+    const response = await fetch('/api/portrait', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(answers)
+    });
+
+    if (!response.ok) throw new Error('Erreur serveur');
+
+    const reader = response.body.getReader();
+    const decoder = new TextDecoder();
+    let buffer = '';
+    let fullText = '';
+
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+
+      buffer += decoder.decode(value, { stream: true });
+      const lines = buffer.split('\n');
+      buffer = lines.pop();
+
+      for (const line of lines) {
+        if (!line.startsWith('data: ')) continue;
+        let data;
+        try { data = JSON.parse(line.slice(6)); } catch { continue; }
+
+        if (data.error) throw new Error(data.error);
+
+        if (data.text) {
+          fullText += data.text;
+
+          // Extraire l'archétype depuis le texte généré
+          const archetypeMatch = fullText.match(/ARCH[ÉE]TYPE\s*:\s*([^\n]+)/i);
+          if (archetypeMatch) {
+            detectedArchetype = archetypeMatch[1].trim();
+            const archEl = document.getElementById('archetype-line');
+            if (archEl) { archEl.textContent = '✦ ' + detectedArchetype; archEl.style.display = ''; }
+          }
+
+          const bodyEl = document.getElementById('portrait-body-text');
+          if (bodyEl) bodyEl.textContent = fullText;
+        }
+
+        if (data.done) {
+          portraitText = fullText;
+          document.getElementById('progress-bar').style.width = '100%';
+          const ctaEl = document.getElementById('portrait-cta');
+          if (ctaEl) ctaEl.style.display = '';
+          document.getElementById('quiz').scrollIntoView({ behavior: 'smooth', block: 'start' });
+          return;
+        }
+      }
+    }
+
+    // Fallback si done n'est pas reçu
+    portraitText = fullText;
+    document.getElementById('progress-bar').style.width = '100%';
+    const ctaEl = document.getElementById('portrait-cta');
+    if (ctaEl) ctaEl.style.display = '';
+
+  } catch (err) {
+    console.error('PORTRAIT ERROR:', err);
+    const container2 = document.getElementById('quiz-container');
+    if (container2) container2.innerHTML = `
+      <div class="quiz-card" style="text-align:center;padding:40px;">
+        <p style="color:#e87;margin-bottom:12px;">Erreur : ${err.message}</p>
+        <p style="color:#666;font-size:.85rem;margin-bottom:20px;">Ouvre la console du navigateur (F12) pour plus de détails.</p>
+        <button class="btn-quiz-next" onclick="currentStep=QUESTIONS.length-1;nextStep()">Réessayer</button>
+      </div>
+    `;
+  }
+}
+
+// ══════════════════════════════════════════════════════════════
+//  MODAL PAIEMENT
+// ══════════════════════════════════════════════════════════════
+function openCheckoutModal() {
+  const modal = document.getElementById('checkout-modal');
+  const archetypeTag = document.getElementById('modal-archetype-tag');
+  if (detectedArchetype) {
+    archetypeTag.textContent = '✦ ' + detectedArchetype;
+    archetypeTag.style.display = 'inline-block';
+  }
+  modal.classList.add('open');
+  document.getElementById('modal-email').focus();
+}
+
+function closeCheckoutModal() {
+  document.getElementById('checkout-modal').classList.remove('open');
+}
+
+// Fermer modal sur clic overlay
+document.getElementById('checkout-modal').addEventListener('click', function(e) {
+  if (e.target === this) closeCheckoutModal();
+});
+
+async function procederPaiement() {
+  const email = document.getElementById('modal-email').value.trim();
+  const errorEl = document.getElementById('modal-error');
+  const btn = document.getElementById('modal-pay-btn');
+
+  if (!email || !email.includes('@') || !email.includes('.')) {
+    errorEl.style.display = 'block';
+    return;
+  }
+
+  errorEl.style.display = 'none';
+  btn.disabled = true;
+  btn.textContent = 'Redirection…';
+
+  try {
+    const res = await fetch('/api/checkout', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email,
+        prenom: answers.prenom || '',
+        q1: answers.q1 || '',
+        q2: answers.q2 || '',
+        q3: answers.q3 || '',
+        q4: answers.q4 || '',
+        q5: answers.q5 || '',
+        q6: answers.q6 || '',
+        q7a: answers.q7a || '',
+        q7b: answers.q7b || '',
+        q7c: answers.q7c || '',
+        q8: answers.q8 || '',
+        q9: answers.q9 || '',
+        q10: answers.q10 || '',
+        archetype: detectedArchetype
+      })
+    });
+
+    const data = await res.json();
+
+    if (data.url) {
+      window.location.href = data.url;
+    } else {
+      throw new Error(data.error || 'Erreur inconnue');
+    }
+  } catch (err) {
+    console.error(err);
+    btn.disabled = false;
+    btn.textContent = 'Procéder au paiement →';
+    errorEl.textContent = 'Une erreur s\'est produite. Merci de réessayer.';
+    errorEl.style.display = 'block';
+  }
+}
+
+// ══════════════════════════════════════════════════════════════
+//  WAITLIST
+// ══════════════════════════════════════════════════════════════
+async function submitWaitlist(e) {
+  e.preventDefault();
+  const email = document.getElementById('waitlist-email').value.trim();
+  if (!email) return;
+
+  try {
+    await fetch('/api/waitlist', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email })
+    });
+  } catch {}
+
+  document.querySelector('.waitlist-form').style.display = 'none';
+  document.getElementById('waitlist-confirm').style.display = 'block';
+}
+
+// ══════════════════════════════════════════════════════════════
+//  INIT
+// ══════════════════════════════════════════════════════════════
+renderStep();
+</script>
+</body>
+</html>
