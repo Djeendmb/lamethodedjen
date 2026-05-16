@@ -221,8 +221,8 @@ app.post('/api/checkout', async (req, res) => {
 
     res.json({ url: session.url });
   } catch (err) {
-    console.error('Stripe error:', err);
-    res.status(500).json({ error: 'Erreur lors de la création du paiement' });
+    console.error('Stripe error:', err.message);
+    res.status(500).json({ error: err.message });
   }
 });
 
