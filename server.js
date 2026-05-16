@@ -321,7 +321,7 @@ Délai de livraison : 48h maximum.
 Colle ces réponses dans Claude avec le prompt Curve Mentor pour générer le programme complet.`;
 
   await resend.emails.send({
-    from: 'La méthode Djen <commandes@tondomaine.com>',
+    from: 'La méthode Djen <onboarding@resend.dev>',
     to: process.env.EMAIL_DJEN,
     subject: `✦ Nouvelle commande — Programme 97€ — ${prenom}`,
     text: corps,
