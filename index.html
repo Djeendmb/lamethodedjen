@@ -1212,8 +1212,10 @@
           <span class="offre-tag disponible">Disponible maintenant</span>
           <div class="offre-name">Le Programme Personnalisé</div>
           <div class="offre-tagline">Un programme complet, inédit, construit sur ton archétype exact — livré directement dans ta boîte mail en 48h.</div>
-          <div class="offre-price">97€</div>
-          <div class="offre-price-note">Paiement unique · Livraison en 48h par mail</div>
+          <div class="offre-price">
+            <span style="text-decoration:line-through;font-size:1.3rem;color:#bbb;font-family:Georgia,serif;margin-right:10px;">107€</span>77€
+          </div>
+          <div class="offre-price-note">Paiement unique · Livraison en 48h par mail · Prix de lancement</div>
           <div class="offre-badge">⚡ Reçu en 48h</div>
           <ul class="offre-features">
             <li>Analyse de ton archétype et transformation de tes blocages en forces</li>
@@ -1675,11 +1677,11 @@ async function generatePortrait() {
         </div>
       </div>
       <div style="margin-bottom:20px;padding:14px 18px;background:rgba(255,255,255,0.05);border-radius:8px;text-align:center;">
-        <span style="font-size:1.5rem;font-weight:700;color:#fff;font-family:Georgia,serif;">97€</span>
-        <span style="font-size:.82rem;color:#888;margin-left:10px;">Paiement unique · Livraison en 48h par mail</span>
+        <span style="text-decoration:line-through;font-size:1rem;color:#666;font-family:Georgia,serif;margin-right:6px;">107€</span><span style="font-size:1.5rem;font-weight:700;color:#fff;font-family:Georgia,serif;">77€</span>
+        <span style="font-size:.82rem;color:#888;margin-left:10px;">Paiement unique · Livraison en 48h · Prix de lancement</span>
       </div>
       <div class="portrait-cta-buttons">
-        <button class="btn-cta-main" onclick="openCheckoutModal()">Je veux mon programme complet — 97€ →</button>
+        <button class="btn-cta-main" onclick="openCheckoutModal()">Je veux mon programme complet — 77€ →</button>
         <button class="btn-cta-secondary" onclick="document.getElementById('offres').scrollIntoView({behavior:'smooth'})">En savoir plus sur les offres</button>
       </div>
     </div>
