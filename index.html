@@ -1967,11 +1967,8 @@ function openCheckoutModal() {
   archetypeTag.textContent = '✦ ' + detectedArchetype;
   archetypeTag.style.display = 'inline-block';
 
-  // Pré-remplir le prénom
-  const prenomInput = document.getElementById('modal-prenom');
-  if (answers.prenom) prenomInput.value = answers.prenom;
   modal.classList.add('open');
-  prenomInput.value ? document.getElementById('modal-email').focus() : prenomInput.focus();
+  document.getElementById('modal-email').focus();
 }
 
 function closeCheckoutModal() {
