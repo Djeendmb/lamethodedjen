@@ -1469,12 +1469,10 @@
 <div class="modal-overlay" id="checkout-modal">
   <div class="modal-box">
     <button class="modal-close" onclick="closeCheckoutModal()">×</button>
-    <h2 class="modal-title">Avant de payer — deux infos rapides</h2>
+    <h2 class="modal-title">Avant de payer — vérifie ton email</h2>
     <div id="modal-archetype-tag" class="modal-archetype" style="display:none;"></div>
     <p style="font-size:0.9rem;color:var(--text-light);margin-bottom:20px;">Tu recevras ton Empreinte Djen dans les 48h.</p>
-    <label class="modal-label" for="modal-prenom">Ton prénom</label>
-    <input class="modal-input" type="text" id="modal-prenom" placeholder="ex. Yasmine" autocomplete="given-name" />
-    <label class="modal-label" for="modal-email" style="margin-top:4px;">Ton adresse email</label>
+    <label class="modal-label" for="modal-email">Ton adresse email</label>
     <input class="modal-input" type="email" id="modal-email" placeholder="ton@email.com" />
     <p class="modal-error" id="modal-error">Merci de saisir un email valide.</p>
     <button class="modal-btn" id="modal-pay-btn" onclick="procederPaiement()">Procéder au paiement →</button>
@@ -1950,13 +1948,26 @@ async function generatePortrait() {
 //  MODAL PAIEMENT
 // ══════════════════════════════════════════════════════════════
 function openCheckoutModal() {
+  // Si le quiz n'a pas été fait → rediriger vers le quiz
+  if (!detectedArchetype) {
+    document.getElementById('quiz').scrollIntoView({ behavior: 'smooth' });
+    // Petit message flash sous le titre du quiz
+    const sub = document.querySelector('.quiz-subtitle');
+    if (sub) {
+      const orig = sub.textContent;
+      sub.style.color = '#D4537E';
+      sub.textContent = 'Fais d\'abord le quiz — ton archétype est indispensable pour construire ton programme.';
+      setTimeout(() => { sub.style.color = ''; sub.textContent = orig; }, 4000);
+    }
+    return;
+  }
+
   const modal = document.getElementById('checkout-modal');
   const archetypeTag = document.getElementById('modal-archetype-tag');
-  if (detectedArchetype) {
-    archetypeTag.textContent = '✦ ' + detectedArchetype;
-    archetypeTag.style.display = 'inline-block';
-  }
-  // Pré-remplir le prénom si le quiz a été fait
+  archetypeTag.textContent = '✦ ' + detectedArchetype;
+  archetypeTag.style.display = 'inline-block';
+
+  // Pré-remplir le prénom
   const prenomInput = document.getElementById('modal-prenom');
   if (answers.prenom) prenomInput.value = answers.prenom;
   modal.classList.add('open');
@@ -1974,17 +1985,11 @@ document.getElementById('checkout-modal').addEventListener('click', function(e) 
 
 async function procederPaiement() {
   const email = document.getElementById('modal-email').value.trim();
-  const prenomModal = document.getElementById('modal-prenom').value.trim();
   const errorEl = document.getElementById('modal-error');
   const btn = document.getElementById('modal-pay-btn');
 
   if (!email || !email.includes('@') || !email.includes('.')) {
     errorEl.textContent = 'Merci de saisir un email valide.';
-    errorEl.style.display = 'block';
-    return;
-  }
-  if (!prenomModal) {
-    errorEl.textContent = 'Merci de saisir ton prénom.';
     errorEl.style.display = 'block';
     return;
   }
@@ -1999,7 +2004,7 @@ async function procederPaiement() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         email,
-        prenom: answers.prenom || prenomModal,
+        prenom: answers.prenom || '',
         q1: answers.q1 || '',
         q2: answers.q2 || '',
         q3: answers.q3 || '',
