@@ -245,9 +245,23 @@ app.post('/api/waitlist', async (req, res) => {
     waitlist = [];
   }
 
-  if (!waitlist.includes(email)) {
+  const isNew = !waitlist.includes(email);
+
+  if (isNew) {
     waitlist.push(email);
-    fs.writeFileSync(waitlistPath, JSON.stringify(waitlist, null, 2));
+    try { fs.writeFileSync(waitlistPath, JSON.stringify(waitlist, null, 2)); } catch {}
+
+    // Notifier Djen
+    try {
+      await resend.emails.send({
+        from: 'La méthode Djen <onboarding@resend.dev>',
+        to: process.env.EMAIL_DJEN,
+        subject: `✦ Nouvelle inscription waitlist — La Formation Djen`,
+        text: `Nouvelle inscription sur la liste d'attente de La Formation Djen.\n\nEmail : ${email}\nTotal inscrits : ${waitlist.length}`,
+      });
+    } catch (err) {
+      console.error('Waitlist email error:', err.message);
+    }
   }
 
   res.json({ success: true });
