@@ -2035,25 +2035,21 @@ async function procederPaiement() {
 // ══════════════════════════════════════════════════════════════
 //  WAITLIST
 // ══════════════════════════════════════════════════════════════
-async function submitWaitlist(e) {
+function submitWaitlist(e) {
   e.preventDefault();
   const email = document.getElementById('waitlist-email').value.trim();
   if (!email) return;
 
-  const btn = document.querySelector('.btn-waitlist');
-  btn.disabled = true;
-  btn.textContent = '…';
-
-  try {
-    await fetch('/api/waitlist', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email })
-    });
-  } catch {}
-
+  // Confirmation immédiate — pas d'attente serveur
   document.querySelector('.waitlist-form').style.display = 'none';
   document.getElementById('waitlist-confirm').style.display = 'block';
+
+  // Envoi en arrière-plan
+  fetch('/api/waitlist', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email })
+  }).catch(() => {});
 }
 
 // ══════════════════════════════════════════════════════════════
