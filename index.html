@@ -967,13 +967,20 @@
       display: none;
       min-height: 100vh;
       background: var(--dark);
-      align-items: center;
-      justify-content: center;
-      padding: 40px 24px;
-      text-align: center;
+      padding: 60px 0 80px;
     }
 
-    #merci-page.visible { display: flex; }
+    #merci-page.visible { display: block; }
+
+    #merci-final-step {
+      min-height: 80vh;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    #merci-final-step.visible { display: flex; }
 
     .merci-box {
       max-width: 540px;
@@ -1014,6 +1021,40 @@
     }
 
     .merci-btn:hover { border-color: var(--rose); color: var(--rose); }
+
+    .merci-label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #aaa;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .merci-input {
+      width: 100%;
+      background: rgba(255,255,255,0.06);
+      border: 1.5px solid rgba(255,255,255,0.12);
+      border-radius: 8px;
+      color: #e8dce4;
+      font-size: 0.95rem;
+      padding: 12px 14px;
+      font-family: inherit;
+      transition: border-color 0.2s;
+      margin-bottom: 0;
+    }
+
+    .merci-input:focus { outline: none; border-color: var(--rose); }
+    .merci-input::placeholder { color: #444; }
+
+    .merci-input option { background: #1a1419; color: #e8dce4; }
+
+    @media (max-width: 540px) {
+      #merci-form-step { padding: 32px 16px; }
+      #merci-form-step .merci-grid-3 { grid-template-columns: 1fr !important; }
+      #merci-form-step .merci-grid-2 { grid-template-columns: 1fr !important; }
+    }
 
     /* ── RESPONSIVE ─────────────────────────────────────────── */
     @media (max-width: 768px) {
@@ -1062,16 +1103,125 @@
 
 <!-- ══ PAGE MERCI (affichée si URL = /merci) ══════════════════ -->
 <div id="merci-page">
-  <div class="merci-box">
+
+  <!-- ÉTAPE 1 : confirmation + formulaire complémentaire -->
+  <div id="merci-form-step" style="width:100%;max-width:620px;margin:0 auto;padding:40px 24px;">
+
+    <div style="text-align:center;margin-bottom:40px;">
+      <div class="merci-star">✦</div>
+      <h1 class="merci-title">Paiement confirmé.</h1>
+      <p class="merci-text" style="margin-bottom:0;">
+        Ton programme est en cours de construction.<br>
+        <strong style="color:#e8dce4;">Une dernière étape</strong> — donne-moi les infos dont j'ai besoin<br>pour que ton programme soit 100% taillé pour toi.
+      </p>
+    </div>
+
+    <form id="profil-form" onsubmit="soumettreProfilComplet(event)">
+
+      <!-- CORPS -->
+      <div style="margin-bottom:32px;">
+        <p style="color:var(--rose);font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:16px;">Ton corps</p>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:14px;">
+          <div>
+            <label class="merci-label">Poids actuel (kg)</label>
+            <input class="merci-input" type="number" id="poids_actuel" placeholder="ex. 58" min="30" max="200" required />
+          </div>
+          <div>
+            <label class="merci-label">Taille (cm)</label>
+            <input class="merci-input" type="number" id="taille" placeholder="ex. 165" min="140" max="210" required />
+          </div>
+          <div>
+            <label class="merci-label">Poids cible (kg)</label>
+            <input class="merci-input" type="number" id="poids_cible" placeholder="ex. 65" min="30" max="200" required />
+          </div>
+        </div>
+
+        <label class="merci-label">Zones à développer en priorité</label>
+        <input class="merci-input" type="text" id="zones" placeholder="ex. fesses, cuisses, épaules, dos…" required />
+      </div>
+
+      <!-- ALIMENTATION -->
+      <div style="margin-bottom:32px;">
+        <p style="color:var(--rose);font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:16px;">Alimentation</p>
+
+        <label class="merci-label">Allergies ou intolérances</label>
+        <input class="merci-input" type="text" id="allergies" placeholder="ex. lactose, gluten — ou aucune" />
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px;">
+          <div>
+            <label class="merci-label">Régime alimentaire</label>
+            <select class="merci-input" id="regime">
+              <option value="omnivore">Omnivore</option>
+              <option value="halal">Halal</option>
+              <option value="vegetarien">Végétarien</option>
+              <option value="vegan">Végan</option>
+              <option value="autre">Autre</option>
+            </select>
+          </div>
+          <div>
+            <label class="merci-label">Repas par jour (habituellement)</label>
+            <select class="merci-input" id="nb_repas">
+              <option value="1-2">1 à 2 repas</option>
+              <option value="3" selected>3 repas</option>
+              <option value="4-5">4 à 5 repas</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- ENTRAÎNEMENT -->
+      <div style="margin-bottom:32px;">
+        <p style="color:var(--rose);font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:16px;">Entraînement</p>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;">
+          <div>
+            <label class="merci-label">Où tu t'entraînes ?</label>
+            <select class="merci-input" id="lieu_entrainement">
+              <option value="salle">Salle</option>
+              <option value="maison">Maison</option>
+              <option value="les deux">Les deux</option>
+            </select>
+          </div>
+          <div>
+            <label class="merci-label">Fréquence par semaine</label>
+            <select class="merci-input" id="frequence">
+              <option value="1-2x">1 à 2 fois</option>
+              <option value="3x" selected>3 fois</option>
+              <option value="4x">4 fois</option>
+              <option value="5x+">5 fois ou plus</option>
+            </select>
+          </div>
+        </div>
+
+        <label class="merci-label">Équipement disponible à la maison</label>
+        <input class="merci-input" type="text" id="equipement" placeholder="ex. haltères, barre, élastiques — ou aucun" style="margin-bottom:14px;" />
+
+        <label class="merci-label">Contraintes physiques à signaler</label>
+        <input class="merci-input" type="text" id="contraintes" placeholder="ex. genou fragile, dos douloureux — ou aucune" />
+      </div>
+
+      <div id="profil-error" style="color:#e87;font-size:.88rem;margin-bottom:12px;display:none;"></div>
+
+      <button type="submit" class="btn-primary" id="profil-btn" style="width:100%;padding:18px;font-size:1.05rem;">
+        Envoyer mon profil complet →
+      </button>
+      <p style="text-align:center;color:#666;font-size:.8rem;margin-top:10px;">Ces infos ne servent qu'à construire ton programme. Rien d'autre.</p>
+    </form>
+  </div>
+
+  <!-- ÉTAPE 2 : confirmation finale -->
+  <div id="merci-final-step" style="display:none;text-align:center;max-width:540px;margin:0 auto;padding:40px 24px;">
     <div class="merci-star">✦</div>
-    <h1 class="merci-title" id="merci-title">Ta commande est confirmée.</h1>
+    <h1 class="merci-title">Tout est reçu.</h1>
     <p class="merci-text">
-      Ton programme personnalisé est en cours de création.<br>
-      Tu le recevras dans ta boîte mail dans les 48h.<br>
-      Vérifie bien tes spams si tu ne le vois pas.
+      Ton profil complet est entre mes mains.<br>
+      Ton Empreinte Djen arrive dans ta boîte mail dans les 48h.<br>
+      <span style="color:#888;font-size:.9rem;">Vérifie tes spams si tu ne la vois pas.</span>
     </p>
     <a href="/" class="merci-btn">← Retour au site</a>
   </div>
+
 </div>
 
 <!-- ══ SITE PRINCIPAL ═════════════════════════════════════════ -->
@@ -1340,6 +1490,11 @@
     document.getElementById('main-site').style.display = 'none';
   }
 })();
+
+// Merci page — scroll to top
+if (window.location.pathname === '/merci' || window.location.pathname === '/merci/') {
+  window.scrollTo(0, 0);
+}
 
 function escapeHtml(str) {
   return String(str)
@@ -1883,6 +2038,57 @@ async function submitWaitlist(e) {
 
   document.querySelector('.waitlist-form').style.display = 'none';
   document.getElementById('waitlist-confirm').style.display = 'block';
+}
+
+// ══════════════════════════════════════════════════════════════
+//  FORMULAIRE COMPLÉMENTAIRE /merci
+// ══════════════════════════════════════════════════════════════
+async function soumettreProfilComplet(e) {
+  e.preventDefault();
+  const btn = document.getElementById('profil-btn');
+  const errorEl = document.getElementById('profil-error');
+  btn.disabled = true;
+  btn.textContent = 'Envoi en cours…';
+  errorEl.style.display = 'none';
+
+  const params = new URLSearchParams(window.location.search);
+  const sessionId = params.get('session_id') || '';
+
+  const payload = {
+    session_id: sessionId,
+    poids_actuel: document.getElementById('poids_actuel').value,
+    taille: document.getElementById('taille').value,
+    poids_cible: document.getElementById('poids_cible').value,
+    zones: document.getElementById('zones').value,
+    allergies: document.getElementById('allergies').value || 'aucune',
+    regime: document.getElementById('regime').value,
+    nb_repas: document.getElementById('nb_repas').value,
+    lieu_entrainement: document.getElementById('lieu_entrainement').value,
+    frequence: document.getElementById('frequence').value,
+    equipement: document.getElementById('equipement').value || 'aucun',
+    contraintes: document.getElementById('contraintes').value || 'aucune',
+  };
+
+  try {
+    const res = await fetch('/api/complete-profile', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || 'Erreur serveur');
+
+    document.getElementById('merci-form-step').style.display = 'none';
+    const finalStep = document.getElementById('merci-final-step');
+    finalStep.style.display = 'flex';
+    finalStep.style.minHeight = '80vh';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  } catch (err) {
+    errorEl.textContent = 'Une erreur est survenue. Réessaie ou contacte-moi directement.';
+    errorEl.style.display = 'block';
+    btn.disabled = false;
+    btn.textContent = 'Envoyer mon profil complet →';
+  }
 }
 
 // ══════════════════════════════════════════════════════════════

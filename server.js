@@ -253,6 +253,119 @@ app.post('/api/waitlist', async (req, res) => {
   res.json({ success: true });
 });
 
+// ─── POST /api/complete-profile ──────────────────────────────────────────────
+app.post('/api/complete-profile', async (req, res) => {
+  const {
+    session_id,
+    poids_actuel, taille, poids_cible, zones,
+    allergies, regime, nb_repas,
+    lieu_entrainement, frequence, equipement, contraintes
+  } = req.body;
+
+  // Récupérer les métadonnées Stripe (quiz + archétype) si session_id fourni
+  let meta = {};
+  let emailCliente = '';
+  let montant = '77€';
+
+  if (session_id) {
+    try {
+      const session = await stripe.checkout.sessions.retrieve(session_id);
+      meta = session.metadata || {};
+      emailCliente = session.customer_email || '';
+      if (session.amount_total) montant = (session.amount_total / 100) + '€';
+    } catch (err) {
+      console.error('Stripe retrieve error:', err.message);
+    }
+  }
+
+  const now = new Date().toLocaleString('fr-FR', { timeZone: 'Europe/Paris' });
+  const prenom = meta.prenom || 'Inconnue';
+
+  const corps = `✦ PROFIL COMPLET — Empreinte Djen à construire
+
+Prénom       : ${prenom}
+Email        : ${emailCliente || 'non renseigné'}
+Archétype    : ${meta.archetype || 'non détecté'}
+Montant      : ${montant}
+Date         : ${now}
+
+━━━ CORPS ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Poids actuel : ${poids_actuel || '—'} kg
+Taille       : ${taille || '—'} cm
+Poids cible  : ${poids_cible || '—'} kg
+Zones cibles : ${zones || '—'}
+
+━━━ ALIMENTATION ━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Régime       : ${regime || '—'}
+Repas/jour   : ${nb_repas || '—'}
+Allergies    : ${allergies || '—'}
+
+━━━ ENTRAÎNEMENT ━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Lieu         : ${lieu_entrainement || '—'}
+Fréquence    : ${frequence || '—'} / semaine
+Équipement   : ${equipement || '—'}
+Contraintes  : ${contraintes || '—'}
+
+━━━ RÉPONSES AU QUIZ ━━━━━━━━━━━━━━━━━━━━━━━
+
+Q1 – Première émotion face à son corps :
+${meta.q1 || '—'}
+
+Q2 – Rapport à l'entraînement :
+${meta.q2 || '—'}
+
+Q3 – Ce qui l'arrête le plus :
+${meta.q3 || '—'}
+
+Q4 – Ce qu'elle veut vraiment :
+${meta.q4 || '—'}
+
+Q5 – Son alimentation :
+${meta.q5 || '—'}
+
+Q6 – Phrase quand elle rate :
+${meta.q6 || '—'}
+
+Q7a – Une femme trop musclée c'est :
+${meta.q7a || '—'}
+
+Q7b – Si je prenais de la masse les gens penseraient :
+${meta.q7b || '—'}
+
+Q7c – Je mérite d'avoir le corps que je veux parce que :
+${meta.q7c || '—'}
+
+Q8 – Regard ou mots qui ont tout changé :
+${meta.q8 || '—'}
+
+Q11 – La femme cachée en elle :
+${meta.q9 || '—'}
+
+Q13 – Pourquoi maintenant :
+${meta.q10 || '—'}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Délai de livraison : 48h maximum.
+Colle ce profil dans Claude avec le prompt Curve Mentor pour générer l'Empreinte complète.`;
+
+  try {
+    await resend.emails.send({
+      from: 'La méthode Djen <onboarding@resend.dev>',
+      to: process.env.EMAIL_DJEN,
+      subject: `✦ Profil complet — Empreinte Djen — ${prenom}`,
+      text: corps,
+    });
+    res.json({ success: true });
+  } catch (err) {
+    console.error('Email error:', err);
+    res.status(500).json({ error: 'Erreur envoi email' });
+  }
+});
+
 // ─── Route /merci ─────────────────────────────────────────────────────────────
 app.get('/merci', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
