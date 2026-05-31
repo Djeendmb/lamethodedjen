@@ -226,6 +226,50 @@ app.post('/api/checkout', async (req, res) => {
   }
 });
 
+// ─── POST /api/save-lead ─────────────────────────────────────────────────────
+app.post('/api/save-lead', async (req, res) => {
+  const { prenom, email, archetype, q1, q2, q3, q4, q5, q6, q7a, q7b, q7c, q8, q9, q10 } = req.body;
+
+  if (!email || !email.includes('@')) return res.status(400).json({ error: 'Email invalide' });
+
+  const now = new Date().toLocaleString('fr-FR', { timeZone: 'Europe/Paris' });
+
+  const corps = `✦ Nouveau lead — Portrait Djen (sans achat)
+
+Prénom  : ${prenom || '—'}
+Email   : ${email}
+Archétype : ${archetype || 'non détecté'}
+Date    : ${now}
+
+--- RÉPONSES AU QUIZ ---
+
+Q1  : ${q1 || '—'}
+Q2  : ${q2 || '—'}
+Q3  : ${q3 || '—'}
+Q4  : ${q4 || '—'}
+Q5  : ${q5 || '—'}
+Q6  : ${q6 || '—'}
+Q7a : ${q7a || '—'}
+Q7b : ${q7b || '—'}
+Q7c : ${q7c || '—'}
+Q8  : ${q8 || '—'}
+Q11 : ${q9 || '—'}
+Q13 : ${q10 || '—'}`;
+
+  try {
+    await resend.emails.send({
+      from: 'La méthode Djen <onboarding@resend.dev>',
+      to: process.env.EMAIL_DJEN,
+      subject: `✦ Nouveau lead — ${prenom || email} — ${archetype || 'archétype inconnu'}`,
+      text: corps,
+    });
+  } catch (err) {
+    console.error('Save-lead email error:', err.message);
+  }
+
+  res.json({ success: true });
+});
+
 // ─── POST /api/waitlist ───────────────────────────────────────────────────────
 app.post('/api/waitlist', async (req, res) => {
   const { email } = req.body;

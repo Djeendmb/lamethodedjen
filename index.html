@@ -1647,7 +1647,7 @@ function scrollToQuiz() {
 }
 
 function updateProgress() {
-  const total = QUESTIONS.length + 1; // +1 pour l'intro
+  const total = QUESTIONS.length + 2; // +1 intro +1 email
   const step = currentStep === -1 ? 0 : currentStep + 1;
   const pct = Math.min(100, Math.round((step / total) * 100));
   document.getElementById('progress-bar').style.width = pct + '%';
@@ -1662,7 +1662,13 @@ function renderStep() {
     return;
   }
 
-  if (currentStep >= QUESTIONS.length) {
+  // Étape email — entre dernier quiz et portrait
+  if (currentStep === QUESTIONS.length) {
+    renderEmailCapture(container);
+    return;
+  }
+
+  if (currentStep > QUESTIONS.length) {
     renderLoading(container);
     generatePortrait();
     return;
@@ -1672,6 +1678,33 @@ function renderStep() {
   if (q.type === 'choice') renderChoice(container, q);
   else if (q.type === 'text') renderText(container, q);
   else if (q.type === 'text-multi') renderTextMulti(container, q);
+}
+
+function renderEmailCapture(container) {
+  container.innerHTML = `
+    <div class="quiz-card">
+      <div class="quiz-tag">Dernière étape</div>
+      <h3 class="quiz-question-title">Ton portrait est prêt.</h3>
+      <p class="quiz-question-sub">Entre ton email pour y accéder — et le garder.</p>
+      <div style="margin-bottom:28px;">
+        <input
+          class="quiz-input"
+          type="email"
+          id="email-capture-input"
+          placeholder="ton@email.com"
+          style="min-height:auto;padding:14px 16px;resize:none;"
+          oninput="answers.email = this.value; updateNextBtn()"
+          value="${answers.email || ''}"
+        />
+      </div>
+      <div class="quiz-btn-row">
+        <button class="btn-quiz-back" onclick="prevStep()">← Retour</button>
+        <button class="btn-quiz-next" id="next-btn" onclick="nextStep()" ${answers.email && answers.email.includes('@') ? '' : 'disabled'}>
+          Voir mon portrait Djen ✦
+        </button>
+      </div>
+    </div>
+  `;
 }
 
 function renderIntro(container) {
@@ -1778,6 +1811,10 @@ function updateNextBtn() {
   if (!btn) return;
   if (currentStep === -1) {
     btn.disabled = !(answers.prenom || '').trim();
+    return;
+  }
+  if (currentStep === QUESTIONS.length) {
+    btn.disabled = !(answers.email || '').includes('@');
     return;
   }
   const q = QUESTIONS[currentStep];
@@ -1920,6 +1957,19 @@ async function generatePortrait() {
           const ctaEl = document.getElementById('portrait-cta');
           if (ctaEl) ctaEl.style.display = '';
           document.getElementById('quiz').scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+          // Pré-remplir le modal email
+          const modalEmail = document.getElementById('modal-email');
+          if (modalEmail && answers.email) modalEmail.value = answers.email;
+
+          // Envoyer le lead à Djen
+          if (answers.email) {
+            fetch('/api/save-lead', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ ...answers, archetype: detectedArchetype })
+            }).catch(() => {});
+          }
           return;
         }
       }
