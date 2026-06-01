@@ -177,11 +177,15 @@ RÈGLES ABSOLUES :
 
 // ─── POST /api/checkout ───────────────────────────────────────────────────────
 app.post('/api/checkout', async (req, res) => {
-  const { email, prenom, q1, q2, q3, q4, q5, q6, q7a, q7b, q7c, q8, q9, q10, archetype } = req.body;
+  const { email, prenom, q1, q2, q3, q4, q5, q6, q7a, q7b, q7c, q8, q9, q10, archetype, product } = req.body;
 
   if (!email || !prenom) {
     return res.status(400).json({ error: 'Email et prénom requis' });
   }
+
+  const priceId = product === 'mindset'
+    ? process.env.STRIPE_PRICE_ID_MINDSET
+    : process.env.STRIPE_PRICE_ID;
 
   const truncate = (str, max = 490) => {
     if (!str) return '';
@@ -193,7 +197,7 @@ app.post('/api/checkout', async (req, res) => {
       payment_method_types: ['card'],
       line_items: [
         {
-          price: process.env.STRIPE_PRICE_ID,
+          price: priceId,
           quantity: 1,
         },
       ],

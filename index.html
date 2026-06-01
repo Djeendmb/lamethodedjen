@@ -1356,7 +1356,27 @@
       <h2 style="text-align:center;font-family:Georgia,serif;font-size:clamp(1.7rem,3.5vw,2.4rem);margin-bottom:10px;">Comment on travaille ensemble</h2>
       <p style="text-align:center;color:var(--text-light);max-width:540px;margin:0 auto 0;">Tu connais ton archétype. La prochaine étape, c'est de transformer ce que tu as découvert.</p>
 
-      <div class="offres-grid">
+      <div class="offres-grid" style="grid-template-columns:repeat(3,1fr);">
+        <!-- OFFRE MINDSET -->
+        <div class="offre-card">
+          <span class="offre-tag disponible">Disponible maintenant</span>
+          <div class="offre-name">L'Empreinte Djen<br>100% Mindset</div>
+          <div class="offre-tagline">Ton blocage n'est pas physique. Il est mental. Cette Empreinte va au fond de ce qui t'arrête — et te donne les clés pour te débloquer, pour de bon.</div>
+          <div class="offre-price">
+            <span style="text-decoration:line-through;font-size:1.3rem;color:#bbb;font-family:Georgia,serif;margin-right:10px;">77€</span>57€
+          </div>
+          <div class="offre-price-note">Paiement unique · Livraison en 48h par mail · Prix de lancement</div>
+          <div class="offre-badge">⚡ Reçu en 48h</div>
+          <ul class="offre-features">
+            <li>Révélation de ton archétype — qui tu es vraiment, pourquoi ton corps résiste</li>
+            <li>Analyse complète de tes blocages mentaux — nommés, décryptés, transformés en leviers</li>
+            <li>Programme mindset 4 semaines — semaine par semaine, pour avancer sans te saboter</li>
+            <li>Travail identitaire — devenir la femme que tu décrivais dans "la femme cachée en toi"</li>
+            <li>Sans plan nutrition ni entraînement — 100% focalisé sur le mental et le déblocage</li>
+          </ul>
+          <button class="btn-offre" onclick="openCheckoutModal('mindset')">Je veux mon Empreinte Mindset →</button>
+        </div>
+
         <!-- OFFRE 1 -->
         <div class="offre-card featured">
           <span class="offre-tag disponible">Disponible maintenant</span>
@@ -1640,7 +1660,8 @@ let currentStep = -1; // -1 = intro
 let answers = {};
 let portraitText = '';
 let detectedArchetype = '';
-let currentOptions = []; // stocke les options de la question en cours (évite les apostrophes dans les onclick)
+let currentOptions = [];
+let selectedProduct = 'empreinte'; // 'empreinte' ou 'mindset' // stocke les options de la question en cours (évite les apostrophes dans les onclick)
 
 function scrollToQuiz() {
   document.getElementById('quiz').scrollIntoView({ behavior: 'smooth' });
@@ -1997,7 +2018,8 @@ async function generatePortrait() {
 // ══════════════════════════════════════════════════════════════
 //  MODAL PAIEMENT
 // ══════════════════════════════════════════════════════════════
-function openCheckoutModal() {
+function openCheckoutModal(product) {
+  selectedProduct = product || 'empreinte';
   // Si le quiz n'a pas été fait → rediriger vers le quiz
   if (!detectedArchetype) {
     document.getElementById('quiz').scrollIntoView({ behavior: 'smooth' });
@@ -2064,7 +2086,8 @@ async function procederPaiement() {
         q8: answers.q8 || '',
         q9: answers.q9 || '',
         q10: answers.q10 || '',
-        archetype: detectedArchetype
+        archetype: detectedArchetype,
+        product: selectedProduct
       })
     });
 
