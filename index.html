@@ -1899,9 +1899,14 @@ function mdToHtml(text) {
 }
 
 function telechargerProgramme() {
-  const archetype = detectedArchetype || '';
-  const url = `/api/programme?archetype=${encodeURIComponent(archetype)}`;
-  window.open(url, '_blank');
+  const a = (detectedArchetype || '').toLowerCase();
+  let fichier = 'batisseuse';
+  if (a.includes('guerri'))    fichier = 'guerriere';
+  else if (a.includes('déesse') || a.includes('deesse')) fichier = 'deesse';
+  else if (a.includes('strat')) fichier = 'stratege';
+  else if (a.includes('nourri')) fichier = 'nourriciere';
+  else if (a.includes('ph'))   fichier = 'phoenix';
+  window.open('/portraits/' + fichier + '.html', '_blank');
 }
 
 function scrollToQuiz() {
