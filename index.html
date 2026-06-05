@@ -1898,6 +1898,18 @@ function mdToHtml(text) {
     .replace(/$/, '</p>');
 }
 
+function telechargerProgramme() {
+  const archetype = detectedArchetype || '';
+  const prenom = answers.prenom || '';
+  const url = `/api/programme?archetype=${encodeURIComponent(archetype)}&prenom=${encodeURIComponent(prenom)}`;
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `programme-djen.pdf`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+}
+
 function scrollToQuiz() {
   document.getElementById('quiz').scrollIntoView({ behavior: 'smooth' });
 }
@@ -2150,6 +2162,11 @@ async function generatePortrait() {
       <div style="margin-bottom:24px;padding:16px 20px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:3px;text-align:center;">
         <span style="text-decoration:line-through;font-size:.95rem;color:rgba(255,255,255,0.2);font-family:'Cormorant Garamond',serif;margin-right:8px;">107€</span><span style="font-size:1.8rem;font-weight:300;color:#fff;font-family:'Cormorant Garamond',serif;">77€</span>
         <span style="font-size:.75rem;color:rgba(255,255,255,0.3);margin-left:10px;display:block;margin-top:4px;">Paiement unique · Livraison en 48h · Prix de lancement</span>
+      </div>
+      <div style="margin-bottom:20px;padding:20px;background:rgba(184,58,101,0.08);border:1px solid rgba(184,58,101,0.2);border-radius:3px;text-align:center;">
+        <p style="font-size:.8rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--rose-light);margin-bottom:8px;">Ton mini-programme offert</p>
+        <p style="font-size:.88rem;color:rgba(255,255,255,0.5);margin-bottom:14px;font-weight:300;">4 actions nutrition + 4 actions mindset taillées pour ton archétype — à commencer dès aujourd'hui.</p>
+        <button class="btn-cta-secondary" id="btn-download-programme" onclick="telechargerProgramme()" style="width:100%;">↓ Télécharger mon programme semaine 1</button>
       </div>
       <div class="portrait-cta-buttons">
         <button class="btn-cta-main" onclick="openCheckoutModal()">Je veux mon Empreinte Djen — 77€ →</button>
