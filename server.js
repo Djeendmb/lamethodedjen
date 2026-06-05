@@ -429,209 +429,28 @@ Colle ce profil dans Claude avec le prompt Curve Mentor pour générer l'Emprein
 });
 
 // ─── GET /api/programme ──────────────────────────────────────────────────────
-// Génère et retourne un PDF mini-programme selon l'archétype
+// Sert le portrait HTML correspondant à l'archétype détecté
 app.get('/api/programme', (req, res) => {
-  const PDFDocument = require('pdfkit');
   const archetypeRaw = (req.query.archetype || '').toLowerCase();
-  const prenom = req.query.prenom || 'toi';
 
-  // Données par archétype
-  const programmes = {
-    'bâtisseuse': {
-      nom: 'La Bâtisseuse Ancrée',
-      couleur: [184, 58, 101],
-      accroche: 'Tu sais déjà tout. Il est temps que ton corps le sache aussi.',
-      cle: 'Ton défi n\'est pas de comprendre — c\'est de ressentir. Passe du savoir au vivre, de la tête au corps.',
-      nutrition: [
-        'Mange 3 vrais repas assis, sans écran — fais de chaque repas un acte conscient',
-        'Ajoute une source de féculents à chaque repas principal (riz, patate douce, pain complet)',
-        'Vise +300 à +500 kcal de plus que d\'habitude — note ce que tu manges la 1ère semaine',
-        ' 1 collation riche en protéines le soir : fromage blanc, œufs, noix',
-      ],
-      mindset: [
-        'Chaque matin : pose une main sur ton ventre et dis "Je reçois" — 30 secondes',
-        'Journaling le soir : "Aujourd\'hui mon corps a reçu…" — 3 lignes minimum',
-        'Supprime une source de stress inutile cette semaine (notification, personne, habitude)',
-        'Dors 8h minimum — le corps reconstruit la nuit, pas pendant que tu penses',
-      ],
-      objectif: 'Semaine 1 : sortir de la tête, entrer dans le corps. Pas de perfectionnisme — juste de la régularité.',
-    },
-    'guerrière': {
-      nom: 'La Guerrière Épuisée',
-      couleur: [184, 58, 101],
-      accroche: 'Tu as tout donné. Il est temps de recevoir.',
-      cle: 'Ton cortisol est trop élevé pour que ton corps puisse stocker. Moins d\'effort, plus de résultats.',
-      nutrition: [
-        'Ajoute des graisses saines à chaque repas : avocat, huile d\'olive, beurre de cacahuète',
-        'Mange avant l\'entraînement ET après — ton corps a besoin de carburant des deux côtés',
-        'Supprime les séances cardio intensives cette semaine — elles brûlent ce que tu veux garder',
-        'Tisane d\'ashwagandha ou de réglisse le soir — pour baisser le cortisol',
-      ],
-      mindset: [
-        'Une sieste de 20 min par jour si possible — la récupération est ton entraînement cette semaine',
-        'Dis "non" à une chose cette semaine qui te coûte de l\'énergie sans te nourrir',
-        'Remplace une séance de sport par une marche douce ou du yoga',
-        'Écris chaque soir : "Ce que j\'ai reçu aujourd\'hui" — entraîne-toi à recevoir',
-      ],
-      objectif: 'Semaine 1 : baisser le cortisol. Moins d\'intensité, plus de douceur — ton corps te remerciera.',
-    },
-    'déesse': {
-      nom: 'La Déesse Invisible',
-      couleur: [184, 58, 101],
-      accroche: 'Ta puissance est là. Elle a toujours été là.',
-      cle: 'Ton corps reflète la place que tu t\'autorises à prendre. Plus tu t\'affiches, plus il répond.',
-      nutrition: [
-        'Cuisine un plat que TU aimes cette semaine — pas ce que les autres veulent manger',
-        'Mange à table, assis·e, avec une belle assiette — honore ce que tu te donnes',
-        'Augmente les protéines : viande, poisson, légumineuses à chaque repas principal',
-        'Autorise-toi les aliments "plaisir" — les interdits nourrissent le stress, pas le corps',
-      ],
-      mindset: [
-        'Chaque matin : regarde-toi dans le miroir et nomme 3 choses que tu aimes dans ton corps',
-        'Habille-toi pour toi cette semaine — pas pour disparaître, pour exister',
-        'Prends de la place physiquement : étire-toi, marche lentement, parle plus fort',
-        'Écris : "Je mérite d\'avoir le corps que je veux parce que…" — 5 raisons',
-      ],
-      objectif: 'Semaine 1 : s\'autoriser à exister pleinement. Ton corps suit ton énergie.',
-    },
-    'stratège': {
-      nom: 'La Stratège Impatiente',
-      couleur: [184, 58, 101],
-      accroche: 'Tu as l\'intelligence. Donne-lui une méthode à suivre.',
-      cle: 'Tu comprends tout vite — mais la transformation demande du temps. Ta mission : faire confiance au processus.',
-      nutrition: [
-        'Calcule ton surplus calorique cible : poids actuel (kg) × 33 + 300 kcal = objectif journalier',
-        'Répartis les repas en 3 + 2 collations — structure ton alimentation comme un programme',
-        'Track tes macros la 1ère semaine : 30% protéines, 40% glucides, 30% lipides',
-        'Pèse-toi 1x par semaine seulement (le matin à jeun) — pas plus, cela biaise l\'analyse',
-      ],
-      mindset: [
-        'Définis ton indicateur de succès de la semaine (pas le poids — une habitude tenue)',
-        'Si tu ressens de l\'impatience : écris "Ce qui s\'est amélioré depuis 7 jours" — prouve-toi le progrès',
-        'Méditation de 5 min le matin — juste observer, sans analyser',
-        'Règle : pas de changement de plan avant 3 semaines complètes',
-      ],
-      objectif: 'Semaine 1 : poser les bases, suivre le plan sans modifier. L\'analyse vient à la semaine 4.',
-    },
-    'nourricière': {
-      nom: 'La Nourricière Oubliée',
-      couleur: [184, 58, 101],
-      accroche: 'Tu donnes à tout le monde. C\'est ton tour.',
-      cle: 'Tu ne peux pas te nourrir des miettes qui restent. Tu passes en premier cette semaine.',
-      nutrition: [
-        'Prépare ton repas AVANT de cuisiner pour les autres — tu es la priorité',
-        'Mange des aliments qui te font vraiment plaisir — pas ce qui est pratique pour tout le monde',
-        'Augmente les portions : une assiette pleine, pas une demi-portion en vitesse',
-        'Ashwagandha + fenugrec en complément — pour l\'appétit et la récupération hormonale',
-      ],
-      mindset: [
-        'Chaque matin : 15 minutes pour toi avant de penser aux autres (café, lecture, silence)',
-        'Dis à voix haute : "Prendre soin de moi me rend meilleure pour les autres"',
-        'Planifie tes repas de la semaine comme tu planifies ceux de ta famille',
-        'Écris : "Cette semaine je me donne la permission de…" — et tiens-le',
-      ],
-      objectif: 'Semaine 1 : te mettre en premier. Une seule fois. Recommence la semaine suivante.',
-    },
-    'phœnix': {
-      nom: 'La Phœnix en Reconstruction',
-      couleur: [184, 58, 101],
-      accroche: 'Tu reviens. Et ce que tu construis maintenant te ressemble enfin.',
-      cle: 'Pas de retour à l\'avant. Tu construis quelque chose de nouveau, sur des bases solides.',
-      nutrition: [
-        'Commence simple : 3 repas fixes par jour, même heure — réinstalle la routine',
-        'Aliments de reconstruction : œufs, riz, banane, avocat, légumes cuits — doux et nourrissants',
-        'Hydrate-toi bien : 2L d\'eau par jour — le corps reconstruit avec de l\'eau',
-        'Un seul objectif nutritionnel cette semaine : ne sauter aucun repas',
-      ],
-      mindset: [
-        'Journaling chaque soir : "Une chose que j\'ai faite pour moi aujourd\'hui"',
-        'Coupe les comparaisons avec ton avant — tu es une version différente maintenant',
-        'Choisis une phrase qui résume qui tu deviens — écris-la quelque part que tu vois chaque matin',
-        'Autorise-toi d\'être en reconstruction — ce n\'est pas une faiblesse, c\'est du courage',
-      ],
-      objectif: 'Semaine 1 : poser les fondations doucement. La vitesse vient après la solidité.',
-    },
+  // Correspondance archétype → fichier HTML
+  const fichiers = {
+    'bâtisseuse': 'batisseuse.html',
+    'guerrière':  'guerriere.html',
+    'déesse':     'deesse.html',
+    'stratège':   'stratege.html',
+    'nourrière':  'nourriciere.html',
+    'phœnix':     'phoenix.html',
+    'phoenix':         'phoenix.html',
   };
 
-  // Trouver l'archétype correspondant
-  let archetypeKey = null;
-  for (const key of Object.keys(programmes)) {
-    if (archetypeRaw.includes(key)) { archetypeKey = key; break; }
+  let fichier = 'batisseuse.html'; // fallback
+  for (const [key, val] of Object.entries(fichiers)) {
+    if (archetypeRaw.includes(key)) { fichier = val; break; }
   }
-  if (!archetypeKey) archetypeKey = 'bâtisseuse'; // fallback
 
-  const prog = programmes[archetypeKey];
-  const [r, g, b] = prog.couleur;
-
-  const doc = new PDFDocument({ size: 'A4', margin: 50 });
-
-  res.setHeader('Content-Type', 'application/pdf');
-  res.setHeader('Content-Disposition', `attachment; filename="programme-djen-${archetypeKey}.pdf"`);
-  doc.pipe(res);
-
-  // ── HEADER ──
-  doc.rect(0, 0, doc.page.width, 120).fill(`rgb(${r},${g},${b})`);
-  doc.fillColor('#ffffff')
-     .font('Helvetica-Bold').fontSize(11).text('LA MÉTHODE DJEN', 50, 32, { characterSpacing: 3 });
-  doc.font('Helvetica').fontSize(9).fillColor('rgba(255,255,255,0.7)')
-     .text('Mini-programme — Semaine 1', 50, 50);
-  doc.font('Helvetica-Bold').fontSize(22).fillColor('#ffffff')
-     .text(prog.nom, 50, 68);
-
-  // ── ACCROCHE ──
-  doc.moveDown(4);
-  doc.fillColor(`rgb(${r},${g},${b})`).font('Helvetica-Oblique').fontSize(14)
-     .text(`"${prog.accroche}"`, { align: 'center' });
-  doc.moveDown(0.5);
-  doc.moveTo(50, doc.y).lineTo(doc.page.width - 50, doc.y).strokeColor(`rgb(${r},${g},${b})`).lineWidth(0.5).stroke();
-
-  // ── CLÉ ──
-  doc.moveDown(1);
-  doc.fillColor('#333').font('Helvetica-Bold').fontSize(10).text('TA CLÉ CETTE SEMAINE', { characterSpacing: 2 });
-  doc.moveDown(0.3);
-  doc.fillColor('#555').font('Helvetica').fontSize(11).text(prog.cle, { lineGap: 4 });
-
-  // ── NUTRITION ──
-  doc.moveDown(1.2);
-  doc.rect(50, doc.y, doc.page.width - 100, 22).fill(`rgb(${r},${g},${b})`);
-  doc.fillColor('#ffffff').font('Helvetica-Bold').fontSize(10)
-     .text('NUTRITION — CE QUE TU MANGES', 58, doc.y - 17, { characterSpacing: 1.5 });
-  doc.moveDown(0.8);
-  prog.nutrition.forEach((item, i) => {
-    doc.fillColor(`rgb(${r},${g},${b})`).font('Helvetica-Bold').fontSize(11).text(`${i + 1}.  `, { continued: true });
-    doc.fillColor('#333').font('Helvetica').fontSize(11).text(item, { lineGap: 3 });
-    doc.moveDown(0.3);
-  });
-
-  // ── MINDSET ──
-  doc.moveDown(0.8);
-  doc.rect(50, doc.y, doc.page.width - 100, 22).fill(`rgb(${r},${g},${b})`);
-  doc.fillColor('#ffffff').font('Helvetica-Bold').fontSize(10)
-     .text('MINDSET — CE QUE TU TRAVAILLES', 58, doc.y - 17, { characterSpacing: 1.5 });
-  doc.moveDown(0.8);
-  prog.mindset.forEach((item, i) => {
-    doc.fillColor(`rgb(${r},${g},${b})`).font('Helvetica-Bold').fontSize(11).text(`${i + 1}.  `, { continued: true });
-    doc.fillColor('#333').font('Helvetica').fontSize(11).text(item, { lineGap: 3 });
-    doc.moveDown(0.3);
-  });
-
-  // ── OBJECTIF SEMAINE ──
-  doc.moveDown(1);
-  doc.rect(50, doc.y, doc.page.width - 100, 1).fill(`rgb(${r},${g},${b})`);
-  doc.moveDown(0.5);
-  doc.fillColor(`rgb(${r},${g},${b})`).font('Helvetica-Bold').fontSize(10).text('OBJECTIF SEMAINE 1', { characterSpacing: 2 });
-  doc.moveDown(0.3);
-  doc.fillColor('#333').font('Helvetica-Oblique').fontSize(11).text(prog.objectif);
-
-  // ── FOOTER ──
-  const footerY = doc.page.height - 60;
-  doc.rect(0, footerY, doc.page.width, 60).fill(`rgb(${r},${g},${b})`);
-  doc.fillColor('#ffffff').font('Helvetica').fontSize(9)
-     .text('lamethodedjen.com', 50, footerY + 20);
-  doc.fillColor('rgba(255,255,255,0.6)').fontSize(8)
-     .text('Ce programme est un point de départ. Pour aller plus loin : L\'Empreinte Djen ou La Formation Djen.', 50, footerY + 36, { width: doc.page.width - 100 });
-
-  doc.end();
+  const filePath = path.join(__dirname, 'portraits', fichier);
+  res.sendFile(filePath);
 });
 
 // ─── Route /merci ─────────────────────────────────────────────────────────────

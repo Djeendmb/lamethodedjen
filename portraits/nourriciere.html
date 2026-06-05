@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portrait Djen — La Bâtisseuse Ancrée</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F5EFE6;
+    --terracotta: #C4714A;
+    --terra-pale: rgba(196,113,74,0.15);
+    --deep-brown: #2C1A0E;
+    --bronze: #A07850;
+    --blush: #E8C5B0;
+    --dark-earth: #1A0F07;
+    --darker: #0D0702;
+    --accent-gold: #D4A96A;
+    --card-bg: #140C04;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background: var(--dark-earth);
+    color: var(--cream);
+    font-family: 'Outfit', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(160deg, #1A0F07 0%, #2C1508 50%, #1A0F07 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 80px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -10%; left: 50%;
+    transform: translateX(-50%);
+    width: 700px; height: 700px;
+    background: radial-gradient(ellipse, rgba(196,113,74,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 200px;
+    background: linear-gradient(to bottom, transparent, var(--dark-earth));
+    pointer-events: none;
+  }
+  .module-badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    border: 1px solid rgba(196,113,74,0.4);
+    padding: 8px 20px;
+    margin-bottom: 40px;
+  }
+  .hero-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(100px, 20vw, 200px);
+    font-weight: 300;
+    color: rgba(196,113,74,0.06);
+    line-height: 1;
+    position: absolute;
+    right: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    user-select: none;
+  }
+  .hero-eyebrow {
+    font-size: 11px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: rgba(245,239,230,0.35);
+    margin-bottom: 20px;
+  }
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(48px, 10vw, 96px);
+    font-weight: 300;
+    line-height: 1.0;
+    color: var(--cream);
+    max-width: 820px;
+    position: relative;
+  }
+  .hero-title em { font-style: italic; color: var(--terracotta); }
+  .hero-tagline {
+    margin-top: 28px;
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--blush);
+    max-width: 480px;
+    line-height: 1.8;
+    font-style: italic;
+  }
+  .hero-divider {
+    width: 50px; height: 1px;
+    background: var(--terracotta);
+    margin: 44px auto 0;
+  }
+
+  /* ── LAYOUT ── */
+  .container { max-width: 820px; margin: 0 auto; padding: 0 24px; }
+  section { padding: 88px 0; }
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    display: block;
+    margin-bottom: 20px;
+  }
+  .section-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(30px, 5vw, 52px);
+    font-weight: 300;
+    line-height: 1.15;
+    color: var(--cream);
+    margin-bottom: 28px;
+  }
+  .section-heading em { font-style: italic; color: var(--terracotta); }
+  .body-text {
+    font-size: 15px;
+    color: rgba(245,239,230,0.78);
+    line-height: 1.9;
+    margin-bottom: 18px;
+  }
+  .body-text strong { color: var(--cream); font-weight: 500; }
+
+  /* ── PORTRAIT ── */
+  .portrait-section { background: linear-gradient(160deg, #1A0F07, #2C1508); }
+  .portrait-card {
+    background: rgba(196,113,74,0.07);
+    border: 1px solid rgba(196,113,74,0.25);
+    border-left: 3px solid var(--terracotta);
+    padding: 44px 40px;
+    margin-top: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .portrait-card::before {
+    content: '"';
+    position: absolute;
+    right: 20px; top: -20px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 160px;
+    color: rgba(196,113,74,0.05);
+    line-height: 1;
+  }
+
+  /* ── FREIN ── */
+  .frein-section { background: var(--dark-earth); }
+  .frein-card {
+    background: var(--card-bg);
+    border-left: 3px solid var(--terracotta);
+    padding: 36px 36px;
+    margin-top: 36px;
+  }
+  .frein-label {
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 14px;
+    display: block;
+  }
+  .frein-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--cream);
+    line-height: 1.5;
+  }
+
+  /* ── ERREURS ── */
+  .erreurs-section { background: linear-gradient(180deg, var(--dark-earth), #0D0702); }
+  .erreurs-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    margin-top: 44px;
+  }
+  .erreur-item {
+    background: var(--card-bg);
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    align-items: center;
+    gap: 0;
+    border-left: 3px solid transparent;
+    transition: border-color 0.3s;
+  }
+  .erreur-item:hover { border-left-color: var(--terracotta); }
+  .erreur-num {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 300;
+    color: rgba(196,113,74,0.25);
+    padding: 24px 0;
+    border-right: 1px solid rgba(196,113,74,0.1);
+  }
+  .erreur-text {
+    padding: 20px 24px;
+    font-size: 14px;
+    color: rgba(245,239,230,0.72);
+    line-height: 1.7;
+  }
+  .erreur-text strong { color: var(--cream); font-weight: 500; }
+
+  /* ── CE QUI MARCHE ── */
+  .marche-section { background: #0D0702; }
+  .marche-card {
+    background: rgba(196,113,74,0.08);
+    border: 1px solid rgba(196,113,74,0.2);
+    border-top: 2px solid var(--terracotta);
+    padding: 44px 40px;
+    margin-top: 40px;
+  }
+  .marche-card .body-text { font-style: italic; }
+
+  /* ── OBJECTIF ── */
+  .objectif-section {
+    background: linear-gradient(160deg, #2C1508, #1A0F07);
+    text-align: center;
+    padding: 80px 24px;
+  }
+  .objectif-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(80px, 18vw, 160px);
+    font-weight: 300;
+    color: var(--terracotta);
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+  .objectif-label {
+    font-size: 12px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: rgba(245,239,230,0.4);
+    margin-bottom: 32px;
+  }
+  .objectif-desc {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(20px, 3vw, 28px);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--blush);
+    max-width: 560px;
+    margin: 0 auto;
+    line-height: 1.5;
+  }
+
+  /* ── PROGRAMME ── */
+  .programme-section { background: var(--dark-earth); }
+  .repas-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3px;
+    margin-top: 44px;
+  }
+  .repas-card {
+    background: var(--card-bg);
+    padding: 28px 24px;
+    border-top: 2px solid rgba(196,113,74,0.3);
+    transition: border-top-color 0.3s;
+  }
+  .repas-card:hover { border-top-color: var(--terracotta); }
+  .repas-card:first-child {
+    border-top-color: var(--terracotta);
+  }
+  .repas-num {
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 6px;
+    display: block;
+  }
+  .repas-titre {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--cream);
+    margin-bottom: 4px;
+  }
+  .repas-heure {
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(245,239,230,0.35);
+    margin-bottom: 14px;
+  }
+  .repas-body {
+    font-size: 13.5px;
+    color: rgba(245,239,230,0.68);
+    line-height: 1.75;
+  }
+  .repas-body strong { color: var(--cream); font-weight: 500; }
+
+  /* ── PLANNING ── */
+  .planning-section { background: #0D0702; }
+  .planning-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 44px;
+  }
+  .planning-table thead tr {
+    background: rgba(196,113,74,0.1);
+    border-bottom: 1px solid rgba(196,113,74,0.3);
+  }
+  .planning-table thead th {
+    padding: 14px 16px;
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    text-align: left;
+    font-weight: 500;
+  }
+  .planning-table tbody tr {
+    border-bottom: 1px solid rgba(196,113,74,0.08);
+    transition: background 0.2s;
+  }
+  .planning-table tbody tr:hover { background: rgba(196,113,74,0.04); }
+  .planning-table tbody td {
+    padding: 14px 16px;
+    font-size: 13.5px;
+    color: rgba(245,239,230,0.65);
+  }
+  .planning-table tbody td:first-child {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--cream);
+  }
+  .tag-sport {
+    display: inline-block;
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    background: rgba(196,113,74,0.15);
+    color: var(--terracotta);
+    border: 1px solid rgba(196,113,74,0.3);
+  }
+  .tag-repos {
+    display: inline-block;
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    background: rgba(245,239,230,0.04);
+    color: rgba(245,239,230,0.35);
+    border: 1px solid rgba(245,239,230,0.1);
+  }
+
+  /* ── AFFIRMATION ── */
+  .affirmation-section {
+    background: linear-gradient(160deg, #2C1508, #1A0F07);
+    text-align: center;
+    padding: 96px 24px;
+  }
+  .affirmation-label {
+    font-size: 11px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    display: block;
+    margin-bottom: 36px;
+  }
+  .affirmation-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(22px, 4vw, 42px);
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--cream);
+    max-width: 640px;
+    margin: 0 auto;
+  }
+  .affirmation-text em { font-style: normal; color: var(--terracotta); font-weight: 400; }
+
+  /* ── CTA EMPREINTE ── */
+  .cta-section { background: var(--dark-earth); padding: 80px 0; }
+  .cta-card {
+    background: var(--card-bg);
+    border-left: 3px solid var(--terracotta);
+    border-top: 1px solid rgba(196,113,74,0.2);
+    padding: 48px 44px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-card::after {
+    content: 'DJEN';
+    position: absolute;
+    right: -10px; bottom: -20px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 120px;
+    font-weight: 300;
+    color: rgba(196,113,74,0.04);
+    line-height: 1;
+    letter-spacing: -5px;
+  }
+  .cta-tag {
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 16px;
+    display: block;
+  }
+  .cta-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(26px, 4vw, 40px);
+    font-weight: 300;
+    color: var(--cream);
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+  .cta-title em { font-style: italic; color: var(--terracotta); }
+  .cta-body {
+    font-size: 14px;
+    color: rgba(245,239,230,0.6);
+    line-height: 1.8;
+    margin-bottom: 28px;
+    max-width: 560px;
+  }
+  .cta-prix {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 10px;
+  }
+  .prix-main {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 52px;
+    font-weight: 300;
+    color: var(--terracotta);
+    line-height: 1;
+  }
+  .prix-barre {
+    font-size: 20px;
+    color: rgba(245,239,230,0.2);
+    text-decoration: line-through;
+  }
+  .prix-detail {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(245,239,230,0.3);
+  }
+  .cta-url {
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    font-weight: 500;
+  }
+
+  /* ── FORMATION BIENTOT ── */
+  .formation-section { background: #0D0702; padding: 64px 0; }
+  .formation-card {
+    background: rgba(196,113,74,0.05);
+    border: 1px solid rgba(196,113,74,0.15);
+    border-top: 2px solid var(--terracotta);
+    padding: 44px 40px;
+    text-align: center;
+  }
+  .formation-badge {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    border: 1px solid rgba(196,113,74,0.3);
+    padding: 6px 16px;
+    margin-bottom: 24px;
+  }
+  .formation-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 5vw, 52px);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--cream);
+    margin-bottom: 16px;
+  }
+  .formation-title em { font-style: italic; color: var(--terracotta); }
+  .formation-body {
+    font-size: 14px;
+    color: rgba(245,239,230,0.55);
+    line-height: 1.8;
+    max-width: 520px;
+    margin: 0 auto 24px;
+  }
+  .formation-cta {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    font-weight: 500;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--darker);
+    padding: 48px 24px;
+    text-align: center;
+    border-top: 1px solid rgba(196,113,74,0.1);
+  }
+  .footer-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 300;
+    letter-spacing: 3px;
+    color: var(--bronze);
+    text-transform: uppercase;
+  }
+  .footer-sub {
+    margin-top: 8px;
+    font-size: 10px;
+    color: rgba(245,239,230,0.25);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 640px) {
+    .repas-grid { grid-template-columns: 1fr; }
+    .portrait-card, .marche-card, .frein-card { padding: 28px 20px; }
+    .cta-card { padding: 32px 24px; }
+    .hero-num { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-num">05</div>
+  <span class="module-badge">La Méthode Djen · Ton Portrait</span>
+  <p class="hero-eyebrow">Archétype 05 · Portrait personnel</p>
+  <h1 class="hero-title">La <em>Nourricière</em><br>Oubliée</h1>
+  <p class="hero-tagline">Tu donnes tout. Il te reste quoi pour toi ?</p>
+  <div class="hero-divider"></div>
+</section>
+
+<!-- PORTRAIT -->
+<section class="portrait-section">
+  <div class="container">
+    <span class="section-label">Qui tu es</span>
+    <h2 class="section-heading">Ce que tes réponses<br><em>révèlent de toi</em></h2>
+    <div class="portrait-card">
+      <p class="body-text">Tu prends soin des autres avec une précision et une générosité que peu de gens ont. Tes enfants, ton partenaire, tes amis, tes collègues — tu sais exactement ce dont ils ont besoin et tu le donnes. Mais quand il s'agit de toi ? Tu oublies. Ou tu culpabilises.</p>
+      <p class="body-text">Tu manges souvent les restes, debout, rapidement. Tu ne prends pas le temps de préparer tes repas comme tu prépares ceux des autres. <strong>Ton entraînement est le premier truc qui saute quand quelqu'un a besoin de toi.</strong> Et quelqu'un a toujours besoin de toi.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FREIN -->
+<section class="frein-section">
+  <div class="container">
+    <span class="section-label">Ton vrai frein</span>
+    <h2 class="section-heading">Ce qui te <em>bloque</em><br>vraiment</h2>
+    <div class="frein-card">
+      <span class="frein-label">Diagnostic</span>
+      <p class="frein-text">Tes besoins t'ont été appris comme secondaires. Prendre du temps pour toi déclenche une culpabilité automatique — pas parce que tu es égoïste, mais parce qu'on t'a appris que l'amour passe par l'effacement de soi.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ERREURS -->
+<section class="erreurs-section">
+  <div class="container">
+    <span class="section-label">Les 3 erreurs que tu fais probablement</span>
+    <h2 class="section-heading">Ce que tu <em>répètes</em><br>sans t'en rendre compte</h2>
+    <div class="erreurs-grid">
+      <div class="erreur-item">
+        <div class="erreur-num">05</div>
+        <div class="erreur-text">Planifier ses séances sans les considérer comme des rendez-vous non-négociables</div>
+      </div>
+      <div class="erreur-item">
+        <div class="erreur-num">02</div>
+        <div class="erreur-text">Manger les restes ou sauter des repas quand la journée est chargée</div>
+      </div>
+      <div class="erreur-item">
+        <div class="erreur-num">03</div>
+        <div class="erreur-text">Arrêter son programme dès que quelqu'un dans son entourage a besoin d'elle</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CE QUI MARCHE -->
+<section class="marche-section">
+  <div class="container">
+    <span class="section-label">Ce qui marche pour toi</span>
+    <h2 class="section-heading">Ta vraie <em>approche</em></h2>
+    <div class="marche-card">
+      <p class="body-text">Traiter ton entraînement et tes repas comme des obligations professionnelles. <strong>Bloquer le temps avant de le proposer aux autres.</strong> Et comprendre que prendre soin de toi n'enlève rien à ceux que tu aimes — ça leur donne plus.</p>
+    </div>
+  </div>
+</section>
+
+<!-- OBJECTIF -->
+<section class="objectif-section">
+  <div class="objectif-num">+2kg</div>
+  <div class="objectif-label">Objectif semaine 1</div>
+  <p class="objectif-desc">En mangeant 4 fois par jour avec les bons aliments aux bons moments, ton corps commence à stocker. Pas de chance — juste de la méthode appliquée.</p>
+</section>
+
+<!-- PROGRAMME -->
+<section class="programme-section">
+  <div class="container">
+    <span class="section-label">Programme semaine 1</span>
+    <h2 class="section-heading">Tes 4 repas,<br><em>chaque jour</em></h2>
+    <p class="body-text">Pour toi Nourricière, cette semaine tes 4 repas et tes 3 séances sont des rendez-vous avec toi-même. Ils ne se déplacent pas. Ils ne se sautent pas. Tu passes en premier.</p>
+    <div class="repas-grid">
+      <div class="repas-card">
+        <span class="repas-num">Repas 01 — Obligatoire</span>
+        <div class="repas-titre">La Potion Magique</div>
+        <div class="repas-heure">Avant 9h00</div>
+        <p class="repas-body">Smoothie lait + beurre de cacahuète + banane. <strong>Commence toujours par un solide calorique avec</strong> — pain, flocons d'avoine, œufs, fromage... ce que tu veux. Solide avant liquide, toujours.</p>
+      </div>
+      <div class="repas-card">
+        <span class="repas-num">Repas 02</span>
+        <div class="repas-titre">Déjeuner</div>
+        <div class="repas-heure">Vers 13h</div>
+        <p class="repas-body"><strong>Féculents en base</strong> — riz, pâtes, pommes de terre, pain. Protéines autour. Légumes pour le transit. Solide avant tout liquide.</p>
+      </div>
+      <div class="repas-card">
+        <span class="repas-num">Repas 03 — 500 cal min</span>
+        <div class="repas-titre">Goûter</div>
+        <div class="repas-heure">Vers 16h–17h</div>
+        <p class="repas-body">Pain + beurre de cacahuète, smoothie, riz au lait... <strong>500 calories minimum, non négociable.</strong> Ce repas est aussi important que les autres.</p>
+      </div>
+      <div class="repas-card">
+        <span class="repas-num">Repas 04</span>
+        <div class="repas-titre">Dîner</div>
+        <div class="repas-heure">Avant 21h</div>
+        <p class="repas-body"><strong>Féculents encore.</strong> Même logique que le midi. Termine par un produit laitier — yaourt, fromage blanc, lait chaud. Ton corps se nourrit toute la nuit.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLANNING -->
+<section class="planning-section">
+  <div class="container">
+    <span class="section-label">Ton planning 7 jours</span>
+    <h2 class="section-heading">La semaine <em>en détail</em></h2>
+    <table class="planning-table">
+      <thead>
+        <tr>
+          <th>Jour</th>
+          <th>Nutrition</th>
+          <th>Mouvement</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Lundi</td><td>4 repas · Potion avant 9h</td><td><span class="tag-sport">Séance jambes</span></td></tr>
+        <tr><td>Mardi</td><td>4 repas · Potion avant 9h</td><td><span class="tag-repos">Repos actif</span></td></tr>
+        <tr><td>Mercredi</td><td>4 repas · Potion avant 9h</td><td><span class="tag-sport">Séance jambes</span></td></tr>
+        <tr><td>Jeudi</td><td>4 repas · Potion avant 9h</td><td><span class="tag-repos">Repos actif</span></td></tr>
+        <tr><td>Vendredi</td><td>4 repas · Potion avant 9h</td><td><span class="tag-sport">Séance jambes</span></td></tr>
+        <tr><td>Samedi</td><td>4 repas · Potion avant 9h</td><td><span class="tag-repos">Repos total</span></td></tr>
+        <tr><td>Dimanche</td><td>4 repas · Potion avant 9h</td><td><span class="tag-repos">Repos total</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- AFFIRMATION -->
+<section class="affirmation-section">
+  <span class="affirmation-label">Ton ancrage cette semaine</span>
+  <p class="affirmation-text">
+    "Je me nourris en premier.<br>Ce n'est pas de l'égoïsme — <em>c'est la source.</em><br>Je donne mieux quand je suis pleine."
+  </p>
+</section>
+
+<!-- CTA EMPREINTE -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-card">
+      <span class="cta-tag">Disponible maintenant</span>
+      <h2 class="cta-title">L'Empreinte Djen —<br><em>ton programme complet</em></h2>
+      <p class="cta-body">Ton archétype décrypté. Tes blocages nommés. Un plan nutrition et entraînement sur 4 semaines bâti sur qui tu es — pas sur un template. Livré en 48h directement dans ta boîte mail.</p>
+      <div class="cta-prix">
+        <span class="prix-main">77€</span>
+        <span class="prix-barre">107€</span>
+        <span class="prix-detail">Prix de lancement · Paiement unique</span>
+      </div>
+      <p class="cta-url">→ lamethodedjen.com</p>
+    </div>
+  </div>
+</section>
+
+<!-- FORMATION BIENTÔT -->
+<section class="formation-section">
+  <div class="container">
+    <div class="formation-card">
+      <span class="formation-badge">🔥 Bientôt — Places limitées</span>
+      <h2 class="formation-title">La Formation Djen —<br><em>prendre plus de 5 kg</em></h2>
+      <p class="formation-body">Le programme collectif complet — 4 semaines intensives avec Djen. Nutrition avancée, protocole entraînement, plantes, mindset. Tu seras prévenue en première si tu laisses ton email.</p>
+      <p class="formation-cta">→ lamethodedjen.com pour être notifiée</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">La Méthode Djen</div>
+  <p class="footer-sub">Portrait confidentiel · Archétype 05 · lamethodedjen.com</p>
+</footer>
+
+</body>
+</html>
