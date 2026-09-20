@@ -930,6 +930,101 @@
       color: #3A7050;
     }
 
+    .offre-tier-badge.t4 {
+      background: rgba(184,146,74,0.1);
+      color: var(--gold);
+    }
+
+    .offre-card.ascension {
+      background: var(--dark);
+      border-color: rgba(184,146,74,0.25);
+    }
+
+    .offre-card.ascension .offre-name {
+      color: #fff;
+    }
+
+    .offre-card.ascension .offre-subtitle {
+      color: rgba(255,255,255,0.45);
+    }
+
+    .offre-card.ascension .offre-cible {
+      color: rgba(255,255,255,0.5);
+      border-color: rgba(255,255,255,0.06);
+    }
+
+    .offre-card.ascension .offre-desc {
+      color: rgba(255,255,255,0.7);
+    }
+
+    .offre-card.ascension .offre-features li {
+      color: rgba(255,255,255,0.65);
+    }
+
+    .offre-card.ascension .offre-features li::before {
+      color: var(--gold);
+    }
+
+    .offre-card.ascension .offre-price {
+      color: var(--gold);
+    }
+
+    .offre-card.ascension .offre-price-note {
+      color: rgba(255,255,255,0.3);
+    }
+
+    .btn-offre-gold {
+      display: block;
+      width: 100%;
+      background: var(--gold);
+      color: #fff;
+      padding: 15px 28px;
+      border: none;
+      border-radius: 0;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 24px;
+      text-align: center;
+    }
+
+    .btn-offre-gold:hover { background: #9A7835; }
+
+    .ascension-appel {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 18px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .ascension-appel:first-child { padding-top: 0; }
+    .ascension-appel:last-child { border-bottom: none; padding-bottom: 0; }
+
+    .ascension-appel-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.15);
+      min-width: 32px;
+      line-height: 1;
+    }
+
+    .ascension-appel-text {
+      font-size: 0.88rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.5;
+    }
+
+    .ascension-appel-text strong {
+      color: rgba(255,255,255,0.85);
+      font-weight: 400;
+    }
+
     .offre-name {
       font-family: 'Cormorant Garamond', serif;
       font-size: 1.6rem;
@@ -1706,7 +1801,7 @@
 
       <div class="offres-header">
         <p class="eyebrow">Ce que je te propose</p>
-        <h2>Trois étapes. L'une est la tienne.</h2>
+        <h2>Quatre étapes. L'une est la tienne.</h2>
         <p>Le Réveil indique où tu en es. Chaque offre est construite pour l'étape exacte à laquelle tu te trouves — pas pour une version idéale de toi qui n'existe pas encore.</p>
       </div>
 
@@ -1761,10 +1856,45 @@
           </div>
         </div>
 
-        <!-- ÉTAGE 3 : Programme Phare -->
+        <!-- ÉTAGE 3 : L'Ascension Djen -->
+        <div class="offre-card ascension">
+          <div class="offre-card-left">
+            <span class="offre-tier-badge t4">Étape 3 — Transformation profonde</span>
+            <div class="offre-name">L'Ascension Djen</div>
+            <div class="offre-subtitle">6 semaines · 1 appel individuel par semaine avec Djen</div>
+            <div class="offre-price">297€</div>
+            <div class="offre-price-note">Prix de lancement · 6 appels visio · 100% sur-mesure</div>
+          </div>
+          <div class="offre-card-right">
+            <div class="offre-cible" style="border-bottom:1px solid rgba(255,255,255,0.06);padding-bottom:20px;margin-bottom:20px;">Ce n'est plus juste ton corps qui va changer. C'est ta vie.</div>
+
+            <div class="ascension-appel">
+              <div class="ascension-appel-num">01</div>
+              <div class="ascension-appel-text"><strong>Le mental qui évolue.</strong> Confiance en soi, blocages intérieurs débloqués, nouvelle façon de te voir. Pas une affirmation — une restructuration réelle de ce que tu crois possible pour toi.</div>
+            </div>
+            <div class="ascension-appel">
+              <div class="ascension-appel-num">02</div>
+              <div class="ascension-appel-text"><strong>Une situation de vie qui bascule.</strong> Quand le blocage intérieur lâche, l'espace s'ouvre. Les opportunités que tu ne saisissais pas — dans ta carrière, tes projets, tes relations — commencent à rentrer dans le champ du possible.</div>
+            </div>
+            <div class="ascension-appel">
+              <div class="ascension-appel-num">03</div>
+              <div class="ascension-appel-text"><strong>Le corps suit.</strong> La prise de poids arrive comme la conséquence visible d'un changement qui a commencé bien avant, à l'intérieur. Pas malgré le reste — grâce au reste.</div>
+            </div>
+
+            <ul class="offre-features" style="margin-top:24px;">
+              <li>6 appels visio individuels avec Djen, un par semaine</li>
+              <li>Méthode 100% adaptée à ta situation — aucun protocole standard</li>
+              <li>Suivi continu entre chaque appel</li>
+              <li>Accès au mécanisme Chasseur/Jardinier appliqué à ta vie entière</li>
+            </ul>
+            <button class="btn-offre-gold" onclick="openCheckoutModal('ascension')">Rejoindre L'Ascension Djen — 297€ →</button>
+          </div>
+        </div>
+
+        <!-- ÉTAGE 4 : Programme Phare -->
         <div class="offre-card">
           <div class="offre-card-left">
-            <span class="offre-tier-badge t3">Étape 3 — Jardinier réveillé</span>
+            <span class="offre-tier-badge t3">Étape 4 — Jardinier réveillé</span>
             <div class="offre-name">Le Programme Phare</div>
             <div class="offre-subtitle">Sport + Alimentation · 6 semaines</div>
             <div class="offre-price">57€</div>
@@ -2216,7 +2346,8 @@ function submitWaitlistFromDiag(e) {
 const PRODUCT_LABELS = {
   'guide':              'Le Rituel qui Endort le Chasseur — 12€',
   'formation-challenge':'La Formation Prise de Poids — 20€',
-  'empreinte':          'L\'Empreinte Djen — 107€',
+  'empreinte':          'Le Programme Phare — 57€',
+  'ascension':          'L\'Ascension Djen — 297€',
 };
 
 function openCheckoutModal(product) {

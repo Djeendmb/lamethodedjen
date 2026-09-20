@@ -188,6 +188,7 @@ app.post('/api/checkout', async (req, res) => {
     'formation-challenge': process.env.STRIPE_PRICE_ID_FORMATION,
     'empreinte':           process.env.STRIPE_PRICE_ID,
     'formation-djen':      process.env.STRIPE_PRICE_ID_MINDSET,
+    'ascension':           process.env.STRIPE_PRICE_ID_ASCENSION,
   };
   const priceId = priceMap[product] || process.env.STRIPE_PRICE_ID;
 
