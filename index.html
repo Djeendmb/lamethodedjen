@@ -52,9 +52,9 @@
       top: 0;
       z-index: 100;
       background: rgba(8,6,8,0.97);
-      border-bottom: 1px solid rgba(184,146,74,0.15);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
       padding: 0 56px;
-      height: 72px;
+      height: 68px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -63,136 +63,116 @@
 
     .nav-logo {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.3rem;
-      font-weight: 400;
+      font-size: 1.25rem;
+      font-weight: 500;
       font-style: italic;
       color: #fff;
       text-decoration: none;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.04em;
     }
 
-    .nav-logo span { color: var(--gold-light); }
+    .nav-logo span { color: var(--rose-light); }
 
     .nav-cta {
-      background: transparent;
-      color: rgba(255,255,255,0.55);
-      border: 1px solid rgba(184,146,74,0.3);
-      padding: 9px 24px;
+      background: var(--rose);
+      color: #fff;
+      border: none;
+      padding: 10px 24px;
       border-radius: 0;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .nav-cta:hover { background: var(--rose-dark); }
+
+    /* ─── HERO ────────────────────────────────────────────────── */
+    .hero {
+      background: var(--dark);
+      padding: 140px 56px 120px;
+    }
+
+    .hero-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      display: block;
       font-family: 'DM Sans', sans-serif;
       font-size: 0.7rem;
       font-weight: 400;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      cursor: pointer;
-      transition: background 0.25s, color 0.25s, border-color 0.25s;
-    }
-
-    .nav-cta:hover {
-      background: var(--gold);
-      border-color: var(--gold);
-      color: #fff;
-    }
-
-    /* ─── HERO ────────────────────────────────────────────────── */
-    .hero {
-      background: var(--dark);
-      background-image: radial-gradient(ellipse 120% 60% at 50% 0%, rgba(184,146,74,0.06) 0%, transparent 70%);
-      padding: 148px 40px 124px;
-      text-align: center;
-    }
-
-    .hero-inner {
-      max-width: 820px;
-      margin: 0 auto;
-    }
-
-    .eyebrow {
-      display: inline-block;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.68rem;
-      font-weight: 400;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--gold-light);
-      margin-bottom: 32px;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 28px;
     }
 
     .hero h1 {
-      font-size: clamp(2.6rem, 6vw, 4.6rem);
+      font-size: clamp(3rem, 6.5vw, 5.2rem);
       font-weight: 300;
       color: #fff;
-      margin-bottom: 32px;
-      line-height: 1.12;
-      letter-spacing: -0.01em;
+      margin-bottom: 0;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      max-width: 820px;
     }
 
     .hero h1 em {
       font-style: italic;
       font-weight: 300;
-      color: var(--gold-light);
+      color: rgba(255,255,255,0.75);
     }
 
-    .hero-divider {
-      width: 40px;
-      height: 1px;
-      background: var(--gold);
-      margin: 0 auto 32px;
-      opacity: 0.5;
-    }
+    .hero-divider { display: none; }
 
     .hero-sub {
-      font-size: 1.05rem;
+      font-size: 1rem;
       font-weight: 300;
-      color: rgba(255,255,255,0.45);
-      max-width: 500px;
-      margin: 0 auto 56px;
-      line-height: 1.9;
+      color: rgba(255,255,255,0.4);
+      max-width: 520px;
+      margin: 36px 0 52px;
+      line-height: 1.85;
     }
 
     .btn-primary {
       display: inline-block;
-      background: transparent;
+      background: var(--rose);
       color: #fff;
-      padding: 16px 48px;
+      padding: 15px 40px;
       border-radius: 0;
       font-family: 'DM Sans', sans-serif;
-      font-size: 0.72rem;
+      font-size: 0.75rem;
       font-weight: 400;
-      letter-spacing: 0.16em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
       text-decoration: none;
-      border: 1px solid rgba(184,146,74,0.5);
+      border: none;
       cursor: pointer;
-      transition: background 0.25s, border-color 0.25s, color 0.25s;
+      transition: background 0.2s;
     }
 
-    .btn-primary:hover {
-      background: var(--gold);
-      border-color: var(--gold);
-      color: #fff;
-    }
+    .btn-primary:hover { background: var(--rose-dark); }
 
     .hero-note {
-      margin-top: 20px;
-      font-size: 0.72rem;
+      margin-top: 18px;
+      font-size: 0.75rem;
       color: rgba(255,255,255,0.2);
-      letter-spacing: 0.08em;
     }
 
     .hero-signature {
-      margin-top: 52px;
+      margin-top: 64px;
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.02rem;
+      font-size: 1.05rem;
       font-style: italic;
       font-weight: 300;
-      color: rgba(255,255,255,0.28);
-      max-width: 500px;
-      margin-left: auto;
-      margin-right: auto;
+      color: rgba(255,255,255,0.25);
+      max-width: 540px;
       line-height: 1.7;
-      padding-top: 40px;
-      border-top: 1px solid rgba(255,255,255,0.05);
     }
 
     /* ─── STATS ───────────────────────────────────────────────── */
@@ -216,18 +196,16 @@
 
     .stat-number {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 3.2rem;
+      font-size: 3rem;
       font-weight: 300;
-      color: var(--gold);
+      color: var(--rose);
       line-height: 1;
       margin-bottom: 10px;
     }
 
     .stat-label {
-      font-size: 0.72rem;
+      font-size: 0.75rem;
       font-weight: 400;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
       color: var(--text-light);
     }
 
@@ -256,7 +234,7 @@
 
     .section h2 em {
       font-style: italic;
-      color: var(--gold);
+      color: var(--rose);
     }
 
     /* ─── MÉCANISME ───────────────────────────────────────────── */
@@ -320,8 +298,8 @@
       margin-bottom: 10px;
     }
 
-    .state-card.chasseur .state-label { color: var(--gold-light); }
-    .state-card.jardinier .state-label { color: var(--gold); }
+    .state-card.chasseur .state-label { color: var(--rose-light); }
+    .state-card.jardinier .state-label { color: var(--rose); }
 
     .state-title {
       font-family: 'Cormorant Garamond', serif;
@@ -371,7 +349,7 @@
     .state-signals li::before {
       content: '—';
       flex-shrink: 0;
-      color: var(--gold);
+      color: var(--rose);
     }
 
     /* ─── HISTOIRE ────────────────────────────────────────────── */
@@ -388,11 +366,11 @@
 
     .histoire-eyebrow {
       display: inline-block;
-      font-size: 0.68rem;
+      font-size: 0.7rem;
       font-weight: 400;
-      letter-spacing: 0.22em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--gold-light);
+      color: rgba(255,255,255,0.3);
       margin-bottom: 36px;
     }
 
@@ -413,10 +391,10 @@
       font-size: 1.4rem;
       font-weight: 400;
       font-style: italic;
-      color: var(--gold-light);
+      color: var(--rose-light);
       margin-top: 40px;
       padding-top: 32px;
-      border-top: 1px solid rgba(184,146,74,0.15);
+      border-top: 1px solid rgba(255,255,255,0.06);
     }
 
     /* ─── MÉTHODE (3 pilliers) ────────────────────────────────── */
@@ -559,10 +537,10 @@
     }
 
     .diag-eyebrow {
-      color: var(--gold-light);
-      font-size: 0.68rem;
+      color: rgba(255,255,255,0.3);
+      font-size: 0.7rem;
       font-weight: 400;
-      letter-spacing: 0.22em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       text-align: center;
       margin-bottom: 14px;
@@ -595,7 +573,7 @@
     }
 
     .progress-bar {
-      background: var(--gold);
+      background: var(--rose);
       height: 100%;
       border-radius: 1px;
       transition: width 0.4s ease;
@@ -603,23 +581,23 @@
 
     .diag-card {
       background: var(--dark2);
-      border: 1px solid rgba(184,146,74,0.15);
+      border: 1px solid rgba(255,255,255,0.06);
       border-radius: 0;
       padding: 44px 40px;
     }
 
     .diag-tag {
       display: inline-block;
-      background: rgba(184,146,74,0.08);
-      color: var(--gold-light);
-      font-size: 0.66rem;
+      background: transparent;
+      color: rgba(255,255,255,0.3);
+      font-size: 0.68rem;
       font-weight: 400;
-      letter-spacing: 0.16em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      padding: 5px 12px;
+      padding: 0;
       border-radius: 0;
       margin-bottom: 22px;
-      border: 1px solid rgba(184,146,74,0.2);
+      border: none;
     }
 
     .diag-question {
@@ -648,13 +626,13 @@
     }
 
     .diag-option:hover {
-      border-color: rgba(184,146,74,0.4);
-      background: rgba(184,146,74,0.04);
+      border-color: rgba(146,34,69,0.4);
+      background: rgba(146,34,69,0.04);
     }
 
     .diag-option.selected {
-      border-color: var(--gold);
-      background: rgba(184,146,74,0.08);
+      border-color: var(--rose);
+      background: rgba(146,34,69,0.08);
     }
 
     .diag-option-text {
@@ -675,22 +653,22 @@
     }
 
     .btn-diag-next {
-      background: var(--gold);
+      background: var(--rose);
       color: #fff;
-      border: 1px solid var(--gold);
+      border: none;
       padding: 13px 30px;
       border-radius: 0;
       font-family: 'DM Sans', sans-serif;
       font-size: 0.72rem;
       font-weight: 400;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
       cursor: pointer;
-      transition: background 0.2s, opacity 0.2s, color 0.2s;
+      transition: background 0.2s, opacity 0.2s;
     }
 
     .btn-diag-next:disabled { opacity: 0.3; cursor: not-allowed; }
-    .btn-diag-next:not(:disabled):hover { background: transparent; color: var(--gold-light); }
+    .btn-diag-next:not(:disabled):hover { background: var(--rose-dark); }
 
     .btn-diag-back {
       background: transparent;
@@ -741,8 +719,8 @@
 
     /* ─── RÉSULTAT DIAGNOSTIC ─────────────────────────────────── */
     .result-header {
-      background: linear-gradient(135deg, var(--dark) 0%, var(--dark3) 100%);
-      border: 1px solid rgba(184,146,74,0.25);
+      background: var(--dark3);
+      border: 1px solid rgba(255,255,255,0.07);
       border-radius: 0;
       padding: 44px 40px 36px;
       text-align: center;
@@ -783,11 +761,11 @@
     }
 
     .result-step-label {
-      font-size: 0.66rem;
+      font-size: 0.68rem;
       font-weight: 400;
-      letter-spacing: 0.18em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--gold-light);
+      color: rgba(255,255,255,0.3);
       margin-bottom: 12px;
     }
 
@@ -831,23 +809,23 @@
     .btn-result-main {
       display: block;
       width: 100%;
-      background: var(--gold);
+      background: var(--rose);
       color: #fff;
-      border: 1px solid var(--gold);
+      border: none;
       padding: 16px;
       border-radius: 0;
       font-family: 'DM Sans', sans-serif;
       font-size: 0.72rem;
       font-weight: 400;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
       cursor: pointer;
-      transition: background 0.25s, color 0.25s;
+      transition: background 0.2s;
       margin-bottom: 12px;
       text-align: center;
     }
 
-    .btn-result-main:hover { background: transparent; color: var(--gold-light); }
+    .btn-result-main:hover { background: var(--rose-dark); }
 
     .btn-result-secondary {
       display: block;
@@ -913,13 +891,9 @@
       transition: border-color 0.25s;
     }
 
-    .offre-card:hover {
-      border-color: rgba(184,146,74,0.4);
-    }
-
     .offre-card.featured {
-      border-color: var(--gold);
-      background: var(--gold-pale);
+      border-color: var(--rose);
+      background: var(--rose-tint);
     }
 
     .offre-card-left {
@@ -942,21 +916,18 @@
     }
 
     .offre-tier-badge.t1 {
-      background: rgba(184,146,74,0.1);
-      color: var(--gold);
-      border: 1px solid rgba(184,146,74,0.2);
+      background: rgba(146,34,69,0.08);
+      color: var(--rose);
     }
 
     .offre-tier-badge.t2 {
       background: rgba(146,110,74,0.08);
       color: #8A6A40;
-      border: 1px solid rgba(146,110,74,0.15);
     }
 
     .offre-tier-badge.t3 {
       background: rgba(50,100,70,0.06);
       color: #3A7050;
-      border: 1px solid rgba(50,100,70,0.15);
     }
 
     .offre-name {
@@ -998,8 +969,8 @@
       color: var(--text-mid);
       margin-bottom: 18px;
       padding: 12px 16px;
-      background: rgba(184,146,74,0.05);
-      border-left: 1px solid var(--gold);
+      background: var(--rose-pale);
+      border-left: 2px solid var(--rose);
       line-height: 1.6;
     }
 
@@ -1029,7 +1000,7 @@
 
     .offre-features li::before {
       content: '—';
-      color: var(--gold);
+      color: var(--rose);
       font-weight: 400;
       flex-shrink: 0;
     }
@@ -1037,22 +1008,22 @@
     .btn-offre {
       display: block;
       width: 100%;
-      background: var(--gold);
+      background: var(--rose);
       color: #fff;
-      border: 1px solid var(--gold);
+      border: none;
       padding: 15px;
       border-radius: 0;
       font-family: 'DM Sans', sans-serif;
       font-size: 0.72rem;
       font-weight: 400;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
       cursor: pointer;
       text-align: center;
-      transition: background 0.25s, color 0.25s;
+      transition: background 0.2s;
     }
 
-    .btn-offre:hover { background: transparent; color: var(--gold); }
+    .btn-offre:hover { background: var(--rose-dark); }
 
     .btn-offre-outline {
       display: block;
@@ -1157,8 +1128,7 @@
     /* ─── CLOSING ─────────────────────────────────────────────── */
     .closing {
       background: var(--dark);
-      background-image: radial-gradient(ellipse 100% 50% at 50% 100%, rgba(184,146,74,0.07) 0%, transparent 70%);
-      padding: 140px 40px;
+      padding: 140px 56px;
       text-align: center;
     }
 
@@ -1176,7 +1146,7 @@
       line-height: 1.25;
     }
 
-    .closing h2 em { font-style: italic; color: var(--gold-light); }
+    .closing h2 em { font-style: italic; color: var(--rose-light); }
 
     .closing p {
       color: rgba(255,255,255,0.32);
@@ -1201,7 +1171,7 @@
       letter-spacing: 0.06em;
     }
 
-    footer span { color: var(--gold-light); }
+    footer span { color: var(--rose-light); }
 
     /* ─── MODAL PAIEMENT ──────────────────────────────────────── */
     .modal-overlay {
