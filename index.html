@@ -3,27 +3,30 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>La méthode Djen — Tu fais tout bien. Et pourtant, rien ne bouge.</title>
-  <meta name="description" content="Un mécanisme bloque ton corps avant même que la nourriture ou le sport aient une chance d'agir. Fais le diagnostic en 2 minutes — gratuit." />
+  <title>La méthode Djen — Deviens enfin la femme que tu sens déjà en toi.</title>
+  <meta name="description" content="La méthode Djen t'aide à oser devenir la femme que tu sens déjà en toi — en débloquant d'abord ce qui, dans ton corps, t'empêche encore d'y arriver. Fais Le Réveil en 2 minutes." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
   <style>
     :root {
-      --rose:       #B83A65;
-      --rose-light: #E095B4;
-      --rose-dark:  #8C2A4C;
-      --rose-pale:  #F7EEF2;
-      --rose-tint:  #FDF5F8;
-      --cream:      #FAF8F6;
-      --dark:       #0C0A0B;
-      --dark2:      #181316;
-      --dark3:      #211A1E;
-      --text:       #1C1714;
-      --text-mid:   #4A3C43;
-      --text-light: #7A6C72;
-      --border:     #EAE2E6;
-      --border-dark: rgba(255,255,255,0.08);
+      --rose:        #922245;
+      --rose-light:  #C8758E;
+      --rose-dark:   #6E1A34;
+      --rose-pale:   #F6EAEE;
+      --rose-tint:   #FBF4F7;
+      --gold:        #B8924A;
+      --gold-light:  #D4B57A;
+      --gold-pale:   #F5EDD8;
+      --cream:       #F8F6F3;
+      --dark:        #080608;
+      --dark2:       #0F0C0E;
+      --dark3:       #160F13;
+      --text:        #1A1416;
+      --text-mid:    #4A3840;
+      --text-light:  #7A6870;
+      --border:      #E8DDE2;
+      --border-dark: rgba(255,255,255,0.07);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -48,139 +51,155 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(12,10,11,0.96);
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-      padding: 0 40px;
-      height: 68px;
+      background: rgba(8,6,8,0.97);
+      border-bottom: 1px solid rgba(184,146,74,0.15);
+      padding: 0 56px;
+      height: 72px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      backdrop-filter: blur(12px);
+      backdrop-filter: blur(16px);
     }
 
     .nav-logo {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.35rem;
-      font-weight: 600;
+      font-size: 1.3rem;
+      font-weight: 400;
+      font-style: italic;
       color: #fff;
       text-decoration: none;
-      letter-spacing: 0.02em;
+      letter-spacing: 0.06em;
     }
 
-    .nav-logo span { color: var(--rose); }
+    .nav-logo span { color: var(--gold-light); }
 
     .nav-cta {
       background: transparent;
-      color: rgba(255,255,255,0.75);
-      border: 1px solid rgba(255,255,255,0.2);
-      padding: 9px 22px;
-      border-radius: 2px;
+      color: rgba(255,255,255,0.55);
+      border: 1px solid rgba(184,146,74,0.3);
+      padding: 9px 24px;
+      border-radius: 0;
       font-family: 'DM Sans', sans-serif;
-      font-size: 0.78rem;
-      font-weight: 500;
-      letter-spacing: 0.08em;
+      font-size: 0.7rem;
+      font-weight: 400;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
       cursor: pointer;
-      transition: background 0.2s, color 0.2s, border-color 0.2s;
+      transition: background 0.25s, color 0.25s, border-color 0.25s;
     }
 
     .nav-cta:hover {
-      background: var(--rose);
-      border-color: var(--rose);
+      background: var(--gold);
+      border-color: var(--gold);
       color: #fff;
     }
 
     /* ─── HERO ────────────────────────────────────────────────── */
     .hero {
       background: var(--dark);
-      padding: 130px 40px 110px;
+      background-image: radial-gradient(ellipse 120% 60% at 50% 0%, rgba(184,146,74,0.06) 0%, transparent 70%);
+      padding: 148px 40px 124px;
       text-align: center;
     }
 
     .hero-inner {
-      max-width: 780px;
+      max-width: 820px;
       margin: 0 auto;
     }
 
     .eyebrow {
       display: inline-block;
       font-family: 'DM Sans', sans-serif;
-      font-size: 0.72rem;
-      font-weight: 500;
-      letter-spacing: 0.18em;
+      font-size: 0.68rem;
+      font-weight: 400;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: var(--rose);
-      margin-bottom: 28px;
+      color: var(--gold-light);
+      margin-bottom: 32px;
     }
 
     .hero h1 {
-      font-size: clamp(2.4rem, 5.5vw, 4rem);
+      font-size: clamp(2.6rem, 6vw, 4.6rem);
       font-weight: 300;
       color: #fff;
-      margin-bottom: 28px;
-      line-height: 1.15;
+      margin-bottom: 32px;
+      line-height: 1.12;
       letter-spacing: -0.01em;
     }
 
     .hero h1 em {
       font-style: italic;
-      color: var(--rose-light);
+      font-weight: 300;
+      color: var(--gold-light);
+    }
+
+    .hero-divider {
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+      margin: 0 auto 32px;
+      opacity: 0.5;
     }
 
     .hero-sub {
       font-size: 1.05rem;
       font-weight: 300;
-      color: rgba(255,255,255,0.5);
-      max-width: 520px;
-      margin: 0 auto 52px;
-      line-height: 1.8;
+      color: rgba(255,255,255,0.45);
+      max-width: 500px;
+      margin: 0 auto 56px;
+      line-height: 1.9;
     }
 
     .btn-primary {
       display: inline-block;
-      background: var(--rose);
+      background: transparent;
       color: #fff;
-      padding: 16px 44px;
-      border-radius: 2px;
+      padding: 16px 48px;
+      border-radius: 0;
       font-family: 'DM Sans', sans-serif;
-      font-size: 0.82rem;
-      font-weight: 500;
-      letter-spacing: 0.1em;
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
       text-decoration: none;
-      border: none;
+      border: 1px solid rgba(184,146,74,0.5);
       cursor: pointer;
-      transition: background 0.2s, transform 0.15s;
+      transition: background 0.25s, border-color 0.25s, color 0.25s;
     }
 
-    .btn-primary:hover { background: var(--rose-dark); transform: translateY(-1px); }
+    .btn-primary:hover {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: #fff;
+    }
 
     .hero-note {
-      margin-top: 18px;
-      font-size: 0.78rem;
-      color: rgba(255,255,255,0.25);
-      letter-spacing: 0.06em;
+      margin-top: 20px;
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.2);
+      letter-spacing: 0.08em;
     }
 
     .hero-signature {
-      margin-top: 40px;
+      margin-top: 52px;
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1rem;
+      font-size: 1.02rem;
       font-style: italic;
       font-weight: 300;
-      color: rgba(255,255,255,0.35);
-      max-width: 480px;
+      color: rgba(255,255,255,0.28);
+      max-width: 500px;
       margin-left: auto;
       margin-right: auto;
-      margin-top: 40px;
-      line-height: 1.6;
+      line-height: 1.7;
+      padding-top: 40px;
+      border-top: 1px solid rgba(255,255,255,0.05);
     }
 
     /* ─── STATS ───────────────────────────────────────────────── */
     .stats {
       border-bottom: 1px solid var(--border);
-      padding: 52px 40px;
-      background: #fff;
+      padding: 56px 40px;
+      background: var(--cream);
     }
 
     .stats-grid {
@@ -192,43 +211,44 @@
       text-align: center;
     }
 
-    .stats-grid > div { padding: 0 24px; }
+    .stats-grid > div { padding: 0 32px; }
     .stats-grid > div + div { border-left: 1px solid var(--border); }
 
     .stat-number {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 2.8rem;
+      font-size: 3.2rem;
       font-weight: 300;
-      color: var(--rose);
+      color: var(--gold);
       line-height: 1;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
 
     .stat-label {
-      font-size: 0.78rem;
+      font-size: 0.72rem;
       font-weight: 400;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
       color: var(--text-light);
     }
 
     /* ─── SECTIONS GÉNÉRIQUES ─────────────────────────────────── */
     .section {
-      padding: 96px 40px;
-      max-width: 960px;
+      padding: 108px 40px;
+      max-width: 980px;
       margin: 0 auto;
     }
 
     .section-full {
-      padding: 96px 40px;
+      padding: 108px 40px;
     }
 
     .section-full-inner {
-      max-width: 960px;
+      max-width: 980px;
       margin: 0 auto;
     }
 
     .section h2 {
-      font-size: clamp(2rem, 4vw, 3rem);
+      font-size: clamp(2rem, 4vw, 3.2rem);
       font-weight: 300;
       margin-bottom: 20px;
       letter-spacing: -0.01em;
@@ -236,7 +256,7 @@
 
     .section h2 em {
       font-style: italic;
-      color: var(--rose);
+      color: var(--gold);
     }
 
     /* ─── MÉCANISME ───────────────────────────────────────────── */
@@ -272,13 +292,13 @@
     }
 
     .state-card {
-      padding: 40px 36px;
-      border-radius: 4px;
+      padding: 44px 40px;
+      border-radius: 0;
     }
 
     .state-card.chasseur {
       background: var(--dark);
-      border: 1px solid rgba(184,58,101,0.15);
+      border: 1px solid rgba(184,146,74,0.15);
     }
 
     .state-card.jardinier {
@@ -300,8 +320,8 @@
       margin-bottom: 10px;
     }
 
-    .state-card.chasseur .state-label { color: var(--rose-light); }
-    .state-card.jardinier .state-label { color: var(--rose); }
+    .state-card.chasseur .state-label { color: var(--gold-light); }
+    .state-card.jardinier .state-label { color: var(--gold); }
 
     .state-title {
       font-family: 'Cormorant Garamond', serif;
@@ -351,7 +371,7 @@
     .state-signals li::before {
       content: '—';
       flex-shrink: 0;
-      color: var(--rose);
+      color: var(--gold);
     }
 
     /* ─── HISTOIRE ────────────────────────────────────────────── */
@@ -369,10 +389,10 @@
     .histoire-eyebrow {
       display: inline-block;
       font-size: 0.68rem;
-      font-weight: 500;
-      letter-spacing: 0.18em;
+      font-weight: 400;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: var(--rose);
+      color: var(--gold-light);
       margin-bottom: 36px;
     }
 
@@ -393,10 +413,10 @@
       font-size: 1.4rem;
       font-weight: 400;
       font-style: italic;
-      color: var(--rose-light);
+      color: var(--gold-light);
       margin-top: 40px;
       padding-top: 32px;
-      border-top: 1px solid rgba(255,255,255,0.06);
+      border-top: 1px solid rgba(184,146,74,0.15);
     }
 
     /* ─── MÉTHODE (3 pilliers) ────────────────────────────────── */
@@ -496,17 +516,17 @@
     }
 
     .temoignage {
-      padding: 36px;
+      padding: 40px;
       background: #fff;
       border: 1px solid var(--border);
-      border-radius: 4px;
+      border-radius: 0;
     }
 
     .temoignage-result {
       font-family: 'Cormorant Garamond', serif;
       font-size: 1.6rem;
       font-weight: 300;
-      color: var(--rose);
+      color: var(--gold);
       margin-bottom: 16px;
     }
 
@@ -539,10 +559,10 @@
     }
 
     .diag-eyebrow {
-      color: var(--rose);
+      color: var(--gold-light);
       font-size: 0.68rem;
-      font-weight: 500;
-      letter-spacing: 0.18em;
+      font-weight: 400;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
       text-align: center;
       margin-bottom: 14px;
@@ -575,7 +595,7 @@
     }
 
     .progress-bar {
-      background: var(--rose);
+      background: var(--gold);
       height: 100%;
       border-radius: 1px;
       transition: width 0.4s ease;
@@ -583,22 +603,23 @@
 
     .diag-card {
       background: var(--dark2);
-      border: 1px solid rgba(184,58,101,0.15);
-      border-radius: 4px;
-      padding: 40px 36px;
+      border: 1px solid rgba(184,146,74,0.15);
+      border-radius: 0;
+      padding: 44px 40px;
     }
 
     .diag-tag {
       display: inline-block;
-      background: rgba(184,58,101,0.12);
-      color: var(--rose-light);
-      font-size: 0.68rem;
-      font-weight: 500;
-      letter-spacing: 0.12em;
+      background: rgba(184,146,74,0.08);
+      color: var(--gold-light);
+      font-size: 0.66rem;
+      font-weight: 400;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
       padding: 5px 12px;
-      border-radius: 2px;
-      margin-bottom: 20px;
+      border-radius: 0;
+      margin-bottom: 22px;
+      border: 1px solid rgba(184,146,74,0.2);
     }
 
     .diag-question {
@@ -619,21 +640,21 @@
 
     .diag-option {
       padding: 16px 18px;
-      border: 1px solid rgba(255,255,255,0.07);
-      border-radius: 3px;
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 0;
       cursor: pointer;
-      transition: all 0.18s;
+      transition: all 0.2s;
       background: rgba(255,255,255,0.02);
     }
 
     .diag-option:hover {
-      border-color: rgba(184,58,101,0.4);
-      background: rgba(184,58,101,0.04);
+      border-color: rgba(184,146,74,0.4);
+      background: rgba(184,146,74,0.04);
     }
 
     .diag-option.selected {
-      border-color: var(--rose);
-      background: rgba(184,58,101,0.1);
+      border-color: var(--gold);
+      background: rgba(184,146,74,0.08);
     }
 
     .diag-option-text {
@@ -654,22 +675,22 @@
     }
 
     .btn-diag-next {
-      background: var(--rose);
+      background: var(--gold);
       color: #fff;
-      border: none;
-      padding: 13px 28px;
-      border-radius: 2px;
+      border: 1px solid var(--gold);
+      padding: 13px 30px;
+      border-radius: 0;
       font-family: 'DM Sans', sans-serif;
-      font-size: 0.78rem;
-      font-weight: 500;
-      letter-spacing: 0.08em;
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       cursor: pointer;
-      transition: background 0.2s, opacity 0.2s;
+      transition: background 0.2s, opacity 0.2s, color 0.2s;
     }
 
     .btn-diag-next:disabled { opacity: 0.3; cursor: not-allowed; }
-    .btn-diag-next:not(:disabled):hover { background: var(--rose-dark); }
+    .btn-diag-next:not(:disabled):hover { background: transparent; color: var(--gold-light); }
 
     .btn-diag-back {
       background: transparent;
@@ -721,9 +742,9 @@
     /* ─── RÉSULTAT DIAGNOSTIC ─────────────────────────────────── */
     .result-header {
       background: linear-gradient(135deg, var(--dark) 0%, var(--dark3) 100%);
-      border: 1px solid rgba(184,58,101,0.25);
-      border-radius: 4px 4px 0 0;
-      padding: 40px 36px 32px;
+      border: 1px solid rgba(184,146,74,0.25);
+      border-radius: 0;
+      padding: 44px 40px 36px;
       text-align: center;
     }
 
@@ -755,18 +776,18 @@
 
     .result-body {
       background: var(--dark3);
-      border: 1px solid rgba(184,58,101,0.1);
+      border: 1px solid rgba(184,146,74,0.12);
       border-top: none;
-      border-radius: 0 0 4px 4px;
-      padding: 36px;
+      border-radius: 0;
+      padding: 40px;
     }
 
     .result-step-label {
-      font-size: 0.68rem;
-      font-weight: 500;
-      letter-spacing: 0.14em;
+      font-size: 0.66rem;
+      font-weight: 400;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--rose);
+      color: var(--gold-light);
       margin-bottom: 12px;
     }
 
@@ -798,7 +819,7 @@
       font-family: 'Cormorant Garamond', serif;
       font-size: 2.2rem;
       font-weight: 300;
-      color: var(--rose-light);
+      color: var(--gold-light);
     }
 
     .result-price-note {
@@ -810,23 +831,23 @@
     .btn-result-main {
       display: block;
       width: 100%;
-      background: var(--rose);
+      background: var(--gold);
       color: #fff;
-      border: none;
+      border: 1px solid var(--gold);
       padding: 16px;
-      border-radius: 2px;
+      border-radius: 0;
       font-family: 'DM Sans', sans-serif;
-      font-size: 0.8rem;
-      font-weight: 500;
-      letter-spacing: 0.08em;
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
       cursor: pointer;
-      transition: background 0.2s;
+      transition: background 0.25s, color 0.25s;
       margin-bottom: 12px;
       text-align: center;
     }
 
-    .btn-result-main:hover { background: var(--rose-dark); }
+    .btn-result-main:hover { background: transparent; color: var(--gold-light); }
 
     .btn-result-secondary {
       display: block;
@@ -883,17 +904,22 @@
 
     .offre-card {
       border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 40px 40px;
+      border-radius: 0;
+      padding: 44px 48px;
       background: #fff;
       display: flex;
       align-items: flex-start;
-      gap: 48px;
+      gap: 56px;
+      transition: border-color 0.25s;
+    }
+
+    .offre-card:hover {
+      border-color: rgba(184,146,74,0.4);
     }
 
     .offre-card.featured {
-      border-color: var(--rose);
-      background: var(--rose-tint);
+      border-color: var(--gold);
+      background: var(--gold-pale);
     }
 
     .offre-card-left {
@@ -916,18 +942,21 @@
     }
 
     .offre-tier-badge.t1 {
-      background: rgba(184,58,101,0.08);
-      color: var(--rose);
+      background: rgba(184,146,74,0.1);
+      color: var(--gold);
+      border: 1px solid rgba(184,146,74,0.2);
     }
 
     .offre-tier-badge.t2 {
-      background: rgba(154,117,18,0.08);
-      color: #9A7512;
+      background: rgba(146,110,74,0.08);
+      color: #8A6A40;
+      border: 1px solid rgba(146,110,74,0.15);
     }
 
     .offre-tier-badge.t3 {
-      background: rgba(50,120,80,0.08);
-      color: #2E7050;
+      background: rgba(50,100,70,0.06);
+      color: #3A7050;
+      border: 1px solid rgba(50,100,70,0.15);
     }
 
     .offre-name {
@@ -951,7 +980,7 @@
       font-family: 'Cormorant Garamond', serif;
       font-size: 2.8rem;
       font-weight: 300;
-      color: var(--rose);
+      color: var(--gold);
       line-height: 1;
       margin-bottom: 4px;
     }
@@ -967,11 +996,11 @@
       font-size: 0.8rem;
       font-weight: 400;
       color: var(--text-mid);
-      margin-bottom: 16px;
-      padding: 10px 14px;
-      background: rgba(184,58,101,0.05);
-      border-left: 2px solid var(--rose);
-      line-height: 1.5;
+      margin-bottom: 18px;
+      padding: 12px 16px;
+      background: rgba(184,146,74,0.05);
+      border-left: 1px solid var(--gold);
+      line-height: 1.6;
     }
 
     .offre-desc {
@@ -1000,7 +1029,7 @@
 
     .offre-features li::before {
       content: '—';
-      color: var(--rose);
+      color: var(--gold);
       font-weight: 400;
       flex-shrink: 0;
     }
@@ -1008,43 +1037,43 @@
     .btn-offre {
       display: block;
       width: 100%;
-      background: var(--rose);
+      background: var(--gold);
       color: #fff;
-      border: none;
-      padding: 14px;
-      border-radius: 2px;
+      border: 1px solid var(--gold);
+      padding: 15px;
+      border-radius: 0;
       font-family: 'DM Sans', sans-serif;
-      font-size: 0.78rem;
-      font-weight: 500;
-      letter-spacing: 0.08em;
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
       cursor: pointer;
       text-align: center;
-      transition: background 0.2s;
+      transition: background 0.25s, color 0.25s;
     }
 
-    .btn-offre:hover { background: var(--rose-dark); }
+    .btn-offre:hover { background: transparent; color: var(--gold); }
 
     .btn-offre-outline {
       display: block;
       width: 100%;
       background: transparent;
       color: var(--text);
-      border: 1px solid var(--text);
-      padding: 13px;
-      border-radius: 2px;
+      border: 1px solid var(--border);
+      padding: 14px;
+      border-radius: 0;
       font-family: 'DM Sans', sans-serif;
-      font-size: 0.78rem;
-      font-weight: 500;
-      letter-spacing: 0.08em;
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       cursor: pointer;
       text-align: center;
-      transition: all 0.2s;
+      transition: all 0.25s;
       margin-top: 10px;
     }
 
-    .btn-offre-outline:hover { background: var(--text); color: #fff; }
+    .btn-offre-outline:hover { background: var(--text); color: #fff; border-color: var(--text); }
 
     /* Formation modules */
     .formation-modules {
@@ -1128,7 +1157,8 @@
     /* ─── CLOSING ─────────────────────────────────────────────── */
     .closing {
       background: var(--dark);
-      padding: 120px 40px;
+      background-image: radial-gradient(ellipse 100% 50% at 50% 100%, rgba(184,146,74,0.07) 0%, transparent 70%);
+      padding: 140px 40px;
       text-align: center;
     }
 
@@ -1139,21 +1169,21 @@
 
     .closing h2 {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-size: clamp(1.8rem, 4vw, 3rem);
       font-weight: 300;
       color: #fff;
-      margin-bottom: 20px;
+      margin-bottom: 24px;
       line-height: 1.25;
     }
 
-    .closing h2 em { font-style: italic; color: var(--rose-light); }
+    .closing h2 em { font-style: italic; color: var(--gold-light); }
 
     .closing p {
-      color: rgba(255,255,255,0.35);
+      color: rgba(255,255,255,0.32);
       font-size: 0.95rem;
       font-weight: 300;
-      margin-bottom: 44px;
-      line-height: 1.75;
+      margin-bottom: 48px;
+      line-height: 1.85;
       max-width: 440px;
       margin-left: auto;
       margin-right: auto;
@@ -1171,7 +1201,7 @@
       letter-spacing: 0.06em;
     }
 
-    footer span { color: var(--rose); }
+    footer span { color: var(--gold-light); }
 
     /* ─── MODAL PAIEMENT ──────────────────────────────────────── */
     .modal-overlay {
@@ -1527,18 +1557,19 @@
   <!-- NAVIGATION -->
   <nav>
     <a href="#" class="nav-logo">La méthode <span>Djen</span></a>
-    <button class="nav-cta" onclick="scrollToDiagnostic()">Faire le diagnostic</button>
+    <button class="nav-cta" onclick="scrollToDiagnostic()">Faire Le Réveil</button>
   </nav>
 
   <!-- HERO -->
   <section class="hero">
     <div class="hero-inner">
       <p class="eyebrow">La méthode Djen</p>
-      <h1>Tu fais tout bien.<br>Et pourtant, <em>rien ne bouge.</em><br>Voici pourquoi.</h1>
-      <p class="hero-sub">Un mécanisme bloque ton corps avant même que la nourriture ou le sport aient une chance d'agir. La méthode Djen déverrouille ça en premier — pour que tes efforts arrêtent enfin d'être du temps perdu.</p>
-      <button class="btn-primary" onclick="scrollToDiagnostic()">Faire le diagnostic en 2 minutes — gratuit</button>
-      <p class="hero-note">6 questions · Résultat immédiat · Ton plan d'action personnalisé</p>
-      <p class="hero-signature">J'ai cherché pendant des années pourquoi rien ne marchait pour moi. Le jour où j'ai compris ce mécanisme, tout a débloqué en quelques semaines. — Djen</p>
+      <h1>Tu n'as jamais voulu qu'on te regarde.<br>Tu as juste voulu <em>qu'on te voie enfin.</em></h1>
+      <div class="hero-divider"></div>
+      <p class="hero-sub">La méthode Djen t'aide à oser devenir la femme que tu sens déjà en toi. Pas en travaillant plus dur — en débloquant d'abord ce qui, dans ton corps, t'empêche encore d'y arriver.</p>
+      <button class="btn-primary" onclick="scrollToDiagnostic()">Faire Le Réveil en 2 minutes — gratuit</button>
+      <p class="hero-note">6 questions · Résultat immédiat · Ton étape exacte pour avancer</p>
+      <p class="hero-signature">J'ai porté ce complexe pendant des années — persuadée de ne jamais être une "vraie" femme, et sans comprendre pourquoi rien ne changeait. Le jour où j'ai osé malgré la peur ET compris ce qui bloquait mon corps, tout a changé. — Djen</p>
     </div>
   </section>
 
@@ -1674,8 +1705,8 @@
   <section class="diagnostic-section" id="diagnostic">
     <div class="diagnostic-inner">
       <p class="diag-eyebrow">Par Djen — pour toi</p>
-      <h2 class="diag-title">Où en es-tu ?</h2>
-      <p class="diag-subtitle">6 questions pour savoir si ton Chasseur est encore actif, en train de se calmer, ou si ton Jardinier est déjà prêt à construire.</p>
+      <h2 class="diag-title">Le Réveil</h2>
+      <p class="diag-subtitle">Découvre où tu en es sur le chemin vers la femme que tu sens déjà en toi. 6 questions pour savoir si ton Chasseur est encore actif, en train de se calmer, ou si ton Jardinier est déjà prêt à construire. À la fin : ton score et l'étape exacte à suivre — pas dans le flou, un vrai point de départ.</p>
 
       <div class="progress-bar-wrap">
         <div class="progress-bar" id="progress-bar" style="width:0%"></div>
@@ -1694,7 +1725,7 @@
       <div class="offres-header">
         <p class="eyebrow">Ce que je te propose</p>
         <h2>Trois étapes. L'une est la tienne.</h2>
-        <p>Ton diagnostic indique où tu en es. Chaque offre est construite pour l'étape exacte à laquelle tu te trouves — pas pour une version idéale de toi qui n'existe pas encore.</p>
+        <p>Le Réveil indique où tu en es. Chaque offre est construite pour l'étape exacte à laquelle tu te trouves — pas pour une version idéale de toi qui n'existe pas encore.</p>
       </div>
 
       <div class="offres-tiers">
@@ -1709,7 +1740,7 @@
             <div class="offre-price-note">Accès immédiat · Téléchargement direct</div>
           </div>
           <div class="offre-card-right">
-            <div class="offre-cible">Pour toi si ton diagnostic indique un Chasseur très actif. Avant que quoi que ce soit d'autre ne fonctionne, ce mécanisme d'alerte doit être désactivé.</div>
+            <div class="offre-cible">Pour toi si Le Réveil indique un Chasseur très actif. Avant que quoi que ce soit d'autre ne fonctionne, ce mécanisme d'alerte doit être désactivé.</div>
             <p class="offre-desc">Un rituel concret de 10 minutes — version douche ou bain — qui envoie un signal de sécurité à ton système nerveux. Le prérequis avant que la nourriture, le sport ou n'importe quel autre protocole puisse agir.</p>
             <ul class="offre-features">
               <li>Le mécanisme Chasseur/Jardinier expliqué en détail</li>
@@ -1731,7 +1762,7 @@
             <div class="offre-price-note">Communauté privée · Une gagnante par session</div>
           </div>
           <div class="offre-card-right">
-            <div class="offre-cible">Pour toi si ton Chasseur commence à se calmer. C'est le bon moment pour installer une routine solide — avec une échéance claire et un groupe pour avancer.</div>
+            <div class="offre-cible">Pour toi si Le Réveil indique que ton Chasseur commence à se calmer. C'est le bon moment pour installer une routine solide — avec une échéance claire et un groupe pour avancer.</div>
             <p class="offre-desc">Un cadre motivant en 4 semaines : une gagnante désignée sur l'assiduité (pas le résultat brut), une récompense en argent, une communauté privée pour ne pas avancer seule. L'obligation de compte qu'on ne se crée jamais seule.</p>
             <ul class="offre-features">
               <li>4 semaines de protocole structuré</li>
@@ -1758,7 +1789,7 @@
             <div class="offre-price-note">Groupe ou individuel · 4 modules</div>
           </div>
           <div class="offre-card-right">
-            <div class="offre-cible">Pour toi si ton Jardinier est déjà réveillé. Ton corps est prêt à construire — ce qu'il faut maintenant, c'est le programme complet qui va dans le même sens que lui.</div>
+            <div class="offre-cible">Pour toi si Le Réveil indique que ton Jardinier est déjà réveillé. Ton corps est prêt à construire — ce qu'il faut maintenant, c'est le programme complet qui va dans le même sens que lui.</div>
             <p class="offre-desc">4 modules complets : la mécanique du corps féminin, cortisol et énergie, plantes stimulantes d'appétit, construction intérieure. En groupe avec La Formation Djen, ou en accompagnement individuel avec L'Empreinte Djen.</p>
             <ul class="formation-modules">
               <li>
@@ -1795,9 +1826,9 @@
   <!-- CLOSING -->
   <section class="closing">
     <div class="closing-inner">
-      <h2>Tu n'as plus besoin de chercher<br>pendant des années.</h2>
-      <p>Le mécanisme qui te bloque a un nom, et une solution. Fais le diagnostic — et commence par la bonne étape, pas par le hasard.</p>
-      <button class="btn-primary" onclick="scrollToDiagnostic()">Faire le diagnostic — 2 minutes, gratuit</button>
+      <h2>La femme que tu sens déjà en toi<br>n'attend qu'une chose : <em>que tu oses.</em></h2>
+      <p>Le complexe ne partira pas tout seul, et l'effort seul ne suffit pas tant que ton corps reste bloqué. Fais Le Réveil, et commence par la bonne étape — le premier pas, il t'appartient.</p>
+      <button class="btn-primary" onclick="scrollToDiagnostic()">Faire Le Réveil — 2 minutes, gratuit</button>
     </div>
   </section>
 
