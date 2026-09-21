@@ -42,7 +42,67 @@ app.post('/api/webhook', express.raw({ type: 'application/json' }), async (req, 
 
 app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname)));
+
+// ─── Protection par mot de passe ─────────────────────────────────────────────
+const SITE_PASSWORD = '1997';
+const AUTH_COOKIE   = 'djen_access';
+
+const PASSWORD_PAGE = `<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>La méthode Djen</title>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{background:#080608;display:flex;align-items:center;justify-content:center;min-height:100vh;font-family:'Georgia',serif;}
+    .box{text-align:center;padding:48px 40px;max-width:380px;width:100%;}
+    .logo{font-style:italic;font-size:1.4rem;color:#fff;margin-bottom:40px;letter-spacing:0.02em;}
+    .logo span{color:#C8758E;}
+    input{width:100%;padding:14px 18px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);color:#fff;font-size:1.1rem;text-align:center;letter-spacing:0.3em;outline:none;margin-bottom:14px;}
+    input::placeholder{color:rgba(255,255,255,0.25);letter-spacing:0.05em;font-size:0.85rem;}
+    button{width:100%;padding:14px;background:#922245;color:#fff;border:none;font-size:0.75rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;}
+    button:hover{background:#6E1A34;}
+    .err{color:#C8758E;font-size:0.8rem;margin-top:10px;display:none;}
+  </style>
+</head>
+<body>
+  <div class="box">
+    <div class="logo">La méthode <span>Djen</span></div>
+    <form method="POST" action="/__auth">
+      <input type="password" name="pwd" placeholder="Mot de passe" autofocus/>
+      <button type="submit">Accéder →</button>
+      {{ERROR}}
+    </form>
+  </div>
+</body>
+</html>`;
+
+function isAuthenticated(req) {
+  const raw = req.headers.cookie || '';
+  return raw.split(';').some(c => c.trim() === `${AUTH_COOKIE}=${SITE_PASSWORD}`);
+}
+
+// Route POST pour soumettre le mot de passe
+app.post('/__auth', (req, res) => {
+  const pwd = (req.body.pwd || '').trim();
+  if (pwd === SITE_PASSWORD) {
+    res.setHeader('Set-Cookie', `${AUTH_COOKIE}=${SITE_PASSWORD}; Path=/; HttpOnly; SameSite=Lax; Max-Age=604800`);
+    return res.redirect(302, '/');
+  }
+  const page = PASSWORD_PAGE.replace('{{ERROR}}', '<p class="err" style="display:block;">Mot de passe incorrect.</p>');
+  res.status(401).send(page);
+});
+
+// Middleware — bloque tout sauf les routes API et l'auth
+app.use((req, res, next) => {
+  if (req.path.startsWith('/api/') || req.path === '/__auth') return next();
+  if (isAuthenticated(req)) return next();
+  const page = PASSWORD_PAGE.replace('{{ERROR}}', '');
+  res.status(200).send(page);
+});
 
 // ─── POST /api/portrait ───────────────────────────────────────────────────────
 // Reçoit les réponses du quiz, retourne le portrait en streaming (SSE)
