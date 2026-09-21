@@ -43,7 +43,6 @@ app.post('/api/webhook', express.raw({ type: 'application/json' }), async (req, 
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname)));
 
 // ─── Protection par mot de passe ─────────────────────────────────────────────
 const SITE_PASSWORD = '1997';
@@ -103,6 +102,8 @@ app.use((req, res, next) => {
   const page = PASSWORD_PAGE.replace('{{ERROR}}', '');
   res.status(200).send(page);
 });
+
+app.use(express.static(path.join(__dirname)));
 
 // ─── POST /api/portrait ───────────────────────────────────────────────────────
 // Reçoit les réponses du quiz, retourne le portrait en streaming (SSE)
