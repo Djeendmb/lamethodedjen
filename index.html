@@ -931,9 +931,82 @@
     }
 
     .offre-tier-badge.t4 {
+      background: rgba(180,80,60,0.08);
+      color: #B44028;
+    }
+
+    .offre-tier-badge.t5 {
       background: rgba(184,146,74,0.1);
       color: var(--gold);
     }
+
+    .offre-card.reconstruction {
+      background: var(--dark);
+      border-color: rgba(180,80,60,0.3);
+    }
+
+    .offre-card.reconstruction .offre-name {
+      color: #fff;
+    }
+
+    .offre-card.reconstruction .offre-subtitle {
+      color: rgba(255,255,255,0.70);
+    }
+
+    .offre-card.reconstruction .offre-cible {
+      background: rgba(180,80,60,0.08);
+      border-left-color: rgba(180,80,60,0.4);
+      color: rgba(255,255,255,0.65);
+    }
+
+    .offre-card.reconstruction .offre-desc {
+      color: rgba(255,255,255,0.65);
+    }
+
+    .offre-card.reconstruction .offre-features li {
+      color: rgba(255,255,255,0.65);
+    }
+
+    .offre-card.reconstruction .offre-features li::before {
+      color: #C8758E;
+    }
+
+    .offre-card.reconstruction .offre-price {
+      color: #C8758E;
+    }
+
+    .offre-card.reconstruction .offre-price-note {
+      color: rgba(255,255,255,0.52);
+    }
+
+    .offre-card.reconstruction .offre-signature {
+      font-style: italic;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: #fff;
+      margin: 18px 0 24px;
+      padding: 14px 18px;
+      border-left: 2px solid rgba(200,117,142,0.5);
+      background: rgba(200,117,142,0.06);
+    }
+
+    .btn-offre-terracotta {
+      display: block;
+      width: 100%;
+      background: #922245;
+      color: #fff;
+      padding: 15px 28px;
+      border: none;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s;
+      text-align: center;
+    }
+
+    .btn-offre-terracotta:hover { background: #6E1A34; }
 
     .offre-card.ascension {
       background: var(--dark);
@@ -1806,7 +1879,7 @@
 
       <div class="offres-header">
         <p class="eyebrow">Ce que je te propose</p>
-        <h2>Quatre étapes. L'une est la tienne.</h2>
+        <h2>Cinq étapes. L'une est la tienne.</h2>
         <p>Le Réveil indique où tu en es. Chaque offre est construite pour l'étape exacte à laquelle tu te trouves — pas pour une version idéale de toi qui n'existe pas encore.</p>
       </div>
 
@@ -1883,10 +1956,37 @@
           </div>
         </div>
 
-        <!-- ÉTAGE 4 : L'Ascension Djen -->
+        <!-- ÉTAGE 4 : La Reconstruction -->
+        <div class="offre-card reconstruction">
+          <div class="offre-card-left">
+            <span class="offre-tier-badge t4">Étape 4 — Séance individuelle</span>
+            <div class="offre-name">La Reconstruction</div>
+            <div class="offre-subtitle">Séance unique 1:1 avec Djen</div>
+            <div class="offre-price">90€</div>
+            <div class="offre-price-note">Visio individuelle · 1h · En direct</div>
+          </div>
+          <div class="offre-card-right">
+            <div class="offre-cible">Tu n'as pas besoin d'un accompagnement de 6 semaines. Tu as besoin d'une heure pour comprendre ce qui te bloque vraiment — et repartir avec un plan clair pour l'atteindre.</div>
+            <p class="offre-desc">Une séance individuelle en direct avec moi, centrée sur un objectif précis que tu veux enfin débloquer. On identifie ce qui te retient, on démonte la croyance ou la peur derrière, et tu repars avec des actions concrètes à mettre en place immédiatement.</p>
+            <ul class="offre-features">
+              <li>Une séance visio individuelle, en direct avec Djen</li>
+              <li>Centrée sur ton objectif précis, pas un programme générique</li>
+              <li>Un plan d'action concret à la fin de la séance</li>
+              <li>Idéal si tu veux un déclic ciblé, pas un accompagnement long</li>
+            </ul>
+            <div class="offre-cible" style="margin-top:20px;font-size:0.83rem;line-height:1.7;">
+              Je suis passionnée par la PNL, la psychologie et le fonctionnement du cerveau — depuis toujours. Parce que j'ai compris une chose : quand tu sais comment ton corps et ton cerveau fonctionnent, tu peux littéralement tout devenir. Pas une formule motivante — un mécanisme réel, qu'on peut comprendre et utiliser.<br><br>
+              C'est ce que je fais naturellement avec les gens autour de moi, depuis toujours : mettre le doigt exactement sur ce qui bloque, et changer radicalement leur vision de leur propre vie. Pas en surface. En profondeur, et vite.
+            </div>
+            <div class="offre-signature">Un mind de psy dans un corps de baddie.</div>
+            <button class="btn-offre-terracotta" onclick="openCheckoutModal('reconstruction')">Réserver ma séance — 90€ →</button>
+          </div>
+        </div>
+
+        <!-- ÉTAGE 5 : L'Ascension Djen -->
         <div class="offre-card ascension">
           <div class="offre-card-left">
-            <span class="offre-tier-badge t4">Étape 4 — Transformation profonde</span>
+            <span class="offre-tier-badge t5">Étape 5 — Transformation profonde</span>
             <div class="offre-name">L'Ascension Djen</div>
             <div class="offre-subtitle">6 semaines · 1 appel individuel par semaine avec Djen</div>
             <div class="offre-price">297€</div>
@@ -2357,6 +2457,7 @@ const PRODUCT_LABELS = {
   'guide':              'Le Rituel qui Endort le Chasseur — 12€',
   'formation-challenge':'La Formation Prise de Poids — 20€',
   'empreinte':          'Le Programme Phare — 57€',
+  'reconstruction':     'La Reconstruction — 90€',
   'ascension':          'L\'Ascension Djen — 297€',
 };
 
