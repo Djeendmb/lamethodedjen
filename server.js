@@ -6,6 +6,7 @@ const fs = require('fs');
 const Anthropic = require('@anthropic-ai/sdk');
 const Stripe = require('stripe');
 const { Resend } = require('resend');
+const { createClient } = require('@supabase/supabase-js');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -13,6 +14,10 @@ const PORT = process.env.PORT || 3000;
 const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 const resend = new Resend(process.env.RESEND_API_KEY);
+
+const supabase = (process.env.SUPABASE_URL && process.env.SUPABASE_SERVICE_KEY)
+  ? createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY)
+  : null;
 
 // Webhook Stripe doit recevoir le raw body — monter avant express.json()
 app.post('/api/webhook', express.raw({ type: 'application/json' }), async (req, res) => {
@@ -31,7 +36,11 @@ app.post('/api/webhook', express.raw({ type: 'application/json' }), async (req, 
     const meta = session.metadata || {};
 
     try {
-      await envoyerEmailDjen(session, meta);
+      if (meta.product === 'reconstruction') {
+        await handleReconstructionPaid(session, meta);
+      } else {
+        await envoyerEmailDjen(session, meta);
+      }
     } catch (err) {
       console.error('Erreur envoi email:', err);
     }
@@ -522,10 +531,163 @@ app.get('/merci', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
+// ─── Reconstruction — page + API ──────────────────────────────────────────────
+app.get('/reconstruction', (req, res) => res.sendFile(path.join(__dirname, 'reconstruction.html')));
+app.get('/reconstruction/merci', (req, res) => res.sendFile(path.join(__dirname, 'reconstruction.html')));
+
+app.get('/api/reconstruction/slots', async (req, res) => {
+  const { date } = req.query;
+  if (!date || !/^\d{4}-\d{2}-\d{2}$/.test(date)) {
+    return res.status(400).json({ error: 'Date invalide' });
+  }
+
+  if (!supabase) {
+    return res.json({ slots: ['14:00','16:30','18:00','19:30'].map(t => ({ time: t, available: true })) });
+  }
+
+  try {
+    const { data, error } = await supabase
+      .from('bookings')
+      .select('time')
+      .eq('date', date)
+      .eq('status', 'paid');
+
+    if (error) throw error;
+
+    const taken = new Set((data || []).map(b => b.time));
+    res.json({ slots: ['14:00','16:30','18:00','19:30'].map(time => ({ time, available: !taken.has(time) })) });
+  } catch (err) {
+    console.error('Slots error:', err.message);
+    res.status(500).json({ error: 'Erreur serveur' });
+  }
+});
+
+app.post('/api/reconstruction/book', async (req, res) => {
+  const { date, time, nom, email, age, pays, date_naissance, theme } = req.body;
+
+  if (!date || !time || !nom || !email) {
+    return res.status(400).json({ error: 'Champs requis manquants' });
+  }
+
+  const VALID_TIMES = ['14:00','16:30','18:00','19:30'];
+  if (!VALID_TIMES.includes(time)) return res.status(400).json({ error: 'Créneau invalide' });
+
+  const [y, m, d] = date.split('-').map(Number);
+  const dow = new Date(y, m - 1, d).getDay();
+  if (dow === 0 || dow === 1) return res.status(400).json({ error: 'Jour non disponible' });
+
+  if (supabase) {
+    const { data: existing } = await supabase
+      .from('bookings')
+      .select('id')
+      .eq('date', date)
+      .eq('time', time)
+      .eq('status', 'paid')
+      .limit(1);
+
+    if (existing && existing.length > 0) {
+      return res.status(409).json({ error: 'Ce créneau est déjà réservé. Choisis un autre horaire.' });
+    }
+  }
+
+  try {
+    const session = await stripe.checkout.sessions.create({
+      payment_method_types: ['card'],
+      line_items: [{ price: process.env.STRIPE_PRICE_ID_RECONSTRUCTION, quantity: 1 }],
+      mode: 'payment',
+      customer_email: email,
+      metadata: {
+        product: 'reconstruction',
+        date,
+        time,
+        nom: nom.slice(0, 100),
+        age: String(age || ''),
+        pays: (pays || '').slice(0, 100),
+        date_naissance: date_naissance || '',
+        theme: (theme || '').slice(0, 490),
+      },
+      success_url: `${process.env.SITE_URL}/reconstruction/merci?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${process.env.SITE_URL}/reconstruction`,
+    });
+
+    if (supabase) {
+      await supabase.from('bookings').insert({
+        date, time, nom, email,
+        age: age ? parseInt(age) : null,
+        pays: pays || null,
+        date_naissance: date_naissance || null,
+        theme: theme || null,
+        stripe_session_id: session.id,
+        status: 'pending',
+      });
+    }
+
+    res.json({ url: session.url });
+  } catch (err) {
+    console.error('Reconstruction book error:', err.message);
+    res.status(500).json({ error: err.message });
+  }
+});
+
 // ─── Fallback → index.html ────────────────────────────────────────────────────
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
+
+// ─── Reconstruction : paiement confirmé ──────────────────────────────────────
+async function handleReconstructionPaid(session, meta) {
+  if (supabase) {
+    await supabase
+      .from('bookings')
+      .update({ status: 'paid' })
+      .eq('stripe_session_id', session.id);
+  }
+
+  const [y, mo, d] = (meta.date || '').split('-').map(Number);
+  const dateObj = new Date(y, mo - 1, d);
+  const dateFr = dateObj.toLocaleDateString('fr-FR', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+  const heure = (meta.time || '').replace(':', 'h');
+  const meetLink = process.env.GOOGLE_MEET_LINK || "(Djen t'enverra le lien avant la séance)";
+  const now = new Date().toLocaleString('fr-FR', { timeZone: 'Europe/Paris' });
+
+  await resend.emails.send({
+    from: 'La méthode Djen <onboarding@resend.dev>',
+    to: session.customer_email,
+    subject: `✦ Ta séance La Reconstruction est confirmée`,
+    text: `Ta séance La Reconstruction est confirmée.
+
+Date   : ${dateFr}
+Heure  : ${heure}
+Format : Visio Google Meet
+Lien   : ${meetLink}
+
+Thème que tu m'as partagé :
+"${meta.theme || '—'}"
+
+À tout de suite,
+Djen`,
+  });
+
+  await resend.emails.send({
+    from: 'La méthode Djen <onboarding@resend.dev>',
+    to: process.env.EMAIL_DJEN,
+    subject: `✦ Nouvelle réservation La Reconstruction — ${meta.nom} — ${dateFr} ${heure}`,
+    text: `✦ Nouvelle réservation — La Reconstruction
+
+Nom              : ${meta.nom}
+Email            : ${session.customer_email}
+Date             : ${dateFr}
+Heure            : ${heure}
+Âge              : ${meta.age || '—'}
+Pays             : ${meta.pays || '—'}
+Date de naissance: ${meta.date_naissance || '—'}
+Montant          : 90€
+Réservé le       : ${now}
+
+Thème à aborder :
+${meta.theme || '—'}`,
+  });
+}
 
 // ─── Envoi email Djen ─────────────────────────────────────────────────────────
 async function envoyerEmailDjen(session, meta) {

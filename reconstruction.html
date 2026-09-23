@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Réserver La Reconstruction — La méthode Djen</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --dark: #080608;
+      --rose: #C8758E;
+      --rose-dark: #922245;
+      --gold: #B8924A;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--dark);
+      color: #fff;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      min-height: 100vh;
+    }
+
+    .page { max-width: 620px; margin: 0 auto; padding: 40px 20px 100px; }
+
+    .back-link {
+      display: inline-block;
+      color: rgba(255,255,255,0.4);
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-decoration: none;
+      text-transform: uppercase;
+      margin-bottom: 40px;
+    }
+    .back-link:hover { color: var(--rose); }
+
+    .offer-header {
+      margin-bottom: 44px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .offer-tag {
+      display: inline-block;
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--rose);
+      border: 1px solid rgba(200,117,142,0.3);
+      padding: 4px 12px;
+      margin-bottom: 14px;
+    }
+    .offer-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.4rem;
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+    .offer-subtitle { color: rgba(255,255,255,0.45); font-size: 0.85rem; }
+
+    .step-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 18px;
+    }
+
+    /* ── Calendar ─────────────────────────────────────────────── */
+    .cal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+    .cal-nav {
+      background: none;
+      border: 1px solid rgba(255,255,255,0.14);
+      color: rgba(255,255,255,0.55);
+      width: 32px; height: 32px;
+      cursor: pointer;
+      font-size: 1.1rem;
+      line-height: 1;
+    }
+    .cal-nav:hover { border-color: var(--rose); color: var(--rose); }
+    .cal-month {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      font-weight: 400;
+      text-transform: capitalize;
+    }
+    .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 3px; }
+    .cal-dow {
+      text-align: center;
+      font-size: 0.62rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.25);
+      padding: 8px 0 4px;
+    }
+    .cal-day {
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.83rem;
+      border-radius: 1px;
+    }
+    .cal-day.off { color: rgba(255,255,255,0.14); }
+    .cal-day.open {
+      color: rgba(255,255,255,0.80);
+      cursor: pointer;
+      border: 1px solid rgba(255,255,255,0.07);
+    }
+    .cal-day.open:hover { background: rgba(200,117,142,0.12); border-color: rgba(200,117,142,0.35); }
+    .cal-day.sel { background: var(--rose-dark); border: 1px solid var(--rose); color: #fff; }
+
+    /* ── Slots ────────────────────────────────────────────────── */
+    .slots-section { margin-top: 40px; }
+    .slots-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .slot {
+      padding: 18px 14px;
+      border: 1px solid rgba(255,255,255,0.1);
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .slot.open:hover { border-color: var(--rose); background: rgba(200,117,142,0.05); }
+    .slot.sel { border-color: var(--rose); background: rgba(146,34,69,0.18); }
+    .slot.taken { opacity: 0.28; cursor: not-allowed; }
+    .slot-time {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 300;
+      margin-bottom: 4px;
+    }
+    .slot-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .slot.open .slot-label { color: rgba(120,200,140,0.85); }
+    .slot.taken .slot-label { color: rgba(255,255,255,0.3); }
+
+    /* ── Form ─────────────────────────────────────────────────── */
+    .form-section { margin-top: 40px; }
+    .selection-recap {
+      background: rgba(200,117,142,0.06);
+      border: 1px solid rgba(200,117,142,0.18);
+      padding: 12px 16px;
+      font-size: 0.83rem;
+      color: rgba(255,255,255,0.70);
+      margin-bottom: 24px;
+    }
+    .selection-recap strong { color: #fff; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+    .form-row.one { grid-template-columns: 1fr; }
+    .field { display: flex; flex-direction: column; gap: 6px; }
+    .field label {
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+    }
+    .field input,
+    .field textarea {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: #fff;
+      padding: 11px 14px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 300;
+      outline: none;
+      width: 100%;
+    }
+    .field input:focus,
+    .field textarea:focus { border-color: rgba(200,117,142,0.45); }
+    .field input::placeholder,
+    .field textarea::placeholder { color: rgba(255,255,255,0.18); }
+    .field textarea { resize: vertical; min-height: 88px; }
+    .field input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(0.5); }
+
+    .btn-book {
+      width: 100%;
+      background: var(--rose-dark);
+      color: #fff;
+      border: none;
+      padding: 16px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.73rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      margin-top: 22px;
+      transition: background 0.2s;
+    }
+    .btn-book:hover:not(:disabled) { background: #6E1A34; }
+    .btn-book:disabled { opacity: 0.35; cursor: not-allowed; }
+
+    .form-error {
+      color: var(--rose);
+      font-size: 0.8rem;
+      margin-top: 10px;
+      display: none;
+    }
+
+    /* ── Success ──────────────────────────────────────────────── */
+    .success {
+      text-align: center;
+      padding: 80px 20px;
+      display: none;
+    }
+    .success-mark {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3rem;
+      color: var(--rose);
+      margin-bottom: 28px;
+    }
+    .success-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-style: italic;
+      font-weight: 300;
+      margin-bottom: 16px;
+    }
+    .success-text {
+      color: rgba(255,255,255,0.55);
+      font-size: 0.9rem;
+      line-height: 1.8;
+      max-width: 380px;
+      margin: 0 auto 36px;
+    }
+
+    @media (max-width: 440px) {
+      .form-row { grid-template-columns: 1fr; }
+      .offer-title { font-size: 1.9rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="page" id="booking-page">
+  <a href="/#offres" class="back-link">← Retour aux offres</a>
+
+  <div class="offer-header">
+    <div class="offer-tag">Séance individuelle · Étape 4</div>
+    <div class="offer-title">La Reconstruction</div>
+    <div class="offer-subtitle">90€ · 1h en direct avec Djen · Google Meet</div>
+  </div>
+
+  <!-- Étape 1 : Date -->
+  <div id="step-date">
+    <div class="step-label">1 — Choisis ta date</div>
+    <div class="cal-header">
+      <button class="cal-nav" id="prev-month">‹</button>
+      <div class="cal-month" id="cal-month-label"></div>
+      <button class="cal-nav" id="next-month">›</button>
+    </div>
+    <div class="cal-grid" id="cal-grid"></div>
+  </div>
+
+  <!-- Étape 2 : Créneaux (masqué jusqu'à sélection de date) -->
+  <div class="slots-section" id="step-slots" style="display:none">
+    <div class="step-label" id="slots-label">2 — Choisis ton créneau</div>
+    <div class="slots-grid" id="slots-grid"></div>
+  </div>
+
+  <!-- Étape 3 : Formulaire (masqué jusqu'à sélection de créneau) -->
+  <div class="form-section" id="step-form" style="display:none">
+    <div class="step-label">3 — Tes informations</div>
+    <div class="selection-recap" id="recap"></div>
+    <div class="form-row">
+      <div class="field">
+        <label>Nom *</label>
+        <input type="text" id="f-nom" placeholder="Ton prénom et nom" autocomplete="name"/>
+      </div>
+      <div class="field">
+        <label>Email *</label>
+        <input type="email" id="f-email" placeholder="ton@email.com" autocomplete="email"/>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="field">
+        <label>Âge *</label>
+        <input type="number" id="f-age" placeholder="25" min="16" max="99"/>
+      </div>
+      <div class="field">
+        <label>Pays *</label>
+        <input type="text" id="f-pays" placeholder="France" autocomplete="country-name"/>
+      </div>
+    </div>
+    <div class="form-row one">
+      <div class="field">
+        <label>Date de naissance *</label>
+        <input type="date" id="f-ddn" max=""/>
+      </div>
+    </div>
+    <div class="form-row one">
+      <div class="field">
+        <label>Thème principal à aborder *</label>
+        <textarea id="f-theme" placeholder="Ce sur quoi tu veux qu'on se concentre pendant la séance…"></textarea>
+      </div>
+    </div>
+    <div class="form-error" id="form-error"></div>
+    <button class="btn-book" id="btn-book" disabled>Réserver et payer 90€ →</button>
+  </div>
+</div>
+
+<!-- Écran de confirmation (masqué par défaut) -->
+<div class="page">
+  <div class="success" id="success-screen">
+    <div class="success-mark">✦</div>
+    <div class="success-title">Ta séance est confirmée.</div>
+    <p class="success-text">
+      Un email de confirmation va t'arriver avec la date, l'heure et le lien Google Meet.<br><br>
+      À très vite.
+    </p>
+    <a href="/" class="back-link">← Retour au site</a>
+  </div>
+</div>
+
+<script>
+  // ── Constantes ──────────────────────────────────────────────────
+  const MOIS = ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'];
+  const ALL_SLOTS = ['14:00','16:30','18:00','19:30'];
+
+  // ── State ───────────────────────────────────────────────────────
+  let viewDate = new Date();
+  viewDate.setDate(1);
+  let selDate = null;   // 'YYYY-MM-DD'
+  let selTime = null;   // 'HH:MM'
+  let selDateFr = '';   // formatted French string
+
+  // ── Detect success redirect ─────────────────────────────────────
+  if (location.pathname.includes('/merci') || new URLSearchParams(location.search).has('session_id')) {
+    document.getElementById('booking-page').style.display = 'none';
+    document.getElementById('success-screen').style.display = 'block';
+  }
+
+  // Set max date of birth (today)
+  document.getElementById('f-ddn').max = new Date().toISOString().slice(0, 10);
+
+  // ── Calendrier ──────────────────────────────────────────────────
+  function renderCalendar() {
+    const y = viewDate.getFullYear();
+    const m = viewDate.getMonth();
+    document.getElementById('cal-month-label').textContent = MOIS[m] + ' ' + y;
+
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    const firstDow = new Date(y, m, 1).getDay(); // 0=Sun
+    const daysInMonth = new Date(y, m + 1, 0).getDate();
+    const offset = firstDow === 0 ? 6 : firstDow - 1;
+
+    const grid = document.getElementById('cal-grid');
+    grid.innerHTML = '';
+
+    ['L','M','M','J','V','S','D'].forEach(l => {
+      const el = document.createElement('div');
+      el.className = 'cal-dow';
+      el.textContent = l;
+      grid.appendChild(el);
+    });
+
+    for (let i = 0; i < offset; i++) {
+      const el = document.createElement('div');
+      grid.appendChild(el);
+    }
+
+    for (let d = 1; d <= daysInMonth; d++) {
+      const date = new Date(y, m, d);
+      const dow = date.getDay();
+      const isPast = date < today;
+      const isOff = dow === 0 || dow === 1; // Dim ou Lun
+      const dateStr = `${y}-${String(m + 1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+
+      const el = document.createElement('div');
+      el.textContent = d;
+
+      if (isPast || isOff) {
+        el.className = 'cal-day off';
+      } else {
+        el.className = 'cal-day open' + (dateStr === selDate ? ' sel' : '');
+        el.onclick = () => onDateSelect(dateStr, date);
+      }
+      grid.appendChild(el);
+    }
+  }
+
+  function onDateSelect(dateStr, dateObj) {
+    selDate = dateStr;
+    selTime = null;
+    renderCalendar();
+    loadSlots(dateStr, dateObj);
+    document.getElementById('step-form').style.display = 'none';
+  }
+
+  async function loadSlots(dateStr, dateObj) {
+    const opts = { weekday: 'long', day: 'numeric', month: 'long' };
+    selDateFr = dateObj.toLocaleDateString('fr-FR', opts);
+
+    const slotsSection = document.getElementById('step-slots');
+    const slotsGrid = document.getElementById('slots-grid');
+
+    document.getElementById('slots-label').textContent = `2 — ${selDateFr}`;
+    slotsSection.style.display = 'block';
+    slotsGrid.innerHTML = '<div style="color:rgba(255,255,255,0.28);font-size:0.8rem;grid-column:1/-1;padding:8px 0">Chargement…</div>';
+    slotsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    try {
+      const res = await fetch(`/api/reconstruction/slots?date=${dateStr}`);
+      const data = await res.json();
+      renderSlots(data.slots);
+    } catch {
+      slotsGrid.innerHTML = '<div style="color:var(--rose);font-size:0.8rem;grid-column:1/-1">Erreur de chargement.</div>';
+    }
+  }
+
+  function renderSlots(slots) {
+    const grid = document.getElementById('slots-grid');
+    grid.innerHTML = '';
+    slots.forEach(s => {
+      const card = document.createElement('div');
+      card.className = `slot ${s.available ? 'open' : 'taken'}${s.time === selTime ? ' sel' : ''}`;
+      card.innerHTML = `<div class="slot-time">${s.time}</div><div class="slot-label">${s.available ? 'Disponible' : 'Réservé'}</div>`;
+      if (s.available) card.onclick = () => onSlotSelect(s.time);
+      grid.appendChild(card);
+    });
+  }
+
+  function onSlotSelect(time) {
+    selTime = time;
+    document.querySelectorAll('.slot').forEach(c => {
+      c.classList.toggle('sel', c.querySelector('.slot-time').textContent === time);
+    });
+
+    const stepForm = document.getElementById('step-form');
+    document.getElementById('recap').innerHTML = `<strong>${selDateFr}</strong> à <strong>${time}</strong>`;
+    stepForm.style.display = 'block';
+    stepForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    checkForm();
+  }
+
+  // ── Navigation mois ─────────────────────────────────────────────
+  document.getElementById('prev-month').onclick = () => {
+    const now = new Date();
+    if (viewDate.getFullYear() === now.getFullYear() && viewDate.getMonth() === now.getMonth()) return;
+    viewDate.setMonth(viewDate.getMonth() - 1);
+    renderCalendar();
+  };
+  document.getElementById('next-month').onclick = () => {
+    viewDate.setMonth(viewDate.getMonth() + 1);
+    renderCalendar();
+  };
+
+  // ── Validation formulaire ───────────────────────────────────────
+  function checkForm() {
+    const ok = ['f-nom','f-email','f-age','f-pays','f-ddn','f-theme'].every(id => document.getElementById(id).value.trim());
+    document.getElementById('btn-book').disabled = !(ok && selDate && selTime);
+  }
+  ['f-nom','f-email','f-age','f-pays','f-ddn','f-theme'].forEach(id =>
+    document.getElementById(id).addEventListener('input', checkForm)
+  );
+
+  // ── Soumission ──────────────────────────────────────────────────
+  document.getElementById('btn-book').onclick = async () => {
+    const btn = document.getElementById('btn-book');
+    const errEl = document.getElementById('form-error');
+    errEl.style.display = 'none';
+    btn.disabled = true;
+    btn.textContent = 'Redirection…';
+
+    try {
+      const res = await fetch('/api/reconstruction/book', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          date: selDate,
+          time: selTime,
+          nom: document.getElementById('f-nom').value.trim(),
+          email: document.getElementById('f-email').value.trim(),
+          age: document.getElementById('f-age').value.trim(),
+          pays: document.getElementById('f-pays').value.trim(),
+          date_naissance: document.getElementById('f-ddn').value.trim(),
+          theme: document.getElementById('f-theme').value.trim(),
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Erreur inconnue');
+      location.href = data.url;
+    } catch (e) {
+      errEl.textContent = e.message;
+      errEl.style.display = 'block';
+      btn.disabled = false;
+      btn.textContent = 'Réserver et payer 90€ →';
+    }
+  };
+
+  // ── Init ────────────────────────────────────────────────────────
+  renderCalendar();
+</script>
+</body>
+</html>
