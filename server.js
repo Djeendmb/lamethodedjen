@@ -54,7 +54,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // ─── Protection par mot de passe ─────────────────────────────────────────────
-const SITE_PASSWORD = '1997';
+const SITE_PASSWORD = '2424';
 const AUTH_COOKIE   = 'djen_access';
 
 const PASSWORD_PAGE = `<!DOCTYPE html>
