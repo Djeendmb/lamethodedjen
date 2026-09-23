@@ -105,13 +105,12 @@ app.post('/__auth', (req, res) => {
 });
 
 // Middleware — bloque tout sauf les routes API et l'auth
-// TEMPORAIREMENT DÉSACTIVÉ
-// app.use((req, res, next) => {
-//   if (req.path.startsWith('/api/') || req.path === '/__auth') return next();
-//   if (isAuthenticated(req)) return next();
-//   const page = PASSWORD_PAGE.replace('{{ERROR}}', '');
-//   res.status(200).send(page);
-// });
+app.use((req, res, next) => {
+  if (req.path.startsWith('/api/') || req.path === '/__auth') return next();
+  if (isAuthenticated(req)) return next();
+  const page = PASSWORD_PAGE.replace('{{ERROR}}', '');
+  res.status(200).send(page);
+});
 
 app.use(express.static(path.join(__dirname)));
 
