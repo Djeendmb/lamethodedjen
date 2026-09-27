@@ -249,8 +249,8 @@ RÈGLES ABSOLUES :
 app.post('/api/checkout', async (req, res) => {
   const { email, prenom, q1, q2, q3, q4, q5, q6, q7a, q7b, archetype, product, score } = req.body;
 
-  if (!email) {
-    return res.status(400).json({ error: 'Email requis' });
+  if (!email || !prenom) {
+    return res.status(400).json({ error: 'Email et prénom requis' });
   }
 
   const priceMap = {

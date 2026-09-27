@@ -2031,10 +2031,12 @@
     <button class="modal-close" onclick="closeCheckoutModal()">×</button>
     <h2 class="modal-title">On y est.</h2>
     <div id="modal-product-tag" class="modal-product-tag" style="display:none;"></div>
-    <p style="font-size:0.88rem;font-weight:300;color:var(--text-mid);margin-bottom:24px;line-height:1.7;">Laisse-moi ton email — je te confirme ta commande et t'envoie ton accès.</p>
+    <p style="font-size:0.88rem;font-weight:300;color:var(--text-mid);margin-bottom:24px;line-height:1.7;">Laisse-moi ton prénom et ton email — je te confirme ta commande et t'envoie ton accès.</p>
+    <label class="modal-label" for="modal-prenom">Ton prénom</label>
+    <input class="modal-input" type="text" id="modal-prenom" placeholder="Ton prénom" style="margin-bottom:12px;" autocomplete="given-name"/>
     <label class="modal-label" for="modal-email">Ton adresse email</label>
-    <input class="modal-input" type="email" id="modal-email" placeholder="ton@email.com" />
-    <p class="modal-error" id="modal-error">Merci de saisir un email valide.</p>
+    <input class="modal-input" type="email" id="modal-email" placeholder="ton@email.com" autocomplete="email"/>
+    <p class="modal-error" id="modal-error">Merci de remplir tous les champs.</p>
     <button class="modal-btn" id="modal-pay-btn" onclick="procederPaiement()">Je commence →</button>
   </div>
 </div>
@@ -2465,12 +2467,13 @@ document.getElementById('checkout-modal').addEventListener('click', function(e) 
 });
 
 async function procederPaiement() {
+  const prenom = document.getElementById('modal-prenom').value.trim();
   const email = document.getElementById('modal-email').value.trim();
   const errorEl = document.getElementById('modal-error');
   const btn = document.getElementById('modal-pay-btn');
 
-  if (!email || !email.includes('@') || !email.includes('.')) {
-    errorEl.textContent = 'Merci de saisir un email valide.';
+  if (!prenom || !email || !email.includes('@') || !email.includes('.')) {
+    errorEl.textContent = 'Merci de remplir ton prénom et ton email.';
     errorEl.style.display = 'block';
     return;
   }
@@ -2485,7 +2488,7 @@ async function procederPaiement() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         email,
-        prenom: '',
+        prenom,
         product: selectedProduct,
         archetype: TIERS[diagTier] ? TIERS[diagTier].label : '',
         score: (diagAnswers.scores || []).reduce((a, b) => a + (b || 0), 0),
