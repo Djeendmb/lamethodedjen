@@ -926,16 +926,11 @@
     }
 
     .offre-tier-badge.t3 {
-      background: rgba(50,100,70,0.06);
-      color: #3A7050;
-    }
-
-    .offre-tier-badge.t4 {
       background: rgba(180,80,60,0.08);
       color: #B44028;
     }
 
-    .offre-tier-badge.t5 {
+    .offre-tier-badge.t4 {
       background: rgba(184,146,74,0.1);
       color: var(--gold);
     }
@@ -1861,7 +1856,7 @@
 
       <div class="offres-header">
         <p class="eyebrow">Ce que je te propose</p>
-        <h2>Cinq étapes. L'une est la tienne.</h2>
+        <h2>Quatre étapes. L'une est la tienne.</h2>
         <p>Le Réveil indique où tu en es sur le chemin entre reprendre le contrôle et grandir, plus haut et plus fort. Chaque offre est construite pour l'étape exacte à laquelle tu te trouves.</p>
       </div>
 
@@ -1916,32 +1911,10 @@
           </div>
         </div>
 
-        <!-- ÉTAGE 3 : Programme Phare -->
-        <div class="offre-card">
-          <div class="offre-card-left">
-            <span class="offre-tier-badge t3">Étape 3 — Jardinier réveillé</span>
-            <div class="offre-name">Le Programme Phare</div>
-            <div class="offre-subtitle">Sport + Alimentation · 6 semaines</div>
-            <div class="offre-price">57€</div>
-            <div class="offre-price-note">Accès immédiat · Téléchargement direct</div>
-          </div>
-          <div class="offre-card-right">
-            <div class="offre-cible">Pour toi si Le Réveil indique que ton Jardinier est déjà réveillé. Ton corps est prêt à construire — ce qu'il te faut maintenant, c'est un programme complet pensé pour toi.</div>
-            <p class="offre-desc">Le programme sport et alimentation de Djen pour une prise de masse réussie en 6 semaines. Pas un programme générique — les méthodes exactes qui fonctionnent sur le corps féminin, structurées semaine par semaine.</p>
-            <ul class="offre-features">
-              <li>Programme sport complet sur 6 semaines</li>
-              <li>Plan alimentation adapté à la prise de masse féminine</li>
-              <li>Les méthodes Djen appliquées semaine par semaine</li>
-              <li>Accès immédiat après paiement</li>
-            </ul>
-            <button class="btn-offre" onclick="openCheckoutModal('empreinte')">Obtenir Le Programme Phare — 57€ →</button>
-          </div>
-        </div>
-
-        <!-- ÉTAGE 4 : La Reconstruction -->
+        <!-- ÉTAGE 3 : La Reconstruction -->
         <div class="offre-card reconstruction">
           <div class="offre-card-left">
-            <span class="offre-tier-badge t4">Étape 4 — Séance individuelle</span>
+            <span class="offre-tier-badge t3">Étape 3 — Séance individuelle</span>
             <div class="offre-name">La Reconstruction</div>
             <div class="offre-subtitle">Séance unique 1:1 avec Djen</div>
             <div class="offre-price">70€</div>
@@ -1965,10 +1938,10 @@
           </div>
         </div>
 
-        <!-- ÉTAGE 5 : L'Ascension Djen -->
+        <!-- ÉTAGE 4 : L'Ascension Djen -->
         <div class="offre-card ascension">
           <div class="offre-card-left">
-            <span class="offre-tier-badge t5">Étape 5 — Transformation profonde</span>
+            <span class="offre-tier-badge t4">Étape 4 — Transformation profonde</span>
             <div class="offre-name">L'Ascension Djen</div>
             <div class="offre-subtitle">6 semaines · 1 appel individuel par semaine avec Djen</div>
             <div class="offre-price">297€</div>
@@ -2155,20 +2128,20 @@ const TIERS = {
     color: '#5A9E70',
     label: 'Ton Jardinier est déjà réveillé.',
     icon: '🌱',
-    desc: 'Tu n\'es plus en train de désamorcer une alerte — tu es prête à construire en profondeur. C\'est le moment de passer à un accompagnement complet, pensé pour aller jusqu\'au bout de la transformation.',
+    desc: 'Tu n\'es plus en train de désamorcer une alerte — tu es prête à construire. Ce qu\'il te faut maintenant, c\'est une heure avec moi pour comprendre ce qui te bloque vraiment et repartir avec un plan clair.',
     step: 'Ta prochaine étape',
-    offerName: 'Le Programme Phare',
-    offerDesc: 'Le programme sport + alimentation de Djen pour une prise de masse réussie en 6 semaines — les méthodes exactes, structurées semaine par semaine.',
-    price: '57€',
-    priceNote: 'En groupe ou en individuel',
-    product: 'empreinte',
-    cta: 'Découvrir le Programme Phare →'
+    offerName: 'La Reconstruction',
+    offerDesc: 'Une séance visio individuelle d\'1h20 avec Djen. On identifie ce qui te retient, on démonte la croyance ou la peur derrière, et tu repars avec des actions concrètes.',
+    price: '70€',
+    priceNote: 'Visio individuelle · 1h20 · En direct',
+    product: 'reconstruction',
+    cta: 'Réserver ma séance — 70€ →'
   }
 };
 
 let currentStep = -1; // -1 = intro, 0-5 = questions, 6 = result
 let diagAnswers = { scores: [] };
-let selectedProduct = 'empreinte';
+let selectedProduct = 'guide';
 let diagTier = '';
 
 function scrollToDiagnostic() {
@@ -2289,18 +2262,7 @@ function renderResult(container) {
       </form>
     `;
   } else if (tierKey === 'jardinier') {
-    ctaHtml = `
-      <button class="btn-result-main" onclick="openCheckoutModal('empreinte')">L'Empreinte Djen — 107€ (individuel) →</button>
-      <form style="margin-top:10px;" onsubmit="submitWaitlist(event)">
-        <div style="display:flex;gap:10px;margin-bottom:6px;">
-          <input class="waitlist-input" style="flex:1;" type="email" id="waitlist-email"
-            placeholder="ton@email.com" value="${diagAnswers.email || ''}" required />
-          <button type="submit" class="btn-waitlist" style="white-space:nowrap;">La Formation — 97€</button>
-        </div>
-        <p class="waitlist-note">Laisse ton email pour la prochaine session de La Formation Djen (97€ · groupe).</p>
-        <p class="waitlist-confirm" id="waitlist-confirm">✦ C'est noté. Je te préviens en premier.</p>
-      </form>
-    `;
+    ctaHtml = `<a href="/reconstruction" class="btn-result-main" style="display:block;text-decoration:none;text-align:center;">Réserver ma séance — 70€ →</a>`;
   } else {
     ctaHtml = `<button class="btn-result-main" onclick="openCheckoutModal('${tier.product}')">${tier.cta}</button>`;
   }
@@ -2440,13 +2402,12 @@ function submitWaitlistFromDiag(e) {
 const PRODUCT_LABELS = {
   'guide':              'Le Rituel qui Endort le Chasseur — 12€',
   'formation-challenge':'La Formation Prise de Poids — 20€',
-  'empreinte':          'Le Programme Phare — 57€',
   'reconstruction':     'La Reconstruction — 70€',
   'ascension':          'L\'Ascension Djen — 297€',
 };
 
 function openCheckoutModal(product) {
-  selectedProduct = product || 'empreinte';
+  selectedProduct = product || 'guide';
   const modal = document.getElementById('checkout-modal');
   const tag = document.getElementById('modal-product-tag');
   tag.textContent = '✦ ' + (PRODUCT_LABELS[selectedProduct] || selectedProduct);
