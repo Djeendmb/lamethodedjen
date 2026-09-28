@@ -763,7 +763,7 @@ async function envoyerEmailGuide(session, meta) {
     "La Cérébrale":   'guide-cerebrale.pdf',
     "L'Éponge":       'guide-eponge.pdf',
   };
-  const pdfFile = PDF_MAP[profil] || 'guide-general.pdf';
+  const pdfFile = PDF_MAP[profil] || 'guide-agitee.pdf';
   const pdfPath = path.join(__dirname, 'guides', pdfFile);
   const pdfContent = fs.readFileSync(pdfPath);
 
