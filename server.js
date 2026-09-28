@@ -749,7 +749,7 @@ async function envoyerEmailGuide(session, meta) {
       <p style="font-size:0.92rem;line-height:1.75;color:#1A1416;margin:0;">${p.cycle}</p>
     </div>
 
-    <p style="font-size:0.88rem;color:#6A5560;line-height:1.7;border-top:1px solid #E8DDE2;padding-top:24px;">Je t'envoie le guide complet (PDF) dans les prochaines minutes sur cette même adresse. Si tu ne le reçois pas dans l'heure, vérifie tes spams ou réponds à cet email.</p>
+    <p style="font-size:0.88rem;color:#6A5560;line-height:1.7;border-top:1px solid #E8DDE2;padding-top:24px;">Ton guide complet est en pièce jointe de cet email. Si tu ne le vois pas, vérifie tes spams ou réponds à cet email.</p>
   </div>
   <div style="background:#FAFAFA;padding:24px 40px;border-top:1px solid #E8DDE2;text-align:center;">
     <p style="font-size:0.72rem;color:#6A5560;margin:0;">La méthode Djen · ${process.env.EMAIL_DJEN}</p>
