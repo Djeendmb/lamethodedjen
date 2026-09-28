@@ -247,7 +247,7 @@ RÈGLES ABSOLUES :
 
 // ─── POST /api/checkout ───────────────────────────────────────────────────────
 app.post('/api/checkout', async (req, res) => {
-  const { email, prenom, q1, q2, q3, q4, q5, q6, q7a, q7b, archetype, product, score } = req.body;
+  const { email, prenom, q1, q2, q3, q4, q5, q6, q7a, q7b, archetype, product, score, guide_profile } = req.body;
 
   if (!email || !prenom) {
     return res.status(400).json({ error: 'Email et prénom requis' });
@@ -281,6 +281,7 @@ app.post('/api/checkout', async (req, res) => {
       customer_email: email,
       metadata: {
         prenom: truncate(prenom, 100),
+        guide_profile: truncate(guide_profile, 50),
         archetype: truncate(archetype, 200),
         score: truncate(String(score || ''), 20),
         q1: truncate(q1),

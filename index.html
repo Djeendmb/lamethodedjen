@@ -1452,6 +1452,80 @@
     .modal-btn:hover { background: var(--rose-dark); }
     .modal-btn:disabled { opacity: 0.4; cursor: not-allowed; }
 
+    /* ─── QUIZ MODAL ─────────────────────────────────────────── */
+    #quiz-modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.72); z-index: 1000; align-items: center; justify-content: center; padding: 20px; }
+    #quiz-modal.open { display: flex; }
+    .quiz-box {
+      background: var(--bg);
+      border-radius: 4px;
+      padding: 40px 36px 36px;
+      max-width: 520px;
+      width: 100%;
+      position: relative;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+    .quiz-progress {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 28px;
+    }
+    .quiz-progress-dot {
+      flex: 1;
+      height: 3px;
+      background: var(--border);
+      border-radius: 2px;
+      transition: background 0.3s;
+    }
+    .quiz-progress-dot.done { background: var(--rose); }
+    .quiz-q {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem;
+      font-weight: 400;
+      color: var(--text);
+      margin-bottom: 22px;
+      line-height: 1.5;
+    }
+    .quiz-options { display: flex; flex-direction: column; gap: 10px; }
+    .quiz-option {
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      padding: 13px 16px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 300;
+      color: var(--text);
+      text-align: left;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .quiz-option:hover { border-color: var(--rose); background: var(--rose-tint); }
+    .quiz-result-profile {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 2px;
+      margin-bottom: 16px;
+    }
+    .quiz-result-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 400;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+    .quiz-result-desc {
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: var(--text-mid);
+      line-height: 1.75;
+      margin-bottom: 28px;
+    }
+
     /* ─── PAGE MERCI ──────────────────────────────────────────── */
     #merci-page {
       display: none;
@@ -1881,7 +1955,7 @@
               <li>Ton cycle : quoi faire à chaque phase du mois pour ne plus subir tes hauts et tes bas</li>
               <li>Manifester à ta façon : reprendre la main sur ce que tu veux obtenir</li>
             </ul>
-            <button class="btn-offre" onclick="openCheckoutModal('guide')">Faire le quiz et reprendre le contrôle →</button>
+            <button class="btn-offre" onclick="openQuizModal()">Faire le quiz et reprendre le contrôle →</button>
             <p style="font-size:0.72rem;color:rgba(255,255,255,0.38);margin-top:10px;line-height:1.5;">Ce guide aide à décompresser, il ne remplace pas un accompagnement médical ou psychologique.</p>
           </div>
         </div>
@@ -2001,6 +2075,23 @@
 </div><!-- /main-site -->
 
 <!-- ══ MODAL PAIEMENT ═══════════════════════════════════════ -->
+<div id="quiz-modal">
+  <div class="quiz-box">
+    <button class="modal-close" onclick="closeQuizModal()" style="position:absolute;top:16px;right:20px;">×</button>
+    <div id="quiz-screen">
+      <div class="quiz-progress" id="quiz-progress"></div>
+      <div class="quiz-q" id="quiz-question"></div>
+      <div class="quiz-options" id="quiz-options"></div>
+    </div>
+    <div id="quiz-result-screen" style="display:none;">
+      <div class="quiz-result-profile" id="quiz-profile-tag"></div>
+      <div class="quiz-result-name" id="quiz-profile-name"></div>
+      <div class="quiz-result-desc" id="quiz-profile-desc"></div>
+      <button class="modal-btn" onclick="quizProceedToCheckout()">Obtenir mon guide — 12€ →</button>
+    </div>
+  </div>
+</div>
+
 <div class="modal-overlay" id="checkout-modal">
   <div class="modal-box">
     <button class="modal-close" onclick="closeCheckoutModal()">×</button>
@@ -2399,6 +2490,152 @@ function submitWaitlistFromDiag(e) {
 }
 
 // ══════════════════════════════════════════════════════════════
+//  QUIZ PROFIL (Le Rituel)
+// ══════════════════════════════════════════════════════════════
+const QUIZ_QUESTIONS = [
+  {
+    q: "Quand quelque chose te dérange, tu as tendance à…",
+    options: [
+      { text: "T'agiter, parler vite, avoir du mal à tenir en place", profile: 'agitee' },
+      { text: "Vouloir tout gérer, faire des listes, reprendre le contrôle", profile: 'controleuse' },
+      { text: "Analyser dans tous les sens pour comprendre pourquoi", profile: 'cerebrale' },
+      { text: "Ressentir l'émotion des autres plus que la tienne propre", profile: 'eponge' },
+    ]
+  },
+  {
+    q: "Le soir, ce qui t'empêche de dormir c'est…",
+    options: [
+      { text: "L'énergie qui ne retombe pas, tu n'arrives pas à décrocher", profile: 'agitee' },
+      { text: "Les choses que tu n'as pas encore faites ou réglées", profile: 'controleuse' },
+      { text: "Les pensées en boucle, tu rejoues les scènes dans ta tête", profile: 'cerebrale' },
+      { text: "Les tensions de la journée avec les gens autour de toi", profile: 'eponge' },
+    ]
+  },
+  {
+    q: "Face à un projet qui te tient à cœur, tu…",
+    options: [
+      { text: "Te lances vite, pleine d'élan — puis tu t'épuises à mi-chemin", profile: 'agitee' },
+      { text: "Planifies tout avant de commencer pour ne rien rater", profile: 'controleuse' },
+      { text: "Réfléchis trop longtemps avant de vraiment agir", profile: 'cerebrale' },
+      { text: "Mets les besoins des autres avant les tiens sans t'en rendre compte", profile: 'eponge' },
+    ]
+  },
+  {
+    q: "Quand tu es stressée, tu as envie de…",
+    options: [
+      { text: "Faire quelque chose — bouger, agir, ne pas rester immobile", profile: 'agitee' },
+      { text: "Reprendre le contrôle sur ce que tu peux maîtriser", profile: 'controleuse' },
+      { text: "Comprendre d'où vient ce que tu ressens avant tout", profile: 'cerebrale' },
+      { text: "Être seule ou entourée de gens qui te font du bien", profile: 'eponge' },
+    ]
+  },
+  {
+    q: "Ce qui te vide le plus d'énergie, c'est…",
+    options: [
+      { text: "L'inaction — attendre, ne rien pouvoir faire", profile: 'agitee' },
+      { text: "L'imprévu et le manque d'organisation", profile: 'controleuse' },
+      { text: "Les grandes décisions où tu dois choisir sans certitude", profile: 'cerebrale' },
+      { text: "Les conflits ou les gens qui épuisent ton énergie", profile: 'eponge' },
+    ]
+  }
+];
+
+const QUIZ_PROFILES = {
+  agitee: {
+    tag: 'L\'Agitée',
+    color: '#E095B4',
+    bgColor: 'rgba(224,149,180,0.1)',
+    desc: 'Ton énergie est ta force — mais quand le Chasseur s\'emballe, elle se retourne contre toi. Tu t\'agites, tu te disperses, tu t\'épuises avant d\'atteindre ce que tu voulais. Ton guide te montre comment canaliser cette énergie pour qu\'elle travaille pour toi, pas contre toi.'
+  },
+  controleuse: {
+    tag: 'La Contrôleuse',
+    color: '#C4A020',
+    bgColor: 'rgba(196,160,32,0.1)',
+    desc: 'Tu veux tout maîtriser — et c\'est souvent pour ça que rien n\'avance vraiment. Le Chasseur chez toi se manifeste dans le besoin de tout contrôler pour ne pas souffrir. Ton guide te montre comment lâcher ce qui n\'est pas à toi pour reprendre les vraies commandes.'
+  },
+  cerebrale: {
+    tag: 'La Cérébrale',
+    color: '#6A8FC0',
+    bgColor: 'rgba(106,143,192,0.1)',
+    desc: 'Tu analyses, tu décortiques, tu comprends tout — sauf comment agir. Le Chasseur chez toi parle par les pensées en boucle. Ton guide t\'apprend à sortir de la tête pour revenir dans le corps, là où les décisions se prennent vraiment.'
+  },
+  eponge: {
+    tag: 'L\'Éponge',
+    color: '#7BB080',
+    bgColor: 'rgba(123,176,128,0.1)',
+    desc: 'Tu ressens tout, pour toi et pour les autres — jusqu\'à ne plus savoir ce qui t\'appartient. Le Chasseur chez toi absorbe les émotions du monde entier. Ton guide te donne les outils pour créer une membrane entre toi et les autres, et retrouver ton propre centre.'
+  }
+};
+
+let quizStep = 0;
+let quizScores = { agitee: 0, controleuse: 0, cerebrale: 0, eponge: 0 };
+let quizProfile = '';
+
+function openQuizModal() {
+  quizStep = 0;
+  quizScores = { agitee: 0, controleuse: 0, cerebrale: 0, eponge: 0 };
+  quizProfile = '';
+  document.getElementById('quiz-screen').style.display = 'block';
+  document.getElementById('quiz-result-screen').style.display = 'none';
+  renderQuizStep();
+  document.getElementById('quiz-modal').classList.add('open');
+}
+
+function closeQuizModal() {
+  document.getElementById('quiz-modal').classList.remove('open');
+}
+
+document.getElementById('quiz-modal').addEventListener('click', function(e) {
+  if (e.target === this) closeQuizModal();
+});
+
+function renderQuizStep() {
+  const q = QUIZ_QUESTIONS[quizStep];
+  // progress dots
+  const prog = document.getElementById('quiz-progress');
+  prog.innerHTML = QUIZ_QUESTIONS.map((_, i) =>
+    `<div class="quiz-progress-dot${i < quizStep ? ' done' : ''}"></div>`
+  ).join('');
+  document.getElementById('quiz-question').textContent = q.q;
+  const opts = document.getElementById('quiz-options');
+  // shuffle options each time for visual variety
+  const shuffled = [...q.options].sort(() => Math.random() - 0.5);
+  opts.innerHTML = shuffled.map(o =>
+    `<button class="quiz-option" onclick="quizAnswer('${o.profile}')">${o.text}</button>`
+  ).join('');
+}
+
+function quizAnswer(profile) {
+  quizScores[profile]++;
+  quizStep++;
+  if (quizStep < QUIZ_QUESTIONS.length) {
+    renderQuizStep();
+  } else {
+    // determine winner
+    quizProfile = Object.entries(quizScores).sort((a, b) => b[1] - a[1])[0][0];
+    showQuizResult();
+  }
+}
+
+function showQuizResult() {
+  const p = QUIZ_PROFILES[quizProfile];
+  document.getElementById('quiz-screen').style.display = 'none';
+  const rs = document.getElementById('quiz-result-screen');
+  rs.style.display = 'block';
+  const tag = document.getElementById('quiz-profile-tag');
+  tag.textContent = p.tag;
+  tag.style.background = p.bgColor;
+  tag.style.color = p.color;
+  document.getElementById('quiz-profile-name').textContent = 'Ton guide est fait pour toi.';
+  document.getElementById('quiz-profile-desc').textContent = p.desc;
+}
+
+function quizProceedToCheckout() {
+  closeQuizModal();
+  openCheckoutModal('guide');
+}
+
+// ══════════════════════════════════════════════════════════════
 //  MODAL PAIEMENT
 // ══════════════════════════════════════════════════════════════
 const PRODUCT_LABELS = {
@@ -2453,6 +2690,7 @@ async function procederPaiement() {
         email,
         prenom,
         product: selectedProduct,
+        guide_profile: selectedProduct === 'guide' ? (QUIZ_PROFILES[quizProfile] ? QUIZ_PROFILES[quizProfile].tag : '') : '',
         archetype: TIERS[diagTier] ? TIERS[diagTier].label : '',
         score: (diagAnswers.scores || []).reduce((a, b) => a + (b || 0), 0),
         q1: diagAnswers.scores[0] ?? '',
