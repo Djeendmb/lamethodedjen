@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>La méthode Djen — Deviens enfin la femme que tu sens déjà en toi.</title>
-  <meta name="description" content="La méthode Djen t'aide à oser devenir la femme que tu sens déjà en toi — en débloquant d'abord ce qui, dans ton corps, t'empêche encore d'y arriver. Fais Le Réveil en 2 minutes." />
+  <meta name="description" content="La méthode Djen t'aide à oser devenir la femme que tu sens déjà en toi — en débloquant d'abord ce qui, dans ton corps, t'empêche encore d'y arriver." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
@@ -524,328 +524,6 @@
       object-fit: cover;
       display: block;
     }
-
-    /* ─── DIAGNOSTIC ──────────────────────────────────────────── */
-    .diagnostic-section {
-      background: var(--dark);
-      padding: 96px 40px;
-    }
-
-    .diagnostic-inner {
-      max-width: 640px;
-      margin: 0 auto;
-    }
-
-    .diag-eyebrow {
-      color: rgba(255,255,255,0.52);
-      font-size: 0.7rem;
-      font-weight: 400;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      text-align: center;
-      margin-bottom: 14px;
-    }
-
-    .diag-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2rem, 4.5vw, 3rem);
-      font-weight: 300;
-      color: #fff;
-      text-align: center;
-      margin-bottom: 12px;
-      letter-spacing: -0.01em;
-    }
-
-    .diag-subtitle {
-      color: rgba(255,255,255,0.58);
-      text-align: center;
-      font-size: 0.88rem;
-      font-weight: 300;
-      margin-bottom: 48px;
-    }
-
-    .progress-bar-wrap {
-      background: rgba(255,255,255,0.07);
-      border-radius: 1px;
-      height: 2px;
-      margin-bottom: 40px;
-      overflow: hidden;
-    }
-
-    .progress-bar {
-      background: var(--rose);
-      height: 100%;
-      border-radius: 1px;
-      transition: width 0.4s ease;
-    }
-
-    .diag-card {
-      background: var(--dark2);
-      border: 1px solid rgba(255,255,255,0.06);
-      border-radius: 0;
-      padding: 44px 40px;
-    }
-
-    .diag-tag {
-      display: inline-block;
-      background: transparent;
-      color: rgba(255,255,255,0.52);
-      font-size: 0.68rem;
-      font-weight: 400;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      padding: 0;
-      border-radius: 0;
-      margin-bottom: 22px;
-      border: none;
-    }
-
-    .diag-question {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.5rem;
-      font-weight: 400;
-      color: #fff;
-      margin-bottom: 28px;
-      line-height: 1.3;
-    }
-
-    .diag-options {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-bottom: 28px;
-    }
-
-    .diag-option {
-      padding: 16px 18px;
-      border: 1px solid rgba(255,255,255,0.06);
-      border-radius: 0;
-      cursor: pointer;
-      transition: all 0.2s;
-      background: rgba(255,255,255,0.02);
-    }
-
-    .diag-option:hover {
-      border-color: rgba(146,34,69,0.4);
-      background: rgba(146,34,69,0.04);
-    }
-
-    .diag-option.selected {
-      border-color: var(--rose);
-      background: rgba(146,34,69,0.08);
-    }
-
-    .diag-option-text {
-      font-size: 0.92rem;
-      font-weight: 300;
-      color: rgba(255,255,255,0.75);
-      line-height: 1.55;
-    }
-
-    .diag-option.selected .diag-option-text {
-      color: rgba(255,255,255,0.92);
-    }
-
-    .diag-btn-row {
-      display: flex;
-      justify-content: flex-end;
-      gap: 12px;
-    }
-
-    .btn-diag-next {
-      background: var(--rose);
-      color: #fff;
-      border: none;
-      padding: 13px 30px;
-      border-radius: 0;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.72rem;
-      font-weight: 400;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: background 0.2s, opacity 0.2s;
-    }
-
-    .btn-diag-next:disabled { opacity: 0.3; cursor: not-allowed; }
-    .btn-diag-next:not(:disabled):hover { background: var(--rose-dark); }
-
-    .btn-diag-back {
-      background: transparent;
-      color: rgba(255,255,255,0.52);
-      border: 1px solid rgba(255,255,255,0.1);
-      padding: 13px 20px;
-      border-radius: 2px;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.78rem;
-      letter-spacing: 0.04em;
-      cursor: pointer;
-      transition: border-color 0.2s, color 0.2s;
-    }
-
-    .btn-diag-back:hover { border-color: rgba(255,255,255,0.70); color: rgba(255,255,255,0.75); }
-
-    .diag-input {
-      width: 100%;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 3px;
-      color: rgba(255,255,255,0.85);
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.95rem;
-      font-weight: 300;
-      padding: 14px 16px;
-      transition: border-color 0.2s;
-    }
-
-    .diag-input:focus { outline: none; border-color: var(--rose); }
-    .diag-input::placeholder { color: rgba(255,255,255,0.40); }
-
-    .intro-input {
-      width: 100%;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 3px;
-      color: rgba(255,255,255,0.9);
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.3rem;
-      font-weight: 300;
-      padding: 16px 18px;
-      transition: border-color 0.2s;
-    }
-
-    .intro-input:focus { outline: none; border-color: var(--rose); }
-    .intro-input::placeholder { color: rgba(255,255,255,0.40); }
-
-    /* ─── RÉSULTAT DIAGNOSTIC ─────────────────────────────────── */
-    .result-header {
-      background: var(--dark3);
-      border: 1px solid rgba(255,255,255,0.07);
-      border-radius: 0;
-      padding: 44px 40px 36px;
-      text-align: center;
-    }
-
-    .result-tier-label {
-      font-size: 0.68rem;
-      font-weight: 500;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      margin-bottom: 12px;
-    }
-
-    .result-tier-name {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2rem;
-      font-weight: 300;
-      color: #fff;
-      margin-bottom: 16px;
-      line-height: 1.2;
-    }
-
-    .result-desc {
-      font-size: 0.92rem;
-      font-weight: 300;
-      color: rgba(255,255,255,0.75);
-      max-width: 480px;
-      margin: 0 auto;
-      line-height: 1.75;
-    }
-
-    .result-body {
-      background: var(--dark3);
-      border: 1px solid rgba(184,146,74,0.12);
-      border-top: none;
-      border-radius: 0;
-      padding: 40px;
-    }
-
-    .result-step-label {
-      font-size: 0.68rem;
-      font-weight: 400;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.52);
-      margin-bottom: 12px;
-    }
-
-    .result-offer-name {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.6rem;
-      font-weight: 300;
-      color: #fff;
-      margin-bottom: 12px;
-      line-height: 1.25;
-    }
-
-    .result-offer-desc {
-      font-size: 0.88rem;
-      font-weight: 300;
-      color: rgba(255,255,255,0.70);
-      line-height: 1.75;
-      margin-bottom: 24px;
-    }
-
-    .result-price-row {
-      display: flex;
-      align-items: baseline;
-      gap: 10px;
-      margin-bottom: 24px;
-    }
-
-    .result-price {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2.2rem;
-      font-weight: 300;
-      color: var(--gold-light);
-    }
-
-    .result-price-note {
-      font-size: 0.78rem;
-      font-weight: 300;
-      color: rgba(255,255,255,0.70);
-    }
-
-    .btn-result-main {
-      display: block;
-      width: 100%;
-      background: var(--rose);
-      color: #fff;
-      border: none;
-      padding: 16px;
-      border-radius: 0;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.72rem;
-      font-weight: 400;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: background 0.2s;
-      margin-bottom: 12px;
-      text-align: center;
-    }
-
-    .btn-result-main:hover { background: var(--rose-dark); }
-
-    .btn-result-secondary {
-      display: block;
-      width: 100%;
-      background: transparent;
-      color: rgba(255,255,255,0.52);
-      border: 1px solid rgba(255,255,255,0.1);
-      padding: 13px;
-      border-radius: 2px;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.78rem;
-      font-weight: 300;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: all 0.2s;
-      text-align: center;
-    }
-
-    .btn-result-secondary:hover { border-color: rgba(255,255,255,0.70); color: rgba(255,255,255,0.75); }
 
     /* ─── OFFRES ──────────────────────────────────────────────── */
     .offres-section {
@@ -1630,8 +1308,6 @@
       .histoire-section { padding: 72px 20px; }
       .methode-section { padding: 72px 20px; }
       .section { padding: 72px 20px; }
-      .diagnostic-section { padding: 72px 20px; }
-      .diag-card { padding: 28px 22px; }
       .offres-section { padding: 72px 20px; }
       .offre-card { padding: 28px 24px; }
       .temoignages-section { padding: 72px 20px; }
@@ -1770,7 +1446,7 @@
   <!-- NAVIGATION -->
   <nav>
     <a href="#" class="nav-logo">La méthode <span>Djen</span></a>
-    <button class="nav-cta" onclick="scrollToDiagnostic()">Faire Le Réveil</button>
+    <button class="nav-cta" onclick="openQuizModal()">Faire le quiz</button>
   </nav>
 
   <!-- HERO -->
@@ -1780,8 +1456,8 @@
       <h1>Tu n'as jamais voulu qu'on te regarde.<br>Tu as juste voulu <em>reprendre le contrôle.</em></h1>
       <div class="hero-divider"></div>
       <p class="hero-sub">La méthode Djen t'aide à reprendre le contrôle sur ton corps — pas pour t'arrêter là, mais pour grandir, plus haut et plus fort que tu ne l'as jamais été. Pas en travaillant plus dur — en débloquant d'abord ce qui t'empêche encore d'avancer.</p>
-      <button class="btn-primary" onclick="scrollToDiagnostic()">Faire Le Réveil en 2 minutes — gratuit</button>
-      <p class="hero-note">Résultat immédiat · Ton étape exacte pour avancer</p>
+      <button class="btn-primary" onclick="openQuizModal()">Faire le quiz — gratuit</button>
+      <p class="hero-note">Résultat immédiat · Ton guide adapté à ton profil</p>
       <p class="hero-signature">Je n'ai jamais cherché de revanche. J'ai cherché à reprendre le contrôle sur mon corps, sur ma vie — et une fois ce contrôle repris, j'ai continué à grandir, sans limite. C'est ce chemin que je te transmets. — Djen</p>
     </div>
   </section>
@@ -1909,23 +1585,6 @@
     </div>
   </section>
 
-  <!-- DIAGNOSTIC -->
-  <section class="diagnostic-section" id="diagnostic">
-    <div class="diagnostic-inner">
-      <p class="diag-eyebrow">Par Djen — pour toi</p>
-      <h2 class="diag-title">Le Réveil</h2>
-      <p class="diag-subtitle">Découvre où tu en es sur le chemin entre reprendre le contrôle et grandir, plus haut et plus fort. 6 questions pour savoir si ton Chasseur est encore actif, en train de se calmer, ou si ton Jardinier est déjà prêt à construire. À la fin : ton score et l'étape exacte à suivre — pas dans le flou, un vrai point de départ.</p>
-
-      <div class="progress-bar-wrap">
-        <div class="progress-bar" id="progress-bar" style="width:0%"></div>
-      </div>
-
-      <div id="diag-container">
-        <!-- Steps injectés par JS -->
-      </div>
-    </div>
-  </section>
-
   <!-- OFFRES -->
   <section id="offres">
     <div class="offres-section">
@@ -1933,7 +1592,7 @@
       <div class="offres-header">
         <p class="eyebrow">Ce que je te propose</p>
         <h2>Quatre étapes. L'une est la tienne.</h2>
-        <p>Le Réveil indique où tu en es sur le chemin entre reprendre le contrôle et grandir, plus haut et plus fort. Chaque offre est construite pour l'étape exacte à laquelle tu te trouves.</p>
+        <p>Chaque offre est construite pour une étape précise du chemin. Commence là où tu en es.</p>
       </div>
 
       <div class="offres-tiers">
@@ -1972,7 +1631,7 @@
             <div class="offre-price-note">Communauté privée · Une gagnante par session</div>
           </div>
           <div class="offre-card-right">
-            <div class="offre-cible">Pour toi si Le Réveil indique que ton Chasseur commence à se calmer. C'est le bon moment pour installer une routine solide — avec une échéance claire et un groupe pour avancer.</div>
+            <div class="offre-cible">Pour toi si ton Chasseur commence à se calmer. C'est le bon moment pour installer une routine solide — avec une échéance claire et un groupe pour avancer.</div>
             <p class="offre-desc">Un cadre motivant en 4 semaines : une gagnante désignée sur l'assiduité (pas le résultat brut), une récompense en argent, une communauté privée pour ne pas avancer seule. L'obligation de compte qu'on ne se crée jamais seule.</p>
             <ul class="offre-features">
               <li>4 semaines de protocole structuré</li>
@@ -2064,8 +1723,8 @@
   <section class="closing">
     <div class="closing-inner">
       <h2>La femme que tu sens déjà en toi<br>n'attend qu'une chose : <em>que tu reprennes le contrôle.</em></h2>
-      <p>Le complexe ne partira pas tout seul, et grandir commence toujours par cette première étape. Fais Le Réveil, et commence par la bonne.</p>
-      <button class="btn-primary" onclick="scrollToDiagnostic()">Faire Le Réveil — 2 minutes, gratuit</button>
+      <p>Le complexe ne partira pas tout seul. Découvre ton profil et commence par la bonne étape.</p>
+      <button class="btn-primary" onclick="openQuizModal()">Faire le quiz — gratuit</button>
     </div>
   </section>
 
@@ -2128,325 +1787,6 @@ function escapeHtml(str) {
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;');
-}
-
-// ══════════════════════════════════════════════════════════════
-//  DIAGNOSTIC
-// ══════════════════════════════════════════════════════════════
-const DIAGNOSTIC = [
-  {
-    question: "Quand tu penses à ton corps en ce moment, tu ressens surtout…",
-    options: [
-      { label: "Une tension, presque une lutte contre lui.", score: 4 },
-      { label: "De la frustration — ça n'avance pas assez vite.", score: 3 },
-      { label: "De la curiosité — tu cherches encore la bonne méthode.", score: 2 },
-      { label: "De la confiance — tu sens que ça commence à bouger.", score: 0 },
-    ]
-  },
-  {
-    question: "Ton sommeil, ces dernières semaines…",
-    options: [
-      { label: "Difficile à trouver, tu te réveilles souvent, l'esprit qui tourne.", score: 4 },
-      { label: "Correct mais pas franchement réparateur.", score: 3 },
-      { label: "Globalement bon.", score: 1 },
-      { label: "Profond — tu te réveilles vraiment reposée.", score: 0 },
-    ]
-  },
-  {
-    question: "Face à la nourriture, tu ressens le plus souvent…",
-    options: [
-      { label: "De la culpabilité ou du contrôle, même quand tu manges « bien ».", score: 4 },
-      { label: "De l'impatience — tu veux que ça se voie vite.", score: 3 },
-      { label: "Un peu de flou — tu ne sais pas trop quoi faire.", score: 2 },
-      { label: "Du plaisir, sans arrière-pensée.", score: 0 },
-    ]
-  },
-  {
-    question: "Dans ta journée type, tu te sens…",
-    options: [
-      { label: "Sur les nerfs, toujours en alerte, difficile de « juste être ».", score: 4 },
-      { label: "Toujours en mouvement, difficile de ralentir.", score: 3 },
-      { label: "Entre les deux — ça dépend des jours.", score: 2 },
-      { label: "Plutôt posée, à l'aise dans ton rythme.", score: 0 },
-    ]
-  },
-  {
-    question: "Quand un effort ne donne pas de résultat rapide, tu…",
-    options: [
-      { label: "Doutes de toi — tu te dis que le problème vient de toi.", score: 4 },
-      { label: "Abandonnes vite ou changes tout de suite de méthode.", score: 3 },
-      { label: "Continues, mais avec une frustration en fond.", score: 2 },
-      { label: "Restes patiente — tu sais que ça prend du temps.", score: 0 },
-    ]
-  },
-  {
-    question: "Ce dont tu as le plus besoin en ce moment, c'est…",
-    options: [
-      { label: "Du calme — lâcher enfin la pression.", score: 4 },
-      { label: "Un cadre motivant pour avancer sans procrastiner.", score: 3 },
-      { label: "Du soutien — ne plus être seule dans cette démarche.", score: 2 },
-      { label: "Aller plus loin — tu es prête pour du profond.", score: 0 },
-    ]
-  }
-];
-
-// Score max = 24 (6 questions × 4 pts)
-// 18-24 → chasseur-actif | 9-17 → chasseur-calme | 0-8 → jardinier
-const TIERS = {
-  'chasseur-actif': {
-    color: '#E095B4',
-    label: 'Ton Chasseur est en alerte permanente.',
-    icon: '🐅',
-    desc: 'Ton corps ne bloque pas parce que tu fais mal les choses. Il bloque parce qu\'une partie de toi reste en état d\'alerte — et tant que le Chasseur est actif, le Jardinier ne peut pas construire. Avant tout le reste, il faut désactiver cette alerte.',
-    step: 'Ta première étape',
-    offerName: 'Le Rituel qui Endort le Chasseur',
-    offerDesc: 'Tu réponds à 5 questions, tu reçois le guide fait pour ton profil (L\'Agitée, La Contrôleuse, La Cérébrale ou L\'Éponge) — ton rituel adapté, ton cycle, et comment reprendre la main sur ce que tu veux.',
-    price: '12€',
-    priceNote: 'Guide PDF · Envoyé par email après paiement',
-    product: 'guide',
-    cta: 'Faire le quiz et reprendre le contrôle →'
-  },
-  'chasseur-calme': {
-    color: '#C4A020',
-    label: 'Ton Chasseur commence à se calmer, mais il n\'est pas encore endormi.',
-    icon: '🌓',
-    desc: 'Tu es dans l\'entre-deux — plus vraiment bloquée, mais pas encore stable non plus. C\'est le moment idéal pour un cadre qui t\'aide à ancrer de nouvelles habitudes, avec du mouvement et du soutien plutôt que de la lenteur.',
-    step: 'Ta prochaine étape',
-    offerName: 'La Formation Prise de Poids',
-    offerDesc: '4 semaines de challenge structuré. Une communauté privée. Une gagnante récompensée sur l\'assiduité. L\'obligation de compte que tu ne peux pas te créer seule.',
-    price: '20€',
-    priceNote: 'Communauté privée · Prochaine session par email',
-    product: 'formation-challenge',
-    cta: 'Rejoindre La Formation — 20€ →'
-  },
-  'jardinier': {
-    color: '#5A9E70',
-    label: 'Ton Jardinier est déjà réveillé.',
-    icon: '🌱',
-    desc: 'Tu n\'es plus en train de désamorcer une alerte — tu es prête à construire. Ce qu\'il te faut maintenant, c\'est une heure avec moi pour comprendre ce qui te bloque vraiment et repartir avec un plan clair.',
-    step: 'Ta prochaine étape',
-    offerName: 'La Reconstruction',
-    offerDesc: 'Une séance visio individuelle d\'1h20 avec Djen. On identifie ce qui te retient, on démonte la croyance ou la peur derrière, et tu repars avec des actions concrètes.',
-    price: '70€',
-    priceNote: 'Visio individuelle · 1h20 · En direct',
-    product: 'reconstruction',
-    cta: 'Réserver ma séance — 70€ →'
-  }
-};
-
-let currentStep = -1; // -1 = intro, 0-5 = questions, 6 = result
-let diagAnswers = { scores: [] };
-let selectedProduct = 'guide';
-let diagTier = '';
-
-function scrollToDiagnostic() {
-  document.getElementById('diagnostic').scrollIntoView({ behavior: 'smooth' });
-}
-
-function updateProgress() {
-  const total = DIAGNOSTIC.length + 1; // +intro
-  const step = currentStep === -1 ? 0 : currentStep + 1;
-  const pct = Math.min(100, Math.round((step / total) * 100));
-  document.getElementById('progress-bar').style.width = pct + '%';
-}
-
-function renderStep() {
-  updateProgress();
-  const container = document.getElementById('diag-container');
-
-  if (currentStep === -1) {
-    renderIntro(container);
-  } else if (currentStep < DIAGNOSTIC.length) {
-    renderQuestion(container, currentStep);
-  } else {
-    renderResult(container);
-  }
-}
-
-function renderIntro(container) {
-  container.innerHTML = `
-    <div class="diag-card">
-      <div class="diag-tag">La méthode Djen</div>
-      <h3 class="diag-question">Ton diagnostic commence ici.</h3>
-      <p style="color:rgba(255,255,255,0.65);font-size:.9rem;font-weight:300;line-height:1.75;margin-bottom:28px;">6 questions honnêtes. Réponds à ce qui est vrai pour toi maintenant — pas la version idéale. Le résultat dépend de ta précision.</p>
-      <div style="margin-bottom:28px;">
-        <input class="intro-input" type="email" id="email-input" placeholder="ton@email.com" autocomplete="email"
-          value="${diagAnswers.email || ''}"
-          oninput="diagAnswers.email = this.value.trim(); updateNextDiagBtn()" />
-      </div>
-      <div class="diag-btn-row">
-        <button class="btn-diag-next" id="next-btn" onclick="nextDiagStep()" ${(diagAnswers.email || '').includes('@') ? '' : 'disabled'}>Commencer →</button>
-      </div>
-    </div>
-  `;
-}
-
-function renderQuestion(container, idx) {
-  const q = DIAGNOSTIC[idx];
-  const selectedScore = diagAnswers.scores[idx];
-  container.innerHTML = `
-    <div class="diag-card">
-      <div class="diag-tag">Question ${idx + 1} / ${DIAGNOSTIC.length}</div>
-      <h3 class="diag-question">${escapeHtml(q.question)}</h3>
-      <div class="diag-options">
-        ${q.options.map((opt, i) => `
-          <div class="diag-option${selectedScore === opt.score && selectedScore !== undefined ? ' selected' : ''}"
-               data-score="${opt.score}"
-               data-idx="${i}"
-               onclick="selectDiagOption(this, ${idx}, ${opt.score})">
-            <div class="diag-option-text">${escapeHtml(opt.label)}</div>
-          </div>
-        `).join('')}
-      </div>
-      <div class="diag-btn-row">
-        <button class="btn-diag-back" onclick="prevDiagStep()">← Retour</button>
-        <button class="btn-diag-next" id="next-btn" onclick="nextDiagStep()" ${selectedScore !== undefined ? '' : 'disabled'}>
-          ${idx === DIAGNOSTIC.length - 1 ? 'Voir mon résultat ✦' : 'Suivant →'}
-        </button>
-      </div>
-    </div>
-  `;
-}
-
-function renderResult(container) {
-  const score = (diagAnswers.scores || []).reduce((a, b) => a + (b || 0), 0);
-  let tierKey;
-  if (score >= 18) tierKey = 'chasseur-actif';
-  else if (score >= 9) tierKey = 'chasseur-calme';
-  else tierKey = 'jardinier';
-
-  diagTier = tierKey;
-  const tier = TIERS[tierKey];
-
-  document.getElementById('progress-bar').style.width = '100%';
-
-  // Auto-envoyer le lead dès que le résultat s'affiche
-  if (diagAnswers.email) {
-    fetch('/api/save-lead', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        prenom: '',
-        email: diagAnswers.email,
-        archetype: tier.label || tierKey,
-        q1: 'Q1 score: ' + (diagAnswers.scores[0] ?? '—'),
-        q2: 'Q2 score: ' + (diagAnswers.scores[1] ?? '—'),
-        q3: 'Q3 score: ' + (diagAnswers.scores[2] ?? '—'),
-        q4: 'Q4 score: ' + (diagAnswers.scores[3] ?? '—'),
-        q5: 'Q5 score: ' + (diagAnswers.scores[4] ?? '—'),
-        q6: 'Q6 score: ' + (diagAnswers.scores[5] ?? '—'),
-        q7a: 'Score total: ' + score + '/24',
-        q7b: 'Tier: ' + tierKey,
-      })
-    }).catch(() => {});
-  }
-
-  // CTA section differs per tier
-  let ctaHtml = '';
-  if (tierKey === 'chasseur-calme') {
-    ctaHtml = `
-      <button class="btn-result-main" onclick="openCheckoutModal('${tier.product}')">${tier.cta}</button>
-      <form style="margin-top:10px;" onsubmit="submitWaitlistFromDiag(event)">
-        <div style="display:flex;gap:10px;margin-bottom:6px;">
-          <input class="diag-input" style="flex:1;padding:11px 14px;" type="email" id="diag-waitlist-email"
-            placeholder="ton@email.com" value="${diagAnswers.email || ''}" required />
-          <button type="submit" class="btn-diag-back" style="white-space:nowrap;padding:11px 16px;">Me prévenir</button>
-        </div>
-        <p style="font-size:.75rem;color:rgba(255,255,255,0.40);font-weight:300;">Laisse ton email pour être prévenue à la prochaine ouverture.</p>
-        <p id="diag-waitlist-confirm" style="display:none;color:var(--rose-light);font-size:.85rem;margin-top:8px;">✦ C'est noté.</p>
-      </form>
-    `;
-  } else if (tierKey === 'jardinier') {
-    ctaHtml = `<a href="/reconstruction" class="btn-result-main" style="display:block;text-decoration:none;text-align:center;">Réserver ma séance — 70€ →</a>`;
-  } else {
-    ctaHtml = `<button class="btn-result-main" onclick="openCheckoutModal('${tier.product}')">${tier.cta}</button>`;
-  }
-
-  container.innerHTML = `
-    <div class="result-header">
-      <div class="result-tier-label" style="color:${tier.color};">
-        ${tier.icon} Ton résultat — ${score}/24
-      </div>
-      <div class="result-tier-name">${tier.label}</div>
-      <p class="result-desc">${tier.desc}</p>
-    </div>
-    <div class="result-body">
-      <div class="result-step-label">${tier.step}</div>
-      <div class="result-offer-name">${tier.offerName}</div>
-      <p class="result-offer-desc">${tier.offerDesc}</p>
-      <div class="result-price-row">
-        <span class="result-price">${tier.price}</span>
-        <span class="result-price-note">${tier.priceNote}</span>
-      </div>
-      ${ctaHtml}
-      <button class="btn-result-secondary" style="margin-top:12px;" onclick="document.getElementById('offres').scrollIntoView({behavior:'smooth'})">Voir toutes les offres</button>
-    </div>
-  `;
-
-  document.getElementById('diagnostic').scrollIntoView({ behavior: 'smooth', block: 'start' });
-}
-
-function saveLeadByEmail(e) {
-  e.preventDefault();
-  const email = document.getElementById('lead-email-input').value.trim();
-  if (!email || !email.includes('@')) return;
-  diagAnswers.email = email;
-  e.target.querySelectorAll('input, button').forEach(el => el.disabled = true);
-  document.getElementById('lead-email-confirm').style.display = 'block';
-  const score = (diagAnswers.scores || []).reduce((a, b) => a + (b || 0), 0);
-  const tier = TIERS[diagTier] || {};
-  fetch('/api/save-lead', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      prenom: diagAnswers.prenom || '',
-      email,
-      archetype: tier.label || diagTier,
-      q1: 'Q1 score: ' + (diagAnswers.scores[0] ?? '—'),
-      q2: 'Q2 score: ' + (diagAnswers.scores[1] ?? '—'),
-      q3: 'Q3 score: ' + (diagAnswers.scores[2] ?? '—'),
-      q4: 'Q4 score: ' + (diagAnswers.scores[3] ?? '—'),
-      q5: 'Q5 score: ' + (diagAnswers.scores[4] ?? '—'),
-      q6: 'Q6 score: ' + (diagAnswers.scores[5] ?? '—'),
-      q7a: 'Score total: ' + score + '/24',
-      q7b: 'Tier: ' + diagTier,
-    })
-  }).catch(() => {});
-}
-
-function selectDiagOption(el, questionIdx, score) {
-  if (diagAnswers.scores.length <= questionIdx) {
-    diagAnswers.scores.length = questionIdx + 1;
-  }
-  diagAnswers.scores[questionIdx] = score;
-  document.querySelectorAll('.diag-option').forEach(o => o.classList.remove('selected'));
-  el.classList.add('selected');
-  const btn = document.getElementById('next-btn');
-  if (btn) btn.disabled = false;
-}
-
-function updateNextDiagBtn() {
-  const btn = document.getElementById('next-btn');
-  if (!btn) return;
-  if (currentStep === -1) {
-    btn.disabled = !(diagAnswers.email || '').includes('@');
-  } else if (currentStep === DIAGNOSTIC.length) {
-    btn.disabled = !(diagAnswers.email || '').includes('@');
-  }
-}
-
-function nextDiagStep() {
-  currentStep++;
-  renderStep();
-  document.getElementById('diagnostic').scrollIntoView({ behavior: 'smooth', block: 'start' });
-}
-
-function prevDiagStep() {
-  if (currentStep > -1) {
-    currentStep--;
-    renderStep();
-    document.getElementById('diagnostic').scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
 }
 
 // ══════════════════════════════════════════════════════════════
@@ -2653,9 +1993,6 @@ function openCheckoutModal(product) {
   const tag = document.getElementById('modal-product-tag');
   tag.textContent = '✦ ' + (PRODUCT_LABELS[selectedProduct] || selectedProduct);
   tag.style.display = 'inline-block';
-  if (diagAnswers.email) {
-    document.getElementById('modal-email').value = diagAnswers.email;
-  }
   modal.classList.add('open');
   document.getElementById('modal-email').focus();
 }
@@ -2693,14 +2030,6 @@ async function procederPaiement() {
         prenom,
         product: selectedProduct,
         guide_profile: selectedProduct === 'guide' ? (QUIZ_PROFILES[quizProfile] ? QUIZ_PROFILES[quizProfile].tag : '') : '',
-        archetype: TIERS[diagTier] ? TIERS[diagTier].label : '',
-        score: (diagAnswers.scores || []).reduce((a, b) => a + (b || 0), 0),
-        q1: diagAnswers.scores[0] ?? '',
-        q2: diagAnswers.scores[1] ?? '',
-        q3: diagAnswers.scores[2] ?? '',
-        q4: diagAnswers.scores[3] ?? '',
-        q5: diagAnswers.scores[4] ?? '',
-        q6: diagAnswers.scores[5] ?? '',
       })
     });
 
