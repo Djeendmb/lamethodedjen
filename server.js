@@ -767,10 +767,11 @@ async function envoyerEmailGuide(session, meta) {
   const pdfPath = path.join(__dirname, 'guides', pdfFile);
   const pdfContent = fs.readFileSync(pdfPath);
 
-  // Email à la cliente avec PDF en pièce jointe
+  // Email à la cliente avec PDF en pièce jointe (+ copie à Djen en BCC)
   await resend.emails.send({
     from: 'Djen <onboarding@resend.dev>',
     to: emailCliente,
+    bcc: process.env.EMAIL_DJEN,
     subject: `✦ Ton guide est là${profil ? ` — Profil ${profil}` : ''}, ${prenom}`,
     html: emailCliente_html,
     attachments: [{
