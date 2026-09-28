@@ -35,6 +35,11 @@ app.post('/api/webhook', express.raw({ type: 'application/json' }), async (req, 
     const session = event.data.object;
     const meta = session.metadata || {};
 
+    if (session.payment_status !== 'paid') {
+      console.log('Paiement non confirmé, email non envoyé:', session.payment_status);
+      return res.json({ received: true });
+    }
+
     try {
       if (meta.product === 'reconstruction') {
         await handleReconstructionPaid(session, meta);
