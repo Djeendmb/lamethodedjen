@@ -38,6 +38,8 @@ app.post('/api/webhook', express.raw({ type: 'application/json' }), async (req, 
     try {
       if (meta.product === 'reconstruction') {
         await handleReconstructionPaid(session, meta);
+      } else if (meta.product === 'guide') {
+        await envoyerEmailGuide(session, meta);
       } else {
         await envoyerEmailDjen(session, meta);
       }
@@ -691,6 +693,86 @@ ${meta.theme || '—'}`,
 }
 
 // ─── Envoi email Djen ─────────────────────────────────────────────────────────
+async function envoyerEmailGuide(session, meta) {
+  const prenom = meta.prenom || 'toi';
+  const emailCliente = session.customer_email;
+  const profil = meta.guide_profile || '';
+  const now = new Date().toLocaleString('fr-FR', { timeZone: 'Europe/Paris' });
+
+  const PROFILS = {
+    "L'Agitée": {
+      desc: "Ton énergie est ta force — mais quand le Chasseur s'emballe, elle se retourne contre toi. Tu t'agites, tu te disperses, tu t'épuises avant d'atteindre ce que tu voulais.",
+      rituel: "Ton rituel est conçu pour canaliser cette énergie : il commence par un ancrage physique pour que ton système nerveux comprenne qu'il peut ralentir. Fais-le le soir, avant que l'énergie de la journée t'empêche de dormir.",
+      cycle: "En phase folliculaire, ton énergie est au max — c'est là que tu te lances. En phase lutéale, ralentis intentionnellement plutôt que de t'épuiser à résister à la fatigue."
+    },
+    "La Contrôleuse": {
+      desc: "Tu veux tout maîtriser — et c'est souvent pour ça que rien n'avance vraiment. Le Chasseur chez toi se manifeste dans le besoin de tout contrôler pour ne pas souffrir.",
+      rituel: "Ton rituel commence par lâcher une liste. Pas tout — juste une chose que tu avais prévu de gérer ce soir. Le signal que tu envoies à ton cerveau : tu peux poser le contrôle, tu es en sécurité.",
+      cycle: "En phase lutéale, ton besoin de contrôle monte — c'est le moment d'identifier ce qui t'appartient vraiment et ce que tu portes pour les autres."
+    },
+    "La Cérébrale": {
+      desc: "Tu analyses, tu décortiques, tu comprends tout — sauf comment agir. Le Chasseur chez toi parle par les pensées en boucle.",
+      rituel: "Ton rituel commence par sortir de la tête : un mouvement simple, répété, qui force ton attention dans le corps. Le but n'est pas de comprendre — c'est de ressentir.",
+      cycle: "En ovulation, ta clarté mentale est maximale — c'est là que tu prends tes grandes décisions. En phase pré-menstruelle, les pensées en boucle s'intensifient : c'est le moment d'utiliser le rituel, pas d'analyser davantage."
+    },
+    "L'Éponge": {
+      desc: "Tu ressens tout, pour toi et pour les autres — jusqu'à ne plus savoir ce qui t'appartient. Le Chasseur chez toi absorbe les émotions du monde entier.",
+      rituel: "Ton rituel commence par une séparation symbolique : avant de commencer, tu poses mentalement tout ce que tu as porté pour les autres aujourd'hui. Ce qui suit ne t'appartient qu'à toi.",
+      cycle: "En phase menstruelle, ton éponge est à son maximum. C'est le moment de te couper des sollicitations extérieures — pas par faiblesse, par intelligence."
+    }
+  };
+
+  const p = PROFILS[profil] || {
+    desc: "Ton Chasseur est actif — et ton guide est conçu pour l'endormir, étape par étape.",
+    rituel: "Commence par la version express (25 min). Répète-la 3 jours de suite avant de passer à la version complète.",
+    cycle: "Observe comment tu te sens à chaque phase du mois — ton guide t'explique quoi faire à chaque étape."
+  };
+
+  const emailCliente_html = `
+<div style="font-family:'Helvetica Neue',Arial,sans-serif;max-width:580px;margin:0 auto;color:#1A1416;background:#fff;">
+  <div style="background:#080608;padding:36px 40px 28px;text-align:center;">
+    <p style="color:#C8758E;font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;margin:0 0 10px;">La méthode Djen</p>
+    <h1 style="color:#fff;font-family:Georgia,serif;font-weight:400;font-size:1.9rem;margin:0;line-height:1.3;">Ton guide est là, ${prenom}.</h1>
+  </div>
+  <div style="padding:40px 40px 32px;">
+    ${profil ? `<div style="display:inline-block;background:#FBF4F7;color:#922245;font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;padding:6px 14px;border-radius:2px;margin-bottom:20px;">Ton profil : ${profil}</div>` : ''}
+    <p style="font-size:0.95rem;line-height:1.8;color:#3A2830;margin-bottom:16px;">${p.desc}</p>
+    <p style="font-size:0.95rem;line-height:1.8;color:#3A2830;margin-bottom:32px;">Ton guide de 8 pages est conçu spécifiquement pour toi. Voici l'essentiel :</p>
+
+    <div style="border-left:3px solid #922245;padding-left:20px;margin-bottom:24px;">
+      <p style="font-size:0.78rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#922245;margin:0 0 8px;">Ton rituel</p>
+      <p style="font-size:0.92rem;line-height:1.75;color:#1A1416;margin:0;">${p.rituel}</p>
+    </div>
+
+    <div style="border-left:3px solid #B8924A;padding-left:20px;margin-bottom:36px;">
+      <p style="font-size:0.78rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#B8924A;margin:0 0 8px;">Ton cycle</p>
+      <p style="font-size:0.92rem;line-height:1.75;color:#1A1416;margin:0;">${p.cycle}</p>
+    </div>
+
+    <p style="font-size:0.88rem;color:#6A5560;line-height:1.7;border-top:1px solid #E8DDE2;padding-top:24px;">Je t'envoie le guide complet (PDF) dans les prochaines minutes sur cette même adresse. Si tu ne le reçois pas dans l'heure, vérifie tes spams ou réponds à cet email.</p>
+  </div>
+  <div style="background:#FAFAFA;padding:24px 40px;border-top:1px solid #E8DDE2;text-align:center;">
+    <p style="font-size:0.72rem;color:#6A5560;margin:0;">La méthode Djen · ${process.env.EMAIL_DJEN}</p>
+  </div>
+</div>`;
+
+  // Email à la cliente
+  await resend.emails.send({
+    from: 'Djen <onboarding@resend.dev>',
+    to: emailCliente,
+    subject: `✦ Ton guide est là${profil ? ` — Profil ${profil}` : ''}, ${prenom}`,
+    html: emailCliente_html,
+  });
+
+  // Notification à Djen
+  await resend.emails.send({
+    from: 'La méthode Djen <onboarding@resend.dev>',
+    to: process.env.EMAIL_DJEN,
+    subject: `✦ Nouvelle vente Guide 12€ — ${profil || 'profil inconnu'} — ${prenom}`,
+    text: `Nouvelle vente — Le Rituel qui Endort le Chasseur (12€)\n\nPrénom : ${prenom}\nEmail : ${emailCliente}\nProfil quiz : ${profil || 'non détecté'}\nDate : ${now}\n\nEmail de confirmation envoyé à la cliente.`,
+  });
+}
+
 async function envoyerEmailDjen(session, meta) {
   const now = new Date().toLocaleString('fr-FR', { timeZone: 'Europe/Paris' });
   const prenom = meta.prenom || 'Inconnue';
