@@ -756,12 +756,27 @@ async function envoyerEmailGuide(session, meta) {
   </div>
 </div>`;
 
-  // Email à la cliente
+  // Sélection du PDF selon le profil
+  const PDF_MAP = {
+    "L'Agitée":       'guide-agitee.pdf',
+    "La Contrôleuse": 'guide-controleuse.pdf',
+    "La Cérébrale":   'guide-cerebrale.pdf',
+    "L'Éponge":       'guide-eponge.pdf',
+  };
+  const pdfFile = PDF_MAP[profil] || 'guide-general.pdf';
+  const pdfPath = path.join(__dirname, 'guides', pdfFile);
+  const pdfContent = fs.readFileSync(pdfPath);
+
+  // Email à la cliente avec PDF en pièce jointe
   await resend.emails.send({
     from: 'Djen <onboarding@resend.dev>',
     to: emailCliente,
     subject: `✦ Ton guide est là${profil ? ` — Profil ${profil}` : ''}, ${prenom}`,
     html: emailCliente_html,
+    attachments: [{
+      filename: profil ? `Guide ${profil} — La méthode Djen.pdf` : 'Guide La méthode Djen.pdf',
+      content: pdfContent,
+    }],
   });
 
   // Notification à Djen
