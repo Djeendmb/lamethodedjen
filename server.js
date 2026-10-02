@@ -200,7 +200,7 @@ app.post('/api/quiz-lead', async (req, res) => {
   if (!prenom || !email) return res.json({ ok: false });
   try {
     await resend.emails.send({
-      from: `La méthode Djen <${process.env.EMAIL_DJEN || 'onboarding@resend.dev'}>`,
+      from: 'La méthode Djen <onboarding@resend.dev>',
       to: process.env.EMAIL_DJEN,
       subject: `✦ Nouvelle participante au quiz — ${prenom}`,
       html: `<p style="font-family:sans-serif;font-size:15px;color:#1A1416;">
@@ -228,7 +228,7 @@ app.post('/api/quiz-result', async (req, res) => {
     ).join('') : '';
 
     await resend.emails.send({
-      from: `La méthode Djen <${process.env.EMAIL_DJEN || 'onboarding@resend.dev'}>`,
+      from: 'La méthode Djen <onboarding@resend.dev>',
       to: process.env.EMAIL_DJEN,
       subject: `✦ Résultat quiz — ${prenom} · ${profil}`,
       html: `
