@@ -647,25 +647,25 @@ async function envoyerEmailGuide(session, meta) {
   const now = new Date().toLocaleString('fr-FR', { timeZone: 'Europe/Paris' });
 
   const PROFILS = {
-    "L'Agitée": {
+    "Feu": {
       desc: "Ton énergie est ta force — mais quand le Chasseur s'emballe, elle se retourne contre toi. Tu t'agites, tu te disperses, tu t'épuises avant d'atteindre ce que tu voulais.",
       rituel: "Ton rituel est conçu pour canaliser cette énergie : il commence par un ancrage physique pour que ton système nerveux comprenne qu'il peut ralentir. Fais-le le soir, avant que l'énergie de la journée t'empêche de dormir.",
       cycle: "En phase folliculaire, ton énergie est au max — c'est là que tu te lances. En phase lutéale, ralentis intentionnellement plutôt que de t'épuiser à résister à la fatigue."
     },
-    "La Contrôleuse": {
+    "Terre": {
       desc: "Tu veux tout maîtriser — et c'est souvent pour ça que rien n'avance vraiment. Le Chasseur chez toi se manifeste dans le besoin de tout contrôler pour ne pas souffrir.",
       rituel: "Ton rituel commence par lâcher une liste. Pas tout — juste une chose que tu avais prévu de gérer ce soir. Le signal que tu envoies à ton cerveau : tu peux poser le contrôle, tu es en sécurité.",
       cycle: "En phase lutéale, ton besoin de contrôle monte — c'est le moment d'identifier ce qui t'appartient vraiment et ce que tu portes pour les autres."
     },
-    "La Cérébrale": {
+    "Air": {
       desc: "Tu analyses, tu décortiques, tu comprends tout — sauf comment agir. Le Chasseur chez toi parle par les pensées en boucle.",
       rituel: "Ton rituel commence par sortir de la tête : un mouvement simple, répété, qui force ton attention dans le corps. Le but n'est pas de comprendre — c'est de ressentir.",
       cycle: "En ovulation, ta clarté mentale est maximale — c'est là que tu prends tes grandes décisions. En phase pré-menstruelle, les pensées en boucle s'intensifient : c'est le moment d'utiliser le rituel, pas d'analyser davantage."
     },
-    "L'Éponge": {
+    "Eau": {
       desc: "Tu ressens tout, pour toi et pour les autres — jusqu'à ne plus savoir ce qui t'appartient. Le Chasseur chez toi absorbe les émotions du monde entier.",
       rituel: "Ton rituel commence par une séparation symbolique : avant de commencer, tu poses mentalement tout ce que tu as porté pour les autres aujourd'hui. Ce qui suit ne t'appartient qu'à toi.",
-      cycle: "En phase menstruelle, ton éponge est à son maximum. C'est le moment de te couper des sollicitations extérieures — pas par faiblesse, par intelligence."
+      cycle: "En phase menstruelle, ton absorption est à son maximum. C'est le moment de te couper des sollicitations extérieures — pas par faiblesse, par intelligence."
     }
   };
 
@@ -705,12 +705,12 @@ async function envoyerEmailGuide(session, meta) {
 
   // Sélection du PDF selon le profil
   const PDF_MAP = {
-    "L'Agitée":       'guide-agitee.pdf',
-    "La Contrôleuse": 'guide-controleuse.pdf',
-    "La Cérébrale":   'guide-cerebrale.pdf',
-    "L'Éponge":       'guide-eponge.pdf',
+    "Feu":   'guide-feu.pdf',
+    "Terre": 'guide-terre.pdf',
+    "Air":   'guide-air.pdf',
+    "Eau":   'guide-eau.pdf',
   };
-  const pdfFile = PDF_MAP[profil] || 'guide-agitee.pdf';
+  const pdfFile = PDF_MAP[profil] || 'guide-feu.pdf';
   const pdfPath = path.join(__dirname, 'guides', pdfFile);
   const pdfContent = fs.readFileSync(pdfPath);
 
