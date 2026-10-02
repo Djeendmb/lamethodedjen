@@ -1287,6 +1287,20 @@
       transition: background 0.2s;
     }
     .quiz-pay-btn:hover { background: #C9AC72; }
+    .quiz-input {
+      background: rgba(243,234,224,0.05);
+      border: 1px solid rgba(243,234,224,0.18);
+      border-radius: 4px;
+      padding: 14px 16px;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: #F3EAE0;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .quiz-input::placeholder { color: rgba(243,234,224,0.3); }
+    .quiz-input:focus { border-color: #D8BE8A; }
 
     /* ─── PAGE MERCI ──────────────────────────────────────────── */
     #merci-page {
@@ -1820,8 +1834,22 @@
 <!-- ══ MODAL PAIEMENT ═══════════════════════════════════════ -->
 <div id="quiz-modal">
   <div class="quiz-box">
+    <!-- Capture nom + email -->
+    <div id="quiz-capture-screen">
+      <div class="quiz-body">
+        <div class="quiz-step-label">Avant de commencer</div>
+        <div class="quiz-q">À qui j'envoie ton guide ?</div>
+        <div style="display:flex;flex-direction:column;gap:12px;margin-top:4px;">
+          <input class="quiz-input" id="quiz-prenom" type="text" placeholder="Ton prénom" autocomplete="given-name"/>
+          <input class="quiz-input" id="quiz-email" type="email" placeholder="Ton email" autocomplete="email"/>
+        </div>
+        <p id="quiz-capture-error" style="display:none;font-family:'Jost',sans-serif;font-size:0.78rem;color:#E07070;margin-top:8px;"></p>
+        <button class="quiz-pay-btn" style="margin-top:20px;" onclick="quizCaptureSubmit()">Faire le quiz →</button>
+      </div>
+    </div>
+
     <!-- Questions -->
-    <div id="quiz-screen">
+    <div id="quiz-screen" style="display:none;">
       <div class="quiz-header">
         <button class="quiz-back" id="quiz-back-btn" onclick="quizGoBack()" hidden>←</button>
         <div class="quiz-progress" id="quiz-progress"></div>
@@ -2055,17 +2083,46 @@ const QUIZ_PROFILES = {
 const TYPE_TO_TAG = { F: 'Feu', A: 'Air', E: 'Eau', T: 'Terre' };
 
 let quizStep = 0;
-let quizAnswers = []; // type choisi pour chaque question (F/A/E/T)
-let quizProfile = ''; // type gagnant
+let quizAnswers = [];
+let quizProfile = '';
+let quizPrenom = '';
+let quizEmail = '';
 
 function openQuizModal() {
   quizStep = 0;
   quizAnswers = [];
   quizProfile = '';
-  document.getElementById('quiz-screen').style.display = 'block';
+  document.getElementById('quiz-capture-screen').style.display = 'block';
+  document.getElementById('quiz-screen').style.display = 'none';
   document.getElementById('quiz-result-screen').style.display = 'none';
-  renderQuizStep();
+  document.getElementById('quiz-capture-error').style.display = 'none';
+  document.getElementById('quiz-prenom').value = '';
+  document.getElementById('quiz-email').value = '';
   document.getElementById('quiz-modal').classList.add('open');
+  setTimeout(() => document.getElementById('quiz-prenom').focus(), 100);
+}
+
+function quizCaptureSubmit() {
+  const prenom = document.getElementById('quiz-prenom').value.trim();
+  const email = document.getElementById('quiz-email').value.trim();
+  const errEl = document.getElementById('quiz-capture-error');
+  if (!prenom || !email || !email.includes('@')) {
+    errEl.textContent = 'Merci de remplir ton prénom et ton email.';
+    errEl.style.display = 'block';
+    return;
+  }
+  quizPrenom = prenom;
+  quizEmail = email;
+  // envoie le lead à Djen en arrière-plan
+  fetch('/api/quiz-lead', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ prenom, email })
+  }).catch(() => {});
+  // démarre le quiz
+  document.getElementById('quiz-capture-screen').style.display = 'none';
+  document.getElementById('quiz-screen').style.display = 'block';
+  renderQuizStep();
 }
 
 function closeQuizModal() {
@@ -2166,8 +2223,11 @@ function openCheckoutModal(product) {
   const tag = document.getElementById('modal-product-tag');
   tag.textContent = '✦ ' + (PRODUCT_LABELS[selectedProduct] || selectedProduct);
   tag.style.display = 'inline-block';
+  // pré-remplir si on vient du quiz
+  if (quizPrenom) document.getElementById('modal-prenom').value = quizPrenom;
+  if (quizEmail)  document.getElementById('modal-email').value  = quizEmail;
   modal.classList.add('open');
-  document.getElementById('modal-email').focus();
+  document.getElementById(quizPrenom ? 'modal-email' : 'modal-prenom').focus();
 }
 
 function closeCheckoutModal() {

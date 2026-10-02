@@ -194,6 +194,26 @@ RÈGLES ABSOLUES :
   }
 });
 
+// ─── POST /api/quiz-lead ──────────────────────────────────────────────────────
+app.post('/api/quiz-lead', async (req, res) => {
+  const { prenom, email } = req.body;
+  if (!prenom || !email) return res.json({ ok: false });
+  try {
+    await resend.emails.send({
+      from: 'La méthode Djen <onboarding@resend.dev>',
+      to: process.env.EMAIL_DJEN,
+      subject: `✦ Nouvelle participante au quiz — ${prenom}`,
+      html: `<p style="font-family:sans-serif;font-size:15px;color:#1A1416;">
+        <strong>${prenom}</strong> a commencé le quiz.<br><br>
+        Email : <a href="mailto:${email}">${email}</a>
+      </p>`,
+    });
+  } catch (err) {
+    console.error('Quiz lead email error:', err.message);
+  }
+  res.json({ ok: true });
+});
+
 // ─── POST /api/checkout ───────────────────────────────────────────────────────
 app.post('/api/checkout', async (req, res) => {
   const { email, prenom, product, guide_profile, guide_answers } = req.body;
