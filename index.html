@@ -2200,6 +2200,24 @@ function showQuizResult() {
     `<p class="quiz-result-para${para.problem ? ' problem' : ''}">${para.text}</p>`
   ).join('');
   document.getElementById('quiz-pay-btn').textContent = `Obtenir mon guide ${p.name} →`;
+
+  // Envoie les résultats complets à Djen
+  const TYPE_NAMES = { F: 'Feu', A: 'Air', E: 'Eau', T: 'Terre' };
+  const qa = QUIZ_QUESTIONS.map((question, i) => {
+    const type = quizAnswers[i];
+    const option = question.options.find(o => o.type === type);
+    return { q: question.q, a: option ? option.text : type, type: TYPE_NAMES[type] || type };
+  });
+  fetch('/api/quiz-result', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      prenom: quizPrenom,
+      email: quizEmail,
+      profil: p.title,
+      qa,
+    })
+  }).catch(() => {});
 }
 
 async function quizProceedToCheckout() {

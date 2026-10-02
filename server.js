@@ -200,7 +200,7 @@ app.post('/api/quiz-lead', async (req, res) => {
   if (!prenom || !email) return res.json({ ok: false });
   try {
     await resend.emails.send({
-      from: 'La méthode Djen <onboarding@resend.dev>',
+      from: `La méthode Djen <${process.env.EMAIL_DJEN || 'onboarding@resend.dev'}>`,
       to: process.env.EMAIL_DJEN,
       subject: `✦ Nouvelle participante au quiz — ${prenom}`,
       html: `<p style="font-family:sans-serif;font-size:15px;color:#1A1416;">
@@ -210,6 +210,38 @@ app.post('/api/quiz-lead', async (req, res) => {
     });
   } catch (err) {
     console.error('Quiz lead email error:', err.message);
+  }
+  res.json({ ok: true });
+});
+
+// ─── POST /api/quiz-result ────────────────────────────────────────────────────
+app.post('/api/quiz-result', async (req, res) => {
+  const { prenom, email, profil, qa } = req.body;
+  if (!prenom || !email) return res.json({ ok: false });
+  try {
+    const reponsesHtml = Array.isArray(qa) ? qa.map((item, i) =>
+      `<tr>
+        <td style="padding:8px 12px;border-bottom:1px solid #F0E8EC;font-size:0.8rem;color:#6A5560;vertical-align:top;">Q${i+1}</td>
+        <td style="padding:8px 12px;border-bottom:1px solid #F0E8EC;font-size:0.85rem;color:#1A1416;">${item.q}</td>
+        <td style="padding:8px 12px;border-bottom:1px solid #F0E8EC;font-size:0.85rem;color:#922245;font-style:italic;white-space:nowrap;">${item.type}</td>
+      </tr>`
+    ).join('') : '';
+
+    await resend.emails.send({
+      from: `La méthode Djen <${process.env.EMAIL_DJEN || 'onboarding@resend.dev'}>`,
+      to: process.env.EMAIL_DJEN,
+      subject: `✦ Résultat quiz — ${prenom} · ${profil}`,
+      html: `
+<div style="font-family:sans-serif;max-width:600px;color:#1A1416;">
+  <p style="font-size:15px;margin-bottom:4px;"><strong>${prenom}</strong> — <a href="mailto:${email}" style="color:#922245;">${email}</a></p>
+  <p style="font-size:13px;color:#6A5560;margin-bottom:20px;">Profil : <strong style="color:#1A1416;">${profil}</strong></p>
+  <table style="width:100%;border-collapse:collapse;border:1px solid #F0E8EC;border-radius:6px;overflow:hidden;">
+    ${reponsesHtml}
+  </table>
+</div>`,
+    });
+  } catch (err) {
+    console.error('Quiz result email error:', err.message);
   }
   res.json({ ok: true });
 });
