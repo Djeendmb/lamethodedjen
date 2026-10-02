@@ -648,22 +648,22 @@ async function envoyerEmailGuide(session, meta) {
 
   const PROFILS = {
     "Feu": {
-      desc: "Ton énergie est ta force — mais quand le Chasseur s'emballe, elle se retourne contre toi. Tu t'agites, tu te disperses, tu t'épuises avant d'atteindre ce que tu voulais.",
+      desc: "Ton système passe en mode action. L'adrénaline monte vite, tu t'agites, tu veux régler les choses immédiatement. Ton défi : apprendre à diriger cette énergie au lieu de la laisser exploser ou te disperser.",
       rituel: "Ton rituel est conçu pour canaliser cette énergie : il commence par un ancrage physique pour que ton système nerveux comprenne qu'il peut ralentir. Fais-le le soir, avant que l'énergie de la journée t'empêche de dormir.",
       cycle: "En phase folliculaire, ton énergie est au max — c'est là que tu te lances. En phase lutéale, ralentis intentionnellement plutôt que de t'épuiser à résister à la fatigue."
     },
     "Terre": {
-      desc: "Tu veux tout maîtriser — et c'est souvent pour ça que rien n'avance vraiment. Le Chasseur chez toi se manifeste dans le besoin de tout contrôler pour ne pas souffrir.",
+      desc: "Ton corps se contracte et s'immobilise. Tu te sens lourde, tendue, dans le contrôle. Ton défi : créer de la sécurité concrète pour que ton système puisse enfin se relâcher.",
       rituel: "Ton rituel commence par lâcher une liste. Pas tout — juste une chose que tu avais prévu de gérer ce soir. Le signal que tu envoies à ton cerveau : tu peux poser le contrôle, tu es en sécurité.",
       cycle: "En phase lutéale, ton besoin de contrôle monte — c'est le moment d'identifier ce qui t'appartient vraiment et ce que tu portes pour les autres."
     },
     "Air": {
-      desc: "Tu analyses, tu décortiques, tu comprends tout — sauf comment agir. Le Chasseur chez toi parle par les pensées en boucle.",
+      desc: "Ton mental ne baisse jamais la garde. Il scrute, anticipe, tourne en boucle. Ton défi : redescendre de ta tête dans ton corps pour enfin couper l'alerte.",
       rituel: "Ton rituel commence par sortir de la tête : un mouvement simple, répété, qui force ton attention dans le corps. Le but n'est pas de comprendre — c'est de ressentir.",
       cycle: "En ovulation, ta clarté mentale est maximale — c'est là que tu prends tes grandes décisions. En phase pré-menstruelle, les pensées en boucle s'intensifient : c'est le moment d'utiliser le rituel, pas d'analyser davantage."
     },
     "Eau": {
-      desc: "Tu ressens tout, pour toi et pour les autres — jusqu'à ne plus savoir ce qui t'appartient. Le Chasseur chez toi absorbe les émotions du monde entier.",
+      desc: "L'alerte passe par l'émotion. Tu te sens vite submergée, poreuse, ou trop sensible aux autres. Ton défi : laisser l'émotion circuler sans la retenir ni la fuir.",
       rituel: "Ton rituel commence par une séparation symbolique : avant de commencer, tu poses mentalement tout ce que tu as porté pour les autres aujourd'hui. Ce qui suit ne t'appartient qu'à toi.",
       cycle: "En phase menstruelle, ton absorption est à son maximum. C'est le moment de te couper des sollicitations extérieures — pas par faiblesse, par intelligence."
     }
