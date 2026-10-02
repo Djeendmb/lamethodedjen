@@ -237,6 +237,8 @@ app.post('/api/checkout', async (req, res) => {
     return String(str).slice(0, max);
   };
 
+  const siteUrl = process.env.SITE_URL || (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'https://lamethodedjen.fr');
+
   try {
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
@@ -249,12 +251,13 @@ app.post('/api/checkout', async (req, res) => {
       mode: 'payment',
       customer_email: email,
       metadata: {
+        product: truncate(product, 50),
         prenom: truncate(prenom, 100),
         guide_profile: truncate(guide_profile, 50),
         guide_answers: truncate(guide_answers, 50),
       },
-      success_url: `${process.env.SITE_URL}/merci?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${process.env.SITE_URL}/#offres`,
+      success_url: `${siteUrl}/merci?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${siteUrl}/#offres`,
     });
 
     res.json({ url: session.url });

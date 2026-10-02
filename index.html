@@ -2227,7 +2227,7 @@ async function quizProceedToCheckout() {
   } catch (err) {
     btn.disabled = false;
     btn.textContent = `Obtenir mon guide ${QUIZ_PROFILES[quizProfile]?.name || ''} →`;
-    alert('Une erreur est survenue. Réessaie.');
+    alert('Une erreur est survenue : ' + (err.message || 'Réessaie.'));
   }
 }
 
