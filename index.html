@@ -2113,12 +2113,6 @@ function quizCaptureSubmit() {
   }
   quizPrenom = prenom;
   quizEmail = email;
-  // envoie le lead à Djen en arrière-plan
-  fetch('/api/quiz-lead', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ prenom, email })
-  }).catch(() => {});
   // démarre le quiz
   document.getElementById('quiz-capture-screen').style.display = 'none';
   document.getElementById('quiz-screen').style.display = 'block';
