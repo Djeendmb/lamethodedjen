@@ -196,7 +196,7 @@ RÈGLES ABSOLUES :
 
 // ─── POST /api/checkout ───────────────────────────────────────────────────────
 app.post('/api/checkout', async (req, res) => {
-  const { email, prenom, q1, q2, q3, q4, q5, q6, q7a, q7b, archetype, product, score, guide_profile } = req.body;
+  const { email, prenom, product, guide_profile, guide_answers } = req.body;
 
   if (!email || !prenom) {
     return res.status(400).json({ error: 'Email et prénom requis' });
@@ -231,16 +231,7 @@ app.post('/api/checkout', async (req, res) => {
       metadata: {
         prenom: truncate(prenom, 100),
         guide_profile: truncate(guide_profile, 50),
-        archetype: truncate(archetype, 200),
-        score: truncate(String(score || ''), 20),
-        q1: truncate(q1),
-        q2: truncate(q2),
-        q3: truncate(q3),
-        q4: truncate(q4),
-        q5: truncate(q5),
-        q6: truncate(q6),
-        q7a: truncate(q7a),
-        q7b: truncate(q7b),
+        guide_answers: truncate(guide_answers, 50),
       },
       success_url: `${process.env.SITE_URL}/merci?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${process.env.SITE_URL}/#offres`,
