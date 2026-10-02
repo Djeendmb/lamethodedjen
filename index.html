@@ -1218,41 +1218,56 @@
       color: #F3EAE0;
     }
     /* résultat */
-    .quiz-result-eyebrow {
-      font-family: 'Jost', sans-serif;
-      font-size: 0.68rem;
-      font-weight: 400;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: #D8BE8A;
-      margin-bottom: 10px;
-    }
-    .quiz-result-name {
+    .quiz-result-title {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2rem, 6vw, 2.8rem);
+      font-size: clamp(1.8rem, 5.5vw, 2.6rem);
       font-weight: 400;
       color: #F3EAE0;
-      line-height: 1.15;
-      margin-bottom: 20px;
+      line-height: 1.2;
+      margin-bottom: 24px;
     }
-    .quiz-result-phrase {
+    .quiz-result-body {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+    .quiz-result-para {
       font-family: 'Jost', sans-serif;
-      font-size: 0.92rem;
+      font-size: 0.9rem;
       font-weight: 300;
       color: rgba(243,234,224,0.65);
       line-height: 1.75;
-      margin-bottom: 8px;
+    }
+    .quiz-result-para.problem {
+      color: #F3EAE0;
+      font-weight: 400;
+      font-style: italic;
+      border-left: 2px solid #D8BE8A;
+      padding-left: 14px;
     }
     .quiz-result-sep {
       border: none;
       border-top: 1px solid rgba(243,234,224,0.1);
-      margin: 20px 0;
+      margin: 4px 0 20px;
+    }
+    .quiz-result-purchase {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 6px;
     }
     .quiz-result-price {
       font-family: 'Jost', sans-serif;
-      font-size: 1.5rem;
+      font-size: 1.6rem;
       font-weight: 400;
       color: #F3EAE0;
+    }
+    .quiz-result-delivery {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 300;
+      color: rgba(243,234,224,0.38);
       margin-bottom: 16px;
     }
     .quiz-pay-btn {
@@ -1820,12 +1835,14 @@
     <!-- Résultat -->
     <div id="quiz-result-screen" style="display:none;">
       <div class="quiz-body">
-        <div class="quiz-result-eyebrow">Ton anxiété</div>
-        <div class="quiz-result-name" id="quiz-profile-name"></div>
-        <div class="quiz-result-phrase" id="quiz-profile-phrase"></div>
+        <div class="quiz-result-title" id="quiz-result-title"></div>
+        <div class="quiz-result-body" id="quiz-result-body"></div>
         <hr class="quiz-result-sep">
-        <div class="quiz-result-price">12€</div>
-        <button class="quiz-pay-btn" onclick="quizProceedToCheckout()">Payer et recevoir mon guide →</button>
+        <div class="quiz-result-purchase">
+          <div class="quiz-result-price">12€</div>
+        </div>
+        <div class="quiz-result-delivery">Guide PDF · Envoyé par email juste après le paiement</div>
+        <button class="quiz-pay-btn" id="quiz-pay-btn" onclick="quizProceedToCheckout()">Obtenir mon guide →</button>
       </div>
     </div>
   </div>
@@ -1988,10 +2005,50 @@ const QUIZ_QUESTIONS = [
 ];
 
 const QUIZ_PROFILES = {
-  F: { name: 'Feu', phrase: 'Ton stress monte en énergie. Tu vas apprendre à la diriger vers ce que tu veux.' },
-  A: { name: 'Air', phrase: 'Ton stress vit dans ta tête. Tu vas transformer tes pensées en clarté.' },
-  E: { name: 'Eau', phrase: 'Tes émotions te submergent. Tu vas apprendre à les laisser passer.' },
-  T: { name: 'Terre', phrase: 'Ton stress se loge dans ton corps. Tu vas apprendre à créer ta sécurité.' },
+  F: {
+    name: 'Feu',
+    title: 'Feu – Le Chasseur qui charge',
+    paras: [
+      { text: 'Ton système s\'allume en mode action.', problem: false },
+      { text: 'L\'énergie monte vite, tu t\'agites, tu veux tout régler maintenant.', problem: false },
+      { text: 'Le problème, c\'est que cette adrénaline te disperse, te fait décider à chaud, et t\'épuise avant d\'arriver au bout de ce que tu veux vraiment.', problem: true },
+      { text: 'Ton guide Feu t\'apprend exactement comment diriger cette énergie au lieu de la laisser t\'emporter.', problem: false },
+      { text: 'Tu y trouves ton rituel précis, les moments où l\'utiliser, et la façon dont tu manifestes le plus efficacement : en passant à l\'action sans te disperser.', problem: false },
+    ]
+  },
+  A: {
+    name: 'Air',
+    title: 'Air – Le Chasseur qui guette',
+    paras: [
+      { text: 'Ton mental ne s\'arrête jamais.', problem: false },
+      { text: 'Il analyse, anticipe, tourne en boucle. Même le soir, ta tête continue de chercher des solutions ou des scénarios.', problem: false },
+      { text: 'Le problème, c\'est que tu réfléchis tellement que tu agis peu, ou que tu doutes à chaque décision.', problem: true },
+      { text: 'Ton guide Air t\'apprend à vider ta tête et à redescendre dans ton corps pour enfin couper l\'alerte.', problem: false },
+      { text: 'Tu y trouves ton rituel, les moments où l\'utiliser, et comment transformer ton mental en outil de clarté au lieu de le laisser tourner à vide.', problem: false },
+    ]
+  },
+  E: {
+    name: 'Eau',
+    title: 'Eau – Le Chasseur qui déborde',
+    paras: [
+      { text: 'Les émotions montent vite et prennent beaucoup de place.', problem: false },
+      { text: 'Tu te sens poreuse, submergée, ou trop sensible à ce qui t\'entoure, et parfois aux problèmes des autres.', problem: false },
+      { text: 'Le problème, c\'est que tu retiens ou tu fuis l\'émotion, et ton énergie part ailleurs que dans tes projets.', problem: true },
+      { text: 'Ton guide Eau t\'apprend à laisser l\'émotion circuler sans qu\'elle t\'envahisse, et à poser des frontières claires.', problem: false },
+      { text: 'Tu y trouves ton rituel, les moments où l\'utiliser, et la façon dont tu manifestes le mieux en restant connectée à toi.', problem: false },
+    ]
+  },
+  T: {
+    name: 'Terre',
+    title: 'Terre – Le Chasseur qui se fige',
+    paras: [
+      { text: 'Ton corps se contracte et s\'immobilise.', problem: false },
+      { text: 'Tu te sens lourde, tendue, dans le contrôle, ou bloquée. Tu as parfois peur de manquer de sécurité ou de stabilité.', problem: false },
+      { text: 'Le problème, c\'est que tu peaufines au lieu de lancer, et que tu portes tout toute seule jusqu\'à t\'épuiser.', problem: true },
+      { text: 'Ton guide Terre t\'apprend à créer de la sécurité concrète pour que ton système puisse enfin se relâcher.', problem: false },
+      { text: 'Tu y trouves ton rituel, les moments où l\'utiliser, et comment manifester sans tout vouloir contrôler.', problem: false },
+    ]
+  },
 };
 
 // maps type → tag envoyé à Stripe/email
@@ -2081,8 +2138,11 @@ function showQuizResult() {
   document.getElementById('quiz-screen').style.display = 'none';
   document.getElementById('quiz-result-screen').style.display = 'block';
   const p = QUIZ_PROFILES[quizProfile];
-  document.getElementById('quiz-profile-name').textContent = p.name;
-  document.getElementById('quiz-profile-phrase').textContent = p.phrase;
+  document.getElementById('quiz-result-title').textContent = p.title;
+  document.getElementById('quiz-result-body').innerHTML = p.paras.map(para =>
+    `<p class="quiz-result-para${para.problem ? ' problem' : ''}">${para.text}</p>`
+  ).join('');
+  document.getElementById('quiz-pay-btn').textContent = `Obtenir mon guide ${p.name} →`;
 }
 
 function quizProceedToCheckout() {
