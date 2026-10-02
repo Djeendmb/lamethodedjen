@@ -2202,9 +2202,33 @@ function showQuizResult() {
   document.getElementById('quiz-pay-btn').textContent = `Obtenir mon guide ${p.name} →`;
 }
 
-function quizProceedToCheckout() {
-  closeQuizModal();
-  openCheckoutModal('guide');
+async function quizProceedToCheckout() {
+  const btn = document.getElementById('quiz-pay-btn');
+  btn.disabled = true;
+  btn.textContent = 'Redirection…';
+  try {
+    const res = await fetch('/api/checkout', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email: quizEmail,
+        prenom: quizPrenom,
+        product: 'guide',
+        guide_profile: TYPE_TO_TAG[quizProfile] || '',
+        guide_answers: quizAnswers.join(','),
+      })
+    });
+    const data = await res.json();
+    if (data.url) {
+      window.location.href = data.url;
+    } else {
+      throw new Error(data.error || 'Erreur inconnue');
+    }
+  } catch (err) {
+    btn.disabled = false;
+    btn.textContent = `Obtenir mon guide ${QUIZ_PROFILES[quizProfile]?.name || ''} →`;
+    alert('Une erreur est survenue. Réessaie.');
+  }
 }
 
 // ══════════════════════════════════════════════════════════════
