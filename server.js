@@ -194,6 +194,54 @@ RÈGLES ABSOLUES :
   }
 });
 
+// ─── POST /api/candidature ───────────────────────────────────────────────────
+app.post('/api/candidature', async (req, res) => {
+  const { prenom, email, objectif, situation, pourquoi } = req.body;
+  if (!prenom || !email) return res.json({ ok: false });
+
+  const OBJECTIF_LABELS = {
+    'prise-de-poids': 'Prise de poids',
+    'perte-de-poids': 'Perte de poids',
+    'les-deux': 'Recomposition (prise + perte)',
+  };
+
+  const now = new Date().toLocaleString('fr-FR', { timeZone: 'Europe/Paris' });
+
+  try {
+    await resend.emails.send({
+      from: 'L\'Ascension Djen <onboarding@resend.dev>',
+      to: process.env.EMAIL_DJEN,
+      subject: `✦ Nouvelle candidature — ${prenom}`,
+      html: `
+<div style="font-family:sans-serif;max-width:620px;color:#1A1416;">
+  <p style="font-size:13px;color:#6A5560;margin-bottom:24px;">${now}</p>
+  <table style="width:100%;border-collapse:collapse;margin-bottom:28px;">
+    <tr>
+      <td style="padding:10px 14px;background:#F8F6F3;font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:#6A5560;width:120px;">Prénom</td>
+      <td style="padding:10px 14px;font-size:0.95rem;color:#1A1416;border-bottom:1px solid #F0E8EC;"><strong>${prenom}</strong></td>
+    </tr>
+    <tr>
+      <td style="padding:10px 14px;background:#F8F6F3;font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:#6A5560;">Email</td>
+      <td style="padding:10px 14px;font-size:0.95rem;border-bottom:1px solid #F0E8EC;"><a href="mailto:${email}" style="color:#922245;">${email}</a></td>
+    </tr>
+    <tr>
+      <td style="padding:10px 14px;background:#F8F6F3;font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:#6A5560;">Objectif</td>
+      <td style="padding:10px 14px;font-size:0.95rem;color:#1A1416;border-bottom:1px solid #F0E8EC;">${OBJECTIF_LABELS[objectif] || objectif || '—'}</td>
+    </tr>
+  </table>
+  <p style="font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:#6A5560;margin-bottom:8px;">Sa situation</p>
+  <p style="font-size:0.93rem;color:#1A1416;line-height:1.75;white-space:pre-wrap;background:#F8F6F3;padding:16px;margin-bottom:24px;">${situation || '—'}</p>
+  <p style="font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:#6A5560;margin-bottom:8px;">Pourquoi maintenant</p>
+  <p style="font-size:0.93rem;color:#1A1416;line-height:1.75;white-space:pre-wrap;background:#F8F6F3;padding:16px;">${pourquoi || '—'}</p>
+</div>`,
+    });
+  } catch (err) {
+    console.error('Candidature email error:', err.message);
+    return res.json({ ok: false });
+  }
+  res.json({ ok: true });
+});
+
 // ─── POST /api/quiz-lead ──────────────────────────────────────────────────────
 app.post('/api/quiz-lead', async (req, res) => {
   const { prenom, email } = req.body;

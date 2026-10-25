@@ -3,2375 +3,1083 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>La méthode Djen — Deviens enfin la femme que tu sens déjà en toi.</title>
-  <meta name="description" content="La méthode Djen t'aide à oser devenir la femme que tu sens déjà en toi — en débloquant d'abord ce qui, dans ton corps, t'empêche encore d'y arriver." />
+  <title>L'Ascension Djen — Accompagnement individuel 3 mois</title>
+  <meta name="description" content="Prise ou perte de poids : un accompagnement holistique, corps et tête, avec Djen. Une visio chaque semaine. Un suivi WhatsApp du lundi au vendredi." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
   <style>
     :root {
-      --rose:        #922245;
-      --rose-light:  #C8758E;
-      --rose-dark:   #6E1A34;
-      --rose-pale:   #F6EAEE;
-      --rose-tint:   #FBF4F7;
-      --gold:        #B8924A;
-      --gold-light:  #D4B57A;
-      --gold-pale:   #F5EDD8;
-      --cream:       #F8F6F3;
-      --dark:        #080608;
-      --dark2:       #0F0C0E;
-      --dark3:       #160F13;
-      --text:        #1A1416;
-      --text-mid:    #3A2830;
-      --text-light:  #6A5560;
-      --border:      #E8DDE2;
-      --border-dark: rgba(255,255,255,0.07);
+      --rose:       #8B1D3F;
+      --rose-mid:   #B04466;
+      --rose-pale:  #F2E8ED;
+      --gold:       #A07840;
+      --ink:        #1C1416;
+      --ink-mid:    #4A3540;
+      --ink-light:  #7A6570;
+      --cream:      #FFFDF9;
+      --off:        #F7F3EE;
+      --line:       #E8DDE2;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'DM Sans', -apple-system, sans-serif;
-      color: var(--text);
-      background: #fff;
+      font-family: 'DM Sans', Georgia, sans-serif;
+      background: var(--cream);
+      color: var(--ink);
       line-height: 1.65;
       -webkit-font-smoothing: antialiased;
     }
 
-    h1, h2, h3, h4 {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      line-height: 1.2;
-      font-weight: 600;
-    }
-
-    /* ─── NAV ─────────────────────────────────────────────────── */
+    /* ── NAV ──────────────────────────────────────────────────── */
     nav {
       position: sticky;
       top: 0;
-      z-index: 100;
-      background: rgba(8,6,8,0.97);
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-      padding: 0 56px;
-      height: 68px;
+      z-index: 99;
+      background: rgba(255,253,249,0.96);
+      border-bottom: 1px solid var(--line);
+      padding: 0 48px;
+      height: 60px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      backdrop-filter: blur(16px);
+      backdrop-filter: blur(12px);
     }
 
     .nav-logo {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.25rem;
-      font-weight: 500;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.15rem;
+      font-weight: 400;
       font-style: italic;
-      color: #fff;
+      color: var(--ink);
       text-decoration: none;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.03em;
     }
-
-    .nav-logo span { color: var(--rose-light); }
 
     .nav-cta {
-      background: var(--rose);
-      color: #fff;
-      border: none;
-      padding: 10px 24px;
-      border-radius: 0;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.72rem;
-      font-weight: 400;
-      letter-spacing: 0.1em;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      cursor: pointer;
-      transition: background 0.2s;
+      color: var(--rose);
+      text-decoration: none;
+      border-bottom: 1px solid var(--rose);
+      padding-bottom: 2px;
+      transition: opacity 0.2s;
     }
 
-    .nav-cta:hover { background: var(--rose-dark); }
+    .nav-cta:hover { opacity: 0.65; }
 
-    /* ─── HERO ────────────────────────────────────────────────── */
+    @media (max-width: 600px) { nav { padding: 0 20px; } }
+
+    /* ── HERO ─────────────────────────────────────────────────── */
     .hero {
-      background: var(--dark);
-      padding: 140px 56px 120px;
-    }
-
-    .hero-inner {
-      max-width: 1000px;
+      padding: 100px 24px 90px;
+      max-width: 780px;
       margin: 0 auto;
     }
 
-    .eyebrow {
-      display: block;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.7rem;
+    .hero-label {
+      font-size: 0.68rem;
       font-weight: 400;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.58);
-      margin-bottom: 28px;
+      color: var(--rose);
+      display: block;
+      margin-bottom: 32px;
     }
 
     .hero h1 {
-      font-size: clamp(3rem, 6.5vw, 5.2rem);
-      font-weight: 300;
-      color: #fff;
-      margin-bottom: 0;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(2.8rem, 6.5vw, 5rem);
+      font-weight: 500;
+      color: var(--ink);
       line-height: 1.1;
-      letter-spacing: -0.02em;
-      max-width: 820px;
+      letter-spacing: -0.01em;
+      margin-bottom: 36px;
     }
 
     .hero h1 em {
       font-style: italic;
       font-weight: 300;
-      color: rgba(255,255,255,0.75);
+      color: var(--rose);
     }
-
-    .hero-divider { display: none; }
 
     .hero-sub {
-      font-size: 1rem;
-      font-weight: 300;
-      color: rgba(255,255,255,0.65);
-      max-width: 520px;
-      margin: 36px 0 52px;
-      line-height: 1.85;
-    }
-
-    .btn-primary {
-      display: inline-block;
-      background: var(--rose);
-      color: #fff;
-      padding: 15px 40px;
-      border-radius: 0;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.75rem;
-      font-weight: 400;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      text-decoration: none;
-      border: none;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-
-    .btn-primary:hover { background: var(--rose-dark); }
-
-    .hero-note {
-      margin-top: 18px;
-      font-size: 0.75rem;
-      color: rgba(255,255,255,0.40);
-    }
-
-    .hero-signature {
-      margin-top: 64px;
-      font-family: 'Cormorant Garamond', serif;
       font-size: 1.05rem;
-      font-style: italic;
       font-weight: 300;
-      color: rgba(255,255,255,0.70);
-      max-width: 540px;
-      line-height: 1.7;
+      color: var(--ink-mid);
+      max-width: 520px;
+      line-height: 1.8;
+      margin-bottom: 48px;
     }
 
-    /* ─── STATS ───────────────────────────────────────────────── */
-    .stats {
-      border-bottom: 1px solid var(--border);
-      padding: 56px 40px;
-      background: var(--cream);
-    }
-
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0;
-      max-width: 680px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    .stats-grid > div { padding: 0 32px; }
-    .stats-grid > div + div { border-left: 1px solid var(--border); }
-
-    .stat-number {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 3rem;
-      font-weight: 300;
-      color: var(--rose);
-      line-height: 1;
-      margin-bottom: 10px;
-    }
-
-    .stat-label {
-      font-size: 0.75rem;
-      font-weight: 400;
-      color: var(--text-light);
-    }
-
-    /* ─── SECTIONS GÉNÉRIQUES ─────────────────────────────────── */
-    .section {
-      padding: 108px 40px;
-      max-width: 980px;
-      margin: 0 auto;
-    }
-
-    .section-full {
-      padding: 108px 40px;
-    }
-
-    .section-full-inner {
-      max-width: 980px;
-      margin: 0 auto;
-    }
-
-    .section h2 {
-      font-size: clamp(2rem, 4vw, 3.2rem);
-      font-weight: 300;
-      margin-bottom: 20px;
-      letter-spacing: -0.01em;
-    }
-
-    .section h2 em {
-      font-style: italic;
-      color: var(--rose);
-    }
-
-    /* ─── MÉCANISME ───────────────────────────────────────────── */
-    .mecanisme-section {
-      background: var(--cream);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      padding: 96px 40px;
-    }
-
-    .mecanisme-inner {
-      max-width: 960px;
-      margin: 0 auto;
-    }
-
-    .mecanisme-intro {
-      max-width: 640px;
-      margin-bottom: 64px;
-    }
-
-    .mecanisme-intro p {
-      font-size: 1rem;
-      font-weight: 300;
-      color: var(--text-mid);
-      line-height: 1.85;
-      margin-top: 20px;
-    }
-
-    .mecanisme-states {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-    }
-
-    .state-card {
-      padding: 44px 40px;
-      border-radius: 0;
-    }
-
-    .state-card.chasseur {
-      background: var(--dark);
-      border: 1px solid rgba(184,146,74,0.15);
-    }
-
-    .state-card.jardinier {
-      background: #fff;
-      border: 1px solid var(--border);
-    }
-
-    .state-icon {
-      font-size: 2rem;
-      margin-bottom: 16px;
-      display: block;
-    }
-
-    .state-label {
-      font-size: 0.68rem;
+    .btn {
+      display: inline-block;
+      font-size: 0.72rem;
       font-weight: 500;
       letter-spacing: 0.16em;
       text-transform: uppercase;
+      text-decoration: none;
+      color: #fff;
+      background: var(--rose);
+      padding: 15px 38px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .btn:hover { background: #6E1A34; }
+    .btn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+    .hero-aside {
+      margin-top: 22px;
+      font-size: 0.78rem;
+      font-weight: 300;
+      color: var(--ink-light);
+      letter-spacing: 0.04em;
+    }
+
+    /* ── BLOCK RÈGLE ──────────────────────────────────────────── */
+    .rule {
+      border-top: 1px solid var(--line);
+    }
+
+    /* ── SECTION ──────────────────────────────────────────────── */
+    .wrap {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 80px 24px;
+    }
+
+    .wrap-narrow {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 80px 24px;
+    }
+
+    .label {
+      display: block;
+      font-size: 0.65rem;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(2rem, 4.5vw, 3.2rem);
+      font-weight: 500;
+      color: var(--ink);
+      line-height: 1.15;
+      margin-bottom: 40px;
+      letter-spacing: -0.01em;
+    }
+
+    h2 em {
+      font-style: italic;
+      font-weight: 300;
+    }
+
+    /* ── TU TE RECONNAIS ──────────────────────────────────────── */
+    .reconnais {
+      background: var(--off);
+    }
+
+    .reconnais-inner {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 80px 24px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 60px;
+      align-items: start;
+    }
+
+    @media (max-width: 680px) {
+      .reconnais-inner { grid-template-columns: 1fr; }
+    }
+
+    .reconnais-left h2 { margin-bottom: 20px; }
+
+    .reconnais-left p {
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: var(--ink-mid);
+      line-height: 1.8;
+    }
+
+    .reconnais-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .reconnais-list li {
+      padding: 18px 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: var(--ink-mid);
+      line-height: 1.65;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .reconnais-list li::before {
+      content: '—';
+      color: var(--rose);
+      flex-shrink: 0;
+      font-weight: 300;
+      margin-top: 1px;
+    }
+
+    .reconnais-list li:last-child { border-bottom: none; }
+
+    /* ── HISTOIRE ─────────────────────────────────────────────── */
+    .histoire p {
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--ink-mid);
+      line-height: 1.9;
+      margin-bottom: 22px;
+      max-width: 600px;
+    }
+
+    .histoire p:last-child { margin-bottom: 0; }
+
+    .histoire-quote {
+      margin-top: 40px;
+      padding: 24px 28px;
+      border-left: 2px solid var(--rose);
+      background: var(--rose-pale);
+      max-width: 520px;
+    }
+
+    .histoire-quote p {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.35rem;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--rose);
+      line-height: 1.5;
+      margin-bottom: 0;
+    }
+
+    /* ── PILIERS ──────────────────────────────────────────────── */
+    .piliers-bg {
+      background: var(--off);
+    }
+
+    .piliers-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--line);
+      margin-top: 8px;
+    }
+
+    @media (max-width: 640px) {
+      .piliers-grid { grid-template-columns: 1fr; }
+    }
+
+    .pilier {
+      background: var(--cream);
+      padding: 36px 28px;
+    }
+
+    .pilier-num {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 2.4rem;
+      font-weight: 300;
+      color: var(--line);
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+
+    .pilier h3 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.45rem;
+      font-weight: 500;
+      color: var(--ink);
       margin-bottom: 10px;
     }
 
-    .state-card.chasseur .state-label { color: var(--rose-light); }
-    .state-card.jardinier .state-label { color: var(--rose); }
-
-    .state-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.45rem;
-      font-weight: 400;
-      margin-bottom: 14px;
-    }
-
-    .state-card.chasseur .state-title { color: #fff; }
-    .state-card.jardinier .state-title { color: var(--text); }
-
-    .state-desc {
-      font-size: 0.88rem;
+    .pilier p {
+      font-size: 0.87rem;
       font-weight: 300;
+      color: var(--ink-light);
       line-height: 1.75;
     }
 
-    .state-card.chasseur .state-desc { color: rgba(255,255,255,0.70); }
-    .state-card.jardinier .state-desc { color: var(--text-mid); }
-
-    .state-signals {
-      list-style: none;
-      margin-top: 16px;
+    /* ── INCLUS ───────────────────────────────────────────────── */
+    .inclus-list {
+      margin-top: 8px;
     }
 
-    .state-signals li {
-      font-size: 0.82rem;
-      font-weight: 300;
-      padding: 6px 0;
-      border-bottom: 1px solid;
+    .inclus-item {
+      padding: 26px 0;
+      border-bottom: 1px solid var(--line);
       display: flex;
-      gap: 8px;
+      gap: 24px;
       align-items: flex-start;
-      line-height: 1.5;
     }
 
-    .state-card.chasseur .state-signals li {
-      color: rgba(255,255,255,0.75);
-      border-color: rgba(255,255,255,0.06);
-    }
+    .inclus-item:first-child { padding-top: 0; }
+    .inclus-item:last-child { border-bottom: none; }
 
-    .state-card.jardinier .state-signals li {
-      color: var(--text-mid);
-      border-color: var(--border);
-    }
-
-    .state-signals li::before {
-      content: '—';
-      flex-shrink: 0;
+    .inclus-n {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
       color: var(--rose);
+      min-width: 24px;
+      padding-top: 3px;
     }
 
-    /* ─── HISTOIRE ────────────────────────────────────────────── */
-    .histoire-section {
-      background: var(--dark3);
-      padding: 96px 40px;
-      border-top: 1px solid rgba(255,255,255,0.04);
+    .inclus-body strong {
+      display: block;
+      font-size: 0.97rem;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 4px;
     }
 
-    .histoire-inner {
+    .inclus-body p {
+      font-size: 0.87rem;
+      font-weight: 300;
+      color: var(--ink-light);
+      line-height: 1.7;
+    }
+
+    /* ── PARCOURS ─────────────────────────────────────────────── */
+    .parcours-bg {
+      background: var(--off);
+    }
+
+    .parcours-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--line);
+    }
+
+    @media (max-width: 640px) {
+      .parcours-grid { grid-template-columns: 1fr; }
+    }
+
+    .parcours-card {
+      background: var(--cream);
+      padding: 36px 28px;
+    }
+
+    .parcours-mois {
+      font-size: 0.65rem;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    .parcours-titre {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 10px;
+    }
+
+    .parcours-desc {
+      font-size: 0.87rem;
+      font-weight: 300;
+      color: var(--ink-light);
+      line-height: 1.75;
+    }
+
+    /* ── PAS POUR TOI ─────────────────────────────────────────── */
+    .pasp {
+      background: var(--ink);
+      padding: 80px 24px;
+    }
+
+    .pasp-inner {
       max-width: 640px;
       margin: 0 auto;
     }
 
-    .histoire-eyebrow {
-      display: inline-block;
-      font-size: 0.7rem;
-      font-weight: 400;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.52);
+    .pasp .label { color: rgba(255,255,255,0.4); }
+    .pasp h2 { color: #fff; margin-bottom: 36px; }
+
+    .pasp-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
       margin-bottom: 36px;
     }
 
-    .histoire-paragraphe {
-      font-size: 1.02rem;
+    .pasp-item {
+      font-size: 0.95rem;
       font-weight: 300;
-      color: rgba(255,255,255,0.80);
-      line-height: 1.9;
+      color: rgba(255,255,255,0.58);
+      line-height: 1.65;
+      padding-left: 22px;
+      position: relative;
+    }
+
+    .pasp-item::before {
+      content: '×';
+      position: absolute;
+      left: 0;
+      color: rgba(176,68,102,0.6);
+    }
+
+    .pasp-note {
+      font-size: 0.85rem;
+      font-style: italic;
+      font-weight: 300;
+      color: rgba(255,255,255,0.35);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 24px;
+    }
+
+    /* ── INVESTISSEMENT ───────────────────────────────────────── */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--line);
       margin-bottom: 28px;
     }
 
-    .histoire-paragraphe.accent {
-      color: rgba(255,255,255,0.75);
+    @media (max-width: 540px) {
+      .pricing-grid { grid-template-columns: 1fr; }
     }
 
-    .histoire-signature {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.4rem;
-      font-weight: 400;
-      font-style: italic;
-      color: var(--rose-light);
-      margin-top: 40px;
-      padding-top: 32px;
-      border-top: 1px solid rgba(255,255,255,0.06);
+    .pricing-card {
+      background: var(--off);
+      padding: 36px 28px;
     }
 
-    /* ─── MÉTHODE (3 pilliers) ────────────────────────────────── */
-    .methode-section {
-      background: #fff;
-      padding: 96px 40px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .methode-inner {
-      max-width: 960px;
-      margin: 0 auto;
-    }
-
-    .methode-intro {
-      max-width: 580px;
-      margin-bottom: 64px;
-    }
-
-    .methode-intro p {
-      font-size: 1rem;
-      font-weight: 300;
-      color: var(--text-mid);
-      line-height: 1.85;
-      margin-top: 16px;
-    }
-
-    .pillars {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      border: 1px solid var(--border);
-    }
-
-    .pillar {
-      padding: 36px 32px;
-      background: #fff;
-    }
-
-    .pillar-icon {
-      font-size: 1.5rem;
-      margin-bottom: 18px;
-      display: block;
-    }
-
-    .pillar-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.2rem;
-      font-weight: 600;
-      margin-bottom: 10px;
-      color: var(--text);
-    }
-
-    .pillar-desc {
-      font-size: 0.875rem;
-      font-weight: 300;
-      color: var(--text-mid);
-      line-height: 1.7;
-    }
-
-    /* ─── TÉMOIGNAGES ─────────────────────────────────────────── */
-    .temoignages-section {
+    .pricing-card.main {
       background: var(--cream);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      padding: 96px 40px;
+      border-top: 2px solid var(--rose);
     }
 
-    .temoignages-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    .temoignages-header {
-      text-align: center;
-      margin-bottom: 64px;
-    }
-
-    .temoignages-header h2 {
-      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-      font-weight: 300;
-      margin-bottom: 8px;
-    }
-
-    .temoignages-header p {
-      font-size: 0.78rem;
-      font-weight: 300;
-      letter-spacing: 0.08em;
-      color: var(--text-light);
+    .pricing-label {
+      font-size: 0.65rem;
+      font-weight: 400;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-    }
-
-    .temoignages-bloc {
-      margin-bottom: 56px;
-    }
-
-    .temoignages-bloc:last-child {
-      margin-bottom: 0;
-    }
-
-    .temoignages-bloc-label {
-      font-size: 0.7rem;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--text-light);
-      margin-bottom: 20px;
-      padding-bottom: 12px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .temoignages-photos {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
-    }
-
-    .temo-photo {
-      aspect-ratio: 9/16;
-      overflow: hidden;
-      border: 1px solid var(--border);
-    }
-
-    .temo-photo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+      color: var(--rose);
       display: block;
-    }
-
-    /* ─── OFFRES ──────────────────────────────────────────────── */
-    .offres-section {
-      padding: 96px 40px;
-      max-width: 1020px;
-      margin: 0 auto;
-    }
-
-    .offres-header {
-      text-align: center;
-      margin-bottom: 72px;
-    }
-
-    .offres-header h2 {
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 300;
       margin-bottom: 14px;
     }
 
-    .offres-header p {
-      color: var(--text-mid);
-      font-weight: 300;
-      font-size: 0.95rem;
-      max-width: 520px;
-      margin: 0 auto;
-      line-height: 1.75;
-    }
-
-    .offres-tiers {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .offre-card {
-      border: 1px solid var(--border);
-      border-radius: 0;
-      padding: 44px 48px;
-      background: #fff;
-      display: flex;
-      align-items: flex-start;
-      gap: 56px;
-      transition: border-color 0.25s;
-    }
-
-    .offre-card.featured {
-      border-color: var(--rose);
-      background: var(--rose-tint);
-    }
-
-    .offre-card-left {
-      flex: 0 0 240px;
-    }
-
-    .offre-card-right {
-      flex: 1;
-    }
-
-    .offre-tier-badge {
-      display: inline-block;
-      font-size: 0.65rem;
+    .pricing-name {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.25rem;
       font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      padding: 4px 10px;
-      border-radius: 2px;
-      margin-bottom: 16px;
-    }
-
-    .offre-tier-badge.t1 {
-      background: rgba(146,34,69,0.08);
-      color: var(--rose);
-    }
-
-    .offre-tier-badge.t2 {
-      background: rgba(146,110,74,0.08);
-      color: #8A6A40;
-    }
-
-    .offre-tier-badge.t3 {
-      background: rgba(180,80,60,0.08);
-      color: #B44028;
-    }
-
-    .offre-tier-badge.t4 {
-      background: rgba(184,146,74,0.1);
-      color: var(--gold);
-    }
-
-    .offre-card.reconstruction {
-      background: var(--dark);
-      border-color: rgba(180,80,60,0.3);
-    }
-
-    .offre-card.reconstruction .offre-name {
-      color: #fff;
-    }
-
-    .offre-card.reconstruction .offre-subtitle {
-      color: rgba(255,255,255,0.70);
-    }
-
-    .offre-card.reconstruction .offre-cible {
-      background: rgba(180,80,60,0.08);
-      border-left-color: rgba(180,80,60,0.4);
-      color: rgba(255,255,255,0.65);
-    }
-
-    .offre-card.reconstruction .offre-desc {
-      color: rgba(255,255,255,0.65);
-    }
-
-    .offre-card.reconstruction .offre-features li {
-      color: rgba(255,255,255,0.65);
-    }
-
-    .offre-card.reconstruction .offre-features li::before {
-      color: #C8758E;
-    }
-
-    .offre-card.reconstruction .offre-price {
-      color: #C8758E;
-    }
-
-    .offre-card.reconstruction .offre-price-note {
-      color: rgba(255,255,255,0.52);
-    }
-
-    .offre-card.reconstruction .offre-signature {
-      font-style: italic;
-      font-weight: 600;
-      font-size: 0.95rem;
-      color: #fff;
-      margin: 18px 0 24px;
-      padding: 14px 18px;
-      border-left: 2px solid rgba(200,117,142,0.5);
-      background: rgba(200,117,142,0.06);
-    }
-
-    .btn-offre-terracotta {
-      display: block;
-      width: 100%;
-      background: #922245;
-      color: #fff;
-      padding: 15px 28px;
-      border: none;
-      font-size: 0.75rem;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: background 0.2s;
-      text-align: center;
-    }
-
-    .btn-offre-terracotta:hover { background: #6E1A34; }
-
-    .offre-card.ascension {
-      background: var(--dark);
-      border-color: rgba(184,146,74,0.25);
-    }
-
-    .offre-card.ascension .offre-name {
-      color: #fff;
-    }
-
-    .offre-card.ascension .offre-subtitle {
-      color: rgba(255,255,255,0.70);
-    }
-
-    .offre-card.ascension .offre-subtitle {
-      color: rgba(255,255,255,0.65);
-    }
-
-    .offre-card.ascension .offre-cible {
-      background: rgba(184,146,74,0.08);
-      border-left-color: rgba(184,146,74,0.4);
-      color: rgba(255,255,255,0.65);
-    }
-
-    .offre-card.ascension .offre-desc {
-      color: rgba(255,255,255,0.65);
-    }
-
-    .offre-card.ascension .offre-features li {
-      color: rgba(255,255,255,0.65);
-    }
-
-    .offre-card.ascension .offre-features li::before {
-      color: var(--gold);
-    }
-
-    .offre-card.ascension .offre-price {
-      color: var(--gold);
-    }
-
-    .offre-card.ascension .offre-price-note {
-      color: rgba(255,255,255,0.52);
-    }
-
-    .btn-offre-gold {
-      display: block;
-      width: 100%;
-      background: var(--gold);
-      color: #fff;
-      padding: 15px 28px;
-      border: none;
-      border-radius: 0;
-      font-size: 0.75rem;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: background 0.2s;
-      margin-top: 24px;
-      text-align: center;
-    }
-
-    .btn-offre-gold:hover { background: #9A7835; }
-
-    .ascension-appel {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      padding: 18px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-    }
-
-    .ascension-appel:first-child { padding-top: 0; }
-    .ascension-appel:last-child { border-bottom: none; padding-bottom: 0; }
-
-    .ascension-appel-num {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.6rem;
-      font-weight: 300;
-      color: rgba(255,255,255,0.15);
-      min-width: 32px;
-      line-height: 1;
-    }
-
-    .ascension-appel-text {
-      font-size: 0.88rem;
-      font-weight: 300;
-      color: rgba(255,255,255,0.6);
-      line-height: 1.5;
-    }
-
-    .ascension-appel-text strong {
-      color: rgba(255,255,255,0.85);
-      font-weight: 400;
-    }
-
-    .offre-name {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.6rem;
-      font-weight: 400;
-      color: var(--text);
-      margin-bottom: 8px;
-      line-height: 1.2;
-    }
-
-    .offre-subtitle {
-      font-size: 0.88rem;
-      font-style: italic;
-      color: var(--text-mid);
+      color: var(--ink);
       margin-bottom: 20px;
-      font-family: 'Cormorant Garamond', serif;
     }
 
-    .offre-price {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2.8rem;
+    .pricing-amount {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 3rem;
       font-weight: 300;
-      color: var(--gold);
+      color: var(--ink);
       line-height: 1;
       margin-bottom: 4px;
     }
 
-    .offre-price-note {
-      font-size: 0.75rem;
-      font-weight: 300;
-      color: var(--text-light);
-      letter-spacing: 0.02em;
-    }
-
-    .offre-cible {
-      font-size: 0.8rem;
-      font-weight: 400;
-      color: var(--text-mid);
-      margin-bottom: 18px;
-      padding: 12px 16px;
-      background: var(--rose-pale);
-      border-left: 2px solid var(--rose);
-      line-height: 1.6;
-    }
-
-    .offre-desc {
-      font-size: 0.88rem;
-      font-weight: 300;
-      color: var(--text-mid);
-      line-height: 1.75;
-      margin-bottom: 20px;
-    }
-
-    .offre-features {
-      list-style: none;
-      margin-bottom: 28px;
-    }
-
-    .offre-features li {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      font-size: 0.85rem;
-      font-weight: 300;
-      color: var(--text-mid);
-      margin-bottom: 8px;
-      line-height: 1.5;
-    }
-
-    .offre-features li::before {
-      content: '—';
-      color: var(--rose);
-      font-weight: 400;
-      flex-shrink: 0;
-    }
-
-    .btn-offre {
-      display: block;
-      width: 100%;
-      background: var(--rose);
-      color: #fff;
-      border: none;
-      padding: 15px;
-      border-radius: 0;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.72rem;
-      font-weight: 400;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      cursor: pointer;
-      text-align: center;
-      transition: background 0.2s;
-    }
-
-    .btn-offre:hover { background: var(--rose-dark); }
-
-    .btn-offre-outline {
-      display: block;
-      width: 100%;
-      background: transparent;
-      color: var(--text);
-      border: 1px solid var(--border);
-      padding: 14px;
-      border-radius: 0;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.72rem;
-      font-weight: 400;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      cursor: pointer;
-      text-align: center;
-      transition: all 0.25s;
-      margin-top: 10px;
-    }
-
-    .btn-offre-outline:hover { background: var(--text); color: #fff; border-color: var(--text); }
-
-    /* Formation modules */
-    .formation-modules {
-      list-style: none;
-      margin-top: 4px;
-      margin-bottom: 24px;
-    }
-
-    .formation-modules li {
-      padding: 12px 0;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .formation-modules li:first-child { border-top: 1px solid var(--border); }
-
-    .module-name {
-      font-size: 0.88rem;
-      font-weight: 500;
-      color: var(--text);
-      margin-bottom: 3px;
-    }
-
-    .module-desc {
-      font-size: 0.82rem;
-      font-weight: 300;
-      color: var(--text-light);
-      line-height: 1.55;
-    }
-
-    /* Waitlist inlined */
-    .waitlist-form {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 8px;
-    }
-
-    .waitlist-input {
-      flex: 1;
-      border: 1px solid var(--border);
-      border-radius: 2px;
-      padding: 11px 14px;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.88rem;
-      font-weight: 300;
-      transition: border-color 0.2s;
-    }
-
-    .waitlist-input:focus { outline: none; border-color: var(--rose); }
-
-    .btn-waitlist {
-      background: var(--text);
-      color: #fff;
-      border: none;
-      padding: 11px 18px;
-      border-radius: 2px;
-      font-family: 'DM Sans', sans-serif;
+    .pricing-sub {
       font-size: 0.78rem;
-      font-weight: 500;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      cursor: pointer;
-      white-space: nowrap;
-      transition: background 0.2s;
-    }
-
-    .btn-waitlist:hover { background: #333; }
-
-    .waitlist-note {
-      font-size: 0.75rem;
       font-weight: 300;
-      color: var(--text-light);
+      color: var(--ink-light);
     }
 
-    .waitlist-confirm {
-      color: var(--rose);
-      font-size: 0.88rem;
-      display: none;
-      margin-top: 10px;
+    .pricing-note {
+      margin-top: 20px;
+      font-size: 0.83rem;
+      font-weight: 300;
+      color: var(--ink-light);
+      line-height: 1.75;
+      max-width: 520px;
     }
 
-    /* ─── CLOSING ─────────────────────────────────────────────── */
-    .closing {
-      background: var(--dark);
-      padding: 140px 56px;
-      text-align: center;
+    /* ── FORMULAIRE ───────────────────────────────────────────── */
+    .form-section {
+      background: var(--off);
+      padding: 80px 24px;
+      border-top: 1px solid var(--line);
     }
 
-    .closing-inner {
-      max-width: 660px;
+    .form-inner {
+      max-width: 640px;
       margin: 0 auto;
     }
 
-    .closing h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1.8rem, 4vw, 3rem);
-      font-weight: 300;
-      color: #fff;
-      margin-bottom: 24px;
-      line-height: 1.25;
-    }
-
-    .closing h2 em { font-style: italic; color: var(--rose-light); }
-
-    .closing p {
-      color: rgba(255,255,255,0.32);
-      font-size: 0.95rem;
-      font-weight: 300;
-      margin-bottom: 48px;
-      line-height: 1.85;
-      max-width: 440px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    /* ─── FOOTER ──────────────────────────────────────────────── */
-    footer {
-      background: var(--dark);
-      border-top: 1px solid rgba(255,255,255,0.04);
-      color: rgba(255,255,255,0.40);
-      text-align: center;
-      padding: 28px 40px;
-      font-size: 0.75rem;
-      font-weight: 300;
-      letter-spacing: 0.06em;
-    }
-
-    footer span { color: var(--rose-light); }
-
-    /* ─── MODAL PAIEMENT ──────────────────────────────────────── */
-    .modal-overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(12,10,11,0.8);
-      z-index: 1000;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-      backdrop-filter: blur(4px);
-    }
-
-    .modal-overlay.open { display: flex; }
-
-    .modal-box {
-      background: #fff;
-      border-radius: 4px;
-      padding: 48px 40px;
-      max-width: 460px;
-      width: 100%;
-      position: relative;
-    }
-
-    .modal-close {
-      position: absolute;
-      top: 18px;
-      right: 22px;
-      background: none;
-      border: none;
-      font-size: 1.2rem;
-      cursor: pointer;
-      color: var(--text-light);
-      line-height: 1;
-    }
-
-    .modal-close:hover { color: var(--text); }
-
-    .modal-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.7rem;
-      font-weight: 400;
-      margin-bottom: 8px;
-      color: var(--text);
-    }
-
-    .modal-product-tag {
-      display: inline-block;
-      background: var(--rose-tint);
-      color: var(--rose);
-      font-size: 0.72rem;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 5px 12px;
-      border-radius: 2px;
-      margin-bottom: 20px;
-    }
-
-    .modal-label {
-      display: block;
-      font-size: 0.78rem;
-      font-weight: 500;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--text-mid);
-      margin-bottom: 8px;
-    }
-
-    .modal-input {
-      width: 100%;
-      border: 1px solid var(--border);
-      border-radius: 2px;
-      padding: 13px 15px;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.95rem;
-      font-weight: 300;
-      margin-bottom: 20px;
-      transition: border-color 0.2s;
-      color: var(--text);
-    }
-
-    .modal-input:focus { outline: none; border-color: var(--rose); }
-
-    .modal-error {
-      color: #C0392B;
-      font-size: 0.82rem;
+    .form-inner h2 {
       margin-bottom: 12px;
-      display: none;
     }
 
-    .modal-btn {
-      display: block;
-      width: 100%;
-      background: var(--rose);
-      color: #fff;
-      border: none;
-      padding: 15px;
-      border-radius: 2px;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.8rem;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-
-    .modal-btn:hover { background: var(--rose-dark); }
-    .modal-btn:disabled { opacity: 0.4; cursor: not-allowed; }
-
-    /* ─── QUIZ MODAL ─────────────────────────────────────────── */
-    #quiz-modal { display: none; position: fixed; inset: 0; background: #15100D; z-index: 1000; align-items: center; justify-content: center; padding: 20px; }
-    #quiz-modal.open { display: flex; }
-    .quiz-box {
-      background: #15100D;
-      max-width: 520px;
-      width: 100%;
-      position: relative;
-      max-height: 100vh;
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-    }
-    .quiz-header {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 28px 28px 0;
-    }
-    .quiz-back {
-      background: none;
-      border: none;
-      color: rgba(243,234,224,0.4);
-      font-size: 1.2rem;
-      cursor: pointer;
-      padding: 4px 8px 4px 0;
-      line-height: 1;
-      transition: color 0.2s;
-      flex-shrink: 0;
-    }
-    .quiz-back:hover { color: #F3EAE0; }
-    .quiz-back[hidden] { visibility: hidden; pointer-events: none; }
-    .quiz-progress {
-      flex: 1;
-      display: flex;
-      gap: 5px;
-    }
-    .quiz-progress-bar {
-      flex: 1;
-      height: 3px;
-      background: rgba(243,234,224,0.12);
-      border-radius: 2px;
-      transition: background 0.3s;
-    }
-    .quiz-progress-bar.done { background: #D8BE8A; }
-    .quiz-progress-bar.active { background: rgba(216,190,138,0.45); }
-    .quiz-body {
-      padding: 32px 28px 36px;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-    .quiz-step-label {
-      font-family: 'Jost', sans-serif;
-      font-size: 0.7rem;
-      font-weight: 400;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: rgba(243,234,224,0.38);
-    }
-    .quiz-q {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1.3rem, 4vw, 1.65rem);
-      font-weight: 400;
-      color: #F3EAE0;
-      line-height: 1.45;
-    }
-    .quiz-options { display: flex; flex-direction: column; gap: 10px; }
-    .quiz-option {
-      background: rgba(243,234,224,0.04);
-      border: 1px solid rgba(243,234,224,0.14);
-      border-radius: 4px;
-      padding: 15px 18px;
-      font-family: 'Jost', sans-serif;
-      font-size: 0.9rem;
-      font-weight: 300;
-      color: rgba(243,234,224,0.82);
-      text-align: left;
-      cursor: pointer;
-      transition: border-color 0.2s, background 0.2s, color 0.2s;
-      line-height: 1.55;
-    }
-    .quiz-option:hover {
-      border-color: #D8BE8A;
-      background: rgba(216,190,138,0.08);
-      color: #F3EAE0;
-    }
-    /* résultat */
-    .quiz-result-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1.8rem, 5.5vw, 2.6rem);
-      font-weight: 400;
-      color: #F3EAE0;
-      line-height: 1.2;
-      margin-bottom: 24px;
-    }
-    .quiz-result-body {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-bottom: 24px;
-    }
-    .quiz-result-para {
-      font-family: 'Jost', sans-serif;
-      font-size: 0.9rem;
-      font-weight: 300;
-      color: rgba(243,234,224,0.65);
-      line-height: 1.75;
-    }
-    .quiz-result-para.problem {
-      color: #F3EAE0;
-      font-weight: 400;
-      font-style: italic;
-      border-left: 2px solid #D8BE8A;
-      padding-left: 14px;
-    }
-    .quiz-result-sep {
-      border: none;
-      border-top: 1px solid rgba(243,234,224,0.1);
-      margin: 4px 0 20px;
-    }
-    .quiz-result-purchase {
-      display: flex;
-      align-items: baseline;
-      gap: 12px;
-      margin-bottom: 6px;
-    }
-    .quiz-result-price {
-      font-family: 'Jost', sans-serif;
-      font-size: 1.6rem;
-      font-weight: 400;
-      color: #F3EAE0;
-    }
-    .quiz-result-delivery {
-      font-family: 'Jost', sans-serif;
-      font-size: 0.75rem;
-      font-weight: 300;
-      color: rgba(243,234,224,0.38);
-      margin-bottom: 16px;
-    }
-    .quiz-pay-btn {
-      display: block;
-      width: 100%;
-      background: #D8BE8A;
-      color: #15100D;
-      border: none;
-      border-radius: 3px;
-      padding: 16px 24px;
-      font-family: 'Jost', sans-serif;
-      font-size: 0.82rem;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-    .quiz-pay-btn:hover { background: #C9AC72; }
-    .quiz-input {
-      background: rgba(243,234,224,0.05);
-      border: 1px solid rgba(243,234,224,0.18);
-      border-radius: 4px;
-      padding: 14px 16px;
-      font-family: 'Jost', sans-serif;
-      font-size: 0.9rem;
-      font-weight: 300;
-      color: #F3EAE0;
-      outline: none;
-      transition: border-color 0.2s;
-    }
-    .quiz-input::placeholder { color: rgba(243,234,224,0.3); }
-    .quiz-input:focus { border-color: #D8BE8A; }
-
-    /* ─── PAGE MERCI ──────────────────────────────────────────── */
-    #merci-page {
-      display: none;
-      min-height: 100vh;
-      background: var(--dark);
-      padding: 60px 0 80px;
-    }
-
-    #merci-page.visible { display: block; }
-
-    #merci-final-step {
-      min-height: 80vh;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-    }
-
-    #merci-final-step.visible { display: flex; }
-
-    .merci-star { font-size: 2.5rem; color: var(--rose); margin-bottom: 24px; }
-
-    .merci-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 300;
-      color: #fff;
-      margin-bottom: 20px;
-    }
-
-    .merci-text {
-      color: rgba(255,255,255,0.70);
-      font-size: 0.95rem;
-      font-weight: 300;
-      line-height: 1.8;
-      margin-bottom: 36px;
-    }
-
-    .merci-btn {
-      display: inline-block;
-      border: 1px solid rgba(184,58,101,0.35);
-      color: var(--rose-light);
-      padding: 12px 28px;
-      border-radius: 2px;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.78rem;
-      font-weight: 400;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      cursor: pointer;
-      text-decoration: none;
-      transition: border-color 0.2s, color 0.2s;
-      background: transparent;
-    }
-
-    .merci-btn:hover { border-color: var(--rose); color: var(--rose); }
-
-    .merci-label {
-      display: block;
-      font-size: 0.72rem;
-      font-weight: 500;
-      color: rgba(255,255,255,0.58);
-      margin-bottom: 6px;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
-
-    .merci-input {
-      width: 100%;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 2px;
-      color: rgba(255,255,255,0.8);
-      font-family: 'DM Sans', sans-serif;
+    .form-intro {
       font-size: 0.92rem;
       font-weight: 300;
-      padding: 11px 13px;
+      color: var(--ink-mid);
+      line-height: 1.8;
+      margin-bottom: 48px;
+      max-width: 480px;
+    }
+
+    .form-group {
+      margin-bottom: 22px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.68rem;
+      font-weight: 400;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--ink-mid);
+      margin-bottom: 8px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      background: var(--cream);
+      border: 1px solid var(--line);
+      color: var(--ink);
+      padding: 13px 16px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.93rem;
+      font-weight: 300;
+      outline: none;
       transition: border-color 0.2s;
-      margin-bottom: 0;
+      border-radius: 0;
+      -webkit-appearance: none;
+      appearance: none;
     }
 
-    .merci-input:focus { outline: none; border-color: var(--rose); }
-    .merci-input::placeholder { color: rgba(255,255,255,0.40); }
-    .merci-input option { background: #1a1419; color: rgba(255,255,255,0.8); }
-
-    /* ─── RESPONSIVE ──────────────────────────────────────────── */
-    @media (max-width: 900px) {
-      .offre-card { flex-direction: column; gap: 28px; }
-      .offre-card-left { flex: none; width: 100%; }
-      .mecanisme-states { grid-template-columns: 1fr; }
-      .pillars { grid-template-columns: 1fr; }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: var(--ink-light);
+      opacity: 0.6;
     }
 
-    @media (max-width: 768px) {
-      nav { padding: 0 20px; }
-      .hero { padding: 80px 20px 72px; }
-      .stats { padding: 40px 20px; }
-      .stats-grid > div { padding: 0 14px; }
-      .mecanisme-section { padding: 72px 20px; }
-      .histoire-section { padding: 72px 20px; }
-      .methode-section { padding: 72px 20px; }
-      .section { padding: 72px 20px; }
-      .offres-section { padding: 72px 20px; }
-      .offre-card { padding: 28px 24px; }
-      .temoignages-section { padding: 72px 20px; }
-      .temoignages-photos { grid-template-columns: repeat(2, 1fr); gap: 8px; }
-      .closing { padding: 80px 20px; }
-      .modal-box { padding: 36px 24px; }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--rose);
     }
 
-    @media (max-width: 480px) {
-      .stats-grid { grid-template-columns: 1fr; gap: 24px; }
-      .stats-grid > div + div { border-left: none; border-top: 1px solid var(--border); padding-top: 24px; }
-      .waitlist-form { flex-direction: column; }
+    .form-group select option { color: var(--ink); }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 110px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
     }
 
     @media (max-width: 540px) {
-      #merci-form-step { padding: 32px 16px; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+
+    .form-check {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 32px;
+      margin-top: 8px;
+    }
+
+    .form-check input[type="checkbox"] {
+      width: 15px;
+      height: 15px;
+      min-width: 15px;
+      margin-top: 3px;
+      accent-color: var(--rose);
+      cursor: pointer;
+    }
+
+    .form-check label {
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: var(--ink-mid);
+      line-height: 1.7;
+      cursor: pointer;
+      letter-spacing: normal;
+      text-transform: none;
+    }
+
+    .btn-submit {
+      width: 100%;
+    }
+
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 60px 0;
+    }
+
+    .form-success-ornament {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 2.4rem;
+      font-weight: 300;
+      color: var(--rose);
+      display: block;
+      margin-bottom: 20px;
+    }
+
+    .form-success h3 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 2rem;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 12px;
+    }
+
+    .form-success p {
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: var(--ink-mid);
+      line-height: 1.8;
+    }
+
+    .form-error-msg {
+      display: none;
+      margin-top: 14px;
+      font-size: 0.83rem;
+      color: var(--rose);
+      font-weight: 300;
+    }
+
+    /* ── FAQ ──────────────────────────────────────────────────── */
+    .faq-item {
+      border-bottom: 1px solid var(--line);
+    }
+
+    .faq-q {
+      width: 100%;
+      background: none;
+      border: none;
+      text-align: left;
+      padding: 22px 0;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 400;
+      color: var(--ink);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .faq-q .faq-ico {
+      font-size: 1.2rem;
+      font-weight: 300;
+      color: var(--rose);
+      transition: transform 0.2s;
+      flex-shrink: 0;
+    }
+
+    .faq-item.open .faq-ico { transform: rotate(45deg); }
+
+    .faq-a {
+      display: none;
+      padding: 0 0 22px;
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: var(--ink-mid);
+      line-height: 1.8;
+      max-width: 560px;
+    }
+
+    .faq-item.open .faq-a { display: block; }
+
+    /* ── MOT DE LA FIN ────────────────────────────────────────── */
+    .fin {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 100px 24px;
+      text-align: center;
+    }
+
+    .fin p {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(1.3rem, 3vw, 1.8rem);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--ink-mid);
+      line-height: 1.65;
+      margin-bottom: 16px;
+    }
+
+    .fin p.strong-line {
+      font-style: normal;
+      font-weight: 500;
+      color: var(--ink);
+    }
+
+    .fin-cta {
+      margin-top: 44px;
+    }
+
+    /* ── FOOTER ───────────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 32px 24px;
+      text-align: center;
+      font-size: 0.75rem;
+      font-weight: 300;
+      color: var(--ink-light);
+      line-height: 1.75;
     }
   </style>
 </head>
 <body>
 
-<!-- ══ PAGE MERCI ══════════════════════════════════════════════ -->
-<div id="merci-page">
-
-  <div id="merci-form-step" style="width:100%;max-width:600px;margin:0 auto;padding:48px 24px;">
-    <div style="text-align:center;margin-bottom:48px;">
-      <div class="merci-star">✦</div>
-      <h1 class="merci-title">C'est parti.</h1>
-      <p class="merci-text" style="margin-bottom:0;">
-        Je suis en train de construire ton programme.<br>
-        Mais pour qu'il soit vraiment taillé pour toi — <span style="color:rgba(255,255,255,0.75);">j'ai besoin de quelques infos.</span><br>
-        Ça prend 2 minutes. C'est la dernière étape.
-      </p>
-    </div>
-
-    <form id="profil-form" onsubmit="soumettreProfilComplet(event)">
-
-      <div style="margin-bottom:36px;">
-        <p style="color:var(--rose);font-size:.68rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;margin-bottom:20px;">Ton corps</p>
-        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:14px;" class="merci-grid-3">
-          <div>
-            <label class="merci-label">Poids actuel (kg)</label>
-            <input class="merci-input" type="number" id="poids_actuel" placeholder="ex. 58" min="30" max="200" required />
-          </div>
-          <div>
-            <label class="merci-label">Taille (cm)</label>
-            <input class="merci-input" type="number" id="taille" placeholder="ex. 165" min="140" max="210" required />
-          </div>
-          <div>
-            <label class="merci-label">Poids cible (kg)</label>
-            <input class="merci-input" type="number" id="poids_cible" placeholder="ex. 65" min="30" max="200" required />
-          </div>
-        </div>
-        <label class="merci-label" style="margin-top:14px;">Zones à développer en priorité</label>
-        <input class="merci-input" type="text" id="zones" placeholder="ex. fesses, cuisses, épaules, dos…" required />
-      </div>
-
-      <div style="margin-bottom:36px;">
-        <p style="color:var(--rose);font-size:.68rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;margin-bottom:20px;">Alimentation</p>
-        <label class="merci-label">Allergies ou intolérances</label>
-        <input class="merci-input" type="text" id="allergies" placeholder="ex. lactose, gluten — ou aucune" />
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px;" class="merci-grid-2">
-          <div>
-            <label class="merci-label">Régime alimentaire</label>
-            <select class="merci-input" id="regime">
-              <option value="omnivore">Omnivore</option>
-              <option value="halal">Halal</option>
-              <option value="vegetarien">Végétarien</option>
-              <option value="vegan">Végan</option>
-              <option value="autre">Autre</option>
-            </select>
-          </div>
-          <div>
-            <label class="merci-label">Repas par jour</label>
-            <select class="merci-input" id="nb_repas">
-              <option value="1-2">1 à 2 repas</option>
-              <option value="3" selected>3 repas</option>
-              <option value="4-5">4 à 5 repas</option>
-            </select>
-          </div>
-        </div>
-      </div>
-
-      <div style="margin-bottom:36px;">
-        <p style="color:var(--rose);font-size:.68rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;margin-bottom:20px;">Entraînement</p>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;" class="merci-grid-2">
-          <div>
-            <label class="merci-label">Où tu t'entraînes ?</label>
-            <select class="merci-input" id="lieu_entrainement">
-              <option value="salle">Salle</option>
-              <option value="maison">Maison</option>
-              <option value="les deux">Les deux</option>
-            </select>
-          </div>
-          <div>
-            <label class="merci-label">Fréquence par semaine</label>
-            <select class="merci-input" id="frequence">
-              <option value="1-2x">1 à 2 fois</option>
-              <option value="3x" selected>3 fois</option>
-              <option value="4x">4 fois</option>
-              <option value="5x+">5 fois ou plus</option>
-            </select>
-          </div>
-        </div>
-        <label class="merci-label">Équipement disponible à la maison</label>
-        <input class="merci-input" type="text" id="equipement" placeholder="ex. haltères, barre, élastiques — ou aucun" style="margin-bottom:14px;" />
-        <label class="merci-label">Contraintes physiques</label>
-        <input class="merci-input" type="text" id="contraintes" placeholder="ex. genou fragile, dos douloureux — ou aucune" />
-      </div>
-
-      <div id="profil-error" style="color:#E87;font-size:.85rem;margin-bottom:12px;display:none;"></div>
-
-      <button type="submit" class="btn-primary" id="profil-btn" style="width:100%;padding:17px;font-size:.82rem;">
-        Envoyer à Djen →
-      </button>
-      <p style="text-align:center;color:rgba(255,255,255,0.40);font-size:.75rem;margin-top:12px;font-weight:300;">Ces infos ne servent qu'à une chose — construire ton programme. Rien d'autre.</p>
-    </form>
-  </div>
-
-  <div id="merci-final-step" style="display:none;text-align:center;max-width:520px;margin:0 auto;padding:40px 24px;">
-    <div class="merci-star">✦</div>
-    <h1 class="merci-title">Je t'ai reçue.</h1>
-    <p class="merci-text">
-      Ton profil est entre mes mains.<br>
-      Lis-le seule. Prends le temps de le sentir.<br>
-      <span style="color:rgba(255,255,255,0.52);font-size:.85rem;">Vérifie tes spams si tu ne le vois pas.</span>
-    </p>
-    <a href="/" class="merci-btn">← Retour</a>
-  </div>
-
-</div>
-
-<!-- ══ SITE PRINCIPAL ═════════════════════════════════════════ -->
-<div id="main-site">
-
-  <!-- NAVIGATION -->
+  <!-- NAV -->
   <nav>
-    <a href="#" class="nav-logo">La méthode <span>Djen</span></a>
-    <button class="nav-cta" onclick="openQuizModal()">Faire le quiz</button>
+    <a class="nav-logo" href="#">L'Ascension Djen</a>
+    <a class="nav-cta" href="#candidature">Je candidate</a>
   </nav>
 
   <!-- HERO -->
-  <section class="hero">
-    <div class="hero-inner">
-      <p class="eyebrow">La méthode Djen</p>
-      <h1>Tu n'as jamais voulu qu'on te regarde.<br>Tu as juste voulu <em>reprendre le contrôle.</em></h1>
-      <div class="hero-divider"></div>
-      <p class="hero-sub">La méthode Djen t'aide à reprendre le contrôle sur ton corps — pas pour t'arrêter là, mais pour grandir, plus haut et plus fort que tu ne l'as jamais été. Pas en travaillant plus dur — en débloquant d'abord ce qui t'empêche encore d'avancer.</p>
-      <button class="btn-primary" onclick="openQuizModal()">Faire le quiz</button>
-      <p class="hero-note">Résultat immédiat · Ton guide adapté à ton profil</p>
-      <p class="hero-signature">Je n'ai jamais cherché de revanche. J'ai cherché à reprendre le contrôle sur mon corps, sur ma vie — et une fois ce contrôle repris, j'ai continué à grandir, sans limite. C'est ce chemin que je te transmets. — Djen</p>
-    </div>
-  </section>
+  <div class="hero">
+    <span class="hero-label">Accompagnement individuel · 3 mois</span>
+    <h1>3 mois pour transformer<br>ton corps <em>et</em> ta tête.</h1>
+    <p class="hero-sub">Prise de poids ou perte de poids : un accompagnement holistique, avec un vrai cadre et un vrai suivi. Pas un énième programme que tu abandonnes au bout de 2 semaines.</p>
+    <a class="btn" href="#candidature">Je candidate</a>
+    <p class="hero-aside">Places limitées — je ne prends qu'un petit nombre de femmes en même temps.</p>
+  </div>
 
-  <!-- CE QUE J'AI DÉCOUVERT — LE MÉCANISME -->
-  <section class="mecanisme-section">
-    <div class="mecanisme-inner">
-      <div class="mecanisme-intro">
-        <p class="eyebrow">Ce que j'ai découvert</p>
-        <h2>Ce n'est pas ton assiette le problème.<br>C'est un mécanisme qui bloque tout <em>avant</em>.</h2>
-        <p>Tu manges plus, tu fais du sport, tu suis les conseils — et rien ne se passe. Ce n'est pas un manque de discipline. Il y a une partie de ton corps qui reste en état d'alerte permanente — le <strong>Chasseur</strong> — et qui empêche l'autre partie — le <strong>Jardinier</strong> — de construire, digérer, prendre du poids. Tant que le Chasseur est actif, tout ce que tu fais tourne à vide. Le déverrouiller, c'est la première étape. Pas une option de confort — un prérequis technique.</p>
-        <p style="margin-top:18px;font-size:0.9rem;color:rgba(26,14,18,0.62);line-height:1.7;">Le Chasseur, c'est ce qui te fait perdre le contrôle sur ton propre corps. Le Jardinier, c'est ce qui te permet de le reprendre — et de construire au-delà, pour grandir.</p>
+  <div class="rule"></div>
+
+  <!-- TU TE RECONNAIS -->
+  <div class="reconnais">
+    <div class="reconnais-inner">
+      <div class="reconnais-left">
+        <span class="label">C'est pour toi si…</span>
+        <h2>Tu te reconnais ?</h2>
+        <p>Si tu as dit oui à au moins deux de ces phrases, cet accompagnement est fait pour toi.</p>
       </div>
-      <div class="mecanisme-states">
-        <div class="state-card chasseur">
-          <span class="state-icon">🐅</span>
-          <div class="state-label">Le Chasseur — mode alerte</div>
-          <div class="state-title">Le corps survit. Il ne construit pas.</div>
-          <p class="state-desc">Quand le Chasseur est actif, ton système nerveux est en mode urgence. Le cortisol monte. L'appétit baisse. La digestion ralentit. Ton corps brûle ce qu'il a au lieu de construire.</p>
-          <ul class="state-signals">
-            <li>Stress chronique ou pression constante</li>
-            <li>Fatigue même sans effort physique</li>
-            <li>Peu d'appétit, digestion difficile</li>
-            <li>Poids qui ne bouge pas malgré les efforts</li>
-          </ul>
-        </div>
-        <div class="state-card jardinier">
-          <span class="state-icon">🌱</span>
-          <div class="state-label">Le Jardinier — mode construction</div>
-          <div class="state-title">Le corps reçoit. Il peut enfin construire.</div>
-          <p class="state-desc">Quand le Jardinier est actif, ton corps est en sécurité. Il digère bien, assimile, stocke, construit. C'est dans cet état que la nourriture devient de la masse — et que tes efforts paient enfin.</p>
-          <ul class="state-signals">
-            <li>Récupération complète, sommeil réparateur</li>
-            <li>Bon appétit, plaisir de manger</li>
-            <li>Énergie stable au quotidien</li>
-            <li>Corps qui répond aux efforts fournis</li>
-          </ul>
-        </div>
-      </div>
+      <ul class="reconnais-list">
+        <li>Tu as déjà tout essayé : programmes, régimes, résolutions du lundi. Et tu reviens toujours au point de départ.</li>
+        <li>Tu sais ce qu'il faut faire, mais tu n'arrives pas à le tenir dans le temps.</li>
+        <li>Ton corps ne te ressemble plus, et tu n'oses plus t'habiller comme tu veux.</li>
+        <li>Tu sens que le problème n'est pas que dans l'assiette. Il est aussi dans ta tête.</li>
+        <li>Tu veux quelqu'un qui te cadre, te suit et te pousse — pas juste un PDF.</li>
+      </ul>
     </div>
-  </section>
+  </div>
 
   <!-- MON HISTOIRE -->
-  <section class="histoire-section">
-    <div class="histoire-inner">
-      <span class="histoire-eyebrow">Mon histoire</span>
-      <p class="histoire-paragraphe">À 1m75, je pesais 60 kg. Pas seulement un chiffre — un corps que je ne reconnaissais plus, une confiance qui s'était effondrée. J'étais timide, discrète, du genre à laisser les opportunités passer sans oser les saisir.</p>
-      <p class="histoire-paragraphe">Un jour, j'ai décidé que ce n'était pas dans mon tempérament de rester là. J'ai appris, essayé, échoué, recommencé. Jusqu'à trouver ce qui allait tout changer — une méthode qui alliait le corps, le mental et la façon d'agir dans sa vie.</p>
-      <p class="histoire-paragraphe">Je suis passée à 80 kg. Mais ce qui a vraiment changé, c'est le reste : la femme timide qui n'osait pas est devenue quelqu'un qui n'a plus peur de chercher ce qu'elle veut. De vendeuse, je suis passée directrice. Pas parce que les opportunités sont venues à moi — parce que j'ai arrêté de les laisser passer.</p>
-      <p class="histoire-paragraphe accent">Le corps était le point de départ. Le reste a suivi.</p>
-      <p class="histoire-paragraphe">Aujourd'hui, je partage cette méthode. Ce chemin — reprendre le contrôle sur son corps, puis grandir au-delà — je te le transmets.</p>
-      <div class="histoire-signature">La méthode Djen.</div>
+  <div class="wrap histoire">
+    <span class="label">Qui suis-je</span>
+    <h2>Mon histoire</h2>
+    <p>Il y a quelques années, après une rupture, j'ai beaucoup maigri. Je ne me reconnaissais plus. Je n'osais plus m'habiller, et j'avais perdu confiance en moi.</p>
+    <p>Je ne suis pas du genre à rester à me morfondre. Alors je me suis renseignée, j'ai appris, j'ai essayé, j'ai échoué, et j'ai recommencé. Jusqu'à trouver ma méthode.</p>
+    <p>Ce qui a tout changé, ce n'est pas un programme de sport. C'est d'avoir travaillé mon corps et ma tête en même temps. Allier le courage et la douceur, l'action et la bienveillance.</p>
+    <p>Aujourd'hui, j'accompagne des femmes qui veulent vivre la même transformation.</p>
+    <div class="histoire-quote">
+      <p>Un mind de psy dans un corps de baddie.</p>
     </div>
-  </section>
+  </div>
 
-  <!-- CORPS. MENTAL. ÉNERGIE. -->
-  <section class="methode-section">
-    <div class="methode-inner">
-      <div class="methode-intro">
-        <p class="eyebrow">La méthode</p>
-        <h2>Corps. Mental. Énergie.</h2>
-        <p>La plupart des programmes te demandent de faire plus d'efforts. La méthode Djen commence par te redonner le contrôle sur ce qui bloque — pour qu'ensuite, chaque effort te fasse grandir, au lieu de se perdre.</p>
-      </div>
-      <div class="pillars">
-        <div class="pillar">
-          <span class="pillar-icon">🌊</span>
-          <div class="pillar-title">Énergie féminine</div>
-          <div class="pillar-desc">Identifier et déverrouiller le Chasseur — sortir du mode alerte permanent pour que le corps puisse enfin recevoir ce qu'on lui donne</div>
-        </div>
-        <div class="pillar">
-          <span class="pillar-icon">🧠</span>
-          <div class="pillar-title">Mécanismes intérieurs</div>
-          <div class="pillar-desc">Comprendre ce qui maintient le stress actif — au niveau émotionnel, mental, relationnel — parce que c'est là que le blocage s'installe vraiment</div>
-        </div>
-        <div class="pillar">
-          <span class="pillar-icon">💪</span>
-          <div class="pillar-title">Corps aligné</div>
-          <div class="pillar-desc">Un protocole nutrition et entraînement construit sur ton état réel — pas sur un modèle générique qui ignore où tu en es</div>
-        </div>
-      </div>
+  <div class="rule"></div>
+
+  <!-- 3 PILIERS -->
+  <div class="piliers-bg">
+    <div class="wrap" style="padding-bottom: 0;">
+      <span class="label">La méthode</span>
+      <h2>Une approche holistique</h2>
+      <p style="font-size:0.95rem;font-weight:300;color:var(--ink-mid);line-height:1.8;max-width:520px;margin-bottom:40px;">On ne change pas un corps sans changer ce qu'il y a derrière. Je travaille sur les trois en même temps.</p>
     </div>
-  </section>
-
-  <!-- TÉMOIGNAGES -->
-  <section class="temoignages-section">
-    <div class="temoignages-inner">
-      <div class="temoignages-header">
-        <h2>Ce qu'elles écrivent dans le groupe.</h2>
-        <p>Messages réels · La Formation Prise de Poids</p>
+    <div class="piliers-grid">
+      <div class="pilier">
+        <div class="pilier-num">I</div>
+        <h3>Le corps</h3>
+        <p>Ton alimentation, tes séances de sport et ta progression, adaptées à ton objectif — prise ou perte de poids.</p>
       </div>
-      <div class="temoignages-bloc">
-        <p class="temoignages-bloc-label">En 6 jours</p>
-        <div class="temoignages-photos">
-          <div class="temo-photo">
-            <img src="/images/temoignages/temo-8.png" alt="Témoignage +3,5kg en 6 jours" loading="lazy">
-          </div>
-          <div class="temo-photo">
-            <img src="/images/temoignages/temo-9.png" alt="Témoignage +3,1kg en 6 jours" loading="lazy">
-          </div>
-          <div class="temo-photo">
-            <img src="/images/temoignages/temo-7.png" alt="Témoignage +3kg en 6 jours" loading="lazy">
-          </div>
-          <div class="temo-photo">
-            <img src="/images/temoignages/temo-10.png" alt="Témoignage +3kg en 6 jours" loading="lazy">
-          </div>
-        </div>
+      <div class="pilier">
+        <div class="pilier-num">II</div>
+        <h3>Le mental</h3>
+        <p>Tes blocages, ta confiance en toi, ce qui te fait abandonner. C'est 80 % des résultats.</p>
       </div>
-      <div class="temoignages-bloc">
-        <p class="temoignages-bloc-label">En 4 semaines</p>
-        <div class="temoignages-photos">
-          <div class="temo-photo">
-            <img src="/images/temoignages/temo-4w-7kg.png" alt="Témoignage +7kg en 4 semaines" loading="lazy">
-          </div>
-          <div class="temo-photo">
-            <img src="/images/temoignages/temo-4w-6kg.png" alt="Témoignage +6kg en 4 semaines" loading="lazy">
-          </div>
-          <div class="temo-photo">
-            <img src="/images/temoignages/temo-4w-5kg.png" alt="Témoignage +5kg en 4 semaines" loading="lazy">
-          </div>
-          <div class="temo-photo">
-            <img src="/images/temoignages/temo-4w-4kg.png" alt="Témoignage +4kg en 4 semaines" loading="lazy">
-          </div>
-        </div>
+      <div class="pilier">
+        <div class="pilier-num">III</div>
+        <h3>Les habitudes</h3>
+        <p>Un quotidien qui tient sur la durée, pour que tes résultats restent après l'accompagnement.</p>
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- OFFRES -->
-  <section id="offres">
-    <div class="offres-section">
-
-      <div class="offres-header">
-        <p class="eyebrow">Ce que je te propose</p>
-        <h2>Quatre étapes. L'une est la tienne.</h2>
-        <p>Chaque offre est construite pour une étape précise du chemin. Commence là où tu en es.</p>
+  <!-- CE QUI EST INCLUS -->
+  <div class="wrap">
+    <span class="label">Le cadre</span>
+    <h2>Ce qui est inclus</h2>
+    <div class="inclus-list">
+      <div class="inclus-item">
+        <span class="inclus-n">01</span>
+        <div class="inclus-body">
+          <strong>Une visio d'1h15 chaque semaine avec moi</strong>
+          <p>On fait le point, on débloque, on ajuste. En direct, juste toi et moi.</p>
+        </div>
       </div>
-
-      <div class="offres-tiers">
-
-        <!-- ÉTAGE 1 : Le Guide -->
-        <div class="offre-card">
-          <div class="offre-card-left">
-            <span class="offre-tier-badge t1">Étape 1 — Chasseur actif</span>
-            <div class="offre-name">Le Rituel qui Endort le Chasseur</div>
-            <div class="offre-subtitle">Reprends le contrôle de ton corps, de tes émotions et de ce que tu veux.</div>
-            <div class="offre-price">12€</div>
-            <div class="offre-price-note">Guide PDF · Envoyé par email après paiement</div>
-          </div>
-          <div class="offre-card-right">
-            <div class="offre-cible">Tu as l'impression que le stress décide à ta place ? Tu t'énerves, tu rumines, tu dors mal, tu lâches tes projets en route. Ce n'est pas toi qui as perdu le contrôle : c'est ton Chasseur qui l'a pris. Cette partie de toi, bloquée en mode alerte, pilote tes réactions, ton sommeil, ton appétit et tes décisions.<br><br>Reprendre le contrôle, ce n'est pas tout contrôler. C'est endormir le Chasseur pour que ce soit à nouveau toi qui choisisses.</div>
-            <p class="offre-desc">Chaque femme perd le contrôle à sa façon. Certaines s'agitent, d'autres veulent tout maîtriser, ruminent ou absorbent tout. Avant ton paiement, tu réponds à 8 questions, et tu reçois le guide fait pour ton profil : Feu, Terre, Air ou Eau.</p>
-            <ul class="offre-features">
-              <li>Ton portrait : comment le stress prend le contrôle chez toi, ta force, ton piège</li>
-              <li>Ton rituel étape par étape, adapté à ton profil (version express 25 min, complète 45 min)</li>
-              <li>Quand l'utiliser : en urgence, en période de stress, et avant que ça arrive</li>
-              <li>Ton cycle : quoi faire à chaque phase du mois pour ne plus subir tes hauts et tes bas</li>
-              <li>Manifester à ta façon : reprendre la main sur ce que tu veux obtenir</li>
-            </ul>
-            <button class="btn-offre" onclick="openQuizModal()">Faire le quiz et reprendre le contrôle →</button>
-            <p style="font-size:0.72rem;color:rgba(255,255,255,0.38);margin-top:10px;line-height:1.5;">Ce guide aide à décompresser, il ne remplace pas un accompagnement médical ou psychologique.</p>
-          </div>
+      <div class="inclus-item">
+        <span class="inclus-n">02</span>
+        <div class="inclus-body">
+          <strong>Un suivi WhatsApp du lundi au vendredi</strong>
+          <p>Tu m'envoies tes repas, tes séances, tes doutes. Je te réponds et je te recadre.</p>
         </div>
-
-        <!-- ÉTAGE 2 : La Formation Prise de Poids -->
-        <div class="offre-card featured">
-          <div class="offre-card-left">
-            <span class="offre-tier-badge t2">Étape 2 — Chasseur qui se calme</span>
-            <div class="offre-name">La Formation Prise de Poids</div>
-            <div class="offre-subtitle">Challenge 4 semaines</div>
-            <div class="offre-price">20€</div>
-            <div class="offre-price-note">Communauté privée · Une gagnante par session</div>
-          </div>
-          <div class="offre-card-right">
-            <div class="offre-cible">Pour toi si ton Chasseur commence à se calmer. C'est le bon moment pour installer une routine solide — avec une échéance claire et un groupe pour avancer.</div>
-            <p class="offre-desc">Un cadre motivant en 4 semaines : une gagnante désignée sur l'assiduité (pas le résultat brut), une récompense en argent, une communauté privée pour ne pas avancer seule. L'obligation de compte qu'on ne se crée jamais seule.</p>
-            <ul class="offre-features">
-              <li>4 semaines de protocole structuré</li>
-              <li>Communauté privée d'accompagnement</li>
-              <li>Récompense pour la participante la plus assidue</li>
-              <li>Suivi hebdomadaire des progrès</li>
-            </ul>
-            <form class="waitlist-form" onsubmit="submitWaitlistFormation(event)">
-              <input class="waitlist-input" type="email" placeholder="ton@email.com" id="waitlist-formation-email" required />
-              <button class="btn-waitlist" type="submit">Me prévenir</button>
-            </form>
-            <p class="waitlist-note">Prochaine session annoncée par email. Un seul message.</p>
-            <p class="waitlist-confirm" id="waitlist-formation-confirm">✦ C'est noté. Je te préviens en premier.</p>
-          </div>
+      </div>
+      <div class="inclus-item">
+        <span class="inclus-n">03</span>
+        <div class="inclus-body">
+          <strong>Un plan personnalisé alimentation + sport</strong>
+          <p>Construit pour ton corps et ton objectif, pas un plan générique.</p>
         </div>
-
-        <!-- ÉTAGE 3 : La Reconstruction -->
-        <div class="offre-card reconstruction">
-          <div class="offre-card-left">
-            <span class="offre-tier-badge t3">Étape 3 — Séance individuelle</span>
-            <div class="offre-name">La Reconstruction</div>
-            <div class="offre-subtitle">Séance unique 1:1 avec Djen</div>
-            <div class="offre-price">70€</div>
-            <div class="offre-price-note">Visio individuelle · 1h20 · En direct</div>
-          </div>
-          <div class="offre-card-right">
-            <div class="offre-cible">Tu n'as pas besoin d'un accompagnement de 6 semaines. Tu as besoin d'une heure pour comprendre ce qui te bloque vraiment — et repartir avec un plan clair pour l'atteindre.</div>
-            <p class="offre-desc">Une séance individuelle en direct avec moi, centrée sur un objectif précis que tu veux enfin débloquer. On identifie ce qui te retient, on démonte la croyance ou la peur derrière, et tu repars avec des actions concrètes à mettre en place immédiatement.</p>
-            <ul class="offre-features">
-              <li>Une séance visio individuelle, en direct avec Djen</li>
-              <li>Centrée sur ton objectif précis, pas un programme générique</li>
-              <li>Un plan d'action concret à la fin de la séance</li>
-              <li>Idéal si tu veux un déclic ciblé, pas un accompagnement long</li>
-            </ul>
-            <div class="offre-cible" style="margin-top:20px;font-size:0.83rem;line-height:1.7;">
-              Je suis passionnée par la PNL, la psychologie et le fonctionnement du cerveau — depuis toujours. Parce que j'ai compris une chose : quand tu sais comment ton corps et ton cerveau fonctionnent, tu peux littéralement tout devenir. Pas une formule motivante — un mécanisme réel, qu'on peut comprendre et utiliser.<br><br>
-              C'est ce que je fais naturellement avec les gens autour de moi, depuis toujours : mettre le doigt exactement sur ce qui bloque, et changer radicalement leur vision de leur propre vie. Pas en surface. En profondeur, et vite.
-            </div>
-            <div class="offre-signature">Un mind de psy dans un corps de baddie.</div>
-            <a href="/reconstruction" class="btn-offre-terracotta" style="display:block;text-decoration:none;text-align:center;">Réserver ma séance — 70€ →</a>
-          </div>
+      </div>
+      <div class="inclus-item">
+        <span class="inclus-n">04</span>
+        <div class="inclus-body">
+          <strong>Un travail mindset à chaque visio</strong>
+          <p>Tes blocages, intégrés à chaque session — pas un bonus, c'est le cœur du travail.</p>
         </div>
-
-        <!-- ÉTAGE 4 : L'Ascension Djen -->
-        <div class="offre-card ascension">
-          <div class="offre-card-left">
-            <span class="offre-tier-badge t4">Étape 4 — Transformation profonde</span>
-            <div class="offre-name">L'Ascension Djen</div>
-            <div class="offre-subtitle">6 semaines · 1 appel individuel par semaine avec Djen</div>
-            <div class="offre-price">297€</div>
-            <div class="offre-price-note">6 appels visio · 100% sur-mesure</div>
-          </div>
-          <div class="offre-card-right">
-            <p style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:300;font-style:italic;color:rgba(255,255,255,0.9);margin-bottom:20px;line-height:1.4;">Tu ne veux pas juste "aller mieux". Tu veux reprendre le contrôle — et grandir au-delà de ce que tu croyais possible.</p>
-            <p style="font-size:0.88rem;font-weight:300;color:rgba(255,255,255,0.80);line-height:1.8;margin-bottom:28px;">Tu en as assez d'être celle qui doute, qui subit son corps et sa vie au lieu de les diriger. L'Ascension Djen n'est pas un programme de plus. C'est 6 semaines pour reprendre totalement le contrôle — sur ton corps, ton mental, ta vie — et ensuite grandir, sans plafond.</p>
-
-            <ul class="offre-features" style="margin-bottom:28px;">
-              <li>6 semaines d'accompagnement individuel</li>
-              <li>1 appel visio par semaine avec Djen en direct (6 appels au total)</li>
-              <li>Un plan physique sur-mesure : nutrition et entraînement adaptés à ton corps, ton rythme, ton objectif de prise de poids</li>
-              <li>Un travail mental structuré à chaque appel : identifier tes blocages précis (peur, anxiété, image de toi), les démonter un par un</li>
-              <li>Un travail sur le passage à l'action dans ta vie concrète : carrière, argent, relations — repérer et saisir une opportunité au lieu de la laisser passer</li>
-              <li>Suivi entre les appels pour ajuster en continu, pas un protocole figé livré une fois</li>
-            </ul>
-
-            <div class="ascension-appel">
-              <div class="ascension-appel-num">01</div>
-              <div class="ascension-appel-text"><strong>Le contrôle sur ton mental.</strong> Confiance en soi, blocages intérieurs démontés un par un. Tu arrêtes de subir tes pensées — tu les diriges.</div>
-            </div>
-            <div class="ascension-appel">
-              <div class="ascension-appel-num">02</div>
-              <div class="ascension-appel-text"><strong>Le contrôle sur ta vie.</strong> Une fois le contrôle repris à l'intérieur, tu commences à repérer et saisir ce qui se présente à toi — carrière, projets, relations — au lieu de le laisser passer.</div>
-            </div>
-            <div class="ascension-appel">
-              <div class="ascension-appel-num">03</div>
-              <div class="ascension-appel-text"><strong>Le contrôle sur ton corps, et la croissance qui suit.</strong> La prise de poids devient la preuve visible que tu as repris la main — et que tu continues de grandir, plus haut, plus fort.</div>
-            </div>
-
-            <p style="font-size:0.82rem;font-weight:300;color:rgba(255,255,255,0.65);line-height:1.75;margin-top:28px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.06);">6 semaines. 6 appels avec moi, en direct. Le temps de reprendre le contrôle — et de ne plus jamais t'arrêter de grandir.</p>
-            <button class="btn-offre-gold" onclick="openCheckoutModal('ascension')">Je reprends le contrôle — Rejoindre L'Ascension Djen, 297€</button>
-          </div>
+      </div>
+      <div class="inclus-item">
+        <span class="inclus-n">05</span>
+        <div class="inclus-body">
+          <strong>Un bilan toutes les 4 semaines</strong>
+          <p>Mesures, photos, ressenti. On voit le chemin parcouru ensemble.</p>
         </div>
-
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- CLOSING -->
-  <section class="closing">
-    <div class="closing-inner">
-      <h2>La femme que tu sens déjà en toi<br>n'attend qu'une chose : <em>que tu reprennes le contrôle.</em></h2>
-      <p>Le complexe ne partira pas tout seul. Découvre ton profil et commence par la bonne étape.</p>
-      <button class="btn-primary" onclick="openQuizModal()">Faire le quiz</button>
+  <div class="rule"></div>
+
+  <!-- PARCOURS EN 3 MOIS -->
+  <div class="parcours-bg">
+    <div class="wrap" style="padding-bottom:0;">
+      <span class="label">Le programme</span>
+      <h2>Le parcours en 3 mois</h2>
     </div>
-  </section>
+    <div class="parcours-grid">
+      <div class="parcours-card">
+        <span class="parcours-mois">Mois 1</span>
+        <div class="parcours-titre">Les fondations</div>
+        <p class="parcours-desc">On pose ton plan, on installe les premières habitudes et on identifie ce qui te bloque.</p>
+      </div>
+      <div class="parcours-card">
+        <span class="parcours-mois">Mois 2</span>
+        <div class="parcours-titre">L'accélération</div>
+        <p class="parcours-desc">Ton corps commence à répondre. On ajuste, on intensifie, et on travaille ta confiance.</p>
+      </div>
+      <div class="parcours-card">
+        <span class="parcours-mois">Mois 3</span>
+        <div class="parcours-titre">L'ancrage</div>
+        <p class="parcours-desc">Tu deviens autonome. On verrouille tes habitudes pour que tes résultats restent.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CE N'EST PAS POUR TOI -->
+  <div class="pasp">
+    <div class="pasp-inner">
+      <span class="label">Sois honnête avec toi-même</span>
+      <h2>Ce n'est <em>pas</em> pour toi si…</h2>
+      <div class="pasp-list">
+        <p class="pasp-item">Tu cherches un résultat miracle en 2 semaines.</p>
+        <p class="pasp-item">Tu n'es pas prête à m'envoyer ton quotidien chaque jour.</p>
+        <p class="pasp-item">Tu veux juste un programme à télécharger, sans personne pour te suivre.</p>
+      </div>
+      <p class="pasp-note">Je préfère te le dire maintenant : ici, on s'engage. Toi comme moi.</p>
+    </div>
+  </div>
+
+  <!-- INVESTISSEMENT -->
+  <div class="wrap">
+    <span class="label">Investissement</span>
+    <h2>Rejoindre L'Ascension</h2>
+    <div class="pricing-grid">
+      <div class="pricing-card main">
+        <span class="pricing-label">Paiement unique</span>
+        <div class="pricing-name">Règlement en une fois</div>
+        <div class="pricing-amount">990€</div>
+        <p class="pricing-sub">3 mois · tout inclus</p>
+      </div>
+      <div class="pricing-card">
+        <span class="pricing-label">Paiement échelonné</span>
+        <div class="pricing-name">Règlement en 3 fois</div>
+        <div class="pricing-amount">3 × 350€</div>
+        <p class="pricing-sub">3 mois · tout inclus</p>
+      </div>
+    </div>
+    <p class="pricing-note">L'accès se fait sur candidature. Tu remplis le formulaire ci-dessous, je le lis personnellement, et si on est faites pour travailler ensemble, je t'envoie le lien de paiement.</p>
+  </div>
+
+  <!-- FORMULAIRE -->
+  <div class="form-section" id="candidature">
+    <div class="form-inner">
+      <span class="label">Postuler</span>
+      <h2>Je candidate pour<br><em>L'Ascension Djen</em></h2>
+      <p class="form-intro">Remplis ce court formulaire. Je le lis personnellement et je reviens vers toi sous 48h.</p>
+
+      <form id="cand-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="prenom">Prénom</label>
+            <input type="text" id="prenom" name="prenom" placeholder="Ton prénom" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="ton@email.com" required />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="objectif">Ton objectif</label>
+          <select id="objectif" name="objectif" required>
+            <option value="" disabled selected>Choisir…</option>
+            <option value="prise-de-poids">Prise de poids</option>
+            <option value="perte-de-poids">Perte de poids</option>
+            <option value="les-deux">Les deux (recomposition)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="situation">Ta situation en quelques lignes</label>
+          <textarea id="situation" name="situation" placeholder="Où tu en es, ce que tu veux transformer, ce qui t'a bloquée jusqu'ici…" required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="pourquoi">Pourquoi maintenant ?</label>
+          <textarea id="pourquoi" name="pourquoi" placeholder="Qu'est-ce qui fait que c'est le bon moment aujourd'hui ?" required style="min-height:90px;"></textarea>
+        </div>
+
+        <div class="form-check">
+          <input type="checkbox" id="budget" name="budget" required />
+          <label for="budget">J'ai pris connaissance de l'investissement (990€ ou 3 × 350€) et je suis en mesure de l'assumer.</label>
+        </div>
+
+        <button type="submit" class="btn btn-submit" id="submit-btn">Envoyer ma candidature</button>
+        <p class="form-error-msg" id="form-err">Une erreur est survenue. Réessaie ou contacte-moi directement.</p>
+      </form>
+
+      <div class="form-success" id="form-ok">
+        <span class="form-success-ornament">✦</span>
+        <h3>Candidature reçue.</h3>
+        <p>Je lis ta candidature personnellement<br>et je reviens vers toi sous 48h.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="wrap">
+    <span class="label">Questions fréquentes</span>
+    <h2>FAQ</h2>
+    <div id="faq">
+      <div class="faq-item">
+        <button class="faq-q">C'est pour la prise ou la perte de poids ? <span class="faq-ico">+</span></button>
+        <p class="faq-a">Les deux. Le plan s'adapte à ton objectif, mais le travail sur le mental et les habitudes reste le même.</p>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Je n'ai pas de salle de sport, c'est possible ? <span class="faq-ico">+</span></button>
+        <p class="faq-a">Oui. Ton programme peut se faire à la maison ou en salle, selon ce que tu as.</p>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Et si je rate une visio ? <span class="faq-ico">+</span></button>
+        <p class="faq-a">On la décale dans la semaine. Le suivi WhatsApp continue quoi qu'il arrive.</p>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">En combien de temps je vois des résultats ? <span class="faq-ico">+</span></button>
+        <p class="faq-a">Les premiers changements arrivent souvent dès les premières semaines. Mais une vraie transformation demande du temps : c'est pour ça que l'accompagnement dure 3 mois.</p>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Je peux continuer après les 3 mois ? <span class="faq-ico">+</span></button>
+        <p class="faq-a">Oui, on peut prolonger si tu le souhaites.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- MOT DE LA FIN -->
+  <div class="rule"></div>
+  <div class="fin">
+    <p>Dans 3 mois, tu peux être exactement au même endroit.</p>
+    <p>Ou tu peux te regarder dans le miroir et te reconnaître enfin.</p>
+    <p class="strong-line">La différence, ce n'est pas la motivation.<br>C'est le cadre et la personne qui t'accompagne.</p>
+    <div class="fin-cta">
+      <a class="btn" href="#candidature">Je candidate maintenant</a>
+    </div>
+  </div>
 
   <!-- FOOTER -->
   <footer>
-    <span>La méthode Djen</span> &nbsp;—&nbsp; par Djen · Tous droits réservés
+    <p>L'Ascension Djen — Accompagnement individuel</p>
+    <p style="margin-top:8px;max-width:540px;margin-left:auto;margin-right:auto;">Cet accompagnement est un coaching en habitudes de vie, sport et mindset. Il ne remplace pas un suivi médical, diététique ou psychologique. En cas de problème de santé, consulte un professionnel.</p>
   </footer>
 
-</div><!-- /main-site -->
-
-<!-- ══ MODAL PAIEMENT ═══════════════════════════════════════ -->
-<div id="quiz-modal">
-  <div class="quiz-box">
-    <!-- Capture nom + email -->
-    <div id="quiz-capture-screen">
-      <div class="quiz-body">
-        <div class="quiz-step-label">Avant de commencer</div>
-        <div class="quiz-q">À qui j'envoie ton guide ?</div>
-        <div style="display:flex;flex-direction:column;gap:12px;margin-top:4px;">
-          <input class="quiz-input" id="quiz-prenom" type="text" placeholder="Ton prénom" autocomplete="given-name"/>
-          <input class="quiz-input" id="quiz-email" type="email" placeholder="Ton email" autocomplete="email"/>
-        </div>
-        <p id="quiz-capture-error" style="display:none;font-family:'Jost',sans-serif;font-size:0.78rem;color:#E07070;margin-top:8px;"></p>
-        <button class="quiz-pay-btn" style="margin-top:20px;" onclick="quizCaptureSubmit()">Faire le quiz →</button>
-      </div>
-    </div>
-
-    <!-- Questions -->
-    <div id="quiz-screen" style="display:none;">
-      <div class="quiz-header">
-        <button class="quiz-back" id="quiz-back-btn" onclick="quizGoBack()" hidden>←</button>
-        <div class="quiz-progress" id="quiz-progress"></div>
-      </div>
-      <div class="quiz-body">
-        <div class="quiz-step-label" id="quiz-step-label"></div>
-        <div class="quiz-q" id="quiz-question"></div>
-        <div class="quiz-options" id="quiz-options"></div>
-      </div>
-    </div>
-    <!-- Résultat -->
-    <div id="quiz-result-screen" style="display:none;">
-      <div class="quiz-body">
-        <div class="quiz-result-title" id="quiz-result-title"></div>
-        <div class="quiz-result-body" id="quiz-result-body"></div>
-        <hr class="quiz-result-sep">
-        <div class="quiz-result-purchase">
-          <div class="quiz-result-price">12€</div>
-        </div>
-        <div class="quiz-result-delivery">Guide PDF · Envoyé par email juste après le paiement</div>
-        <button class="quiz-pay-btn" id="quiz-pay-btn" onclick="quizProceedToCheckout()">Obtenir mon guide →</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal-overlay" id="checkout-modal">
-  <div class="modal-box">
-    <button class="modal-close" onclick="closeCheckoutModal()">×</button>
-    <h2 class="modal-title">On y est.</h2>
-    <div id="modal-product-tag" class="modal-product-tag" style="display:none;"></div>
-    <p style="font-size:0.88rem;font-weight:300;color:var(--text-mid);margin-bottom:24px;line-height:1.7;">Laisse-moi ton prénom et ton email — je te confirme ta commande et t'envoie ton accès.</p>
-    <label class="modal-label" for="modal-prenom">Ton prénom</label>
-    <input class="modal-input" type="text" id="modal-prenom" placeholder="Ton prénom" style="margin-bottom:12px;" autocomplete="given-name"/>
-    <label class="modal-label" for="modal-email">Ton adresse email</label>
-    <input class="modal-input" type="email" id="modal-email" placeholder="ton@email.com" autocomplete="email"/>
-    <p class="modal-error" id="modal-error">Merci de remplir tous les champs.</p>
-    <button class="modal-btn" id="modal-pay-btn" onclick="procederPaiement()">Je commence →</button>
-  </div>
-</div>
-
-<script>
-// ══════════════════════════════════════════════════════════════
-//  ROUTING /merci
-// ══════════════════════════════════════════════════════════════
-(function () {
-  const p = window.location.pathname;
-  if (p === '/merci' || p === '/merci/') {
-    document.getElementById('merci-page').classList.add('visible');
-    document.getElementById('main-site').style.display = 'none';
-    window.scrollTo(0, 0);
-  }
-})();
-
-function escapeHtml(str) {
-  return String(str)
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;');
-}
-
-// ══════════════════════════════════════════════════════════════
-//  WAITLIST
-// ══════════════════════════════════════════════════════════════
-function submitWaitlist(e) {
-  e.preventDefault();
-  const email = document.getElementById('waitlist-email').value.trim();
-  if (!email) return;
-  document.querySelector('#waitlist-email').closest('.waitlist-form').style.display = 'none';
-  document.getElementById('waitlist-confirm').style.display = 'block';
-  fetch('/api/waitlist', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ email })
-  }).catch(() => {});
-}
-
-function submitWaitlistFormation(e) {
-  e.preventDefault();
-  const email = document.getElementById('waitlist-formation-email').value.trim();
-  if (!email) return;
-  document.querySelector('#waitlist-formation-email').closest('.waitlist-form').style.display = 'none';
-  document.getElementById('waitlist-formation-confirm').style.display = 'block';
-  fetch('/api/waitlist', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ email, list: 'formation-challenge' })
-  }).catch(() => {});
-}
-
-function submitWaitlistFromDiag(e) {
-  e.preventDefault();
-  const email = document.getElementById('diag-waitlist-email').value.trim();
-  if (!email) return;
-  e.target.querySelectorAll('input, button').forEach(el => el.disabled = true);
-  document.getElementById('diag-waitlist-confirm').style.display = 'block';
-  fetch('/api/waitlist', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ email, list: 'formation-challenge' })
-  }).catch(() => {});
-}
-
-// ══════════════════════════════════════════════════════════════
-//  QUIZ PROFIL (Le Rituel)
-// ══════════════════════════════════════════════════════════════
-const QUIZ_QUESTIONS = [
-  {
-    q: "Quand quelque chose te stresse ou te dérange, tu as surtout tendance à :",
-    options: [
-      { text: "T'agiter, parler plus vite, avoir envie d'agir tout de suite ou d'exploser", type: 'F' },
-      { text: "Tourner la situation dans tous les sens dans ta tête, analyser, faire des scénarios", type: 'A' },
-      { text: "Ressentir une vague d'émotion forte (angoisse, tristesse, sensation d'être submergée)", type: 'E' },
-      { text: "Te sentir lourde, bloquée, contractée, avec envie de ne plus bouger", type: 'T' },
-    ]
-  },
-  {
-    q: "Dans ton corps, le stress se loge le plus souvent :",
-    options: [
-      { text: "Dans une énergie qui monte vite (cœur qui s'accélère, agitation, muscles prêts à réagir)", type: 'F' },
-      { text: "Dans la tête (front, tempes, pensées qui n'arrêtent pas)", type: 'A' },
-      { text: "Dans la poitrine, la gorge, ou une sensation de trop-plein émotionnel", type: 'E' },
-      { text: "Dans le ventre, les épaules, la mâchoire serrée, une sensation de lourdeur ou de figement", type: 'T' },
-    ]
-  },
-  {
-    q: "Le soir, quand tu n'arrives pas à décrocher :",
-    options: [
-      { text: "Tu as encore de l'énergie nerveuse, tu as du mal à rester tranquille", type: 'F' },
-      { text: "Ton mental continue de tourner et de rejouer la journée", type: 'A' },
-      { text: "Tu te sens émotionnellement saturée, parfois vide ou à fleur de peau", type: 'E' },
-      { text: "Ton corps reste tendu, tu as du mal à vraiment te poser même si tu es épuisée", type: 'T' },
-    ]
-  },
-  {
-    q: "Face à un problème, ton premier réflexe est :",
-    options: [
-      { text: "Passer à l'action rapidement (même si ce n'est pas parfait)", type: 'F' },
-      { text: "Chercher à tout comprendre et anticiper tous les scénarios possibles", type: 'A' },
-      { text: "Ressentir fortement la situation (la tienne ou celle des autres)", type: 'E' },
-      { text: "Essayer de tout contrôler et de sécuriser chaque détail", type: 'T' },
-    ]
-  },
-  {
-    q: "Quand tu es en mode « trop », les autres te disent souvent que tu es :",
-    options: [
-      { text: "Intense et impatiente", type: 'F' },
-      { text: "Toujours dans ta tête", type: 'A' },
-      { text: "Très sensible", type: 'E' },
-      { text: "Dans le contrôle, un peu figée", type: 'T' },
-    ]
-  },
-  {
-    q: "Quand tu es stressée depuis plusieurs jours, tu remarques surtout que :",
-    options: [
-      { text: "Tu t'énerves plus facilement et tu as du mal à tenir en place", type: 'F' },
-      { text: "Tu as du mal à prendre des décisions et tu tournes en boucle", type: 'A' },
-      { text: "Tu te sens plus vite vidée par les autres ou les ambiances", type: 'E' },
-      { text: "Tu as plus de tensions physiques (mâchoire, ventre, épaules) et tu as du mal à te reposer", type: 'T' },
-    ]
-  },
-  {
-    q: "Ce qui t'arrive le plus souvent quand le stress monte trop haut :",
-    options: [
-      { text: "Tu forces encore plus ou tu exploses", type: 'F' },
-      { text: "Tu te perds dans les pensées et les « et si… »", type: 'A' },
-      { text: "L'émotion te submerge, ou tu la bloques", type: 'E' },
-      { text: "Tu te figes et tu n'arrives plus à avancer", type: 'T' },
-    ]
-  },
-  {
-    q: "Dans les moments de pression, tu as le plus de mal à :",
-    options: [
-      { text: "Ralentir et ne rien faire", type: 'F' },
-      { text: "Arrêter de réfléchir", type: 'A' },
-      { text: "Ne pas absorber les émotions des autres", type: 'E' },
-      { text: "Lâcher le contrôle et te sentir en sécurité", type: 'T' },
-    ]
-  }
-];
-
-const QUIZ_PROFILES = {
-  F: {
-    name: 'Feu',
-    title: 'Feu – Le Chasseur qui charge',
-    paras: [
-      { text: 'Ton système s\'allume en mode action.', problem: false },
-      { text: 'L\'énergie monte vite, tu t\'agites, tu veux tout régler maintenant.', problem: false },
-      { text: 'Le problème, c\'est que cette adrénaline te disperse, te fait décider à chaud, et t\'épuise avant d\'arriver au bout de ce que tu veux vraiment.', problem: true },
-      { text: 'Ton guide Feu t\'apprend exactement comment diriger cette énergie au lieu de la laisser t\'emporter.', problem: false },
-      { text: 'Tu y trouves ton rituel précis, les moments où l\'utiliser, et la façon dont tu manifestes le plus efficacement : en passant à l\'action sans te disperser.', problem: false },
-    ]
-  },
-  A: {
-    name: 'Air',
-    title: 'Air – Le Chasseur qui guette',
-    paras: [
-      { text: 'Ton mental ne s\'arrête jamais.', problem: false },
-      { text: 'Il analyse, anticipe, tourne en boucle. Même le soir, ta tête continue de chercher des solutions ou des scénarios.', problem: false },
-      { text: 'Le problème, c\'est que tu réfléchis tellement que tu agis peu, ou que tu doutes à chaque décision.', problem: true },
-      { text: 'Ton guide Air t\'apprend à vider ta tête et à redescendre dans ton corps pour enfin couper l\'alerte.', problem: false },
-      { text: 'Tu y trouves ton rituel, les moments où l\'utiliser, et comment transformer ton mental en outil de clarté au lieu de le laisser tourner à vide.', problem: false },
-    ]
-  },
-  E: {
-    name: 'Eau',
-    title: 'Eau – Le Chasseur qui déborde',
-    paras: [
-      { text: 'Les émotions montent vite et prennent beaucoup de place.', problem: false },
-      { text: 'Tu te sens poreuse, submergée, ou trop sensible à ce qui t\'entoure, et parfois aux problèmes des autres.', problem: false },
-      { text: 'Le problème, c\'est que tu retiens ou tu fuis l\'émotion, et ton énergie part ailleurs que dans tes projets.', problem: true },
-      { text: 'Ton guide Eau t\'apprend à laisser l\'émotion circuler sans qu\'elle t\'envahisse, et à poser des frontières claires.', problem: false },
-      { text: 'Tu y trouves ton rituel, les moments où l\'utiliser, et la façon dont tu manifestes le mieux en restant connectée à toi.', problem: false },
-    ]
-  },
-  T: {
-    name: 'Terre',
-    title: 'Terre – Le Chasseur qui se fige',
-    paras: [
-      { text: 'Ton corps se contracte et s\'immobilise.', problem: false },
-      { text: 'Tu te sens lourde, tendue, dans le contrôle, ou bloquée. Tu as parfois peur de manquer de sécurité ou de stabilité.', problem: false },
-      { text: 'Le problème, c\'est que tu peaufines au lieu de lancer, et que tu portes tout toute seule jusqu\'à t\'épuiser.', problem: true },
-      { text: 'Ton guide Terre t\'apprend à créer de la sécurité concrète pour que ton système puisse enfin se relâcher.', problem: false },
-      { text: 'Tu y trouves ton rituel, les moments où l\'utiliser, et comment manifester sans tout vouloir contrôler.', problem: false },
-    ]
-  },
-};
-
-// maps type → tag envoyé à Stripe/email
-const TYPE_TO_TAG = { F: 'Feu', A: 'Air', E: 'Eau', T: 'Terre' };
-
-let quizStep = 0;
-let quizAnswers = [];
-let quizProfile = '';
-let quizPrenom = '';
-let quizEmail = '';
-
-function openQuizModal() {
-  quizStep = 0;
-  quizAnswers = [];
-  quizProfile = '';
-  document.getElementById('quiz-capture-screen').style.display = 'block';
-  document.getElementById('quiz-screen').style.display = 'none';
-  document.getElementById('quiz-result-screen').style.display = 'none';
-  document.getElementById('quiz-capture-error').style.display = 'none';
-  document.getElementById('quiz-prenom').value = '';
-  document.getElementById('quiz-email').value = '';
-  document.getElementById('quiz-modal').classList.add('open');
-  setTimeout(() => document.getElementById('quiz-prenom').focus(), 100);
-}
-
-function quizCaptureSubmit() {
-  const prenom = document.getElementById('quiz-prenom').value.trim();
-  const email = document.getElementById('quiz-email').value.trim();
-  const errEl = document.getElementById('quiz-capture-error');
-  if (!prenom || !email || !email.includes('@')) {
-    errEl.textContent = 'Merci de remplir ton prénom et ton email.';
-    errEl.style.display = 'block';
-    return;
-  }
-  quizPrenom = prenom;
-  quizEmail = email;
-  // démarre le quiz
-  document.getElementById('quiz-capture-screen').style.display = 'none';
-  document.getElementById('quiz-screen').style.display = 'block';
-  renderQuizStep();
-}
-
-function closeQuizModal() {
-  document.getElementById('quiz-modal').classList.remove('open');
-}
-
-document.getElementById('quiz-modal').addEventListener('click', function(e) {
-  if (e.target === this) closeQuizModal();
-});
-
-function renderQuizStep() {
-  const total = QUIZ_QUESTIONS.length;
-  const q = QUIZ_QUESTIONS[quizStep];
-
-  // back button
-  document.getElementById('quiz-back-btn').hidden = (quizStep === 0);
-
-  // step label
-  document.getElementById('quiz-step-label').textContent = `Question ${quizStep + 1} sur ${total}`;
-
-  // progress bars
-  document.getElementById('quiz-progress').innerHTML = QUIZ_QUESTIONS.map((_, i) => {
-    const cls = i < quizStep ? 'done' : i === quizStep ? 'active' : '';
-    return `<div class="quiz-progress-bar${cls ? ' ' + cls : ''}"></div>`;
-  }).join('');
-
-  // question
-  document.getElementById('quiz-question').textContent = q.q;
-
-  // shuffled options
-  const shuffled = [...q.options].sort(() => Math.random() - 0.5);
-  document.getElementById('quiz-options').innerHTML = shuffled.map(o =>
-    `<button class="quiz-option" onclick="quizAnswer('${o.type}')">${o.text}</button>`
-  ).join('');
-}
-
-function quizAnswer(type) {
-  quizAnswers[quizStep] = type;
-  quizStep++;
-  if (quizStep < QUIZ_QUESTIONS.length) {
-    renderQuizStep();
-  } else {
-    quizProfile = calculateProfile();
-    showQuizResult();
-  }
-}
-
-function quizGoBack() {
-  if (quizStep === 0) return;
-  quizStep--;
-  quizAnswers.splice(quizStep, 1);
-  renderQuizStep();
-}
-
-function calculateProfile() {
-  const scores = { F: 0, A: 0, E: 0, T: 0 };
-  quizAnswers.forEach(t => { if (scores[t] !== undefined) scores[t]++; });
-  const max = Math.max(...Object.values(scores));
-  const tied = Object.keys(scores).filter(k => scores[k] === max);
-  if (tied.length === 1) return tied[0];
-  // tiebreaker: Q7 (index 6) d'abord, puis Q1, Q2, Q3...
-  const order = [6, 0, 1, 2, 3, 4, 5, 7];
-  for (const i of order) {
-    if (quizAnswers[i] && tied.includes(quizAnswers[i])) return quizAnswers[i];
-  }
-  return tied[0];
-}
-
-function showQuizResult() {
-  document.getElementById('quiz-screen').style.display = 'none';
-  document.getElementById('quiz-result-screen').style.display = 'block';
-  const p = QUIZ_PROFILES[quizProfile];
-  document.getElementById('quiz-result-title').textContent = p.title;
-  document.getElementById('quiz-result-body').innerHTML = p.paras.map(para =>
-    `<p class="quiz-result-para${para.problem ? ' problem' : ''}">${para.text}</p>`
-  ).join('');
-  document.getElementById('quiz-pay-btn').textContent = `Obtenir mon guide ${p.name} →`;
-
-  // Envoie les résultats complets à Djen
-  const TYPE_NAMES = { F: 'Feu', A: 'Air', E: 'Eau', T: 'Terre' };
-  const qa = QUIZ_QUESTIONS.map((question, i) => {
-    const type = quizAnswers[i];
-    const option = question.options.find(o => o.type === type);
-    return { q: question.q, a: option ? option.text : type, type: TYPE_NAMES[type] || type };
-  });
-  fetch('/api/quiz-result', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      prenom: quizPrenom,
-      email: quizEmail,
-      profil: p.title,
-      qa,
-    })
-  }).catch(() => {});
-}
-
-async function quizProceedToCheckout() {
-  const btn = document.getElementById('quiz-pay-btn');
-  btn.disabled = true;
-  btn.textContent = 'Redirection…';
-  try {
-    const res = await fetch('/api/checkout', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        email: quizEmail,
-        prenom: quizPrenom,
-        product: 'guide',
-        guide_profile: TYPE_TO_TAG[quizProfile] || '',
-        guide_answers: quizAnswers.join(','),
-      })
-    });
-    const data = await res.json();
-    if (data.url) {
-      window.location.href = data.url;
-    } else {
-      throw new Error(data.error || 'Erreur inconnue');
-    }
-  } catch (err) {
-    btn.disabled = false;
-    btn.textContent = `Obtenir mon guide ${QUIZ_PROFILES[quizProfile]?.name || ''} →`;
-    alert('Une erreur est survenue : ' + (err.message || 'Réessaie.'));
-  }
-}
-
-// ══════════════════════════════════════════════════════════════
-//  MODAL PAIEMENT
-// ══════════════════════════════════════════════════════════════
-const PRODUCT_LABELS = {
-  'guide':              'Le Rituel qui Endort le Chasseur — 12€',
-  'formation-challenge':'La Formation Prise de Poids — 20€',
-  'reconstruction':     'La Reconstruction — 70€',
-  'ascension':          'L\'Ascension Djen — 297€',
-};
-
-function openCheckoutModal(product) {
-  selectedProduct = product || 'guide';
-  const modal = document.getElementById('checkout-modal');
-  const tag = document.getElementById('modal-product-tag');
-  tag.textContent = '✦ ' + (PRODUCT_LABELS[selectedProduct] || selectedProduct);
-  tag.style.display = 'inline-block';
-  // pré-remplir si on vient du quiz
-  if (quizPrenom) document.getElementById('modal-prenom').value = quizPrenom;
-  if (quizEmail)  document.getElementById('modal-email').value  = quizEmail;
-  modal.classList.add('open');
-  document.getElementById(quizPrenom ? 'modal-email' : 'modal-prenom').focus();
-}
-
-function closeCheckoutModal() {
-  document.getElementById('checkout-modal').classList.remove('open');
-}
-
-document.getElementById('checkout-modal').addEventListener('click', function(e) {
-  if (e.target === this) closeCheckoutModal();
-});
-
-async function procederPaiement() {
-  const prenom = document.getElementById('modal-prenom').value.trim();
-  const email = document.getElementById('modal-email').value.trim();
-  const errorEl = document.getElementById('modal-error');
-  const btn = document.getElementById('modal-pay-btn');
-
-  if (!prenom || !email || !email.includes('@') || !email.includes('.')) {
-    errorEl.textContent = 'Merci de remplir ton prénom et ton email.';
-    errorEl.style.display = 'block';
-    return;
-  }
-
-  errorEl.style.display = 'none';
-  btn.disabled = true;
-  btn.textContent = 'Redirection…';
-
-  try {
-    const res = await fetch('/api/checkout', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        email,
-        prenom,
-        product: selectedProduct,
-        guide_profile: selectedProduct === 'guide' ? (TYPE_TO_TAG[quizProfile] || '') : '',
-        guide_answers: selectedProduct === 'guide' ? quizAnswers.join(',') : '',
-      })
+  <script>
+    // FAQ
+    document.querySelectorAll('.faq-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const open = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if (!open) item.classList.add('open');
+      });
     });
 
-    const data = await res.json();
-    if (data.url) {
-      window.location.href = data.url;
-    } else {
-      throw new Error(data.error || 'Erreur inconnue');
-    }
-  } catch (err) {
-    console.error(err);
-    btn.disabled = false;
-    btn.textContent = 'Je commence →';
-    errorEl.textContent = 'Une erreur s\'est produite. Merci de réessayer.';
-    errorEl.style.display = 'block';
-  }
-}
+    // Formulaire
+    document.getElementById('cand-form').addEventListener('submit', async e => {
+      e.preventDefault();
+      const btn = document.getElementById('submit-btn');
+      const err = document.getElementById('form-err');
+      btn.disabled = true;
+      btn.textContent = 'Envoi…';
+      err.style.display = 'none';
 
-// ══════════════════════════════════════════════════════════════
-//  FORMULAIRE /merci
-// ══════════════════════════════════════════════════════════════
-async function soumettreProfilComplet(e) {
-  e.preventDefault();
-  const btn = document.getElementById('profil-btn');
-  const errorEl = document.getElementById('profil-error');
-  btn.disabled = true;
-  btn.textContent = 'Envoi en cours…';
-  errorEl.style.display = 'none';
-
-  const params = new URLSearchParams(window.location.search);
-  const sessionId = params.get('session_id') || '';
-
-  const payload = {
-    session_id: sessionId,
-    poids_actuel: document.getElementById('poids_actuel').value,
-    taille: document.getElementById('taille').value,
-    poids_cible: document.getElementById('poids_cible').value,
-    zones: document.getElementById('zones').value,
-    allergies: document.getElementById('allergies').value || 'aucune',
-    regime: document.getElementById('regime').value,
-    nb_repas: document.getElementById('nb_repas').value,
-    lieu_entrainement: document.getElementById('lieu_entrainement').value,
-    frequence: document.getElementById('frequence').value,
-    equipement: document.getElementById('equipement').value || 'aucun',
-    contraintes: document.getElementById('contraintes').value || 'aucune',
-  };
-
-  try {
-    const res = await fetch('/api/complete-profile', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
+      try {
+        const res = await fetch('/api/candidature', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            prenom:    document.getElementById('prenom').value.trim(),
+            email:     document.getElementById('email').value.trim(),
+            objectif:  document.getElementById('objectif').value,
+            situation: document.getElementById('situation').value.trim(),
+            pourquoi:  document.getElementById('pourquoi').value.trim(),
+          }),
+        });
+        const json = await res.json();
+        if (json.ok) {
+          document.getElementById('cand-form').style.display = 'none';
+          document.getElementById('form-ok').style.display = 'block';
+        } else throw new Error();
+      } catch {
+        err.style.display = 'block';
+        btn.disabled = false;
+        btn.textContent = 'Envoyer ma candidature';
+      }
     });
-    const data = await res.json();
-    if (!res.ok) throw new Error(data.error || 'Erreur serveur');
-    document.getElementById('merci-form-step').style.display = 'none';
-    const finalStep = document.getElementById('merci-final-step');
-    finalStep.style.display = 'flex';
-    finalStep.style.minHeight = '80vh';
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  } catch (err) {
-    errorEl.textContent = 'Une erreur est survenue. Réessaie ou contacte-moi directement.';
-    errorEl.style.display = 'block';
-    btn.disabled = false;
-    btn.textContent = 'Envoyer à Djen →';
-  }
-}
-
-// ══════════════════════════════════════════════════════════════
-//  INIT
-// ══════════════════════════════════════════════════════════════
-renderStep();
-</script>
+  </script>
 </body>
 </html>
